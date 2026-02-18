@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -49,18 +50,18 @@ export default function Hero() {
 
         {/* CTAs */}
         <div className="flex flex-col gap-4 sm:flex-row">
-          <a
-            href="#conseguir"
+          <Link
+            href="/explorar"
             className="inline-flex min-h-[48px] items-center justify-center rounded-lg bg-teal px-8 py-3 text-base font-semibold text-background transition-opacity hover:opacity-90"
           >
-            Conseguir el Juego
-          </a>
-          <a
-            href="#novedades"
+            Explorar
+          </Link>
+          <Link
+            href="/afinidad"
             className="inline-flex min-h-[48px] items-center justify-center rounded-lg border border-gold px-8 py-3 text-base font-semibold text-gold transition-colors hover:bg-gold/10"
           >
-            Ver Novedades
-          </a>
+            Test de Afinidad
+          </Link>
         </div>
       </div>
 

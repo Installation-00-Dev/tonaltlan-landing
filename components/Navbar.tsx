@@ -2,24 +2,31 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const navLinks = [
-  { label: "Novedades", href: "#novedades" },
-  { label: "Que es Tonaltlan", href: "#about" },
-  { label: "Empezar", href: "#empezar" },
-  { label: "Conseguir", href: "#conseguir" },
-  { label: "Contacto", href: "#contacto" },
+  { label: "Inicio", href: "/" },
+  { label: "Explorar", href: "/explorar" },
+  { label: "Afinidad", href: "/afinidad" },
+  { label: "Suscribete", href: "/#newsletter" },
+  { label: "Contacto", href: "/#contacto" },
 ];
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
 
   return (
     <header
@@ -34,7 +41,7 @@ export default function Navbar() {
         aria-label="Navegacion principal"
       >
         {/* Logo */}
-        <a href="#" className="flex items-center gap-2" aria-label="Tonaltlan - Inicio">
+        <Link href="/" className="flex items-center gap-2" aria-label="Tonaltlan - Inicio">
           <Image
             src="/images/tonaltlan_logo.png"
             alt="Tonaltlan logo"
@@ -44,29 +51,31 @@ export default function Navbar() {
             style={{ width: "auto" }}
             priority
           />
-        </a>
+        </Link>
 
         {/* Desktop links */}
         <ul className="hidden items-center gap-6 lg:flex">
           {navLinks.map((link) => (
             <li key={link.href}>
-              <a
+              <Link
                 href={link.href}
-                className="text-sm font-medium text-foreground/80 transition-colors hover:text-gold"
+                className={`text-sm font-medium transition-colors hover:text-gold ${
+                  pathname === link.href ? "text-gold" : "text-foreground/80"
+                }`}
               >
                 {link.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
 
         {/* Desktop CTA */}
-        <a
-          href="#conseguir"
+        <Link
+          href="/explorar"
           className="hidden min-h-[44px] items-center rounded-lg bg-teal px-5 py-2 text-sm font-semibold text-background transition-opacity hover:opacity-90 lg:flex"
         >
-          Conseguir el Juego
-        </a>
+          Explorar Tonaltlan
+        </Link>
 
         {/* Mobile hamburger */}
         <button
@@ -108,23 +117,25 @@ export default function Navbar() {
           <ul className="flex flex-col gap-1 px-4 py-4">
             {navLinks.map((link) => (
               <li key={link.href}>
-                <a
+                <Link
                   href={link.href}
-                  className="block rounded-lg px-3 py-3 text-sm font-medium text-foreground/80 transition-colors hover:bg-foreground/5 hover:text-gold"
+                  className={`block rounded-lg px-3 py-3 text-sm font-medium transition-colors hover:bg-foreground/5 hover:text-gold ${
+                    pathname === link.href ? "text-gold" : "text-foreground/80"
+                  }`}
                   onClick={() => setMenuOpen(false)}
                 >
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
             <li>
-              <a
-                href="#conseguir"
+              <Link
+                href="/explorar"
                 className="mt-2 block min-h-[44px] rounded-lg bg-teal px-4 py-3 text-center text-sm font-semibold text-background transition-opacity hover:opacity-90"
                 onClick={() => setMenuOpen(false)}
               >
-                Conseguir el Juego
-              </a>
+                Explorar Tonaltlan
+              </Link>
             </li>
           </ul>
         </div>

@@ -3,14 +3,22 @@
 @tailwind utilities;
 
 :root {
-  --background: #07070a;
-  --foreground: #e6edf7;
-  --gold: #c5a059;
-  --gold-light: rgba(232, 207, 141, 0.92);
-  --teal: #2dd4bf;
+  --bg: #07070a;
+  --text: #e6edf7;
   --muted: rgba(230, 237, 247, 0.72);
-  --glass-bg: rgba(15, 23, 42, 0.55);
+  --gold: #c5a059;
+  --gold2: #e8cf8d;
+  --teal: #2dd4bf;
+  --jade: #22c55e;
+  --aqua: #38bdf8;
+  --glass: rgba(15, 23, 42, 0.55);
   --glass-border: rgba(148, 163, 184, 0.22);
+
+  /* Legacy aliases for existing components */
+  --background: var(--bg);
+  --foreground: var(--text);
+  --gold-light: var(--gold2);
+  --glass-bg: var(--glass);
 }
 
 html {
@@ -18,8 +26,8 @@ html {
 }
 
 body {
-  background-color: var(--background);
-  color: var(--foreground);
+  background-color: var(--bg);
+  color: var(--text);
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
@@ -53,13 +61,33 @@ body::after {
 /* Glass card utility */
 @layer components {
   .glass-card {
-    background: var(--glass-bg);
+    background: var(--glass);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid var(--glass-border);
     box-shadow:
       0 4px 30px rgba(0, 0, 0, 0.3),
       inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+
+  .glass-card-hover {
+    background: var(--glass);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    box-shadow:
+      0 4px 30px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  }
+
+  .glass-card-hover:hover {
+    border-color: rgba(45, 212, 191, 0.35);
+    box-shadow:
+      0 4px 30px rgba(0, 0, 0, 0.3),
+      0 0 20px rgba(45, 212, 191, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    transform: translateY(-2px);
   }
 }
 
@@ -111,7 +139,7 @@ section[id] {
   background: rgba(148, 163, 184, 0.5);
 }
 
-/* Horizontal scroll snap for updates section */
+/* Horizontal scroll snap */
 .snap-scroll {
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;

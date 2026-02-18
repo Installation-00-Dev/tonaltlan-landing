@@ -8,18 +8,21 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        bg: "var(--bg)",
+        background: "var(--bg)",
+        foreground: "var(--text)",
         gold: {
           DEFAULT: "var(--gold)",
-          light: "var(--gold-light)",
+          light: "var(--gold2)",
         },
         teal: {
           DEFAULT: "var(--teal)",
         },
+        jade: "var(--jade)",
+        aqua: "var(--aqua)",
         muted: "var(--muted)",
         glass: {
-          bg: "var(--glass-bg)",
+          DEFAULT: "var(--glass)",
           border: "var(--glass-border)",
         },
       },

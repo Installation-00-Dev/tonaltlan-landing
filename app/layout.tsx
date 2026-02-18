@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Cinzel } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -47,7 +49,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es" className={`${inter.variable} ${cinzel.variable}`}>
-      <body className="font-sans antialiased">{children}</body>
+      <body className="font-sans antialiased">
+        <Navbar />
+        <main className="min-h-screen">{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }
