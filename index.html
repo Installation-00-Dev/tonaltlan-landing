@@ -75,15 +75,30 @@
       display: grid;
       place-items: center;
       padding: clamp(1.25rem, 3vw, 2.75rem);
+      position: relative;
+    }
+
+    main::before{
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url('piramides_azteca_final.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: .72;
+      z-index: 0;
+      pointer-events: none;
     }
 
     .shell{
       width: min(920px, 94vw);
       border-radius: var(--radius);
-      background: linear-gradient(160deg, var(--card), var(--card2));
+      background: linear-gradient(160deg, rgba(15, 23, 42, .38), rgba(15, 23, 42, .22));
       border: 1px solid var(--stroke);
       box-shadow: var(--shadow);
       position: relative;
+      z-index: 1;
       overflow: hidden;
       padding: clamp(1.35rem, 3vw, 2.6rem);
     }
@@ -114,7 +129,7 @@
     }
 
     @supports (backdrop-filter: blur(10px)){
-      .shell{ backdrop-filter: blur(10px); }
+      .shell{ backdrop-filter: blur(16px); }
     }
 
     header{
