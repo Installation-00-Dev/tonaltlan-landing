@@ -9,7 +9,7 @@ const navLinks = [
   { label: "Inicio", href: "/" },
   { label: "Explorar", href: "/explorar" },
   { label: "Afinidad", href: "/afinidad" },
-  { label: "Suscribete", href: "/#newsletter" },
+  { label: "Suscríbete", href: "/#newsletter" },
   { label: "Contacto", href: "/#contacto" },
 ];
 
