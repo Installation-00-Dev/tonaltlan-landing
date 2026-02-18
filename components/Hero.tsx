@@ -6,7 +6,7 @@ export default function Hero() {
     <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden">
       {/* Background image */}
       <Image
-        src="/images/piramides_azteca_final.png"
+        src="/preview/images/piramides_azteca_final.png"
         alt=""
         fill
         className="object-cover object-center"
@@ -27,7 +27,7 @@ export default function Hero() {
       <div className="relative z-10 flex flex-col items-center px-4 text-center">
         {/* Logo */}
         <Image
-          src="/images/tonaltlan_logo.png"
+          src="/preview/images/tonaltlan_logo.png"
           alt="Tonaltlan"
           width={600}
           height={200}

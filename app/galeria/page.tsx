@@ -8,13 +8,13 @@ export const metadata = {
 
 // Use existing generated images as gallery placeholders
 const galleryImages = [
-  { src: "/images/piramides_azteca_final.png", alt: "Piramides ancestrales de Tonaltlan bajo un cielo mistico", tall: true },
-  { src: "/images/about-illustration.jpg",     alt: "El mundo de Tonaltlan: selvas, piramides y energia cosmica", tall: false },
-  { src: "/images/update-1.jpg",               alt: "Codice antiguo con simbolos dorados flotantes", tall: false },
-  { src: "/images/update-2.jpg",               alt: "El inframundo del Mictlan y su senor esqueletico", tall: true },
-  { src: "/images/update-3.jpg",               alt: "Guerreros reunidos alrededor de un fuego ceremonial", tall: false },
-  { src: "/images/update-4.jpg",               alt: "Artista pintando glifos mesoamericanos en un codice", tall: false },
-  { src: "/images/book-cover.jpg",             alt: "Portada del manual basico con piedra del sol y obsidiana", tall: true },
+  { src: "/preview/images/piramides_azteca_final.png", alt: "Piramides ancestrales de Tonaltlan bajo un cielo mistico", tall: true },
+  { src: "/preview/images/about-illustration.jpg",     alt: "El mundo de Tonaltlan: selvas, piramides y energia cosmica", tall: false },
+  { src: "/preview/images/update-1.jpg",               alt: "Codice antiguo con simbolos dorados flotantes", tall: false },
+  { src: "/preview/images/update-2.jpg",               alt: "El inframundo del Mictlan y su senor esqueletico", tall: true },
+  { src: "/preview/images/update-3.jpg",               alt: "Guerreros reunidos alrededor de un fuego ceremonial", tall: false },
+  { src: "/preview/images/update-4.jpg",               alt: "Artista pintando glifos mesoamericanos en un codice", tall: false },
+  { src: "/preview/images/book-cover.jpg",             alt: "Portada del manual basico con piedra del sol y obsidiana", tall: true },
 ];
 
 export default function GaleriaPage() {

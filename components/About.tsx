@@ -43,7 +43,7 @@ export default function About() {
         <div className="flex items-center justify-center">
           <div className="glass-card relative aspect-[4/3] w-full overflow-hidden rounded-2xl">
             <Image
-              src="/images/about-illustration.jpg"
+              src="/preview/images/about-illustration.jpg"
               alt="El mundo de Tonaltlan: piramides ancestrales, selvas sagradas y energia mistica"
               fill
               className="object-cover"
