@@ -63,7 +63,8 @@ export default function Footer() {
               alt="Cuevas y Quetzales"
               width={36}
               height={36}
-              className="h-9 w-auto opacity-70"
+              className="h-9 opacity-70"
+              style={{ width: "auto" }}
             />
             <span className="text-sm text-muted">
               Una produccion de Cuevas & Quetzales

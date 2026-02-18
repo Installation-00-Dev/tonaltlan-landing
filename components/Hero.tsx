@@ -10,7 +10,6 @@ export default function Hero() {
         fill
         className="object-cover object-center"
         priority
-        quality={90}
         aria-hidden="true"
       />
 
@@ -31,7 +30,8 @@ export default function Hero() {
           alt="Tonaltlan"
           width={600}
           height={200}
-          className="mb-6 h-auto w-[280px] md:w-[400px] lg:w-[520px]"
+          className="mb-6 w-[280px] md:w-[400px] lg:w-[520px]"
+          style={{ height: "auto" }}
           priority
         />
 
