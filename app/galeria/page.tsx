@@ -10,6 +10,10 @@ export const metadata = {
 const galleryImages = [
   { src: "/preview/images/piramides_azteca_final.png", alt: "Piramides ancestrales de Tonaltlan bajo un cielo mistico", tall: true },
   { src: "/preview/images/about-illustration.jpg",     alt: "El mundo de Tonaltlan: selvas, piramides y energia cosmica", tall: false },
+  { src: "/preview/images/Brujo_Catemaco.jpg",         alt: "Brujo Catemaco y su Ixip de agua en una cueva ancestral", tall: true },
+  { src: "/preview/images/Mitotiani.jpg",              alt: "Mitotiani danzante invocando un remolino tonal de viento y tierra", tall: true },
+  { src: "/preview/images/Otomi.jpg",                  alt: "Guerrero Otomi avanzando con armadura pesada y chimalli ceremonial", tall: true },
+  { src: "/preview/images/Tlapali.jpg",                alt: "Tlapali ritualista rodeado de sellos de sangre y energia oscura", tall: true },
   { src: "/preview/images/update-1.jpg",               alt: "Codice antiguo con simbolos dorados flotantes", tall: false },
   { src: "/preview/images/update-2.jpg",               alt: "El inframundo del Mictlan y su senor esqueletico", tall: true },
   { src: "/preview/images/update-3.jpg",               alt: "Guerreros reunidos alrededor de un fuego ceremonial", tall: false },

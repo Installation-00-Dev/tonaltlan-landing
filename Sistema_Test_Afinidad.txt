@@ -1,0 +1,520 @@
+🎯 SISTEMA DE TEST DE AFINIDAD - TONALTLÁN
+Documento maestro para diseñar, puntuar y presentar el Test de Afinidad Tonal. Incluye: Ejes, mapeo por raza, señales, estructura del banco, scoring, y resultados narrativos. 
+✅ Razas incluidas: Ton, Toh'kari, He'kari, Quinametzin, Lok'naa, Hualik, Irzak.
+
+
+📊 PIEZA A: EJES PSICOLÓGICOS COMPARABLES
+Ejes identificados (7 dimensiones medibles)
+1) ORDEN ↔ CAOS
+Orden: Estructura, previsibilidad, estabilidad, rutinas claras
+Caos: Impulso, espontaneidad, cambio constante, impredecibilidad
+2) TRANSPARENCIA ↔ SECRETO
+Transparencia: Honestidad total, revelación, claridad emocional
+Secreto: Ocultamiento, observación silenciosa, información guardada
+3) ACCIÓN ↔ CONTENCIÓN
+Acción: Respuesta inmediata, movimiento, ejecución directa
+Contención: Paciencia, reflexión, mediar antes de actuar
+4) INDIVIDUO ↔ COMUNIDAD
+Individuo: Autonomía, supervivencia personal, libertad individual
+Comunidad: Protección grupal, servicio colectivo, bien común
+5) EMOCIÓN ↔ ANÁLISIS
+Emoción: Decisión por sentimiento, empatía, conexión afectiva
+Análisis: Decisión por lógica, distancia mental, perspectiva estratégica
+6) PERMANENCIA ↔ CAMBIO
+Permanencia: Tradición, estabilidad, preservación, raíces
+Cambio: Movimiento, adaptación, exploración, transformación
+7) PURIFICACIÓN ↔ PRESERVACIÓN
+Purificación: Revelar verdad aunque duela, corregir injusticias, limpiar
+Preservación: Mantener armonía, proteger sin romper, sanar sin exponer
+
+
+🗺️ MAPEO POR RAZA EN EJES
+Formato: ⭐ indica intensidad hacia el extremo señalado. Ejemplo: "Orden ⭐⭐⭐⭐⭐" implica fuerte Orden (y por contraste poco Caos).
+TON (Luz)
+Orden: ⭐⭐⭐⭐⭐ (Rutinas ordenadas, claridad moral)
+Transparencia: ⭐⭐⭐⭐⭐ (No pueden mentir, todo se revela)
+Acción: ⭐⭐⭐ (Actúan cuando es necesario, pero primero concilian)
+Comunidad: ⭐⭐⭐⭐ (Protegen el bien común, aunque pueden sacrificarse)
+Emoción: ⭐⭐⭐ (Lógica moral, con conexión emocional)
+Permanencia: ⭐⭐⭐⭐ (Principios estables, orden moral persistente)
+Purificación: ⭐⭐⭐⭐⭐ (Revelan verdad aunque destruya)
+TOH'KARI (Rayo)
+Orden: ⭐ (Caos total, impredecible)
+Transparencia: ⭐⭐ (No ocultan intenciones, pero no las explican)
+Acción: ⭐⭐⭐⭐⭐ (Respuesta inmediata, nunca tibia)
+Individuo: ⭐⭐⭐⭐⭐ (Supervivencia personal, aislamiento)
+Emoción: ⭐⭐⭐⭐ (Impulso emocional, reacción instintiva)
+Cambio: ⭐⭐⭐⭐⭐ (Siempre movimiento, ruptura constante)
+Purificación: ⭐⭐ (Destruyen, pero sin propósito moral estable)
+HE'KARI (Aire)
+Orden: ⭐⭐ (Estructura flexible, adaptable)
+Transparencia: ⭐⭐⭐ (Comparte conocimiento, guarda secretos estratégicos si hace falta)
+Acción: ⭐⭐⭐ (Diplomacia y movimiento, no choque frontal)
+Individuo: ⭐⭐⭐⭐ (Libertad personal, movimiento constante)
+Análisis: ⭐⭐⭐⭐⭐ (Perspectiva elevada, análisis amplio)
+Cambio: ⭐⭐⭐⭐⭐ (Exploración, reinvención, movimiento)
+Preservación: ⭐⭐⭐ (Mantienen paz; revelan verdad si es necesario)
+QUINAMETZIN (Tierra)
+Orden: ⭐⭐⭐⭐⭐ (Estabilidad absoluta, tradición)
+Transparencia: ⭐⭐⭐⭐⭐ (Honestidad emocional total — Gema del Ánimo)
+Contención: ⭐⭐⭐⭐⭐ (Paciencia, reflexión, nunca impulso)
+Comunidad: ⭐⭐⭐⭐⭐ (Protección del pueblo, servicio sagrado)
+Emoción: ⭐⭐⭐⭐ (Conexión profunda, controlada)
+Permanencia: ⭐⭐⭐⭐⭐ (Raíces, tradición inquebrantable)
+Preservación: ⭐⭐⭐⭐⭐ (Protegen sin romper, construyen sin destruir)
+LOK'NAA (Agua)
+Orden: ⭐⭐⭐ (Flujo estructurado, pero adaptable)
+Transparencia: ⭐⭐⭐⭐ (Empatía profunda, emociones visibles)
+Contención: ⭐⭐⭐⭐⭐ (Desescalan, median, absorben antes de actuar)
+Comunidad: ⭐⭐⭐⭐ (Armonía social, preservación de vida)
+Emoción: ⭐⭐⭐⭐⭐ (Sienten primero, piensan después)
+Cambio: ⭐⭐⭐⭐ (Fluyen y se adaptan, mantienen profundidad)
+Preservación: ⭐⭐⭐⭐⭐ (Sanan, unen, evitan fracturas)
+HUALIK (Obscuridad)
+Orden: ⭐⭐⭐⭐ (Rutinas precisas, hábitos meticulosos)
+Secreto: ⭐⭐⭐⭐⭐ (Observación silenciosa, conocimiento oculto)
+Contención: ⭐⭐⭐⭐ (Evasión estratégica, golpe letal solo si es necesario)
+Individuo: ⭐⭐⭐⭐⭐ (Aislamiento total, soledad como forma de vida)
+Análisis: ⭐⭐⭐⭐⭐ (Cálculo silencioso, observación minuciosa)
+Permanencia: ⭐⭐⭐ (Espacios reducidos, rutinas estables)
+Preservación: ⭐⭐⭐ (Mantienen equilibrio oculto, no intervienen a menos que sea crítico)
+IRZAK (Fuego)
+Orden: ⭐⭐ (No son "ordenados", pero sí regidos por código de honor)
+Transparencia: ⭐⭐⭐⭐ (Directos; sinceridad brutal en lo esencial)
+Acción: ⭐⭐⭐⭐⭐ (Acción inmediata, frontal, sin medias tintas)
+Comunidad: ⭐⭐⭐ (Honor personal + lealtad al clan; tensión pasión/deber)
+Emoción: ⭐⭐⭐⭐ (Instinto y pasión guiados por honor)
+Permanencia: ⭐⭐⭐ (Código estable; pasión busca transformación)
+Purificación: ⭐⭐⭐⭐⭐ (Purificación: quemar lo corrupto, renacer, honrar la chispa)
+
+
+🔍 PIEZA B: DICCIONARIO DE SEÑALES POR RAZA
+Objetivo: traducir "lo que son" a cosas observables para crear preguntas indirectas.
+TON (Luz)
+5 Comportamientos Observables:
+
+Emiten resplandor cegador cuando experimentan emociones intensas (tristeza, enojo, felicidad, miedo)
+Su cabello es indestructible (no puede cortarse, quemarse o romperse) y lo llevan trenzado de formas únicas
+Rutinas muy ordenadas y estructuradas
+Hablan poco pero con peso, siempre honestos - su presencia hace que otros sientan que no pueden mentir
+Ayudan sin que se lo pidan - no guardan rencor (su luz consume sentimientos densos)
+
+3 Reacciones al Conflicto:
+
+Primero intentan conciliar y revelar la verdad
+Si el conflicto amenaza vida o justicia, se vuelven protectores implacables
+Su luz emocional puede ser un arma devastadora
+
+3 Decisiones Morales Típicas:
+
+Elegir entre decir la verdad aunque duela vs. callarla para proteger
+Actuar por convicción moral vs. conveniencia personal
+Revelar injusticias aunque cause conflicto vs. mantener paz superficial
+
+3 Triggers (Qué les desespera):
+
+Mentiras y engaños
+Manipulación e hipocresía
+Sufrimiento de inocentes que no pueden ignorar
+
+3 Aspiraciones (Qué admiran):
+
+Valientes que protegen sin esperar recompensa
+Honestos que se responsabilizan de sus errores
+Justos que viven con rectitud y corazón sincero
+
+
+TOH'KARI (Rayo)
+5 Comportamientos Observables:
+
+Marcas profundas en manos y antebrazos (como heridas de rayo) que brillan con electricidad cuando usan poder
+Manipulan pequeñas descargas eléctricas con las manos (chispas, soldar, detectar corrientes de energía)
+No se quedan quietos, movimiento errático constante - comen rápido, duermen poco
+Reaccionan a cualquier ruido o estímulo - caminan como si siempre fueran a pelear
+Viajan solos o en grupos pequeños (5-15) - no pueden sostener estructuras políticas estables
+
+3 Reacciones al Conflicto:
+
+Ataque explosivo como tormenta
+Retiro estratégico como relámpago
+Nunca negocian ni discuten - respuesta rápida, nunca tibia
+
+3 Decisiones Morales Típicas:
+
+Destruir para sobrevivir vs. destruir sin razón
+Contenerse y medir el daño vs. liberar el rayo interior
+Dejar vivir vs. eliminar amenaza
+
+3 Triggers:
+
+Gente que duda o tiembla
+Quienes buscan paz o armonía (les frustra)
+Ser rechazados por su propia existencia
+
+3 Aspiraciones:
+
+Fuertes que no los temen
+Quienes pueden mirarlos a los ojos sin temblar
+Quienes no le huyen a la tormenta
+
+
+HE'KARI (Aire)
+5 Comportamientos Observables:
+
+No necesitan respirar - pueden explorar alturas extremas, zonas volcánicas, ruinas selladas sin problemas
+Forma ligera de caminar, casi flotante - su voz tiene cualidad hipnótica, como si el viento hablara
+Hablan incluso solos, cantan sin darse cuenta - inclinación por bailar y moverse
+Obsesión por registrar información - transmiten ligereza y creatividad
+Cabello que nunca está quieto, parece atrapado en ráfaga perpetua de viento
+
+3 Reacciones al Conflicto:
+
+Diplomacia y negociación primero
+Espionaje o ingeniería social
+Si deben pelear: velocidad, sigilo y precisión
+
+3 Decisiones Morales Típicas:
+
+Decir verdad aunque destruya alianza vs. callarla para mantener paz
+Volar libres vs. responsabilidad como mensajeros
+Transparencia vs. responsabilidad diplomática
+
+3 Triggers:
+
+Ser silenciados o confinados
+Que su visión sea ignorada o minimizada
+Gente cerrada sin imaginación
+
+3 Aspiraciones:
+
+Mentes agudas y espíritus libres
+Quienes se atreven a crear y reinventarse
+Quienes usan palabra, estrategia o arte como arma
+
+
+QUINAMETZIN (Tierra)
+5 Comportamientos Observables:
+
+Estatura colosal (hombres 2.30m, mujeres 2.15m) - imposible no notarlos, pero su presencia calma en vez de intimidar
+Piel con textura de piedra, grietas que se profundizan con la edad (mapa de su vida, no signos de vejez)
+Gema del Ánimo cambia de color según emoción: blanco (calma), amarillo (alegría), verde (armonía), azul (tristeza), rojo (amor/furia), negro (desesperación)
+Trabajo constante: levantan, reparan, construyen - ritmo lento pero seguro
+Entrenan a jóvenes, mantienen orden natural - nunca están solos (la soledad es su peor castigo)
+
+3 Reacciones al Conflicto:
+
+Defensa y contención
+Fuerza mesurada como montañas vivientes
+Detienen el daño, no lo aumentan
+
+3 Decisiones Morales Típicas:
+
+Proteger comunidad vs. cuidarse a sí mismos
+Tradición vs. justicia individual
+Estabilidad grupal vs. bien individual
+
+3 Triggers:
+
+Sentirse inútiles o incapaces de proteger
+Fallar en proteger a alguien
+Mentiras y engaños (los detectan al instante)
+
+3 Aspiraciones:
+
+Quienes cumplen su palabra
+Quienes protegen a los suyos
+Quienes trabajan por el bien común
+
+
+LOK'NAA (Agua)
+5 Comportamientos Observables:
+
+Pueden permanecer días enteros bajo el agua sin necesidad de respirar - exploradores submarinos legendarios
+Ambiente baja dos decibeles cuando entran - cabello que nunca está quieto, fluye constantemente
+Sus manos tienen temperatura fresca y suave, perfecta para sanar heridas físicas y emocionales
+Rituales de purificación (baños sagrados) - conservan memoria en cantos y relatos
+Mujeres Lok'naa especialmente reverenciadas como líderes espirituales, guías y sanadoras
+
+3 Reacciones al Conflicto:
+
+Desescalan, calman, medían
+Absorben el golpe emocional
+Si se les presiona: se vuelven mareas (pacíficos pero no indefensos)
+
+3 Decisiones Morales Típicas:
+
+Ayudar aunque me destruya vs. poner límites
+Perdonar vs. protegerse
+Escuchar dolor ajeno vs. cerrar mis aguas
+
+3 Triggers:
+
+Ser usados como soporte emocional gratuito
+Gente fría e insensible
+Quienes evitan hablar de emociones
+
+3 Aspiraciones:
+
+Quienes sienten profundo y son sinceros
+Valentía emocional (no física)
+Gente que se atreve a ser vulnerable
+
+
+HUALIK (Obscuridad)
+5 Comportamientos Observables:
+
+Pueden desaparecer completamente en cualquier sombra - no es invisibilidad, es pertenecer a la oscuridad misma
+No generan sonido al moverse: caminan, respiran y cargan objetos en silencio absoluto
+Ojos sin iris: solo esclerótica blanca brillante y pupila negra profunda - parecen flotar en la oscuridad
+Ven perfectamente en oscuridad total (como felinos ancestrales) - cada sombra es información
+Hábitos meticulosos, rutinas precisas - su presencia apaga luz y reduce ruido, baja la temperatura
+
+3 Reacciones al Conflicto:
+
+Evasión estratégica si es posible
+Golpe letal con precisión quirúrgica
+Un solo movimiento, una sola oportunidad
+
+3 Decisiones Morales Típicas:
+
+Observar vs. participar (exponerse)
+Revelar conocimiento que salvaría imperios vs. mantenerlo oculto
+Intervenir vs. preservar equilibrio oculto
+
+3 Triggers:
+
+Ser vistos claramente (vulnerabilidad)
+Gente ruidosa e impulsiva
+Quienes buscan atención o quieren brillar
+
+3 Aspiraciones:
+
+Quienes piensan antes de hablar
+Quienes actúan sin presumir
+Quienes entienden el valor del silencio
+
+
+IRZAK (Fuego)
+5 Comportamientos Observables:
+
+Barbas brillantes (cobrizas/rojizas) portadas con honor por hombres y mujeres - símbolo de fuerza interior y madurez
+Trabajo intenso en forja y rituales de fuego - entrenamiento físico constante
+Intensidad emocional visible (ojos que brillan con furia ígnea cuando se enfadan)
+Sinceridad brutal y directa en palabras - su presencia transmite calor físico y emocional
+Buscan activamente alternativas al sacrificio cíclico (experimentos con Volcán Eterno, energía de Zilo)
+
+3 Reacciones al Conflicto:
+
+Enfrentamiento directo y frontal
+Acción inmediata guiada por código de honor
+Fuerza ígnea sin rodeos ni medias tintas
+
+3 Decisiones Morales Típicas:
+
+Honor personal vs. bien mayor de la comunidad
+Pasión individual vs. deber colectivo
+Arder libremente vs. cumplir con sacrificio programado
+
+3 Triggers:
+
+Cobardía y traición
+Deshonra y mentiras cuando se trata de honor
+Vida tibia sin pasión
+
+3 Aspiraciones:
+
+Quienes luchan con bravura
+Quienes cumplen su palabra sin excepción
+Quienes viven con pasión auténtica
+
+
+📝 PIEZA C: ESTRUCTURA DEL BANCO DE PREGUNTAS
+Tipos de Preguntas (mezcladas en el test)
+Tipo 1: Dilemas Morales
+Valores en conflicto (verdad vs protección, tradición vs justicia, honor vs bien común).
+Cada opción toca 2–4 razas.
+Tipo 2: Reacciones al Caos
+Presión, crisis, conflicto social, peligro, acusación, traición, urgencia.
+Mide instinto real: actuar, contener, observar, revelar.
+Tipo 3: Preferencias Simbólicas
+Elecciones abstractas (objetos, momentos, sonidos, lugares, talismanes).
+Sirven como desempate fino y refuerzo de afinidad profunda.
+Regla de Oro
+Cada pregunta debe tocar 2–4 razas simultáneamente, nunca una sola. Esto mantiene el test abstracto y evita respuestas obvias.
+Tamaño recomendado (decisión del proyecto)
+✅ Versión canónica recomendada: 30 preguntas
+
+Suficientemente precisa
+Rápida (6–8 min)
+Fácil de balancear y probar
+
+Distribución sugerida para 30
+
+12 dilemas morales
+10 reacciones al caos
+8 simbólicas / desempate
+
+
+🎲 PIEZA D: LÓGICA DE SCORING
+Sistema: Dominante + Secundaria
+Asignación de puntos (por opción elegida)
+Cada respuesta otorga puntos a 2–4 razas
+3 puntos → raza más alineada
+2 puntos → razas relacionadas
+1 punto → afinidad menor presente
+Cálculo final
+Sumar puntos por raza
+Raza dominante: mayor puntuación
+Raza secundaria: segunda mayor puntuación, mínimo 60% de la dominante
+Empate en dominante → usar secundaria como desempate
+Empate total → Afinidad Dual / Mixta (dos energías fuertes coexistiendo)
+Reglas de desempate (si hace falta)
+Revisar respuestas a preguntas de conflicto/caos (definen instinto)
+Si persiste, revisar dilemas morales (valores fundamentales)
+Si sigue, declarar Afinidad Dual (resultado intencional, no error)
+Validación de estabilidad (control de calidad)
+Mínimo 15 preguntas para estabilidad (pero la versión recomendada es 30)
+Cada raza debe aparecer en mínimo 8–10 preguntas con oportunidad real de puntuar
+Cada raza debe poder obtener puntos en al menos 40% de las preguntas
+Evitar que una sola raza monopolice "las opciones moralmente correctas"
+
+
+✨ PIEZA E: RESULTADOS NARRATIVOS
+Cada raza se entrega como lectura arquetípica (identificación fuerte + coherencia del lore). Estructura: Esencia / Virtud / Sombra / Camino + símbolos.
+
+
+TON (Luz) - El Iluminador
+Esencia: Eres la verdad que no puede ocultarse, la luz que revela sin querer. Eres uno de menos de 100 Ton en todo Tonaltlán - tu existencia es legendaria. Vives siglos, eres una biblioteca viviente de memoria y sabiduría. Tu existencia misma es un faro moral: no puedes mentir, no puedes engañar, no puedes callar cuando ves injusticia. Tu claridad es tanto tu virtud como tu vulnerabilidad.
+
+Virtud: Tu columna moral absoluta. Eres el que ilumina el camino de otros, el que protege sin esperar recompensa, el que corrige injusticias porque no puede ignorarlas. Tu luz consume sentimientos densos y rencores, dejando solo claridad y propósito.
+
+Sombra: Tu mayor terror no es la muerte, sino corromperte u oscurecerte. Temes convertirte en un "sol que quema en vez de calentar". Tu sinceridad te vuelve vulnerable: no puedes guardar secretos estratégicos, y a veces la verdad que revelas puede destruir relaciones o causar guerras.
+
+Camino: Tu ritual es existir con pureza intencional. No necesitas rezar: cada acto bondadoso honra a Tonatli. Tu rol es ser el guía ético, el que revela verdades aunque duelan, el que protege el orden moral del mundo. Acepta que tu exposición total es tu poder y tu herida.
+
+Símbolo Mítico: El Amanecer - El momento en que la luz retorna y el mundo se revela.
+
+Objeto Cotidiano: Un espejo que refleja la verdad sin distorsión.
+
+Glifo: Sol con rayos que iluminan en todas las direcciones.
+
+
+TOH'KARI (Rayo) - El Caótico
+Esencia: Eres la tormenta sin control, el impulso que no se detiene. Vives entre el deseo de destruir y la necesidad de sobrevivir. Tu rayo interior es una bestia que debes dominar lo suficiente para no morir... y usarlo antes de que te consuma.
+
+Virtud: Tu intensidad imparable. Cuando te enfocas en algo, no hay duda, no hay miedo, no hay vacilación: solo acción directa. Eres capaz de ejecutar lo que otros ni siquiera se atreverían a pensar. Tu fuerza es brutal pero honesta.
+
+Sombra: Tu tendencia al impulso y la violencia puede destruirte tanto como a los que te rodean. El rayo que liberas también te quema por dentro. Temes convertirte en un relámpago que cae sin querer, en destrucción sin sentido. Tu conflicto eterno: "¿Puedo contenerme... o voy a destruirlo todo otra vez?"
+
+Camino: Tu ritual es la supervivencia diaria. No hay vida cotidiana para ti: hay movimiento errático, impaciencia y soledad profunda. Tu rol es ser el exiliado salvaje que sobrevive en un mundo que te teme. Aprende a decidir cuándo NO destruir: ese es tu verdadero conflicto moral.
+
+Símbolo Mítico: El Relámpago que Cae Sobre Una Montaña Solitaria - Brutal, impredecible, hermoso y aterrador.
+
+Objeto Cotidiano: Un fragmento de metal que conserva carga eléctrica.
+
+Glifo: Rayo zigzagueante que nunca toca el mismo lugar dos veces.
+
+
+HE'KARI (Aire) - El Visionario
+Esencia: Eres la mente que vuela, la idea que viaja, la palabra que transforma. Observas desde arriba, ves patrones donde otros ven caos, percibes a larga distancia. Eres el soñador práctico: inspiras, conectas, interpretas, y llevas conocimiento de un lugar a otro.
+
+Virtud: Tu libertad creativa y tu inspiración constante. Ves soluciones donde otros ven problemas, encuentras caminos hasta en el viento. Eres maestro de la expresión, del arte y de la palabra. Tu perspectiva elevada te permite ver el panorama completo.
+
+Sombra: Tu dispersión y desconexión. Puedes ser inconstante, distraído, difícil de "aterrizar". Te pierdes en posibilidades infinitas y puedes parecer frío o ausente cuando estás "arriba" con tu mente. Tu conflicto: volar libres vs. tu responsabilidad como mensajero.
+
+Camino: Tu ritual es el movimiento constante, el arte y la comunicación. Tu vida cotidiana es "aire en acción": ligera, inspirada, en movimiento. Tu rol es ser el mensajero, el guardián del conocimiento, el aliado diplomático. Equilibra tu necesidad de libertad con tu deber de guiar.
+
+Símbolo Mítico: La Pluma Suspendida - Ligera pero poderosa, símbolo de mensaje y vuelo.
+
+Objeto Cotidiano: Un cuaderno de notas que siempre llevas contigo.
+
+Glifo: Espiral de viento que se eleva hacia el cielo.
+
+
+QUINAMETZIN (Tierra) - El Guardián Colosal
+Esencia: Eres la estabilidad absoluta: el pilar, la roca firme, el gigante amable que sostiene al mundo. Eres colosal (2.30m), imposible de pasar por alto, pero tu presencia calma en vez de intimidar. Eres protector nato, figura de guía y soporte emocional. Eres el "hogar" encarnado, la base sobre la que otros construyen.
+
+Virtud: Tu honestidad e integridad inquebrantable. Tu Gema del Ánimo te delata siempre: no puedes mentir emocionalmente. La gema cambia de color según tu emoción: blanco para calma, amarillo para alegría, verde para armonía, azul para tristeza, rojo para amor o furia, negro para desesperación. Tu virtud es una honestidad profunda, transparente y llena de bondad. Eres el que construye, repara, protege y mantiene el orden natural.
+
+Sombra: Tu carga del deber y auto-sacrificio. Puedes sentirte obligado a cargar con el mundo, incluso cuando ya no puedes más. Tu sentido del deber puede ahogarte. Si fallas en proteger a alguien, tu gema lo revela de inmediato... y esa culpa puede marcarte por siglos.
+
+Camino: Tu ritual es el trabajo constante, la construcción y el servicio comunitario. Levantas murallas, reparas caminos, construyes templos, entrenas jóvenes. Tu rol es sostener, aunque te desgastes. Aprende que también mereces ser apoyado: los pilares necesitan cimientos.
+
+Símbolo Mítico: La Montaña Antigua - Alta, firme, paciente y eterna. Testigo y protectora.
+
+Objeto Cotidiano: Una herramienta de trabajo que siempre está contigo.
+
+Glifo: Montaña con raíces profundas que se extienden hacia abajo.
+
+
+LOK'NAA (Agua) - El Sanador
+Esencia: Eres la calma después de la tormenta. Tu psicología es profundamente empática: sientes antes de actuar, lees el ambiente, te mueves como el agua misma fluyendo hacia donde hace falta armonía. Eres el que une, el que sana, el que preserva la vida.
+
+Virtud: Tu empatía y capacidad de sanación. No solo entiendes el dolor ajeno: lo absorbes, lo transformas y lo devuelves como alivio. Puedes conectar emocionalmente con quien sea, incluso con razas que otros considerarían "enemigos". Tu presencia calma y restaura equilibrio.
+
+Sombra: Tu evasión y auto-sacrificio. Tu misma empatía puede consumirte. Cuando sientes demasiado, te apagas, te derrites emocionalmente o huyes "como el agua buscando grietas". Temes convertirte en un mar sin orillas: absorber tanto dolor ajeno que dejas de ser tú mismo.
+
+Camino: Tu ritual es la hospitalidad, la artesanía fluida y los rituales de purificación. Baños sagrados, cantos que conservan memoria, alimentos que suavizan. Tu rol es desescalar, mediar, absorber el golpe. Aprende a poner límites: sanar sin romperte, fluir sin desaparecer.
+
+Símbolo Mítico: El Cenote Sagrado - Profundo, claro, portador de vida, pero también misterioso y oscuro en el fondo.
+
+Objeto Cotidiano: Un recipiente de agua que siempre llevas contigo.
+
+Glifo: Onda de agua que fluye en círculos concéntricos.
+
+
+HUALIK (Obscuridad) - El Vigilante Sombra
+Esencia: Eres el que mira sin ser visto, el que escucha, el que entiende, el que aparece cuando nadie lo espera. Puedes desaparecer en cualquier sombra, moverte sin hacer sonido, ver en oscuridad total. Eres uno de decenas, no miles - tu existencia es un misterio incluso para otras razas. Tu identidad es estar fuera de la vista, pero siempre presente. Eres el observador silencioso, el vigilante de las verdades ocultas.
+
+Virtud: Tu astucia y percepción profunda. Nada pasa desapercibido para ti. Eres inteligente, analítico, y puedes leer las intenciones detrás de las palabras. No te dejas engañar por luz, ruido o apariencias. Tu precisión es quirúrgica cuando actúas.
+
+Sombra: Tu aislamiento y desconfianza. Rechazas el contacto social, incluso cuando podría beneficiarte. Ves traición en todas partes, incluso donde no la hay. Tu herida es simple: "No tenemos un lugar donde pertenecer." La soledad, aunque necesaria, es también tu condena.
+
+Camino: Tu ritual es el silencio, las rutinas precisas y la conducta cauta. Movimientos suaves, hábitos meticulosos, largas horas observando. Tu rol es saber sin exponerte, intervenir solo cuando es crítico. Tu conflicto eterno: "¿Me mantengo en la sombra... o actúo?"
+
+Símbolo Mítico: La Luna Nueva - Oscuridad total. No es ausencia, sino presencia invisible.
+
+Objeto Cotidiano: Un objeto pequeño que siempre está en tus manos (piedra, moneda, etc.)
+
+Glifo: Sombra que se extiende sin forma definida.
+
+
+IRZAK (Fuego) - La Flama de Honor
+Esencia: Eres la pasión que arde sin control, el honor que no se doblega, la intensidad que define cada momento. Tu chispa de Zilo debe arder con la mayor fuerza posible antes de regresar al ciclo eterno. Eres carismático, temperamental y brutalmente directo: no das rodeos, no suavizas verdades, no actúas con cobardía.
+
+Virtud: Tu valentía y lealtad inquebrantable. Eres el que lucha con bravura, ama con entrega total y honra con devoción absoluta. Tu código de honor no admite dudas: no puedes traicionar, no puedes mentir cuando se trata de honor, no puedes actuar con cobardía. Eres una flama viviente que inspira respeto y temor.
+
+Sombra: Tu temperamento y intensidad destructiva. Tu pasión puede convertirse en furia ciega. Tu orgullo puede quemar puentes. Tu intensidad emocional puede ser tan abrasadora que destruye relaciones o situaciones que podrían haberse salvado con más calma. El fuego que te define también puede consumirte a ti y a quienes te rodean.
+
+Camino: Tu ritual es el trabajo intenso, la forja y los rituales de fuego. Trabajas en el Volcán Eterno, experimentas con la energía de Zilo, vives cada momento con pasión. Tu búsqueda constante de alternativas al sacrificio cíclico te marca: quieres que todas las chispas ardan hasta el final, pero el deber pesa. Tu rol es arder con honor hasta el final, pero tu conflicto eterno es: ¿Debo arder libremente o cumplir con el deber del sacrificio? Busca alternativas, pero acepta que el peso del deber te marca.
+
+Símbolo Mítico: El Volcán Eterno - Fuerza contenida, poder que puede destruir o crear. Tu hogar, tu maestro, tu conexión directa con Zilo.
+
+Objeto Cotidiano: Una herramienta de forja o un objeto que siempre llevas contigo que representa tu chispa.
+
+Glifo: Llama que arde hacia arriba, intensa y constante.
+
+
+🎯 PRÓXIMOS PASOS (PARA LA VERSIÓN DE 30)
+Cerrar banco de 30 preguntas (12 moral / 10 caos / 8 simbólicas)
+
+Asignar puntos por opción (3/2/1) cuidando que cada opción toque 2–4 razas
+
+Checklist de balance:
+
+cada raza con +3 en ~6–8 preguntas
+ninguna raza "gana" por ser siempre la opción "más buena"
+
+Piloto con 10–20 personas y ajuste de puntajes (no del lore)
+
+Publicación (y si quieres luego versión extendida +10 preguntas)
+
+
+📌 NOTAS IMPORTANTES
+Luz ≠ bueno / Oscuridad ≠ malo: son fuerzas complementarias
+Motivación + miedo > estética: así se diferencian de verdad
+Dominante + Secundaria reduce frustración y mejora identificación
+Cada pregunta debe ser ambigua pero significativa: que no se note "a quién favorece"
+
+
+
