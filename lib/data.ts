@@ -68,6 +68,102 @@ export const clases: CompendiumEntry[] = [
       { title: "Notas", content: "Perfecta para campanas con fuerte componente social e intriga politica. El Pochteca brilla fuera del combate pero puede ser letal con sus venenos y emboscadas." },
     ],
   },
+  {
+    name: "Brujo Catemaco",
+    slug: "brujo-catemaco",
+    description:
+      "Brujos artesanos de las regiones pantanosas de Tl\u2019atl que vinculan su poder a un Ixip, un muneco tonal tallado por sus propias manos.",
+    tags: ["Invocador", "Multi-tonal", "Rango"],
+    sections: [
+      {
+        title: "Descripcion",
+        content:
+          "Los Catemacos son brujos artesanos originarios de las regiones pantanosas del reino de Tl\u2019atl. Su poder no proviene de libros ni de pactos con entidades desconocidas, sino del vinculo espiritual que crean con un Ixip, un muneco tonal tallado por sus propias manos y animado mediante un ritual ancestral. A lo largo de su entrenamiento, el Catemaco comparte parte de su esencia con esta creacion hasta despertar en ella una fuerza elemental latente. El Ixip se convierte entonces en un aliado vivo que canaliza la energia de los elementos y actua como extension de la voluntad de su creador. En combate y en aventura, el Catemaco y su Ixip funcionan como una sola entidad: el brujo dirige y planifica mientras su creacion ejecuta movimientos tonales.",
+      },
+      {
+        title: "Rasgos",
+        content:
+          "Invocador estrategico que lucha a traves de su Ixip. Control del espacio mediante aliados tonales y efectos a distancia. Sinergia constante entre brujo y creacion.",
+      },
+      {
+        title: "Notas",
+        content:
+          "Ideal para jugadores que disfrutan pensar cada movimiento con anticipacion y controlar el campo de batalla a traves de un aliado magico.",
+      },
+    ],
+  },
+  {
+    name: "Guerrero Otomi",
+    slug: "guerrero-otomi",
+    description:
+      "Milicia de elite del norte de Tonaltlan, portadores del Punto Tonal de Tierra y defensores inquebrantables de su pueblo.",
+    tags: ["Tanque", "Cuerpo a cuerpo", "Tonal de Tierra"],
+    sections: [
+      {
+        title: "Descripcion",
+        content:
+          "Los Guerreros Otomi son la milicia de elite del norte de Tonaltlan y portadores del Punto Tonal de Tierra. Su proposito no es la gloria personal, sino mantener la linea de batalla y proteger a su pueblo sin retroceder. Donde un Otomi clava su estandarte, la batalla se sostiene. Cubiertos con armaduras pesadas, portando chimallis geometricos y estandartes de guerra, los Otomi son la encarnacion de la resistencia. Su presencia en el campo de batalla convierte el caos en una formacion solida donde los aliados encuentran proteccion y los enemigos encuentran un muro imposible de romper.",
+      },
+      {
+        title: "Rasgos",
+        content:
+          "Defensa excepcional y control de posicion. Capacidades para proteger aliados, mantener la linea y absorber dano mas que cualquier otra clase.",
+      },
+      {
+        title: "Notas",
+        content:
+          "Ideal para jugadores que disfrutan proteger a su equipo y liderar la linea de batalla, que se sienten atraidos por personajes resistentes capaces de absorber el dano mientras el resto del grupo combate con mayor seguridad.",
+      },
+    ],
+  },
+  {
+    name: "Mitotiani",
+    slug: "mitotiani",
+    description:
+      "Danzantes tonales que canalizan la energia del Tonal a traves de coreografias rituales sobre el campo de batalla.",
+    tags: ["Movilidad", "Soporte", "Multi-tonal"],
+    sections: [
+      {
+        title: "Descripcion",
+        content:
+          "Los Mitotiani son guerreros ritualistas que canalizan la energia del Tonal a traves de danzas sagradas. Cada paso, cada giro y cada golpe de sus ayoyotes contra la tierra deja marcas de poder que se manifiestan como glifos rituales, alterando el campo de batalla y guiando la energia de los elementos. A diferencia de otros combatientes, el Mitotiani no depende de armas tradicionales: su propio cuerpo es su instrumento de combate. Luchan unicamente con piernas y pies, ejecutando patadas, barridas y lanzamientos de dagas ocultas en sus ayoyotes mientras sus manos permanecen inmoviles detras de la espalda para preservar el equilibrio y la pureza del ritual.",
+      },
+      {
+        title: "Rasgos",
+        content:
+          "Alta movilidad y control del terreno mediante glifos rituales. Habilidades para fortalecer aliados, debilitar enemigos y transformar el campo de batalla en un escenario ceremonial.",
+      },
+      {
+        title: "Notas",
+        content:
+          "Ideal para jugadores que disfrutan personajes rapidos y creativos que se mueven constantemente por el campo de batalla y alteran el ritmo del combate con apoyo y control.",
+      },
+    ],
+  },
+  {
+    name: "Tlapali",
+    slug: "tlapali",
+    description:
+      "Portadores de Sangre Tonal que manipulan la sangre como medio ritual para marcar y debilitar a sus enemigos.",
+    tags: ["Controlador", "Debilitador", "Sellos de sangre"],
+    sections: [
+      {
+        title: "Descripcion",
+        content:
+          "El Tlapali es una figura casi mitica. Muchos en los reinos creen que esta disciplina desaparecio hace siglos en lo profundo de los Bosques Obscuros, pero aun existen unos pocos practicantes que custodian este conocimiento ritual prohibido. Su poder nace de una energia tonal unica, fruto de la union entre la obscuridad y el agua, que les permite manipular la sangre como un medio ritual para marcar enemigos, debilitar su esencia vital y alterar el destino del combate. Los Tlapali utilizan sellos de sangre que activan sobre sus objetivos, debilitandolos poco a poco mientras el enemigo queda atrapado en un ciclo de dolor, desgaste y control.",
+      },
+      {
+        title: "Rasgos",
+        content:
+          "Especialistas en marcas y efectos de dano progresivo. Amplio repertorio de tecnicas para controlar el flujo del combate y mantener a los enemigos bajo constante presion.",
+      },
+      {
+        title: "Notas",
+        content:
+          "Ideal para quienes prefieren manipular el flujo del combate, controlar a los enemigos y apoyar al grupo mediante efectos que reducen las capacidades del oponente, especialmente jugadores atraidos por personajes oscuros y ritualistas.",
+      },
+    ],
+  },
 ];
 
 // ── ESPECIES ────────────────────────────────────────────────

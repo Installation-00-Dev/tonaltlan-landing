@@ -19,22 +19,22 @@ export default function About() {
             {"Que es Tonaltlan?"}
           </h2>
           <div className="space-y-4 text-base leading-relaxed text-muted md:text-lg">
-            {/* PLACEHOLDER: Reemplaza con tu texto real */}
             <p>
-              Tonaltlan es un juego de rol de mesa ambientado en un mundo inspirado en las
-              grandes civilizaciones mesoamericanas. Aqui, los jugadores encarnan heroes
-              elegidos por los dioses, portadores de un Tonalli unico que define su
-              conexion con el cosmos.
+              Tonaltlan es un juego de rol de mesa ambientado en un mundo inspirado en las grandes
+              civilizaciones mesoamericanas. Utiliza un sistema de reglas basado en Dungeons &amp;
+              Dragons 2024, adaptado para reflejar la cosmovision y las fuerzas divinas de este
+              universo.
+            </p>
+            <p>
+              Aqui, los jugadores encarnan heroes elegidos por los dioses, capaces de despertar los
+              Puntos Tonal, centros de energia espiritual que conectan a los mortales con las
+              deidades elementales y el equilibrio del cosmos.
             </p>
             <p>
               Navega por selvas sagradas, explora templos olvidados y enfrenta a criaturas
-              nacidas del Mictlan. Cada sesion es una oportunidad para tejer leyendas
-              que perduraran en los codices de tu mesa.
-            </p>
-            <p>
-              Con un sistema de reglas intuitivo disenado para fomentar la narrativa
-              colaborativa, Tonaltlan es perfecto tanto para narradores experimentados
-              como para quienes se adentran por primera vez en el mundo del rol.
+              provenientes del Mictlan mismo. Cada sesion es una oportunidad para tejer leyendas que
+              perduraran en los codices de tu mesa, mientras descubres nuevas clases, criaturas,
+              regiones y tradiciones inspiradas en la cosmovision mesoamericana.
             </p>
           </div>
         </div>

@@ -41,11 +41,12 @@ export default function Hero() {
         </h1>
 
         <p className="mx-auto mb-8 max-w-2xl text-base leading-relaxed text-muted md:text-lg">
-          {/* PLACEHOLDER: Reemplaza con tu texto real */}
-          Adentrate en un mundo forjado por dioses ancestrales, donde los codices guardan
-          secretos milenarios y cada decision marca el destino de civilizaciones enteras.
-          Tonaltlan es un juego de rol de mesa que te invita a explorar la grandeza de la
-          mitologia mesoamericana.
+          Tonaltlan es un juego de rol de mesa ambientado en un mundo inspirado en las grandes
+          civilizaciones mesoamericanas. Utiliza un sistema de reglas basado en Dungeons &amp;
+          Dragons 2024, adaptado para reflejar la cosmovision y las fuerzas divinas de este
+          universo. Navega por selvas sagradas, explora templos olvidados y enfrentate a criaturas
+          provenientes del Mictlan mismo mientras despiertas los Puntos Tonal que conectan a los
+          mortales con las deidades elementales y el equilibrio del cosmos.
         </p>
 
         {/* CTAs */}

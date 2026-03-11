@@ -1,0 +1,80 @@
+Tonaltlan es un juego de rol de mesa ambientado en un mundo inspirado en las grandes civilizaciones mesoamericanas. Utiliza un sistema de reglas basado en Dungeons & Dragons 2024, adaptado para reflejar la cosmovisión y las fuerzas divinas de este universo.
+
+Aquí, los jugadores encarnan héroes elegidos por los dioses, capaces de despertar los Puntos Tonal, centros de energía espiritual que conectan a los mortales con las deidades elementales y el equilibrio del cosmos.
+
+Navega por selvas sagradas, explora templos olvidados y enfrenta a criaturas provenientes del Mictlan mismo. Cada sesión es una oportunidad para tejer leyendas que perdurarán en los códices de tu mesa.
+
+Tonaltlan utiliza el sistema de D&D 2024, incorporando nuevas clases, criaturas, regiones y tradiciones inspiradas en la cosmovisión mesoamericana.
+
+
+Cûe Arch
+
+ — 3/8/2026 1:46 PM
+Brujo Catemaco
+
+Los Catemacos son brujos artesanos originarios de las regiones pantanosas del reino de Tl’atl. Su poder no proviene de Libros ni de pactos con entidades desconocidas, sino del vínculo espiritual que crean con un Ixip, un muñeco tonal tallado por sus propias manos y animado mediante un ritual ancestral.
+
+A lo largo de su entrenamiento, el Catemaco comparte parte de su esencia con esta creación hasta despertar en ella una fuerza elemental latente. El Ixip se convierte entonces en un aliado vivo que canaliza la energía de los elementos y actúa como extensión de la voluntad de su creador.
+
+En combate y en aventura, el Catemaco y su Ixip funcionan como una sola entidad: el brujo dirige y planifica mientras su creación ejecuta movimientos Tonales. Para muchos pueblos son figuras misteriosas y temidas, mediadores entre los espíritus del pantano y el mundo mortal.
+Tags del guerrero Catemaco son Invocador, Multi-tonal, rango
+NOTA: ideal para jugadores que disfrutan pensar cada movimiento con anticipación y controlar el campo de batalla a través de un aliado mágico.
+----------------------------------------------------------------------------------------------------
+---------------------------------------------------------------
+--------------
+Cûe Arch
+
+ — 3/8/2026 1:57 PM
+Guerrero Otomí
+Defensores de Zalan
+
+Los Guerreros Otomí son la milicia de élite del norte de Tonaltlan y portadores del Punto Tonal de Tierra. Su propósito no es la gloria personal, sino mantener la línea de batalla y proteger a su pueblo sin retroceder. Donde un Otomí clava su estandarte, la batalla se sostiene.
+
+Cubiertos con armaduras pesadas, portando chimallis geométricos y estandartes de guerra, los Otomí son la encarnación de la resistencia. Su presencia en el campo de batalla convierte el caos en una formación sólida donde los aliados encuentran protección y los enemigos encuentran un muro imposible de romper.
+
+Un Otomí no corre hacia la batalla.
+La batalla llega a él.
+
+** Tags: Tanque, cuerpo a cuerpo, Tonal de Tierra
+
+Notas:  Ideal para jugadores que disfrutan proteger a su equipo y liderar la línea de batalla, que se sienten atraídos por personajes resistentes capaces de absorber el daño mientras el resto del grupo combate con mayor seguridad. Esta clase resulta perfecta para quienes prefieren un estilo de combate frontal y dominante, donde su presencia define el lugar donde ocurre la pelea. Si te atrae la fantasía de convertirte en el escudo del grupo, sostener la formación y ser el pilar sobre el que se apoya todo el equipo, el Guerrero Otomí es tu camino.
+----------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------
+Cûe Arch
+
+ — 3/8/2026 2:13 PM
+Mitotiani
+Danzante Tonal
+
+Los Mitotiani son guerreros ritualistas que canalizan la energía del Tonal a través de danzas sagradas. Cada paso, cada giro y cada golpe de sus ayoyotes contra la tierra deja marcas de poder que se manifiestan como glifos rituales, alterando el campo de batalla y guiando la energía de los elementos. 
+
+A diferencia de otros combatientes, el Mitotiani no depende de armas tradicionales. Su propio cuerpo es su instrumento de combate. Luchan únicamente con piernas y pies, ejecutando patadas, barridas y lanzamientos de dagas ocultas en sus ayoyotes. Durante la danza, sus manos permanecen inmóviles detrás de la espalda, preservando el equilibrio y la pureza del ritual. Cualquier arma empuñada rompería el ritmo de la danza y debilitaría su conexión con el Tonal. 
+
+Mediante sus danzas pueden fortalecer aliados, debilitar enemigos o transformar el terreno mismo en un escenario ritual donde el combate se convierte en una coreografía de poder elemental.
+
+Un Mitotiani no solo pelea.
+Convierte la batalla en un ritual.
+
+**Tags: Movilidad, Soporte, Multi-Tonal
+
+Notas: Ideal para jugadores que…
+
+Disfrutan personajes rápidos y creativos que se mueven constantemente por el campo de batalla, usando su posición y sus habilidades para alterar el ritmo del combate. Esta clase es perfecta para quienes prefieren un estilo de juego dinámico, donde la movilidad, el control del terreno y la coordinación con el equipo son más importantes que la fuerza bruta.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------
+Tlapali
+Portador de  Sangre Tonal
+
+El Tlapali es una figura casi mítica. Muchos en los reinos creen que esta disciplina desapareció hace siglos en lo profundo de los Bosques Obscuros, pero la verdad es que aún existen unos pocos practicantes que custodian este conocimiento ritual prohibido. 
+
+Su poder nace de una energía tonal única, fruto de la unión entre la Obscuridad y el Agua, que les permite manipular la sangre como un medio ritual para marcar enemigos, debilitar su esencia vital y alterar el destino del combate. Los Tlapali utilizan sellos de sangre que activan sobre sus objetivos, debilitándolos poco a poco mientras el enemigo queda atrapado en un ciclo de dolor, desgaste y control. 
+
+Debido a su dominio sobre la sangre, los Tlapali son temidos y evitados por muchos. Cada uno porta un símbolo pintado con sangre en el rostro, señal de su vínculo con esta tradición ancestral. Aunque la mayoría permanece aislada en los bosques, algunos abandonan su tierra para aventurarse en el mundo y demostrar que su arte no es solo destrucción, sino también poder y conocimiento. 
+
+Un Tlapali no busca derrotar a su enemigo de inmediato.
+Lo marca… y deja que la sangre haga su trabajo.
+
+**Tags: Controlador, Debilitador, Sellos de sangre
+
+Nota:   Esta clase es ideal para quienes prefieren manipular el flujo del combate, controlar a los enemigos y apoyar al grupo mediante efectos que reducen las capacidades del oponente. También atraerá a jugadores que disfrutan mecánicas únicas basadas en preparación y activación de habilidades, así como a quienes se sienten atraídos por personajes oscuros, ritualistas y envueltos en un aura de misterio.
