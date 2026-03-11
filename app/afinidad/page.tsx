@@ -605,7 +605,7 @@ export default function AfinidadPage() {
                     ? "bg-gold"
                     : "bg-glass-border"
               }`}
-              aria-label={`Paso ${i + 1} de ${steps.length}`}
+              aria-label={`Paso ${i + 1} de ${questions.length}`}
             />
           ))}
         </div>
