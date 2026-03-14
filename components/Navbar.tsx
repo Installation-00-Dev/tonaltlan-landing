@@ -43,12 +43,12 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2" aria-label="Tonaltlan - Inicio">
           <Image
-            src="/images/tonaltlan_logo.png"
+            src="/images/produccion.png"
             alt="Tonaltlan logo"
-            width={180}
-            height={55}
+            width={160}
+            height={60}
             className="h-8 lg:h-10"
-            style={{ width: "180px", height: "auto" }}
+            style={{ width: "auto", height: "40px" }}
             priority
           />
         </Link>

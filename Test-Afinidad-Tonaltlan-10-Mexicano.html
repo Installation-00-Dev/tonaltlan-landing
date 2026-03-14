@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test de Afinidad Tonal - Tonaltlán (Versión Mexicana)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #56ab2f 0%, #a8e063 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3), 0 0 0 1px rgba(86, 171, 47, 0.1);
+            padding: 40px;
+            animation: fadeIn 0.6s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(86, 171, 47, 0.05), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        h1 {
+            text-align: center;
+            color: #2d5016;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            animation: titlePulse 2s ease-in-out infinite;
+        }
+
+        @keyframes titlePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .screen {
+            display: none;
+        }
+
+        .screen.active {
+            display: block;
+        }
+
+        .input-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #56ab2f;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #56ab2f 0%, #a8e063 100%);
+            background-size: 200% 200%;
+            animation: buttonGradient 3s ease infinite;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(86, 171, 47, 0.3);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        @keyframes buttonGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(86, 171, 47, 0.5);
+        }
+
+        .btn:active {
+            transform: translateY(-1px) scale(0.98);
+        }
+
+        .btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #56ab2f 0%, #a8e063 100%);
+            background-size: 200% 100%;
+            animation: progressShine 2s linear infinite;
+            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: progressFlow 1.5s ease-in-out infinite;
+        }
+
+        @keyframes progressShine {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes progressFlow {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .question-number {
+            color: #2d5016;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .question-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .scenario {
+            background: linear-gradient(135deg, #f0f8ec 0%, #e8f5e0 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            border-left: 4px solid #56ab2f;
+            font-size: 1.05em;
+            line-height: 1.6;
+            box-shadow: 0 2px 8px rgba(86, 171, 47, 0.1);
+            animation: slideIn 0.4s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scenario::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #56ab2f, #a8e063);
+            animation: borderGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes borderGlow {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option {
+            background: #f9f9f9;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            animation: optionFadeIn 0.4s ease-out backwards;
+        }
+
+        .option:nth-child(1) { animation-delay: 0.1s; }
+        .option:nth-child(2) { animation-delay: 0.2s; }
+        .option:nth-child(3) { animation-delay: 0.3s; }
+        .option:nth-child(4) { animation-delay: 0.4s; }
+        .option:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes optionFadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .option::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(86, 171, 47, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .option:hover::before {
+            left: 100%;
+        }
+
+        .option:hover {
+            border-color: #56ab2f;
+            background: linear-gradient(135deg, #f0f8ec 0%, #e8f5e0 100%);
+            transform: translateX(8px) scale(1.02);
+            box-shadow: 0 4px 12px rgba(86, 171, 47, 0.2);
+        }
+
+        .option.selected {
+            border-color: #56ab2f;
+            background: linear-gradient(135deg, #e8f5e0 0%, #d4edc9 100%);
+            box-shadow: 0 0 0 3px rgba(86, 171, 47, 0.3), 0 4px 12px rgba(86, 171, 47, 0.2);
+            transform: translateX(5px);
+            animation: selectedPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes selectedPulse {
+            0%, 100% { box-shadow: 0 0 0 3px rgba(86, 171, 47, 0.3), 0 4px 12px rgba(86, 171, 47, 0.2); }
+            50% { box-shadow: 0 0 0 3px rgba(86, 171, 47, 0.5), 0 4px 16px rgba(86, 171, 47, 0.3); }
+        }
+
+        .option-label {
+            font-weight: 600;
+            color: #2d5016;
+            margin-bottom: 5px;
+        }
+
+        .option-text {
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .navigation {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+        }
+
+        .results {
+            text-align: center;
+        }
+
+        .result-header {
+            background: linear-gradient(135deg, #56ab2f 0%, #a8e063 100%);
+            background-size: 200% 200%;
+            animation: headerGradient 8s ease infinite;
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 24px rgba(86, 171, 47, 0.3);
+            position: relative;
+            overflow: hidden;
+            animation: headerGradient 8s ease infinite, resultSlideIn 0.6s ease-out;
+        }
+
+        .result-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: headerShine 3s ease-in-out infinite;
+        }
+
+        @keyframes headerGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes headerShine {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(180deg); }
+        }
+
+        @keyframes resultSlideIn {
+            from { opacity: 0; transform: translateY(-20px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .result-title {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .result-subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .result-content {
+            text-align: left;
+            line-height: 1.8;
+        }
+
+        .result-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #f9f9f9 0%, #ffffff 100%);
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            animation: sectionFadeIn 0.5s ease-out backwards;
+            border-left: 3px solid transparent;
+        }
+
+        .result-section:nth-child(1) { animation-delay: 0.1s; border-left-color: #56ab2f; }
+        .result-section:nth-child(2) { animation-delay: 0.2s; border-left-color: #a8e063; }
+        .result-section:nth-child(3) { animation-delay: 0.3s; border-left-color: #56ab2f; }
+        .result-section:nth-child(4) { animation-delay: 0.4s; border-left-color: #a8e063; }
+        .result-section:nth-child(5) { animation-delay: 0.5s; border-left-color: #56ab2f; }
+
+        .result-section:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(86, 171, 47, 0.15);
+        }
+
+        @keyframes sectionFadeIn {
+            from { opacity: 0; transform: translateX(-15px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .result-section h3 {
+            color: #2d5016;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        .result-section p {
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        .scores {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .score-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #e0e0e0;
+            text-align: center;
+            transition: all 0.3s ease;
+            animation: scoreFadeIn 0.4s ease-out backwards;
+        }
+
+        .score-item:nth-child(1) { animation-delay: 0.1s; }
+        .score-item:nth-child(2) { animation-delay: 0.15s; }
+        .score-item:nth-child(3) { animation-delay: 0.2s; }
+        .score-item:nth-child(4) { animation-delay: 0.25s; }
+        .score-item:nth-child(5) { animation-delay: 0.3s; }
+        .score-item:nth-child(6) { animation-delay: 0.35s; }
+        .score-item:nth-child(7) { animation-delay: 0.4s; }
+
+        @keyframes scoreFadeIn {
+            from { opacity: 0; transform: scale(0.8) translateY(10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .score-item:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .score-item.dominant {
+            border-color: #56ab2f;
+            background: linear-gradient(135deg, #e8f5e0 0%, #d4edc9 100%);
+            box-shadow: 0 4px 12px rgba(86, 171, 47, 0.2);
+            animation: dominantPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes dominantPulse {
+            0%, 100% { box-shadow: 0 4px 12px rgba(86, 171, 47, 0.2); }
+            50% { box-shadow: 0 4px 16px rgba(86, 171, 47, 0.4); }
+        }
+
+        .score-item.secondary {
+            border-color: #a8e063;
+            background: linear-gradient(135deg, #f0f8ec 0%, #e8f5e0 100%);
+            box-shadow: 0 2px 8px rgba(168, 224, 99, 0.2);
+        }
+
+        .score-race {
+            font-weight: 600;
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+
+        .score-value {
+            font-size: 1.5em;
+            color: #2d5016;
+            font-weight: 700;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Pantalla Inicial -->
+        <div id="screen-start" class="screen active">
+            <h1>🎯 Test de Afinidad Tonal</h1>
+            <p class="subtitle">Versión Mexicana - Descubre tu raza en el mundo de Tonaltlán</p>
+            <div class="input-group">
+                <label for="user-name">Ingresa tu nombre:</label>
+                <input type="text" id="user-name" placeholder="Tu nombre aquí..." autofocus>
+            </div>
+            <button class="btn" onclick="startTest()">Comenzar Test</button>
+        </div>
+
+        <!-- Pantalla de Preguntas -->
+        <div id="screen-questions" class="screen">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <div class="question-number" id="question-number"></div>
+            <div class="question-title" id="question-title"></div>
+            <div class="scenario" id="scenario"></div>
+            <div class="options" id="options"></div>
+            <div class="navigation">
+                <button class="btn btn-secondary" id="btn-prev" onclick="previousQuestion()" style="display: none;">← Anterior</button>
+                <button class="btn" id="btn-next" onclick="nextQuestion()" disabled>Siguiente →</button>
+            </div>
+        </div>
+
+        <!-- Pantalla de Resultados -->
+        <div id="screen-results" class="screen">
+            <div class="results">
+                <div class="result-header">
+                    <div class="result-title" id="result-title"></div>
+                    <div class="result-subtitle" id="result-subtitle"></div>
+                </div>
+                <div class="scores" id="scores"></div>
+                <div class="result-content" id="result-content"></div>
+                <button class="btn" onclick="restartTest()" style="margin-top: 30px;">Hacer Test Nuevamente</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Datos del test - 10 preguntas mexicanas con sus opciones y puntos
+        const questions = [
+            {
+                id: 1,
+                title: "El Secreto del Compa",
+                scenario: "Tu mejor compa te confía algo pesado: si lo sueltas, salvas a un chingo de gente, pero lo jodes a él. Te pide que no digas nada. Tu conciencia está como: \"¿y ahora qué pedo?\"",
+                options: [
+                    { text: "No puedo callar. La verdad debe salir, aunque pierda a mi compa.", points: { Ton: 3, Quinametzin: 2, "Lok'naa": 1 } },
+                    { text: "Lo encaro directo. Que se haga responsable como debe ser.", points: { Irzak: 3, Ton: 2, Quinametzin: 1 } },
+                    { text: "Busco una salida creativa. Debe haber forma de ayudar a todos sin chingar a nadie.", points: { "He'kari": 3, "Lok'naa": 2, Quinametzin: 1 } },
+                    { text: "Me lo guardo por ahora, pero preparo todo por si se arma el desmadre.", points: { Hualik: 3, "He'kari": 2, "Lok'naa": 1 } }
+                ]
+            },
+            {
+                id: 2,
+                title: "La Tradición que Jode",
+                scenario: "Tu familia tiene una tradición bien antigua que todos respetan, pero está jodiendo a un grupo de personas. Cada vez que la ves, te duele el corazón. ¿Qué haces?",
+                options: [
+                    { text: "La mantengo, pero creo protecciones reales para quienes sufren.", points: { Quinametzin: 3, "Lok'naa": 2, Ton: 1 } },
+                    { text: "La rompo ya. No espero permiso cuando hay gente sufriendo.", points: { "Toh'kari": 3, Irzak: 2, "He'kari": 1 } },
+                    { text: "La adapto. Conservo lo chido, cambio lo que jode.", points: { "He'kari": 3, Quinametzin: 2, "Lok'naa": 1 } },
+                    { text: "La quemo y empiezo de cero. Solo lo bueno se queda.", points: { Irzak: 3, Ton: 2, Quinametzin: 1 } }
+                ]
+            },
+            {
+                id: 3,
+                title: "El Jefe que se Rajó",
+                scenario: "Tu jefe, el que todos respetan, se rajó en algo importante para salvarse el culo. Tú lo viste. Si lo delatas, se arma un pedote. Pero la mentira te come por dentro.",
+                options: [
+                    { text: "Lo delato con pruebas. La verdad es la verdad, aunque se arme el desmadre.", points: { Ton: 3, Quinametzin: 2, "He'kari": 1 } },
+                    { text: "Lo encaro en privado primero. Que arregle el pedo antes de que se sepa.", points: { Quinametzin: 3, "Lok'naa": 2, Ton: 1 } },
+                    { text: "Me quedo callado y juntó más info. Actúo cuando sea el momento perfecto.", points: { Hualik: 3, "He'kari": 2, Quinametzin: 1 } },
+                    { text: "Lo encaro y exijo que confiese. Si se rajó, que lo diga de frente.", points: { Irzak: 3, Ton: 2, Quinametzin: 1 } }
+                ]
+            },
+            {
+                id: 4,
+                title: "La Última Medicina",
+                scenario: "Solo queda una medicina. Puedes salvar a un niño chiquito, a alguien importante que salvará a más después, o guardarla para ti. El tiempo se acaba. ¿Qué haces?",
+                options: [
+                    { text: "Se la doy al niño. No puedo dejar que se muera alguien tan indefenso.", points: { "Lok'naa": 3, Ton: 2, Quinametzin: 1 } },
+                    { text: "Se la doy al importante. Es duro, pero salvará a más gente después.", points: { Quinametzin: 3, "He'kari": 2, Ton: 1 } },
+                    { text: "Intento dividirla o encontrar forma de salvar a ambos.", points: { "He'kari": 3, "Lok'naa": 2, Ton: 1 } },
+                    { text: "Me la guardo. Si yo caigo, nadie más podrá ayudar después.", points: { "Toh'kari": 3, Hualik: 2, "He'kari": 1 } }
+                ]
+            },
+            {
+                id: 5,
+                title: "El Traidor en tu Cara",
+                scenario: "Alguien de tu grupo te traicionó y por su culpa hubo pedo. Ahora está frente a ti. Todos te ven esperando tu decisión.",
+                options: [
+                    { text: "Lo juzgo según las reglas. Justicia clara, sin venganza.", points: { Quinametzin: 3, Ton: 2, Hualik: 1 } },
+                    { text: "Lo encaro directo. Que repare con valentía o que asuma las consecuencias.", points: { Irzak: 3, Quinametzin: 2, Ton: 1 } },
+                    { text: "Busco rehabilitarlo. Puedo ayudar a arreglar sin destruir a la persona.", points: { "Lok'naa": 3, Quinametzin: 2, Ton: 1 } },
+                    { text: "Lo convierto en recurso útil. Que pague sirviendo en secreto.", points: { Hualik: 3, "He'kari": 2, "Toh'kari": 1 } }
+                ]
+            },
+            {
+                id: 6,
+                title: "Se Arma el Desmadre",
+                scenario: "Estás en un lugar público cuando de repente se arma un desmadre: gritos, gente corriendo, pánico. No sabes qué pedo, pero el peligro es real. ¿Qué haces?",
+                options: [
+                    { text: "Me convierto en escudo. Protejo a quienes no pueden correr.", points: { Quinametzin: 3, Ton: 2, "Lok'naa": 1 } },
+                    { text: "Calmo a la gente. Bajo la tensión antes de que alguien salga lastimado.", points: { "Lok'naa": 3, Quinametzin: 2, Ton: 1 } },
+                    { text: "Me muevo a un punto estratégico y coordino una salida segura.", points: { "He'kari": 3, Hualik: 2, Quinametzin: 1 } },
+                    { text: "Me lanzo al origen del pedo. Corto el peligro de raíz.", points: { "Toh'kari": 3, Irzak: 2, Hualik: 1 } }
+                ]
+            },
+            {
+                id: 7,
+                title: "Te Echan la Culpa",
+                scenario: "Te echan la culpa de algo que no hiciste y la gente empieza a creerlo. Las miradas se ponen culeras. La mentira se propaga rápido.",
+                options: [
+                    { text: "Hablo claro. Digo la verdad completa, sin rodeos.", points: { Ton: 3, Quinametzin: 2, Irzak: 1 } },
+                    { text: "Reencuadro la situación con palabras. Giro la escena y gano tiempo.", points: { "He'kari": 3, Hualik: 2, "Lok'naa": 1 } },
+                    { text: "Me retiro con calma. No peleo donde ya me juzgaron sin pruebas.", points: { Hualik: 3, Quinametzin: 2, "He'kari": 1 } },
+                    { text: "Marco límites de frente. No me quedo callado ni cedo mi lugar.", points: { Irzak: 3, "Toh'kari": 2, Ton: 1 } }
+                ]
+            },
+            {
+                id: 8,
+                title: "Todo se Va a la Chingada",
+                scenario: "Llevas meses planeando algo y en el último segundo todo se va a la chingada. El plan falla. Todos te ven esperando que hagas algo.",
+                options: [
+                    { text: "Organizo inmediatamente. Asigno roles, pongo orden. Primero estabilidad.", points: { Quinametzin: 3, Ton: 2, "Lok'naa": 1 } },
+                    { text: "Cambio de plan sobre la marcha. Improviso algo nuevo rápido.", points: { "He'kari": 3, "Toh'kari": 2, "Lok'naa": 1 } },
+                    { text: "Primero calmo al grupo. Bajo la tensión antes de decidir.", points: { "Lok'naa": 3, Quinametzin: 2, Ton: 1 } },
+                    { text: "Asumo el mando sin excusas. Lo enfrento de frente.", points: { Irzak: 3, Ton: 2, Quinametzin: 1 } }
+                ]
+            },
+            {
+                id: 9,
+                title: "Tu Talismán del Viaje",
+                scenario: "Antes de partir a un viaje, un viejito te ofrece elegir un talismán mágico. ¿Cuál agarras?",
+                options: [
+                    { text: "Un medallón que vibra cuando intentas mentirte a ti mismo.", points: { Ton: 3, Quinametzin: 2, "Lok'naa": 1 } },
+                    { text: "Una moneda que nunca cae igual dos veces.", points: { "Toh'kari": 3, "He'kari": 2, Hualik: 1 } },
+                    { text: "Una brújula que apunta a lo que más necesitas aprender.", points: { "He'kari": 3, "Lok'naa": 2, Ton: 1 } },
+                    { text: "Una piedra que se pone pesada cuando hay peligro cerca.", points: { Quinametzin: 3, Hualik: 2, Ton: 1 } },
+                    { text: "Un anillo que se calienta cuando rompes una promesa.", points: { Irzak: 3, Ton: 2, Quinametzin: 1 } }
+                ]
+            },
+            {
+                id: 10,
+                title: "Tu Forma de Resetear",
+                scenario: "Después de un pedo fuerte, ¿qué haces primero para volver a la normalidad?",
+                options: [
+                    { text: "Hablo claro y cierro el tema con verdad.", points: { Ton: 3, Quinametzin: 2, "Lok'naa": 1 } },
+                    { text: "Me muevo. Cambio de lugar, respiro aire nuevo. Regreso distinto.", points: { "He'kari": 3, "Toh'kari": 2, "Lok'naa": 1 } },
+                    { text: "Reordeno. Organizo hábitos, tareas, algo tangible que me estabilice.", points: { Quinametzin: 3, Ton: 2, Hualik: 1 } },
+                    { text: "Desaparezco un rato. Silencio, distancia. Recalculo todo en soledad.", points: { Hualik: 3, "Lok'naa": 2, "He'kari": 1 } },
+                    { text: "Hago algo físico e intenso. Convierto lo vivido en fuerza.", points: { Irzak: 3, "Toh'kari": 2, Quinametzin: 1 } }
+                ]
+            }
+        ];
+
+        // Resultados narrativos por raza
+        const raceResults = {
+            "Ton": {
+                name: "TON (Luz) - El Iluminador",
+                essence: "Eres la verdad que no puede ocultarse, la luz que revela sin querer. Eres uno de menos de 100 Ton en todo Tonaltlán - tu existencia es legendaria. Vives siglos, eres una biblioteca viviente de memoria y sabiduría. Tu existencia misma es un faro moral: no puedes mentir, no puedes engañar, no puedes callar cuando ves injusticia. Tu claridad es tanto tu virtud como tu vulnerabilidad.",
+                virtue: "Tu columna moral absoluta. Eres el que ilumina el camino de otros, el que protege sin esperar recompensa, el que corrige injusticias porque no puede ignorarlas. Tu luz consume sentimientos densos y rencores, dejando solo claridad y propósito.",
+                shadow: "Tu mayor terror no es la muerte, sino corromperte u oscurecerte. Temes convertirte en un \"sol que quema en vez de calentar\". Tu sinceridad te vuelve vulnerable: no puedes guardar secretos estratégicos, y a veces la verdad que revelas puede destruir relaciones o causar guerras.",
+                path: "Tu ritual es existir con pureza intencional. No necesitas rezar: cada acto bondadoso honra a Tonatli. Tu rol es ser el guía ético, el que revela verdades aunque duelan, el que protege el orden moral del mundo. Acepta que tu exposición total es tu poder y tu herida.",
+                symbol: "El Amanecer - El momento en que la luz retorna y el mundo se revela.",
+                object: "Un espejo que refleja la verdad sin distorsión.",
+                glyph: "Sol con rayos que iluminan en todas las direcciones."
+            },
+            "Toh'kari": {
+                name: "TOH'KARI (Rayo) - El Caótico",
+                essence: "Eres la tormenta sin control, el impulso que no se detiene. Vives entre el deseo de destruir y la necesidad de sobrevivir. Tu rayo interior es una bestia que debes dominar lo suficiente para no morir... y usarlo antes de que te consuma.",
+                virtue: "Tu intensidad imparable. Cuando te enfocas en algo, no hay duda, no hay miedo, no hay vacilación: solo acción directa. Eres capaz de ejecutar lo que otros ni siquiera se atreverían a pensar. Tu fuerza es brutal pero honesta.",
+                shadow: "Tu tendencia al impulso y la violencia puede destruirte tanto como a los que te rodean. El rayo que liberas también te quema por dentro. Temes convertirte en un relámpago que cae sin querer, en destrucción sin sentido. Tu conflicto eterno: \"¿Puedo contenerme... o voy a destruirlo todo otra vez?\"",
+                path: "Tu ritual es la supervivencia diaria. No hay vida cotidiana para ti: hay movimiento errático, impaciencia y soledad profunda. Tu rol es ser el exiliado salvaje que sobrevive en un mundo que te teme. Aprende a decidir cuándo NO destruir: ese es tu verdadero conflicto moral.",
+                symbol: "El Relámpago que Cae Sobre Una Montaña Solitaria - Brutal, impredecible, hermoso y aterrador.",
+                object: "Un fragmento de metal que conserva carga eléctrica.",
+                glyph: "Rayo zigzagueante que nunca toca el mismo lugar dos veces."
+            },
+            "He'kari": {
+                name: "HE'KARI (Aire) - El Visionario",
+                essence: "Eres la mente que vuela, la idea que viaja, la palabra que transforma. Observas desde arriba, ves patrones donde otros ven caos, percibes a larga distancia. Eres el soñador práctico: inspiras, conectas, interpretas, y llevas conocimiento de un lugar a otro.",
+                virtue: "Tu libertad creativa y tu inspiración constante. Ves soluciones donde otros ven problemas, encuentras caminos hasta en el viento. Eres maestro de la expresión, del arte y de la palabra. Tu perspectiva elevada te permite ver el panorama completo.",
+                shadow: "Tu dispersión y desconexión. Puedes ser inconstante, distraído, difícil de \"aterrizar\". Te pierdes en posibilidades infinitas y puedes parecer frío o ausente cuando estás \"arriba\" con tu mente. Tu conflicto: volar libres vs. tu responsabilidad como mensajero.",
+                path: "Tu ritual es el movimiento constante, el arte y la comunicación. Tu vida cotidiana es \"aire en acción\": ligera, inspirada, en movimiento. Tu rol es ser el mensajero, el guardián del conocimiento, el aliado diplomático. Equilibra tu necesidad de libertad con tu deber de guiar.",
+                symbol: "La Pluma Suspendida - Ligera pero poderosa, símbolo de mensaje y vuelo.",
+                object: "Un cuaderno de notas que siempre llevas contigo.",
+                glyph: "Espiral de viento que se eleva hacia el cielo."
+            },
+            "Quinametzin": {
+                name: "QUINAMETZIN (Tierra) - El Guardián Colosal",
+                essence: "Eres la estabilidad absoluta: el pilar, la roca firme, el gigante amable que sostiene al mundo. Eres colosal (2.30m), imposible de pasar por alto, pero tu presencia calma en vez de intimidar. Eres protector nato, figura de guía y soporte emocional. Eres el \"hogar\" encarnado, la base sobre la que otros construyen.",
+                virtue: "Tu honestidad e integridad inquebrantable. Tu Gema del Ánimo te delata siempre: no puedes mentir emocionalmente. La gema cambia de color según tu emoción: blanco para calma, amarillo para alegría, verde para armonía, azul para tristeza, rojo para amor o furia, negro para desesperación. Tu virtud es una honestidad profunda, transparente y llena de bondad. Eres el que construye, repara, protege y mantiene el orden natural.",
+                shadow: "Tu carga del deber y auto-sacrificio. Puedes sentirte obligado a cargar con el mundo, incluso cuando ya no puedes más. Tu sentido del deber puede ahogarte. Si fallas en proteger a alguien, tu gema lo revela de inmediato... y esa culpa puede marcarte por siglos.",
+                path: "Tu ritual es el trabajo constante, la construcción y el servicio comunitario. Levantas murallas, reparas caminos, construyes templos, entrenas jóvenes. Tu rol es sostener, aunque te desgastes. Aprende que también mereces ser apoyado: los pilares necesitan cimientos.",
+                symbol: "La Montaña Antigua - Alta, firme, paciente y eterna. Testigo y protectora.",
+                object: "Una herramienta de trabajo que siempre está contigo.",
+                glyph: "Montaña con raíces profundas que se extienden hacia abajo."
+            },
+            "Lok'naa": {
+                name: "LOK'NAA (Agua) - El Sanador",
+                essence: "Eres la calma después de la tormenta. Tu psicología es profundamente empática: sientes antes de actuar, lees el ambiente, te mueves como el agua misma fluyendo hacia donde hace falta armonía. Eres el que une, el que sana, el que preserva la vida.",
+                virtue: "Tu empatía y capacidad de sanación. No solo entiendes el dolor ajeno: lo absorbes, lo transformas y lo devuelves como alivio. Puedes conectar emocionalmente con quien sea, incluso con razas que otros considerarían \"enemigos\". Tu presencia calma y restaura equilibrio.",
+                shadow: "Tu evasión y auto-sacrificio. Tu misma empatía puede consumirte. Cuando sientes demasiado, te apagas, te derrites emocionalmente o huyes \"como el agua buscando grietas\". Temes convertirte en un mar sin orillas: absorber tanto dolor ajeno que dejas de ser tú mismo.",
+                path: "Tu ritual es la hospitalidad, la artesanía fluida y los rituales de purificación. Baños sagrados, cantos que conservan memoria, alimentos que suavizan. Tu rol es desescalar, mediar, absorber el golpe. Aprende a poner límites: sanar sin romperte, fluir sin desaparecer.",
+                symbol: "El Cenote Sagrado - Profundo, claro, portador de vida, pero también misterioso y oscuro en el fondo.",
+                object: "Un recipiente de agua que siempre llevas contigo.",
+                glyph: "Onda de agua que fluye en círculos concéntricos."
+            },
+            "Hualik": {
+                name: "HUALIK (Obscuridad) - El Vigilante Sombra",
+                essence: "Eres el que mira sin ser visto, el que escucha, el que entiende, el que aparece cuando nadie lo espera. Puedes desaparecer en cualquier sombra, moverte sin hacer sonido, ver en oscuridad total. Eres uno de decenas, no miles - tu existencia es un misterio incluso para otras razas. Tu identidad es estar fuera de la vista, pero siempre presente. Eres el observador silencioso, el vigilante de las verdades ocultas.",
+                virtue: "Tu astucia y percepción profunda. Nada pasa desapercibido para ti. Eres inteligente, analítico, y puedes leer las intenciones detrás de las palabras. No te dejas engañar por luz, ruido o apariencias. Tu precisión es quirúrgica cuando actúas.",
+                shadow: "Tu aislamiento y desconfianza. Rechazas el contacto social, incluso cuando podría beneficiarte. Ves traición en todas partes, incluso donde no la hay. Tu herida es simple: \"No tenemos un lugar donde pertenecer.\" La soledad, aunque necesaria, es también tu condena.",
+                path: "Tu ritual es el silencio, las rutinas precisas y la conducta cauta. Movimientos suaves, hábitos meticulosos, largas horas observando. Tu rol es saber sin exponerte, intervenir solo cuando es crítico. Tu conflicto eterno: \"¿Me mantengo en la sombra... o actúo?\"",
+                symbol: "La Luna Nueva - Oscuridad total. No es ausencia, sino presencia invisible.",
+                object: "Un objeto pequeño que siempre está en tus manos (piedra, moneda, etc.)",
+                glyph: "Sombra que se extiende sin forma definida."
+            },
+            "Irzak": {
+                name: "IRZAK (Fuego) - La Flama de Honor",
+                essence: "Eres la pasión que arde sin control, el honor que no se doblega, la intensidad que define cada momento. Tu chispa de Zilo debe arder con la mayor fuerza posible antes de regresar al ciclo eterno. Eres carismático, temperamental y brutalmente directo: no das rodeos, no suavizas verdades, no actúas con cobardía.",
+                virtue: "Tu valentía y lealtad inquebrantable. Eres el que lucha con bravura, ama con entrega total y honra con devoción absoluta. Tu código de honor no admite dudas: no puedes traicionar, no puedes mentir cuando se trata de honor, no puedes actuar con cobardía. Eres una flama viviente que inspira respeto y temor.",
+                shadow: "Tu temperamento y intensidad destructiva. Tu pasión puede convertirse en furia ciega. Tu orgullo puede quemar puentes. Tu intensidad emocional puede ser tan abrasadora que destruye relaciones o situaciones que podrían haberse salvado con más calma. El fuego que te define también puede consumirte a ti y a quienes te rodean.",
+                path: "Tu ritual es el trabajo intenso, la forja y los rituales de fuego. Trabajas en el Volcán Eterno, experimentas con la energía de Zilo, vives cada momento con pasión. Tu búsqueda constante de alternativas al sacrificio cíclico te marca: quieres que todas las chispas ardan hasta el final, pero el deber pesa. Tu rol es arder con honor hasta el final, pero tu conflicto eterno es: ¿Debo arder libremente o cumplir con el deber del sacrificio? Busca alternativas, pero acepta que el peso del deber te marca.",
+                symbol: "El Volcán Eterno - Fuerza contenida, poder que puede destruir o crear. Tu hogar, tu maestro, tu conexión directa con Zilo.",
+                object: "Una herramienta de forja o un objeto que siempre llevas contigo que representa tu chispa.",
+                glyph: "Llama que arde hacia arriba, intensa y constante."
+            }
+        };
+
+        // Estado del test
+        let shuffledQuestions = []; // Array de preguntas mezcladas
+        let shuffledOptionsMap = {}; // Mapeo de índices de opciones mezcladas por pregunta
+        let currentQuestion = 0;
+        let answers = [];
+        let userName = "";
+        let scores = {
+            "Ton": 0,
+            "Toh'kari": 0,
+            "He'kari": 0,
+            "Quinametzin": 0,
+            "Lok'naa": 0,
+            "Hualik": 0,
+            "Irzak": 0
+        };
+
+        // Función para mezclar array (Fisher-Yates shuffle)
+        function shuffleArray(array) {
+            const shuffled = [...array]; // Copia del array original
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            return shuffled;
+        }
+
+        function startTest() {
+            userName = document.getElementById("user-name").value.trim();
+            if (!userName) {
+                alert("Por favor, ingresa tu nombre para comenzar.");
+                return;
+            }
+
+            // Mezclar preguntas aleatoriamente
+            shuffledQuestions = shuffleArray(questions);
+            
+            // Mezclar opciones para cada pregunta y guardar el mapeo
+            shuffledOptionsMap = {};
+            shuffledQuestions.forEach((question, qIndex) => {
+                const originalIndices = question.options.map((_, i) => i);
+                shuffledOptionsMap[qIndex] = shuffleArray(originalIndices);
+            });
+
+            // Resetear estado
+            currentQuestion = 0;
+            answers = [];
+            scores = {
+                "Ton": 0,
+                "Toh'kari": 0,
+                "He'kari": 0,
+                "Quinametzin": 0,
+                "Lok'naa": 0,
+                "Hualik": 0,
+                "Irzak": 0
+            };
+
+            showScreen("screen-questions");
+            displayQuestion();
+        }
+
+        function showScreen(screenId) {
+            document.querySelectorAll(".screen").forEach(screen => {
+                screen.classList.remove("active");
+            });
+            document.getElementById(screenId).classList.add("active");
+        }
+
+        function displayQuestion() {
+            const question = shuffledQuestions[currentQuestion];
+            const progress = ((currentQuestion + 1) / shuffledQuestions.length) * 100;
+
+            document.getElementById("question-number").textContent = `Pregunta ${currentQuestion + 1} de ${shuffledQuestions.length}`;
+            document.getElementById("question-title").textContent = question.title;
+            document.getElementById("scenario").textContent = question.scenario;
+            document.getElementById("progress-fill").style.width = progress + "%";
+
+            const optionsContainer = document.getElementById("options");
+            optionsContainer.innerHTML = "";
+
+            // Obtener el orden mezclado de las opciones para esta pregunta
+            const shuffledIndices = shuffledOptionsMap[currentQuestion];
+            
+            shuffledIndices.forEach((originalIndex, displayIndex) => {
+                const option = question.options[originalIndex];
+                const optionDiv = document.createElement("div");
+                optionDiv.className = "option";
+                
+                // Verificar si esta opción (índice original) fue seleccionada
+                if (answers[currentQuestion] === originalIndex) {
+                    optionDiv.classList.add("selected");
+                }
+
+                optionDiv.innerHTML = `
+                    <div class="option-label">${String.fromCharCode(65 + displayIndex)})</div>
+                    <div class="option-text">${option.text}</div>
+                `;
+
+                // Al hacer clic, guardamos el índice original (no el de visualización)
+                optionDiv.onclick = () => selectOption(originalIndex);
+                optionsContainer.appendChild(optionDiv);
+            });
+
+            // Botones de navegación
+            document.getElementById("btn-prev").style.display = currentQuestion > 0 ? "block" : "none";
+            document.getElementById("btn-next").disabled = answers[currentQuestion] === undefined;
+
+            if (currentQuestion === shuffledQuestions.length - 1) {
+                document.getElementById("btn-next").textContent = "Ver Resultados";
+            } else {
+                document.getElementById("btn-next").textContent = "Siguiente →";
+            }
+        }
+
+        function selectOption(optionIndex) {
+            answers[currentQuestion] = optionIndex;
+            displayQuestion();
+
+            // Calcular puntos en tiempo real
+            const question = shuffledQuestions[currentQuestion];
+            const selectedOption = question.options[optionIndex];
+            
+            // Sumar puntos
+            Object.keys(selectedOption.points).forEach(race => {
+                scores[race] += selectedOption.points[race];
+            });
+        }
+
+        function nextQuestion() {
+            if (answers[currentQuestion] === undefined) return;
+
+            if (currentQuestion < shuffledQuestions.length - 1) {
+                currentQuestion++;
+                displayQuestion();
+            } else {
+                calculateResults();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestion > 0) {
+                // Restar puntos de la pregunta actual antes de retroceder
+                if (answers[currentQuestion] !== undefined) {
+                    const question = shuffledQuestions[currentQuestion];
+                    const selectedOption = question.options[answers[currentQuestion]];
+                    Object.keys(selectedOption.points).forEach(race => {
+                        scores[race] -= selectedOption.points[race];
+                    });
+                }
+
+                currentQuestion--;
+                displayQuestion();
+            }
+        }
+
+        function calculateResults() {
+            // Ordenar razas por puntuación
+            const sortedRaces = Object.entries(scores)
+                .map(([race, score]) => ({ race, score }))
+                .sort((a, b) => b.score - a.score);
+
+            const dominant = sortedRaces[0];
+            const secondary = sortedRaces[1];
+            const secondaryThreshold = dominant.score * 0.6;
+
+            // Determinar raza secundaria (mínimo 60% de la dominante)
+            let finalSecondary = null;
+            if (secondary.score >= secondaryThreshold) {
+                finalSecondary = secondary;
+            }
+
+            // Mostrar resultados
+            showResults(dominant, finalSecondary);
+        }
+
+        function showResults(dominant, secondary) {
+            const dominantRace = raceResults[dominant.race];
+            const secondaryRace = secondary ? raceResults[secondary.race] : null;
+
+            document.getElementById("result-title").textContent = `${userName}, tu raza es:`;
+            document.getElementById("result-subtitle").innerHTML = dominantRace.name + (secondaryRace ? `<br><span style="font-size: 0.85em; opacity: 0.95;">(con influencia de ${secondaryRace.name})</span>` : '');
+
+            // Mostrar puntuaciones
+            const scoresContainer = document.getElementById("scores");
+            scoresContainer.innerHTML = "";
+            
+            const sortedRaces = Object.entries(scores)
+                .map(([race, score]) => ({ race, score }))
+                .sort((a, b) => b.score - a.score);
+
+            sortedRaces.forEach(({ race, score }) => {
+                const scoreDiv = document.createElement("div");
+                scoreDiv.className = "score-item";
+                if (race === dominant.race) {
+                    scoreDiv.classList.add("dominant");
+                } else if (secondary && race === secondary.race) {
+                    scoreDiv.classList.add("secondary");
+                }
+                scoreDiv.innerHTML = `
+                    <div class="score-race">${race}</div>
+                    <div class="score-value">${score}</div>
+                `;
+                scoresContainer.appendChild(scoreDiv);
+            });
+
+            // Mostrar resultado narrativo
+            const resultContent = document.getElementById("result-content");
+            resultContent.innerHTML = `
+                <div class="result-section">
+                    <h3>Esencia</h3>
+                    <p>${dominantRace.essence}</p>
+                </div>
+                <div class="result-section">
+                    <h3>Virtud</h3>
+                    <p>${dominantRace.virtue}</p>
+                </div>
+                <div class="result-section">
+                    <h3>Sombra</h3>
+                    <p>${dominantRace.shadow}</p>
+                </div>
+                <div class="result-section">
+                    <h3>Camino</h3>
+                    <p>${dominantRace.path}</p>
+                </div>
+                <div class="result-section">
+                    <h3>Símbolos</h3>
+                    <p><strong>Símbolo Mítico:</strong> ${dominantRace.symbol}</p>
+                    <p><strong>Objeto Cotidiano:</strong> ${dominantRace.object}</p>
+                    <p><strong>Glifo:</strong> ${dominantRace.glyph}</p>
+                </div>
+            `;
+
+            if (secondaryRace) {
+                resultContent.innerHTML += `
+                    <div class="result-section" style="border-left: 4px solid #a8e063; margin-top: 30px;">
+                        <h3>Influencia Secundaria: ${secondaryRace.name}</h3>
+                        <p>Tu afinidad también muestra rasgos de ${secondaryRace.name.split(" - ")[0]}. Esto significa que ${secondaryRace.essence.split(".")[0]}.</p>
+                    </div>
+                `;
+            }
+
+            showScreen("screen-results");
+        }
+
+        function restartTest() {
+            showScreen("screen-start");
+            document.getElementById("user-name").value = "";
+            document.getElementById("user-name").focus();
+        }
+
+        // Permitir Enter para comenzar
+        document.getElementById("user-name").addEventListener("keypress", function(e) {
+            if (e.key === "Enter") {
+                startTest();
+            }
+        });
+    </script>
+</body>
+</html>
+
