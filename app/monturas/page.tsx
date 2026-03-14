@@ -20,6 +20,10 @@ const pastelCardBackgrounds = [
   "bg-sky-100/32",
 ];
 
+function isArmadilloImage(src: string) {
+  return src.includes("armadillo");
+}
+
 function getLabelFromPath(src: string) {
   const raw = src
     .split("/")
@@ -56,12 +60,21 @@ export default function MonturasPage() {
               style={{ animationDelay: `${index * 90}ms` }}
             >
               <div className="relative aspect-[3/4] w-full overflow-hidden">
+                <div
+                  className={[
+                    "pointer-events-none absolute inset-3 rounded-2xl",
+                    isArmadilloImage(src) ? "bg-amber-100/35" : "bg-white/10",
+                  ].join(" ")}
+                />
                 <Image
                   src={src}
                   alt={getLabelFromPath(src)}
                   fill
                   priority={index < 3}
-                  className="object-contain p-4 transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+                  className={[
+                    "object-contain p-4 transition-transform duration-500 ease-out group-hover:scale-[1.04]",
+                    isArmadilloImage(src) ? "scale-[1.08] brightness-110 contrast-125" : "",
+                  ].join(" ")}
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
                 <div className="pointer-events-none absolute inset-0 rounded-[1.4rem] ring-1 ring-white/10 ring-inset" />

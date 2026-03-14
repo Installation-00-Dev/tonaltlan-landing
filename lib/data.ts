@@ -287,8 +287,8 @@ export const bestiario: CompendiumEntry[] = [
     description: "Espiritus traviesos guardianes de bosques y manantiales.",
     tags: ["Hada", "Naturaleza", "Comun"],
     sections: [
-      { title: "Descripcion", content: "Los Chaneques son espiritus pequenos y astutos que protegen los bosques, rios y cuevas de Tonaltlan. Disfrutan engañando a los viajeros, robando su 'tonalli' (sombra del alma) y dejandolos desorientados. Sin embargo, tambien pueden ser aliados valiosos si se les trata con respeto." },
-      { title: "Rasgos", content: "Invisibilidad Forestal: desaparecen entre la vegetacion. Robo de Tonalli: pueden confundir y desorientar. Conocimiento del Bosque: saben todo lo que ocurre en su territorio." },
+      { title: "Descripcion", content: "Los Chaneques son espiritus pequenos y astutos que protegen los bosques, rios y cuevas de Tonaltlan. Disfrutan engañando a los viajeros, robando su energia tonal (sombra del alma) y dejandolos desorientados. Sin embargo, tambien pueden ser aliados valiosos si se les trata con respeto." },
+      { title: "Rasgos", content: "Invisibilidad Forestal: desaparecen entre la vegetacion. Robo de Energia Tonal: pueden confundir y desorientar. Conocimiento del Bosque: saben todo lo que ocurre en su territorio." },
       { title: "Notas", content: "Encuentro de nivel bajo, perfecto para introducir a los jugadores al folklore mesoamericano. Pueden ser enemigos, aliados o simples elementos del entorno." },
     ],
   },

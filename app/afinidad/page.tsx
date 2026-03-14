@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
 import SectionHeader from "@/components/compendio/SectionHeader";
+import { useState } from "react";
 
 type AffinityRace = "Ton" | "Tohkari" | "Hekari" | "Quinametzin" | "Loknaa" | "Hualik" | "Irzak";
 
@@ -590,7 +590,7 @@ export default function AfinidadPage() {
       <div className="mx-auto max-w-2xl px-4 lg:px-8">
         <SectionHeader
           title="Test de Afinidad"
-          subtitle="Descubre con que energia racial resuena tu Tonalli. Responde las preguntas y encuentra tu afinidad en el mundo de Tonaltlan."
+          subtitle="Descubre con que energia racial resuena tu energia tonal. Responde las preguntas y encuentra tu afinidad en el mundo de Tonaltlan."
         />
 
         {/* Progress dots */}
