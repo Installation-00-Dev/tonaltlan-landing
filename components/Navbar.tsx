@@ -45,10 +45,10 @@ export default function Navbar() {
           <Image
             src="/images/produccion.png"
             alt="Tonaltlan logo"
-            width={160}
-            height={60}
+            width={180}
+            height={68}
             className="h-8 lg:h-10"
-            style={{ width: "auto", height: "40px" }}
+            style={{ width: "auto", height: "46px" }}
             priority
           />
         </Link>
