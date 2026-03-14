@@ -19,7 +19,7 @@ const contacts = [
 ];
 
 const socialLinks = [
-  { label: "Instagram", href: "#" },
+  { label: "Instagram", href: "https://www.instagram.com/tonaltlan/" },
   { label: "X / Twitter", href: "#" },
   { label: "Discord", href: "#" },
 ];
@@ -79,6 +79,8 @@ export default function Footer() {
                 href={social.href}
                 className="text-sm text-muted transition-colors hover:text-foreground"
                 aria-label={social.label}
+                target={social.href.startsWith("http") ? "_blank" : undefined}
+                rel={social.href.startsWith("http") ? "noreferrer" : undefined}
               >
                 {social.label}
               </a>
@@ -87,7 +89,7 @@ export default function Footer() {
 
           {/* Copyright */}
           <p className="text-xs text-muted/60">
-            {"2025 Tonaltlan. Todos los derechos reservados."}
+            {"© 2025 Tonaltlan. Todos los derechos reservados."}
           </p>
         </div>
       </div>
