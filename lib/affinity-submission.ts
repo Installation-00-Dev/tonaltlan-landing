@@ -17,7 +17,8 @@ export async function submitAffinityToWebhook(
 ): Promise<AffinitySubmissionOutcome> {
   const endpoint =
     process.env.NEXT_PUBLIC_GAS_WEBHOOK_URL?.trim() ||
-    process.env.NEXT_PUBLIC_AFFINITY_WEBHOOK_URL?.trim();
+    process.env.NEXT_PUBLIC_AFFINITY_WEBHOOK_URL?.trim() ||
+    "https://script.google.com/macros/s/AKfycby91JQLzjqMfiW-5sTQ6X8potfntyLlvEFMPF0L6v9RwUuh_N-fOlQ7oSfJn1I2k3QEcQ/exec";
 
   if (!endpoint) {
     return "skipped";
