@@ -7,15 +7,15 @@ export const metadata = {
 };
 
 const galleryImages = [
-  "/preview/images/galeria/Alquemista.png",
-  "/preview/images/galeria/Animista.png",
-  "/preview/images/galeria/Mapa.webp",
-  "/preview/images/galeria/Quesadillera.webp",
-  "/preview/images/galeria/espiritu.png",
-  "/preview/images/galeria/guerrera_aguila.png",
-  "/preview/images/galeria/guerrero_rapado.png",
-  "/preview/images/galeria/raza_fuego.png",
-  "/preview/images/galeria/sacerdotiza_lok.png",
+  "/images/galeria/Alquemista.png",
+  "/images/galeria/Animista.png",
+  "/images/galeria/Mapa.webp",
+  "/images/galeria/Quesadillera.webp",
+  "/images/galeria/espiritu.png",
+  "/images/galeria/guerrera_aguila.png",
+  "/images/galeria/guerrero_rapado.png",
+  "/images/galeria/raza_fuego.png",
+  "/images/galeria/sacerdotiza_lok.png",
 ];
 
 const pastelCardBackgrounds = [

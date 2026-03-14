@@ -6,7 +6,7 @@ export default function Hero() {
     <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden">
       {/* Background image */}
       <Image
-        src="/preview/images/piramides_azteca_final.png"
+        src="/images/piramides_azteca_final.png"
         alt=""
         fill
         className="object-cover object-center"

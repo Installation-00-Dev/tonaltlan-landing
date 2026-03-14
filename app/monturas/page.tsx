@@ -7,10 +7,10 @@ export const metadata = {
 };
 
 const mountImages = [
-  "/preview/images/monturas/ajolote-cue.webp",
-  "/preview/images/monturas/Armadillo.webp",
-  "/preview/images/monturas/hormiga-mielera.webp",
-  "/preview/images/monturas/scorpion-archip.webp",
+  "/images/monturas/ajolote-cue.webp",
+  "/images/monturas/Armadillo.webp",
+  "/images/monturas/hormiga-mielera.webp",
+  "/images/monturas/scorpion-archip.webp",
 ];
 
 const pastelCardBackgrounds = [

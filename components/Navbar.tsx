@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const navLinks = [
   { label: "Inicio", href: "/" },
@@ -43,7 +43,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2" aria-label="Tonaltlan - Inicio">
           <Image
-            src="/preview/images/tonaltlan_logo.png"
+            src="/images/tonaltlan_logo.png"
             alt="Tonaltlan logo"
             width={140}
             height={40}

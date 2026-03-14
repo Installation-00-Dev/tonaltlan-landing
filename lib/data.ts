@@ -21,7 +21,7 @@ export const clases: CompendiumEntry[] = [
     description:
       "Los Catemacos son brujos artesanos originarios de las regiones pantanosas del reino de Tl’atl. Su poder no proviene de libros ni de pactos con entidades desconocidas, sino del vínculo espiritual que crean con un Ixip, un muñeco tonal tallado por sus propias manos y animado mediante un ritual ancestral.",
     tags: ["Invocador", "Multi-tonal", "rango"],
-    coverImageSrc: "/preview/images/Brujo_Catemaco.jpg",
+    coverImageSrc: "/images/Brujo_Catemaco.jpg",
     coverImageAlt: "Brujo Catemaco junto a su Ixip en una cueva del reino de Tl'atl.",
     sections: [
       {
@@ -42,7 +42,7 @@ export const clases: CompendiumEntry[] = [
     description:
       "Defensores de Zalan. Los Guerreros Otomi son la milicia de elite del norte de Tonaltlan y portadores del Punto Tonal de Tierra.",
     tags: ["Tanque", "cuerpo a cuerpo", "Tonal de Tierra"],
-    coverImageSrc: "/preview/images/Otomi.jpg",
+    coverImageSrc: "/images/Otomi.jpg",
     coverImageAlt: "Guerrero Otomi con armadura pesada y estandarte de guerra en primera linea.",
     sections: [
       {
@@ -63,7 +63,7 @@ export const clases: CompendiumEntry[] = [
     description:
       "Danzante Tonal. Guerreros ritualistas que canalizan la energia del Tonal a traves de danzas sagradas.",
     tags: ["Movilidad", "Soporte", "Multi-Tonal"],
-    coverImageSrc: "/preview/images/Mitotiani.jpg",
+    coverImageSrc: "/images/Mitotiani.jpg",
     coverImageAlt: "Mitotiani ejecutando una danza ritual sobre glifos tonales.",
     sections: [
       {
@@ -84,7 +84,7 @@ export const clases: CompendiumEntry[] = [
     description:
       "Portador de Sangre Tonal. Practicantes de un conocimiento ritual prohibido que manipula la sangre para debilitar y controlar.",
     tags: ["Controlador", "Debilitador", "Sellos de sangre"],
-    coverImageSrc: "/preview/images/Tlapali.jpg",
+    coverImageSrc: "/images/Tlapali.jpg",
     coverImageAlt: "Tlapali marcado con simbolos de sangre tonal en un ritual oscuro.",
     sections: [
       {
@@ -108,7 +108,7 @@ export const especies: CompendiumEntry[] = [
     slug: "hekari",
     description: "Hijos de Heka. Descendientes de la diosa del viento, ágiles, expresivos y portadores de palabras que cambian el destino.",
     tags: ["Agilidad", "Social", "Viento"],
-    coverImageSrc: "/preview/images/especie_Hekari.png",
+    coverImageSrc: "/images/especie_Hekari.png",
     coverImageAlt: "He'kari de cabello ondulante y ojos verde jade en movimiento.",
     sections: [
       {
@@ -146,7 +146,7 @@ export const especies: CompendiumEntry[] = [
     slug: "irzak",
     description: "Hijos de Zilo. Originarios de la península volcánica de Xitl, orgullosos, intensos y guiados por un honor inquebrantable.",
     tags: ["Fuego", "Combate frontal", "Honor"],
-    coverImageSrc: "/preview/images/especie_fuego.png",
+    coverImageSrc: "/images/especie_fuego.png",
     coverImageAlt: "Irzak de mirada ámbar y presencia ígnea forjado por la tierra volcánica.",
     sections: [
       {
@@ -305,7 +305,7 @@ export const deidades: CompendiumEntry[] = [
     slug: "heka",
     description: "Señora del Aire. Diosa del viento, los susurros y los caminos invisibles del cielo.",
     tags: ["Aire", "Viento", "Susurros"],
-    coverImageSrc: "/preview/images/Heka.webp",
+    coverImageSrc: "/images/Heka.webp",
     coverImageAlt: "Heka, deidad del aire, envuelta en corrientes y brisa celestial.",
     sections: [
       {
@@ -320,7 +320,7 @@ export const deidades: CompendiumEntry[] = [
     slug: "lok",
     description: "Dios del Agua. La última deidad primordial creada por Omet, señor de la fluidez, la empatía y el movimiento del agua.",
     tags: ["Agua", "Calma", "Sanacion"],
-    coverImageSrc: "/preview/images/Lok.webp",
+    coverImageSrc: "/images/Lok.webp",
     coverImageAlt: "Lok, dios del agua, rodeado de corrientes serenas y aguas sagradas.",
     sections: [
       {
@@ -335,7 +335,7 @@ export const deidades: CompendiumEntry[] = [
     slug: "tzal",
     description: "Madre de la Tierra. Diosa del cimiento, la estabilidad y la permanencia sobre la que florece la vida.",
     tags: ["Tierra", "Vida", "Estabilidad"],
-    coverImageSrc: "/preview/images/Tzal.webp",
+    coverImageSrc: "/images/Tzal.webp",
     coverImageAlt: "Tzal, madre de la tierra, rodeada de raíces, montañas y barro sagrado.",
     sections: [
       {
@@ -350,7 +350,7 @@ export const deidades: CompendiumEntry[] = [
     slug: "zilo",
     description: "Dios del Fuego. Señor de la pasión, la voluntad ardiente y el corazón volcánico del mundo.",
     tags: ["Fuego", "Pasion", "Voluntad"],
-    coverImageSrc: "/preview/images/Zilo.webp",
+    coverImageSrc: "/images/Zilo.webp",
     coverImageAlt: "Zilo, dios del fuego, ardiendo con energia volcanica y voluntad indomable.",
     sections: [
       {

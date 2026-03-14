@@ -3,10 +3,7 @@ const nextConfig = {
   // Static export so we can deploy to GitHub Pages
   output: "export",
 
-  // Serve the Next app under /preview (tonaltlan.com/preview)
-  basePath: "/preview",
-
-  // Generate folder-style routes (e.g. /preview/afinidad/index.html)
+  // Generate folder-style routes (e.g. /afinidad/index.html)
   trailingSlash: true,
 
   // Required for next/image when using static export

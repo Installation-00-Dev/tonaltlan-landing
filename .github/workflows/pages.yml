@@ -37,7 +37,7 @@ jobs:
       - name: Build (Next static export)
         run: pnpm build
 
-      - name: Assemble dist (legacy root + /preview)
+      - name: Assemble dist (Next root + /proximamente)
         shell: bash
         run: |
           set -euo pipefail
@@ -45,33 +45,21 @@ jobs:
           rm -rf dist
           mkdir -p dist
 
-          # Legacy root (tu landing actual)
-          cp -f index.html dist/index.html
-          if [ -f CNAME ]; then cp -f CNAME dist/CNAME; fi
-
-          # Copia assets legacy en raíz (ajusta la lista si tienes más)
-          for f in piramides_azteca_final.png produccion.png tonaltlan_logo.png; do
-            if [ -f "$f" ]; then cp -f "$f" "dist/$f"; fi
-          done
-
           # Evita que Jekyll rompa carpetas tipo _next
           touch dist/.nojekyll
 
-          # Next export → a /preview
-          mkdir -p dist/preview
+          # Dominio personalizado
+          if [ -f CNAME ]; then cp -f CNAME dist/CNAME; fi
 
-          # Caso A: Next export genera out/preview/...
-          if [ -d "out/preview" ]; then
-            cp -R out/preview/* dist/preview/
+          # Next export → raíz del sitio (tonaltlan.com)
+          cp -R out/* dist/
 
-            # Algunos builds pueden dejar assets en out/_next (sin el prefijo preview)
-            if [ -d "out/_next" ] && [ ! -d "dist/preview/_next" ]; then
-              cp -R out/_next dist/preview/_next
-            fi
-          else
-            # Caso B: Next export genera out/... (copiamos todo dentro de /preview)
-            cp -R out/* dist/preview/
-          fi
+          # Landing legacy → /proximamente
+          mkdir -p dist/proximamente
+          cp -f index.html dist/proximamente/index.html
+          for f in piramides_azteca_final.png produccion.png tonaltlan_logo.png; do
+            if [ -f "$f" ]; then cp -f "$f" "dist/proximamente/$f"; fi
+          done
 
       - name: Configure Pages
         uses: actions/configure-pages@v5

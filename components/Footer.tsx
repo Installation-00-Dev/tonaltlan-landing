@@ -59,7 +59,7 @@ export default function Footer() {
           {/* Production credit */}
           <div className="flex items-center gap-3">
             <Image
-              src="/preview/images/produccion.png"
+              src="/images/produccion.png"
               alt="Cuevas y Quetzales"
               width={36}
               height={36}
