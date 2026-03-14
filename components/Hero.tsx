@@ -45,14 +45,18 @@ export default function Hero() {
           </Link>
         </div>
 
-        <div className="mt-10 flex w-full justify-center">
-          <Image
-            src="/images/tonaltlan_logo.png"
-            alt="Logo de Tonaltlan"
-            width={600}
-            height={180}
-            style={{ width: "min(600px, 80vw)", height: "auto" }}
-          />
+        <div className="group mt-14 flex w-full justify-center">
+          <div className="relative inline-block overflow-hidden rounded-2xl">
+            <Image
+              src="/images/tonaltlan_logo.png"
+              alt="Logo de Tonaltlan"
+              width={600}
+              height={180}
+              className="transition-transform duration-1000 ease-out group-hover:scale-105"
+              style={{ width: "min(600px, 80vw)", height: "auto" }}
+            />
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(245,196,95,0.25)_0%,rgba(245,196,95,0)_70%)] opacity-60 transition-opacity duration-700 group-hover:opacity-100" />
+          </div>
         </div>
       </div>
 
