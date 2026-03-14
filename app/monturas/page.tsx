@@ -8,7 +8,7 @@ export const metadata = {
 
 const mountImages = [
   "/preview/images/monturas/ajolote-cue.webp",
-  "/preview/images/monturas/armadillo.webp",
+  "/preview/images/monturas/Armadillo.webp",
   "/preview/images/monturas/hormiga-mielera.webp",
   "/preview/images/monturas/scorpion-archip.webp",
 ];
@@ -21,7 +21,7 @@ const pastelCardBackgrounds = [
 ];
 
 function isArmadilloImage(src: string) {
-  return src.includes("armadillo");
+  return src.toLowerCase().includes("armadillo");
 }
 
 function getLabelFromPath(src: string) {
