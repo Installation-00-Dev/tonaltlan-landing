@@ -32,7 +32,7 @@ export const clases: CompendiumEntry[] = [
       {
         title: "Rol de Clase",
         content:
-          "El Catemaco funciona como un invocador con companero. El brujo y su Ixip actuan como una sola unidad de combate, compartiendo el mismo turno. Durante este turno, el movimiento y la accion pueden ser usados por el invocador o por el Ixip tonal, pero no por ambos. El brujo mantiene el vinculo, canaliza las energias y toma las decisiones tacticas, mientras el Ixip ejecuta ataques, defensas o apoyos segun su elemento. Dependiendo del elemento, el Ixip puede actuar como atacante, defensor, sanador o controlador.",
+          "El Catemaco funciona como un invocador con compañero. El brujo y su Ixip actuan como una sola unidad de combate, compartiendo el mismo turno. Durante este turno, el movimiento y la accion pueden ser usados por el invocador o por el Ixip tonal, pero no por ambos. El brujo mantiene el vinculo, canaliza las energias y toma las decisiones tacticas, mientras el Ixip ejecuta ataques, defensas o apoyos segun su elemento. Dependiendo del elemento, el Ixip puede actuar como atacante, defensor, sanador o controlador.",
       },
       {
         title: "Caracteristicas Generales",

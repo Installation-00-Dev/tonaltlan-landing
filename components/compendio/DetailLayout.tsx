@@ -332,12 +332,12 @@ export default function DetailLayout({
 
         {coverImageSrc && (
           <div className="mb-8 overflow-hidden rounded-2xl border border-glass-border/70 bg-background/30">
-            <div className="relative aspect-[16/9] w-full">
+            <div className="relative h-[280px] w-full md:h-[380px] lg:h-[460px]">
               <Image
                 src={coverImageSrc}
                 alt={coverImageAlt ?? title}
                 fill
-                className="object-cover"
+                className="object-contain p-2"
                 sizes="(max-width: 1024px) 100vw, 896px"
               />
             </div>
