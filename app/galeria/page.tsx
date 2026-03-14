@@ -27,42 +27,6 @@ const pastelCardBackgrounds = [
   "bg-orange-100/32",
 ];
 
-const collageAspectRatios = [
-  "aspect-[3/4]",
-  "aspect-[4/5]",
-  "aspect-[6/5]",
-  "aspect-[3/4]",
-  "aspect-[5/4]",
-  "aspect-[4/5]",
-];
-
-const collageRotations = [
-  "rotate-[-2.2deg]",
-  "rotate-[1.8deg]",
-  "rotate-[-1.5deg]",
-  "rotate-[2.1deg]",
-  "rotate-[-1.1deg]",
-  "rotate-[1.4deg]",
-];
-
-const collageOffsets = [
-  "sm:mt-0",
-  "sm:mt-8",
-  "sm:mt-3",
-  "sm:mt-10",
-  "sm:mt-5",
-  "sm:mt-12",
-];
-
-const collageShifts = [
-  "sm:translate-x-0",
-  "sm:translate-x-2",
-  "sm:-translate-x-3",
-  "sm:translate-x-4",
-  "sm:-translate-x-2",
-  "sm:translate-x-1",
-];
-
 function getLabelFromPath(src: string) {
   const raw = src
     .split("/")
@@ -93,20 +57,12 @@ export default function GaleriaPage() {
             <article
               key={src}
               className={[
-                "group mb-7 break-inside-avoid overflow-hidden rounded-[1.4rem] border border-glass-border/70 bg-background/35 opacity-0 shadow-[0_18px_50px_rgba(0,0,0,0.22)] transition-all duration-300 ease-out hover:-translate-y-3 hover:rotate-0 hover:shadow-[0_24px_60px_rgba(0,0,0,0.3)] hover:ring-1 hover:ring-gold/30 animate-fade-in",
+                "group mb-6 break-inside-avoid overflow-hidden rounded-[1.4rem] border border-glass-border/70 bg-background/35 opacity-0 shadow-[0_18px_50px_rgba(0,0,0,0.22)] transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-[0_24px_60px_rgba(0,0,0,0.3)] hover:ring-1 hover:ring-gold/30 animate-fade-in",
                 pastelCardBackgrounds[index % pastelCardBackgrounds.length],
-                collageRotations[index % collageRotations.length],
-                collageOffsets[index % collageOffsets.length],
-                collageShifts[index % collageShifts.length],
               ].join(" ")}
               style={{ animationDelay: `${index * 90}ms` }}
             >
-              <div
-                className={[
-                  "relative w-full overflow-hidden",
-                  collageAspectRatios[index % collageAspectRatios.length],
-                ].join(" ")}
-              >
+              <div className="relative aspect-[3/4] w-full overflow-hidden">
                 <Image
                   src={src}
                   alt={getLabelFromPath(src)}
