@@ -12,6 +12,7 @@ export default function AfinidadPage() {
     currentQuestionIndex,
     results,
     submissionStatus,
+    isAutoAdvancing,
     currentQuestion,
     currentAnswerId,
     totalQuestions,
@@ -19,7 +20,6 @@ export default function AfinidadPage() {
     startTest,
     handleOptionSelect,
     previousQuestion,
-    nextQuestion,
     resetTest,
   } = useAffinityTest();
 
@@ -112,6 +112,7 @@ export default function AfinidadPage() {
                     key={option.id}
                     type="button"
                     onClick={() => handleOptionSelect(option.id)}
+                    disabled={isAutoAdvancing}
                     className={`glass-card-hover min-h-[48px] rounded-xl px-5 py-4 text-left text-base font-medium transition-colors ${
                       isSelected
                         ? "border border-teal bg-teal/10 text-foreground"
@@ -124,23 +125,16 @@ export default function AfinidadPage() {
               })}
             </div>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-between">
+            <p className="mt-6 text-sm text-muted">Toca una opcion para avanzar automaticamente. Usa Anterior para corregir.</p>
+
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-between">
               <button
                 type="button"
                 onClick={previousQuestion}
-                disabled={currentQuestionIndex === 0}
+                disabled={currentQuestionIndex === 0 || isAutoAdvancing}
                 className="inline-flex min-h-[48px] items-center justify-center rounded-lg border border-glass-border px-6 py-3 text-base font-semibold text-foreground transition-colors hover:border-gold hover:text-gold disabled:cursor-not-allowed disabled:opacity-50"
               >
                 Anterior
-              </button>
-
-              <button
-                type="button"
-                onClick={nextQuestion}
-                disabled={!currentAnswerId}
-                className="inline-flex min-h-[48px] items-center justify-center rounded-lg bg-teal px-8 py-3 text-base font-semibold text-background transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
-              >
-                {currentQuestionIndex === sessionQuestions.length - 1 ? "Ver Resultados" : "Siguiente"}
               </button>
             </div>
           </div>

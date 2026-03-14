@@ -16,6 +16,8 @@ import {
 } from "@/lib/affinity-test";
 import { useRef, useState } from "react";
 
+const AUTO_ADVANCE_DELAY_MS = 180;
+
 export type TestPhase = "intro" | "questions" | "results";
 
 export interface FormErrors {
@@ -43,6 +45,7 @@ export function useAffinityTest() {
   const [scores, setScores] = useState<Scores>(() => createInitialScores());
   const [results, setResults] = useState<CalculatedResults | null>(null);
   const [submissionStatus, setSubmissionStatus] = useState<SubmissionStatus>("idle");
+  const [isAutoAdvancing, setIsAutoAdvancing] = useState(false);
   const hasSubmittedRef = useRef(false);
 
   const currentQuestion = sessionQuestions[currentQuestionIndex];
@@ -95,7 +98,7 @@ export function useAffinityTest() {
     return true;
   }
 
-  async function submitParticipantResult(finalResults: CalculatedResults) {
+  async function submitParticipantResult(finalResults: CalculatedResults, finalScores: Scores) {
     if (hasSubmittedRef.current) {
       return;
     }
@@ -108,7 +111,7 @@ export function useAffinityTest() {
       email: user.email.trim(),
       dominantResult: finalResults.dominant.narrative.name,
       secondaryResult: finalResults.secondary?.narrative.name ?? null,
-      scores,
+      scores: finalScores,
       subscribed: false,
     });
 
@@ -128,7 +131,7 @@ export function useAffinityTest() {
   }
 
   function handleOptionSelect(optionId: string) {
-    if (!currentQuestion) {
+    if (!currentQuestion || isAutoAdvancing) {
       return;
     }
 
@@ -140,21 +143,36 @@ export function useAffinityTest() {
       return;
     }
 
+    let nextScores = scores;
+
+    if (previousOption) {
+      nextScores = applyOptionPoints(nextScores, previousOption, -1);
+    }
+
+    nextScores = applyOptionPoints(nextScores, nextOption, 1);
+
     setAnswers((previousAnswers) => {
       const nextAnswers = [...previousAnswers];
       nextAnswers[currentQuestionIndex] = optionId;
       return nextAnswers;
     });
 
-    setScores((previousScores) => {
-      let nextScores = previousScores;
+    setScores(nextScores);
+    setIsAutoAdvancing(true);
 
-      if (previousOption) {
-        nextScores = applyOptionPoints(nextScores, previousOption, -1);
+    setTimeout(() => {
+      if (currentQuestionIndex < sessionQuestions.length - 1) {
+        setCurrentQuestionIndex((previousIndex) => previousIndex + 1);
+        setIsAutoAdvancing(false);
+        return;
       }
 
-      return applyOptionPoints(nextScores, nextOption, 1);
-    });
+      const finalResults = calculateResults(nextScores);
+      setResults(finalResults);
+      setPhase("results");
+      void submitParticipantResult(finalResults, nextScores);
+      setIsAutoAdvancing(false);
+    }, AUTO_ADVANCE_DELAY_MS);
   }
 
   function previousQuestion() {
@@ -189,7 +207,7 @@ export function useAffinityTest() {
     const finalResults = calculateResults(scores);
     setResults(finalResults);
     setPhase("results");
-    void submitParticipantResult(finalResults);
+    void submitParticipantResult(finalResults, scores);
     return true;
   }
 
@@ -216,6 +234,7 @@ export function useAffinityTest() {
     scores,
     results,
     submissionStatus,
+    isAutoAdvancing,
     currentQuestion,
     currentAnswerId,
     totalQuestions,
