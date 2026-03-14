@@ -219,14 +219,6 @@ export default function DetailLayout({
     }
 
     return renderGenericContent(section.content);
-
-    const blocks = normalized
-      .split(/\n{2,}/)
-      .map((block) => block.trim())
-      .filter(Boolean)
-      .map(addMarkdownTableSeparatorIfMissing);
-
-    return blocks.join("\n\n");
   }
 
   return (
