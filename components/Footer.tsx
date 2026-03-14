@@ -19,7 +19,12 @@ const contacts = [
 ];
 
 const socialLinks = [
-  { label: "Instagram", href: "https://www.instagram.com/tonaltlan/" },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/tonaltlan/",
+    iconSrc: "/images/social/instagram.png",
+    iconAlt: "Instagram",
+  },
   { label: "X / Twitter", href: "#" },
   { label: "Discord", href: "#" },
 ];
@@ -77,11 +82,20 @@ export default function Footer() {
               <a
                 key={social.label}
                 href={social.href}
-                className="text-sm text-muted transition-colors hover:text-foreground"
+                className="inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-foreground"
                 aria-label={social.label}
                 target={social.href.startsWith("http") ? "_blank" : undefined}
                 rel={social.href.startsWith("http") ? "noreferrer" : undefined}
               >
+                {"iconSrc" in social ? (
+                  <Image
+                    src={social.iconSrc}
+                    alt={social.iconAlt}
+                    width={18}
+                    height={18}
+                    className="h-[18px] w-[18px] rounded-sm"
+                  />
+                ) : null}
                 {social.label}
               </a>
             ))}
