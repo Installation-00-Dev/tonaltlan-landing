@@ -1,6 +1,6 @@
-import { notFound } from "next/navigation";
-import { especies } from "@/lib/data";
 import DetailLayout from "@/components/compendio/DetailLayout";
+import { especies } from "@/lib/data";
+import { notFound } from "next/navigation";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -30,6 +30,8 @@ export default async function EspecieDetailPage({ params }: Props) {
       title={item.name}
       tags={item.tags}
       sections={item.sections}
+      coverImageSrc={item.coverImageSrc}
+      coverImageAlt={item.coverImageAlt}
       backHref="/especies"
       backLabel="Volver a Especies"
     />

@@ -1,55 +1,55 @@
-import Image from "next/image";
 import SectionHeader from "@/components/compendio/SectionHeader";
+import Image from "next/image";
 
 export const metadata = {
   title: "Galeria - Tonaltlan",
-  description: "Arte conceptual, ilustraciones y vistazos al universo de Tonaltlan.",
+  description: "Ilustraciones y arte visual del universo de Tonaltlan.",
 };
 
-// Use existing generated images as gallery placeholders
 const galleryImages = [
-  { src: "/preview/images/piramides_azteca_final.png", alt: "Piramides ancestrales de Tonaltlan bajo un cielo mistico", tall: true },
-  { src: "/preview/images/about-illustration.jpg",     alt: "El mundo de Tonaltlan: selvas, piramides y energia cosmica", tall: false },
-  { src: "/preview/images/Brujo_Catemaco.jpg",         alt: "Brujo Catemaco y su Ixip de agua en una cueva ancestral", tall: true },
-  { src: "/preview/images/Mitotiani.jpg",              alt: "Mitotiani danzante invocando un remolino tonal de viento y tierra", tall: true },
-  { src: "/preview/images/Otomi.jpg",                  alt: "Guerrero Otomi avanzando con armadura pesada y chimalli ceremonial", tall: true },
-  { src: "/preview/images/Tlapali.jpg",                alt: "Tlapali ritualista rodeado de sellos de sangre y energia oscura", tall: true },
-  { src: "/preview/images/update-1.jpg",               alt: "Codice antiguo con simbolos dorados flotantes", tall: false },
-  { src: "/preview/images/update-2.jpg",               alt: "El inframundo del Mictlan y su senor esqueletico", tall: true },
-  { src: "/preview/images/update-3.jpg",               alt: "Guerreros reunidos alrededor de un fuego ceremonial", tall: false },
-  { src: "/preview/images/update-4.jpg",               alt: "Artista pintando glifos mesoamericanos en un codice", tall: false },
-  { src: "/preview/images/book-cover.jpg",             alt: "Portada del manual basico con piedra del sol y obsidiana", tall: true },
+  "/preview/images/galeria/Alquemista.png",
+  "/preview/images/galeria/Animista.png",
+  "/preview/images/galeria/Mapa.webp",
+  "/preview/images/galeria/Quesadillera.webp",
+  "/preview/images/galeria/espiritu.png",
+  "/preview/images/galeria/guerrera_aguila.png",
+  "/preview/images/galeria/guerrero_rapado.png",
+  "/preview/images/galeria/raza_fuego.png",
+  "/preview/images/galeria/sacerdotiza_lok.png",
 ];
+
+function getAltFromPath(src: string) {
+  return src
+    .split("/")
+    .pop()
+    ?.replace(/\.[^/.]+$/, "")
+    .replace(/[_-]/g, " ")
+    .trim() ?? "Ilustracion";
+}
 
 export default function GaleriaPage() {
   return (
-    <div className="pt-24 pb-16 lg:pt-32">
+    <div className="pb-16 pt-24 lg:pt-32">
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
         <SectionHeader
           title="Galeria"
-          subtitle="Arte conceptual, ilustraciones y vistazos al universo de Tonaltlan. Proximamente se agregara mas contenido visual."
+          subtitle="Todas las ilustraciones disponibles del mundo de Tonaltlan."
         />
 
-        {/* Masonry-like grid using CSS columns */}
         <div className="columns-1 gap-6 sm:columns-2 lg:columns-3">
-          {galleryImages.map((img) => (
-            <div
-              key={img.src}
-              className="glass-card-hover mb-6 break-inside-avoid overflow-hidden rounded-xl"
-            >
-              <div className={`relative ${img.tall ? "aspect-[3/4]" : "aspect-[4/3]"}`}>
+          {galleryImages.map((src, index) => (
+            <article key={src} className="mb-6 break-inside-avoid overflow-hidden rounded-xl border border-glass-border/70 bg-background/30">
+              <div className="relative aspect-[3/4] w-full">
                 <Image
-                  src={img.src}
-                  alt={img.alt}
+                  src={src}
+                  alt={getAltFromPath(src)}
                   fill
-                  className="object-cover"
+                  priority={index < 3}
+                  className="object-contain p-2"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
               </div>
-              <div className="p-3">
-                <p className="text-xs text-muted">{img.alt}</p>
-              </div>
-            </div>
+            </article>
           ))}
         </div>
       </div>
