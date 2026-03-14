@@ -67,6 +67,10 @@ export default function DetailLayout({
       section.title.toLowerCase().includes("caracteristicas"),
     );
 
+    if (!rolSection && !generalesSection) {
+      return [];
+    }
+
     const bulletMap = generalesSection ? extractBulletMap(generalesSection.content) : new Map();
 
     const rolText = rolSection?.content.split(".")[0]?.trim() || "Clase de fantasia para Tonaltlan.";
@@ -344,24 +348,26 @@ export default function DetailLayout({
           </div>
         )}
 
-        <section className="mb-8 rounded-2xl border border-gold/30 bg-gradient-to-br from-gold/10 via-background/40 to-background/20 p-4 md:p-6">
-          <h2 className="mb-4 font-serif text-2xl font-semibold text-gold">Ficha Rapida</h2>
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {quickFacts.map((fact, idx) => (
-              <article
-                key={`${fact.label}-${idx}`}
-                className={
-                  idx === 0
-                    ? "rounded-xl border border-glass-border bg-background/45 p-4 sm:col-span-2 lg:col-span-3"
-                    : "rounded-xl border border-glass-border bg-background/45 p-4"
-                }
-              >
-                <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-teal">{fact.label}</p>
-                <p className="text-sm leading-relaxed text-foreground">{fact.value}</p>
-              </article>
-            ))}
-          </div>
-        </section>
+        {quickFacts.length > 0 && (
+          <section className="mb-8 rounded-2xl border border-gold/30 bg-gradient-to-br from-gold/10 via-background/40 to-background/20 p-4 md:p-6">
+            <h2 className="mb-4 font-serif text-2xl font-semibold text-gold">Ficha Rapida</h2>
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {quickFacts.map((fact, idx) => (
+                <article
+                  key={`${fact.label}-${idx}`}
+                  className={
+                    idx === 0
+                      ? "rounded-xl border border-glass-border bg-background/45 p-4 sm:col-span-2 lg:col-span-3"
+                      : "rounded-xl border border-glass-border bg-background/45 p-4"
+                  }
+                >
+                  <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-teal">{fact.label}</p>
+                  <p className="text-sm leading-relaxed text-foreground">{fact.value}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+        )}
 
         <nav className="mb-8 flex flex-wrap gap-2">
           {sections.map((section, idx) => {
