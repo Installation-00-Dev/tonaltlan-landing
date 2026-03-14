@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import TagChips from "./TagChips";
 
@@ -10,6 +11,8 @@ interface DetailLayoutProps {
   title: string;
   tags: string[];
   sections: DetailSection[];
+  coverImageSrc?: string;
+  coverImageAlt?: string;
   backHref: string;
   backLabel: string;
 }
@@ -18,14 +21,69 @@ export default function DetailLayout({
   title,
   tags,
   sections,
+  coverImageSrc,
+  coverImageAlt,
   backHref,
   backLabel,
 }: DetailLayoutProps) {
+  function toAnchorId(value: string) {
+    return value
+      .toLowerCase()
+      .replace(/[^a-z0-9\s-]/g, "")
+      .trim()
+      .replace(/\s+/g, "-");
+  }
+
   function parsePipeRow(line: string) {
     return line
       .split("|")
       .map((cell) => cell.trim())
       .filter(Boolean);
+  }
+
+  function extractBulletMap(content: string) {
+    const map = new Map<string, string>();
+    const lines = content
+      .replace(/\r\n/g, "\n")
+      .split("\n")
+      .map((line) => line.trim())
+      .filter((line) => line.startsWith("- "));
+
+    for (const line of lines) {
+      const cleanLine = line.slice(2);
+      const separatorIndex = cleanLine.indexOf(":");
+      if (separatorIndex === -1) continue;
+      const key = cleanLine.slice(0, separatorIndex).trim().toLowerCase();
+      const value = cleanLine.slice(separatorIndex + 1).trim();
+      map.set(key, value);
+    }
+
+    return map;
+  }
+
+  function buildQuickFacts() {
+    const rolSection = sections.find((section) => section.title.toLowerCase().includes("rol"));
+    const generalesSection = sections.find((section) =>
+      section.title.toLowerCase().includes("caracteristicas"),
+    );
+
+    const bulletMap = generalesSection ? extractBulletMap(generalesSection.content) : new Map();
+
+    const rolText = rolSection?.content.split(".")[0]?.trim() || "Clase de fantasia para Tonaltlan.";
+    const atributoClave = tags.find((tag) =>
+      ["inteligencia", "sabiduria", "carisma", "fuerza", "destreza", "constitucion"].includes(
+        tag.toLowerCase(),
+      ),
+    );
+
+    return [
+      { label: "Rol", value: rolText },
+      { label: "Atributo clave", value: atributoClave ?? "Por definir" },
+      { label: "Dado de golpe", value: bulletMap.get("dado de golpe") ?? "-" },
+      { label: "Salvaciones", value: bulletMap.get("tiradas de salvacion") ?? "-" },
+      { label: "Armaduras", value: bulletMap.get("competencia con armaduras") ?? "-" },
+      { label: "Armas", value: bulletMap.get("competencia con armas") ?? "-" },
+    ];
   }
 
   function renderTable(content: string) {
@@ -96,21 +154,29 @@ export default function DetailLayout({
           const plainLines = bodyLines.filter((line) => !line.startsWith("- "));
 
           return (
-            <div key={`${heading}-${idx}`} className="rounded-lg border border-glass-border/60 bg-background/25 p-4">
-              <h3 className="mb-2 text-base font-semibold text-gold">{heading}</h3>
-              {plainLines.length > 0 && (
-                <p className="mb-3 whitespace-pre-line text-base leading-relaxed text-muted">
-                  {plainLines.join("\n")}
-                </p>
-              )}
-              {bulletLines.length > 0 && (
-                <ul className="list-disc space-y-1 pl-5 text-base leading-relaxed text-muted">
-                  {bulletLines.map((line, lineIndex) => (
-                    <li key={`${lineIndex}-${line}`}>{line.slice(2)}</li>
-                  ))}
-                </ul>
-              )}
-            </div>
+            <details
+              key={`${heading}-${idx}`}
+              className="rounded-lg border border-glass-border/60 bg-background/25 p-4"
+              open={idx === 0}
+            >
+              <summary className="cursor-pointer list-none text-base font-semibold text-gold">
+                {heading}
+              </summary>
+              <div className="mt-3">
+                {plainLines.length > 0 && (
+                  <p className="mb-3 whitespace-pre-line text-base leading-relaxed text-muted">
+                    {plainLines.join("\n")}
+                  </p>
+                )}
+                {bulletLines.length > 0 && (
+                  <ul className="list-disc space-y-1 pl-5 text-base leading-relaxed text-muted">
+                    {bulletLines.map((line, lineIndex) => (
+                      <li key={`${lineIndex}-${line}`}>{line.slice(2)}</li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </details>
           );
         })}
       </div>
@@ -149,11 +215,17 @@ export default function DetailLayout({
 
     return (
       <div className="space-y-6">
-        {elements.map((element) => (
-          <div key={element.name} className="rounded-lg border border-glass-border/70 bg-background/25 p-5">
-            <h3 className="mb-1 font-serif text-xl font-semibold text-gold">{element.name}</h3>
-            <p className="mb-4 text-sm font-medium text-foreground">{element.role}</p>
-            <ul className="space-y-3 text-base leading-relaxed text-muted">
+        {elements.map((element, elementIndex) => (
+          <details
+            key={element.name}
+            className="rounded-lg border border-glass-border/70 bg-background/25 p-5"
+            open={elementIndex === 0}
+          >
+            <summary className="cursor-pointer list-none">
+              <h3 className="mb-1 font-serif text-xl font-semibold text-gold">{element.name}</h3>
+              <p className="text-sm font-medium text-foreground">{element.role}</p>
+            </summary>
+            <ul className="mt-4 space-y-3 text-base leading-relaxed text-muted">
               {element.levels.map((levelLine, idx) => {
                 const [levelTitle, ...rest] = levelLine.split(":");
                 return (
@@ -164,7 +236,7 @@ export default function DetailLayout({
                 );
               })}
             </ul>
-          </div>
+          </details>
         ))}
       </div>
     );
@@ -221,6 +293,8 @@ export default function DetailLayout({
     return renderGenericContent(section.content);
   }
 
+  const quickFacts = buildQuickFacts();
+
   return (
     <div className="pt-24 pb-16 lg:pt-32">
       <div className="mx-auto max-w-3xl px-4 lg:px-8">
@@ -256,15 +330,70 @@ export default function DetailLayout({
           <TagChips tags={tags} variant="gold" />
         </div>
 
+        {coverImageSrc && (
+          <div className="mb-8 overflow-hidden rounded-2xl border border-glass-border/70 bg-background/30">
+            <div className="relative aspect-[16/9] w-full">
+              <Image
+                src={coverImageSrc}
+                alt={coverImageAlt ?? title}
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 896px"
+              />
+            </div>
+          </div>
+        )}
+
+        <section className="mb-8 rounded-2xl border border-gold/30 bg-gradient-to-br from-gold/10 via-background/40 to-background/20 p-4 md:p-6">
+          <h2 className="mb-4 font-serif text-2xl font-semibold text-gold">Ficha Rapida</h2>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {quickFacts.map((fact, idx) => (
+              <article
+                key={`${fact.label}-${idx}`}
+                className={
+                  idx === 0
+                    ? "rounded-xl border border-glass-border bg-background/45 p-4 sm:col-span-2 lg:col-span-3"
+                    : "rounded-xl border border-glass-border bg-background/45 p-4"
+                }
+              >
+                <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-teal">{fact.label}</p>
+                <p className="text-sm leading-relaxed text-foreground">{fact.value}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <nav className="mb-8 flex flex-wrap gap-2">
+          {sections.map((section, idx) => {
+            const id = toAnchorId(section.title);
+            return (
+              <a
+                key={`${section.title}-${idx}`}
+                href={`#${id}`}
+                className="rounded-full border border-glass-border bg-background/40 px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-muted transition-colors hover:border-teal hover:text-foreground"
+              >
+                {section.title}
+              </a>
+            );
+          })}
+        </nav>
+
         {/* Content sections */}
         <div className="space-y-8">
-          {sections.map((section) => (
-            <div key={section.title} className="glass-card rounded-xl p-6 md:p-8">
-              <h2 className="mb-3 font-serif text-xl font-semibold text-foreground">
+          {sections.map((section, idx) => (
+            <section
+              key={section.title}
+              id={toAnchorId(section.title)}
+              className="glass-card scroll-mt-24 rounded-xl p-6 md:p-8"
+            >
+              <h2 className="mb-3 flex items-center gap-3 font-serif text-xl font-semibold text-foreground">
+                <span className="inline-flex h-7 min-w-7 items-center justify-center rounded-full border border-gold/60 bg-gold/10 px-2 text-xs font-bold text-gold">
+                  {idx + 1}
+                </span>
                 {section.title}
               </h2>
               <div className="space-y-4 text-muted">{renderSectionContent(section)}</div>
-            </div>
+            </section>
           ))}
         </div>
       </div>

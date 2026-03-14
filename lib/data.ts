@@ -8,6 +8,8 @@ export interface CompendiumEntry {
   slug: string;
   description: string;
   tags: string[];
+  coverImageSrc?: string;
+  coverImageAlt?: string;
   sections: { title: string; content: string }[];
 }
 
@@ -19,6 +21,8 @@ export const clases: CompendiumEntry[] = [
     description:
       "Brujos artesanos procedentes de Tl'atl que combaten a traves del vinculo espiritual con su Ixip y el despertar de los elementos tonales.",
     tags: ["Invocador", "Estratega", "Inteligencia"],
+    coverImageSrc: "/preview/images/Brujo_Catemaco.jpg",
+    coverImageAlt: "Brujo Catemaco junto a su Ixip en una cueva del reino de Tl'atl.",
     sections: [
       {
         title: "Descripcion",
