@@ -25,29 +25,9 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center px-4 text-center">
-        {/* Logo */}
-        <Image
-          src="/preview/images/tonaltlan_logo.png"
-          alt="Tonaltlan"
-          width={600}
-          height={200}
-          className="mb-6 w-[280px] md:w-[400px] lg:w-[520px]"
-          style={{ height: "auto" }}
-          priority
-        />
-
         <h1 className="mb-4 font-serif text-4xl font-bold tracking-wide text-gold md:text-5xl lg:text-6xl">
           Tu Aventura Comienza
         </h1>
-
-        <p className="mx-auto mb-8 max-w-2xl text-base leading-relaxed text-muted md:text-lg">
-          Tonaltlan es un juego de rol de mesa ambientado en un mundo inspirado en las grandes
-          civilizaciones mesoamericanas. Utiliza un sistema de reglas basado en Dungeons &amp;
-          Dragons 2024, adaptado para reflejar la cosmovision y las fuerzas divinas de este
-          universo. Navega por selvas sagradas, explora templos olvidados y enfrentate a criaturas
-          provenientes del Mictlan mismo mientras despiertas los Puntos Tonal que conectan a los
-          mortales con las deidades elementales y el equilibrio del cosmos.
-        </p>
 
         {/* CTAs */}
         <div className="flex flex-col gap-4 sm:flex-row">
