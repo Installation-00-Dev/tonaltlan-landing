@@ -1,11 +1,10 @@
-import type { RankedRace } from "@/lib/affinity-test";
-
 export interface AffinitySubmissionPayload {
   name: string;
   email: string;
   dominantResult: string;
-  secondaryResult?: string;
-  ranking: RankedRace[];
+  secondaryResult: string | null;
+  scores: Record<string, number>;
+  subscribed: boolean;
 }
 
 export type AffinitySubmissionOutcome = "saved" | "failed" | "skipped";
@@ -15,7 +14,9 @@ const WEBHOOK_TIMEOUT_MS = 8000;
 export async function submitAffinityToWebhook(
   payload: AffinitySubmissionPayload,
 ): Promise<AffinitySubmissionOutcome> {
-  const endpoint = process.env.NEXT_PUBLIC_AFFINITY_WEBHOOK_URL?.trim();
+  const endpoint =
+    process.env.NEXT_PUBLIC_GAS_WEBHOOK_URL?.trim() ||
+    process.env.NEXT_PUBLIC_AFFINITY_WEBHOOK_URL?.trim();
 
   if (!endpoint) {
     return "skipped";

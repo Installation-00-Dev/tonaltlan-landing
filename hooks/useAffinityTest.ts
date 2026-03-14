@@ -107,8 +107,9 @@ export function useAffinityTest() {
       name: user.name.trim(),
       email: user.email.trim(),
       dominantResult: finalResults.dominant.narrative.name,
-      secondaryResult: finalResults.secondary?.narrative.name,
-      ranking: finalResults.ranking,
+      secondaryResult: finalResults.secondary?.narrative.name ?? null,
+      scores,
+      subscribed: false,
     });
 
     if (outcome === "saved") {
