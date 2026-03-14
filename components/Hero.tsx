@@ -45,11 +45,13 @@ export default function Hero() {
           </Link>
         </div>
 
-        <div className="mt-4 flex w-full justify-center">
-          <img
+        <div className="mt-8 flex w-full justify-center">
+          <Image
             src="/images/tonaltlan_logo.png"
             alt="Logo de Tonaltlan"
-            className="h-auto w-[150px]"
+            width={280}
+            height={90}
+            style={{ width: "280px", height: "auto" }}
           />
         </div>
       </div>

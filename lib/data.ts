@@ -236,63 +236,7 @@ export const especies: CompendiumEntry[] = [
 ];
 
 // ── BESTIARIO ───────────────────────────────────────────────
-export const bestiario: CompendiumEntry[] = [
-  {
-    name: "Cipactli",
-    slug: "cipactli",
-    description: "El cocodrilo primordial cuyo cuerpo formo la tierra misma.",
-    tags: ["Colosal", "Primordial", "Mictlan"],
-    sections: [
-      { title: "Descripcion", content: "Cipactli es la bestia primordial, un cocodrilo cosmico de proporciones inimaginables. Segun la leyenda, los dioses despedazaron su cuerpo para crear la tierra. Sus fragmentos aun deambulan por Tonaltlan como criaturas menores pero terribles." },
-      { title: "Rasgos", content: "Armadura Natural: piel casi impenetrable. Fauces Primordiales: su mordida ignora la mayoria de resistencias. Regeneracion Antigua: se cura lentamente cada turno." },
-      { title: "Notas", content: "Encuentro de nivel alto. Los fragmentos de Cipactli pueden servir como jefes de mazmorra o amenazas regionales en la campana." },
-    ],
-  },
-  {
-    name: "Tzitzimitl",
-    slug: "tzitzimitl",
-    description: "Demonios estelares que descienden durante los eclipses para devorar la luz.",
-    tags: ["Celestial", "Demoniaco", "Elite"],
-    sections: [
-      { title: "Descripcion", content: "Los Tzitzimime son demonios estelares con forma de esqueletos adornados con estrellas. Habitan en las tinieblas entre las estrellas y descienden a la tierra durante los eclipses solares, intentando devorar al sol y sumir al mundo en oscuridad eterna." },
-      { title: "Rasgos", content: "Aura de Eclipse: oscurece el area circundante. Garras Estelares: dano radiante y necrotico. Vuelo Celestial: vuelan con alas de oscuridad. Debilidad Solar: vulnerables a magia de fuego y luz." },
-      { title: "Notas", content: "Enemigos tematicos perfectos para aventuras centradas en eclipses o amenazas cosmicas. Funcionan mejor en grupos." },
-    ],
-  },
-  {
-    name: "Nagual Salvaje",
-    slug: "nagual-salvaje",
-    description: "Cambiaformas corrompidos que han perdido su identidad humana.",
-    tags: ["Bestia", "Corrupto", "Selva"],
-    sections: [
-      { title: "Descripcion", content: "Cuando un Nahual pierde el control de su transformacion, queda atrapado entre formas: ni humano ni animal, sino una abominacion retorcida. Los Naguales Salvajes vagan por las selvas, atacando a viajeros con una furia animal mezclada con astucia humana." },
-      { title: "Rasgos", content: "Forma Inestable: cambia de tamano y capacidades aleatoriamente. Aullido Desgarrador: causa miedo. Resistencia Salvaje: dificil de derribar." },
-      { title: "Notas", content: "Encuentro de nivel medio. Puede servir como gancho narrativo si un PNJ conocido se transforma en Nagual Salvaje." },
-    ],
-  },
-  {
-    name: "Xiuhcoatl",
-    slug: "xiuhcoatl",
-    description: "Serpiente de fuego que sirve como arma viviente de los dioses.",
-    tags: ["Fuego", "Divino", "Legendario"],
-    sections: [
-      { title: "Descripcion", content: "La Xiuhcoatl es la serpiente de fuego turquesa, arma personal de Huitzilopochtli. Estas serpientes ardientes patrullan los templos mas sagrados y son invocadas por los sacerdotes mas poderosos como arma de ultimo recurso contra amenazas existenciales." },
-      { title: "Rasgos", content: "Cuerpo Igneo: todo lo que la toca recibe dano de fuego. Aliento de Turquesa: cono de fuego devastador. Inmunidad al Fuego: completamente inmune. Debilidad Acuatica: vulnerable al agua y hielo." },
-      { title: "Notas", content: "Criatura legendaria, encuentro de nivel muy alto o potencial aliado divino. Su presencia indica que los dioses mismos estan involucrados." },
-    ],
-  },
-  {
-    name: "Chaneque",
-    slug: "chaneque",
-    description: "Espiritus traviesos guardianes de bosques y manantiales.",
-    tags: ["Hada", "Naturaleza", "Comun"],
-    sections: [
-      { title: "Descripcion", content: "Los Chaneques son espiritus pequenos y astutos que protegen los bosques, rios y cuevas de Tonaltlan. Disfrutan engañando a los viajeros, robando su energia tonal (sombra del alma) y dejandolos desorientados. Sin embargo, tambien pueden ser aliados valiosos si se les trata con respeto." },
-      { title: "Rasgos", content: "Invisibilidad Forestal: desaparecen entre la vegetacion. Robo de Energia Tonal: pueden confundir y desorientar. Conocimiento del Bosque: saben todo lo que ocurre en su territorio." },
-      { title: "Notas", content: "Encuentro de nivel bajo, perfecto para introducir a los jugadores al folklore mesoamericano. Pueden ser enemigos, aliados o simples elementos del entorno." },
-    ],
-  },
-];
+export const bestiario: CompendiumEntry[] = [];
 
 // ── MONTURAS ────────────────────────────────────────────────
 export const monturas: CompendiumEntry[] = [
