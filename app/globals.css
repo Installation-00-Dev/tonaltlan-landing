@@ -108,6 +108,18 @@ section[id] {
   }
 }
 
+@keyframes tonalSweep {
+  0%,
+  100% {
+    transform: translateX(-35%) translateY(0%);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateX(35%) translateY(0%);
+    opacity: 0.85;
+  }
+}
+
 .animate-fade-in {
   opacity: 0;
   animation: fadeInUp 0.7s ease-out forwards;

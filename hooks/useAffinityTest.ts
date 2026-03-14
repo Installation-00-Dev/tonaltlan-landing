@@ -1,5 +1,6 @@
 "use client";
 
+import { submitAffinityToWebhook } from "@/lib/affinity-submission";
 import {
     EMAIL_REGEX,
     applyOptionPoints,
@@ -13,7 +14,7 @@ import {
     type Scores,
     type User,
 } from "@/lib/affinity-test";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 export type TestPhase = "intro" | "questions" | "results";
 
@@ -21,6 +22,8 @@ export interface FormErrors {
   name?: string;
   email?: string;
 }
+
+export type SubmissionStatus = "idle" | "saving" | "saved" | "error";
 
 function findOptionById(question: Question, optionId?: string): Option | undefined {
   if (!optionId) {
@@ -39,6 +42,8 @@ export function useAffinityTest() {
   const [answers, setAnswers] = useState<Array<string | undefined>>([]);
   const [scores, setScores] = useState<Scores>(() => createInitialScores());
   const [results, setResults] = useState<CalculatedResults | null>(null);
+  const [submissionStatus, setSubmissionStatus] = useState<SubmissionStatus>("idle");
+  const hasSubmittedRef = useRef(false);
 
   const currentQuestion = sessionQuestions[currentQuestionIndex];
   const currentAnswerId = answers[currentQuestionIndex];
@@ -84,8 +89,41 @@ export function useAffinityTest() {
     setAnswers([]);
     setScores(createInitialScores());
     setResults(null);
+    setSubmissionStatus("idle");
+    hasSubmittedRef.current = false;
     setPhase("questions");
     return true;
+  }
+
+  async function submitParticipantResult(finalResults: CalculatedResults) {
+    if (hasSubmittedRef.current) {
+      return;
+    }
+
+    hasSubmittedRef.current = true;
+    setSubmissionStatus("saving");
+
+    const outcome = await submitAffinityToWebhook({
+      name: user.name.trim(),
+      email: user.email.trim(),
+      dominantResult: finalResults.dominant.narrative.name,
+      secondaryResult: finalResults.secondary?.narrative.name,
+      ranking: finalResults.ranking,
+    });
+
+    if (outcome === "saved") {
+      setSubmissionStatus("saved");
+      return;
+    }
+
+    if (outcome === "skipped") {
+      setSubmissionStatus("idle");
+      hasSubmittedRef.current = false;
+      return;
+    }
+
+    setSubmissionStatus("error");
+    hasSubmittedRef.current = false;
   }
 
   function handleOptionSelect(optionId: string) {
@@ -147,8 +185,10 @@ export function useAffinityTest() {
       return true;
     }
 
-    setResults(calculateResults(scores));
+    const finalResults = calculateResults(scores);
+    setResults(finalResults);
     setPhase("results");
+    void submitParticipantResult(finalResults);
     return true;
   }
 
@@ -161,6 +201,8 @@ export function useAffinityTest() {
     setAnswers([]);
     setScores(createInitialScores());
     setResults(null);
+    setSubmissionStatus("idle");
+    hasSubmittedRef.current = false;
   }
 
   return {
@@ -172,6 +214,7 @@ export function useAffinityTest() {
     answers,
     scores,
     results,
+    submissionStatus,
     currentQuestion,
     currentAnswerId,
     totalQuestions,

@@ -11,6 +11,7 @@ export default function AfinidadPage() {
     sessionQuestions,
     currentQuestionIndex,
     results,
+    submissionStatus,
     currentQuestion,
     currentAnswerId,
     totalQuestions,
@@ -205,6 +206,20 @@ export default function AfinidadPage() {
                 Hacer Test Nuevamente
               </button>
             </div>
+
+            {submissionStatus === "saving" ? (
+              <p className="mt-4 text-center text-sm text-muted">Guardando tu resultado...</p>
+            ) : null}
+
+            {submissionStatus === "saved" ? (
+              <p className="mt-4 text-center text-sm text-teal">Resultado guardado correctamente.</p>
+            ) : null}
+
+            {submissionStatus === "error" ? (
+              <p className="mt-4 text-center text-sm text-red-300">
+                No se pudo guardar tu resultado. Intenta de nuevo en unos segundos.
+              </p>
+            ) : null}
           </div>
         ) : null}
       </div>

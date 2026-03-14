@@ -41,14 +41,18 @@ export default function About() {
 
         {/* Illustration panel */}
         <div className="flex items-center justify-center">
-          <div className="glass-card relative aspect-[4/3] w-full overflow-hidden rounded-2xl">
+          <div className="group glass-card relative aspect-[4/3] w-full overflow-hidden rounded-2xl">
             <Image
               src="/images/Piramide_onix_color_final_1.webp"
               alt="Piramide de onix en Tonaltlan rodeada de energia mistica"
               fill
-              className="object-cover"
+              className="object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
+
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(245,196,95,0.35)_0%,rgba(245,196,95,0)_60%)] opacity-70 transition-opacity duration-700 group-hover:opacity-100" />
+            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,rgba(15,163,177,0)_30%,rgba(15,163,177,0.28)_50%,rgba(15,163,177,0)_70%)] opacity-70 [animation:tonalSweep_6s_ease-in-out_infinite]" />
+            <div className="pointer-events-none absolute inset-0 ring-1 ring-gold/25 ring-inset" />
           </div>
         </div>
       </div>
