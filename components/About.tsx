@@ -43,8 +43,8 @@ export default function About() {
         <div className="flex items-center justify-center">
           <div className="glass-card relative aspect-[4/3] w-full overflow-hidden rounded-2xl">
             <Image
-              src="/preview/images/about-illustration.jpg"
-              alt="El mundo de Tonaltlan: piramides ancestrales, selvas sagradas y energia mistica"
+              src="/preview/images/Piramide_onix_color_final_1.webp"
+              alt="Piramide de onix en Tonaltlan rodeada de energia mistica"
               fill
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 50vw"
