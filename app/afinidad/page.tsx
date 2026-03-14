@@ -63,7 +63,8 @@ export default function AfinidadPage() {
                   type="text"
                   value={user.name}
                   onChange={(event) => updateUserField("name", event.target.value)}
-                  className="w-full rounded-xl border border-glass-border bg-background/70 px-4 py-3 font-medium text-slate-100 caret-teal outline-none transition-colors placeholder:text-slate-400 focus:border-teal"
+                  className="w-full rounded-xl border border-glass-border bg-slate-950/90 px-4 py-3 font-semibold !text-white caret-teal outline-none transition-colors placeholder:text-slate-300 focus:border-teal focus:ring-2 focus:ring-teal/30"
+                  style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff", opacity: 1 }}
                   placeholder="Tu nombre"
                 />
                 {formErrors.name ? <p className="mt-2 text-sm text-red-300">{formErrors.name}</p> : null}
@@ -78,7 +79,8 @@ export default function AfinidadPage() {
                   type="email"
                   value={user.email}
                   onChange={(event) => updateUserField("email", event.target.value)}
-                  className="w-full rounded-xl border border-glass-border bg-background/70 px-4 py-3 font-medium text-slate-100 caret-teal outline-none transition-colors placeholder:text-slate-400 focus:border-teal"
+                  className="w-full rounded-xl border border-glass-border bg-slate-950/90 px-4 py-3 font-semibold !text-white caret-teal outline-none transition-colors placeholder:text-slate-300 focus:border-teal focus:ring-2 focus:ring-teal/30"
+                  style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff", opacity: 1 }}
                   placeholder="tu@email.com"
                 />
                 {formErrors.email ? <p className="mt-2 text-sm text-red-300">{formErrors.email}</p> : null}
