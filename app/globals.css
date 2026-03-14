@@ -138,7 +138,7 @@ input:-webkit-autofill:focus,
 textarea:-webkit-autofill,
 textarea:-webkit-autofill:hover,
 textarea:-webkit-autofill:focus {
-  -webkit-text-fill-color: #ffffff;
+  -webkit-text-fill-color: #111827;
   caret-color: var(--teal);
   transition: background-color 6000s ease-in-out 0s;
 }
