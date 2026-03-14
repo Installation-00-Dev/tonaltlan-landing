@@ -36,6 +36,69 @@ export const clases: CompendiumEntry[] = [
       },
     ],
   },
+  {
+    name: "Guerrero Otomi",
+    slug: "guerrero-otomi",
+    description:
+      "Defensores de Zalan. Los Guerreros Otomi son la milicia de elite del norte de Tonaltlan y portadores del Punto Tonal de Tierra.",
+    tags: ["Tanque", "cuerpo a cuerpo", "Tonal de Tierra"],
+    coverImageSrc: "/preview/images/Otomi.jpg",
+    coverImageAlt: "Guerrero Otomi con armadura pesada y estandarte de guerra en primera linea.",
+    sections: [
+      {
+        title: "Descripcion",
+        content:
+          "Defensores de Zalan.\n\nLos Guerreros Otomi son la milicia de elite del norte de Tonaltlan y portadores del Punto Tonal de Tierra. Su proposito no es la gloria personal, sino mantener la linea de batalla y proteger a su pueblo sin retroceder. Donde un Otomi clava su estandarte, la batalla se sostiene.\n\nCubiertos con armaduras pesadas, portando chimallis geometricos y estandartes de guerra, los Otomi son la encarnacion de la resistencia. Su presencia en el campo de batalla convierte el caos en una formacion solida donde los aliados encuentran proteccion y los enemigos encuentran un muro imposible de romper.\n\nUn Otomi no corre hacia la batalla. La batalla llega a el.",
+      },
+      {
+        title: "Nota",
+        content:
+          "Ideal para jugadores que disfrutan proteger a su equipo y liderar la linea de batalla, que se sienten atraidos por personajes resistentes capaces de absorber el dano mientras el resto del grupo combate con mayor seguridad. Esta clase resulta perfecta para quienes prefieren un estilo de combate frontal y dominante, donde su presencia define el lugar donde ocurre la pelea. Si te atrae la fantasia de convertirte en el escudo del grupo, sostener la formacion y ser el pilar sobre el que se apoya todo el equipo, el Guerrero Otomi es tu camino.",
+      },
+    ],
+  },
+  {
+    name: "Mitotiani",
+    slug: "mitotiani",
+    description:
+      "Danzante Tonal. Guerreros ritualistas que canalizan la energia del Tonal a traves de danzas sagradas.",
+    tags: ["Movilidad", "Soporte", "Multi-Tonal"],
+    coverImageSrc: "/preview/images/Mitotiani.jpg",
+    coverImageAlt: "Mitotiani ejecutando una danza ritual sobre glifos tonales.",
+    sections: [
+      {
+        title: "Descripcion",
+        content:
+          "Danzante Tonal.\n\nLos Mitotiani son guerreros ritualistas que canalizan la energia del Tonal a traves de danzas sagradas. Cada paso, cada giro y cada golpe de sus ayoyotes contra la tierra deja marcas de poder que se manifiestan como glifos rituales, alterando el campo de batalla y guiando la energia de los elementos.\n\nA diferencia de otros combatientes, el Mitotiani no depende de armas tradicionales. Su propio cuerpo es su instrumento de combate. Luchan unicamente con piernas y pies, ejecutando patadas, barridas y lanzamientos de dagas ocultas en sus ayoyotes. Durante la danza, sus manos permanecen inmoviles detras de la espalda, preservando el equilibrio y la pureza del ritual. Cualquier arma empunada romperia el ritmo de la danza y debilitaria su conexion con el Tonal.\n\nMediante sus danzas pueden fortalecer aliados, debilitar enemigos o transformar el terreno mismo en un escenario ritual donde el combate se convierte en una coreografia de poder elemental.\n\nUn Mitotiani no solo pelea. Convierte la batalla en un ritual.",
+      },
+      {
+        title: "Nota",
+        content:
+          "Ideal para jugadores que disfrutan personajes rapidos y creativos que se mueven constantemente por el campo de batalla, usando su posicion y sus habilidades para alterar el ritmo del combate. Esta clase es perfecta para quienes prefieren un estilo de juego dinamico, donde la movilidad, el control del terreno y la coordinacion con el equipo son mas importantes que la fuerza bruta.",
+      },
+    ],
+  },
+  {
+    name: "Tlapali",
+    slug: "tlapali",
+    description:
+      "Portador de Sangre Tonal. Practicantes de un conocimiento ritual prohibido que manipula la sangre para debilitar y controlar.",
+    tags: ["Controlador", "Debilitador", "Sellos de sangre"],
+    coverImageSrc: "/preview/images/Tlapali.jpg",
+    coverImageAlt: "Tlapali marcado con simbolos de sangre tonal en un ritual oscuro.",
+    sections: [
+      {
+        title: "Descripcion",
+        content:
+          "Portador de Sangre Tonal.\n\nEl Tlapali es una figura casi mitica. Muchos en los reinos creen que esta disciplina desaparecio hace siglos en lo profundo de los Bosques Obscuros, pero la verdad es que aun existen unos pocos practicantes que custodian este conocimiento ritual prohibido.\n\nSu poder nace de una energia tonal unica, fruto de la union entre la Obscuridad y el Agua, que les permite manipular la sangre como un medio ritual para marcar enemigos, debilitar su esencia vital y alterar el destino del combate. Los Tlapali utilizan sellos de sangre que activan sobre sus objetivos, debilitandolos poco a poco mientras el enemigo queda atrapado en un ciclo de dolor, desgaste y control.\n\nDebido a su dominio sobre la sangre, los Tlapali son temidos y evitados por muchos. Cada uno porta un simbolo pintado con sangre en el rostro, senal de su vinculo con esta tradicion ancestral. Aunque la mayoria permanece aislada en los bosques, algunos abandonan su tierra para aventurarse en el mundo y demostrar que su arte no es solo destruccion, sino tambien poder y conocimiento.\n\nUn Tlapali no busca derrotar a su enemigo de inmediato. Lo marca y deja que la sangre haga su trabajo.",
+      },
+      {
+        title: "Nota",
+        content:
+          "Esta clase es ideal para quienes prefieren manipular el flujo del combate, controlar a los enemigos y apoyar al grupo mediante efectos que reducen las capacidades del oponente. Tambien atraera a jugadores que disfrutan mecanicas unicas basadas en preparacion y activacion de habilidades, asi como a quienes se sienten atraidos por personajes oscuros, ritualistas y envueltos en un aura de misterio.",
+      },
+    ],
+  },
 ];
 
 // ── ESPECIES ────────────────────────────────────────────────
