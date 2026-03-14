@@ -26,6 +26,8 @@ export default function DetailLayout({
   backHref,
   backLabel,
 }: DetailLayoutProps) {
+  const isHekaCover = (coverImageSrc ?? "").includes("Heka.webp");
+
   function toAnchorId(value: string) {
     return value
       .toLowerCase()
@@ -335,13 +337,20 @@ export default function DetailLayout({
         </div>
 
         {coverImageSrc && (
-          <div className="mb-8 overflow-hidden rounded-2xl border border-glass-border/70 bg-background/30">
+          <div className="relative mb-8 overflow-hidden rounded-2xl border border-glass-border/70 bg-gradient-to-br from-amber-100/20 via-rose-100/10 to-sky-100/15">
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_22%_22%,rgba(255,255,255,0.22),transparent_45%),radial-gradient(circle_at_78%_80%,rgba(45,212,191,0.14),transparent_50%)]" />
+            {isHekaCover && (
+              <div className="pointer-events-none absolute inset-4 rounded-2xl bg-sky-100/35" />
+            )}
             <Image
               src={coverImageSrc}
               alt={coverImageAlt ?? title}
               width={896}
               height={600}
-              className="h-auto w-full"
+              className={[
+                "relative h-auto w-full",
+                isHekaCover ? "brightness-110 contrast-125" : "",
+              ].join(" ")}
               sizes="(max-width: 1024px) 100vw, 896px"
             />
           </div>

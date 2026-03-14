@@ -44,6 +44,14 @@ export default function Hero() {
             Test de Afinidad
           </Link>
         </div>
+
+        <div className="mt-4 flex w-full justify-center">
+          <img
+            src="/images/tonaltlan_logo.png"
+            alt="Logo de Tonaltlan"
+            className="h-auto w-[150px]"
+          />
+        </div>
       </div>
 
       {/* Scroll indicator */}
