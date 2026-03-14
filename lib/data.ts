@@ -104,47 +104,133 @@ export const clases: CompendiumEntry[] = [
 // ── ESPECIES ────────────────────────────────────────────────
 export const especies: CompendiumEntry[] = [
   {
-    name: "Macehualtin",
-    slug: "macehualtin",
-    description: "Los hijos del maiz, la raza humana de Tonaltlan, versatiles y resilientes.",
-    tags: ["Humano", "Adaptable", "Comun"],
+    name: "He'kari",
+    slug: "hekari",
+    description: "Hijos de Heka. Descendientes de la diosa del viento, ágiles, expresivos y portadores de palabras que cambian el destino.",
+    tags: ["Agilidad", "Social", "Viento"],
+    coverImageSrc: "/preview/images/especie_Hekari.png",
+    coverImageAlt: "He'kari de cabello ondulante y ojos verde jade en movimiento.",
     sections: [
-      { title: "Descripcion", content: "Los Macehualtin son los seres humanos de Tonaltlan, nacidos de la quinta creacion del maiz sagrado. Conforman la mayoria de la poblacion y ocupan todos los estratos sociales, desde campesinos hasta tlatoanis." },
-      { title: "Rasgos", content: "Versatilidad: un punto extra de habilidad a eleccion. Determinacion Humana: una vez por sesion, pueden repetir una tirada fallida. Herencia Cultural: eligen una tradicion cultural que otorga un rasgo adicional." },
-      { title: "Notas", content: "La especie mas flexible, ideal para cualquier clase. Su fuerza radica en la adaptabilidad y la capacidad de especializarse en cualquier rol." },
+      {
+        title: "Descripcion",
+        content:
+          "Hijos de Heka.\n\nLos He'kari son descendientes de Heka, diosa del viento. Altos, esbeltos y de movimientos ligeros, parecen moverse con la misma fluidez que una corriente de aire. Su cabello rara vez permanece quieto y sus ojos verde jade reflejan una curiosidad constante por el mundo.\n\nEn Tonaltlan son conocidos como artistas, mensajeros, espías y guardianes del conocimiento, pues su voz y presencia poseen una cualidad casi hipnótica. Los He'kari creen que las palabras viajan como el viento, y que incluso el susurro más pequeño puede cambiar el destino del mundo.\n\nRasgos\n\nAfinidad con el Aire: los He'kari no necesitan respirar y son inmunes a gases o venenos inhalados.\n\nLigereza del Viento: su cuerpo está naturalmente adaptado a la agilidad y el movimiento.",
+      },
+      {
+        title: "Nota",
+        content:
+          "Los He'kari destacan en estilos de juego enfocados en movilidad, exploración e interacción social, siendo una excelente opción para personajes ágiles, curiosos y expresivos.",
+      },
     ],
   },
   {
-    name: "Ahuizotl",
-    slug: "ahuizotl",
-    description: "Seres anfibios de los lagos profundos con manos prensiles en la cola.",
-    tags: ["Acuatico", "Misterioso", "Raro"],
+    name: "Hualik",
+    slug: "hualik",
+    description: "Hijos de Calti. Descendientes de la diosa de la obscuridad y el silencio, raros y misteriosos habitantes de las sombras.",
+    tags: ["Sigilo", "Estrategia", "Obscuridad"],
     sections: [
-      { title: "Descripcion", content: "Los Ahuizotl son criaturas semi-acuaticas que habitan los lagos y rios mas profundos de Tonaltlan. Su apariencia combina rasgos caninos con piel brillante y una cola prensil terminada en una mano funcional." },
-      { title: "Rasgos", content: "Respiracion Acuatica: pueden respirar bajo el agua indefinidamente. Mano Caudal: su cola funciona como una tercera mano. Vision Abismal: ven en la oscuridad total bajo el agua." },
-      { title: "Notas", content: "Especie excelente para campanas acuaticas o costeras. Su mano caudal abre posibilidades creativas en combate y exploracion." },
+      {
+        title: "Descripcion",
+        content:
+          "Hijos de Calti.\n\nLos Hualik son descendientes de Calti, diosa de la obscuridad y el silencio. Son una de las especies más raras y misteriosas de Tonaltlan, tan escasas que muchos creen que solo existen en leyendas.\n\nSu piel oscura absorbe la luz y su presencia parece apagar los sonidos del entorno. Completamente lampiños y de rasgos afilados, sus ojos blancos destacan incluso en la penumbra. Los Hualik se mueven con una quietud inquietante, como si fueran parte natural de las sombras mismas.\n\nNo forman reinos ni grandes sociedades. Prefieren vivir aislados en cuevas, ruinas o bosques profundos, observando el mundo desde la distancia. Muchos los conocen como los ojos de la noche, silenciosos testigos de los acontecimientos del continente.\n\nRasgos\n\nFusión con las Sombras: los Hualik pueden moverse y ocultarse en la oscuridad con una facilidad sobrenatural.\n\nVisión Nocturna Superior: pueden ver con gran claridad incluso en la oscuridad más profunda.",
+      },
+      {
+        title: "Nota",
+        content:
+          "Los Hualik destacan en estilos de juego basados en sigilo, observación y estrategia, siendo una excelente elección para personajes que prefieren moverse desde las sombras y actuar cuando el momento es perfecto.",
+      },
     ],
   },
   {
-    name: "Tlalocan-i",
-    slug: "tlalocan-i",
-    description: "Espiritus de la lluvia encarnados, guardianes de los bosques nublados.",
-    tags: ["Elemental", "Naturaleza", "Raro"],
+    name: "Irzak",
+    slug: "irzak",
+    description: "Hijos de Zilo. Originarios de la península volcánica de Xitl, orgullosos, intensos y guiados por un honor inquebrantable.",
+    tags: ["Fuego", "Combate frontal", "Honor"],
+    coverImageSrc: "/preview/images/especie_fuego.png",
+    coverImageAlt: "Irzak de mirada ámbar y presencia ígnea forjado por la tierra volcánica.",
     sections: [
-      { title: "Descripcion", content: "Los Tlalocan-i son espiritus de lluvia y niebla que han tomado forma solida. Provienen del Tlalocan, el paraiso de Tlaloc, y eligen manifestarse en el mundo mortal para cumplir propositos misteriosos. Su piel tiene un tono azulado y sus ojos brillan como gotas de rocio." },
-      { title: "Rasgos", content: "Forma de Niebla: pueden volverse intangibles brevemente. Control Pluvial: manipulan la lluvia en un area pequena. Regeneracion Humeda: se curan lentamente bajo la lluvia." },
-      { title: "Notas", content: "Especie eterea y misteriosa, ideal para jugadores que buscan una experiencia de rol profunda. Sus habilidades climaticas pueden cambiar el curso de encuentros al aire libre." },
+      {
+        title: "Descripcion",
+        content:
+          "Hijos de Zilo.\n\nLos Irzak provienen de la península volcánica de Xitl, una tierra dominada por fuego, piedra ardiente y el constante rugido del Volcán Eterno. Forjados en este ambiente extremo, los Irzak son conocidos por su carácter intenso, su orgullo y su código de honor inquebrantable.\n\nCreen que cada alma es una chispa otorgada por Zilo, señor del fuego, y que su deber es arder con pasión durante toda su vida antes de regresar al gran brasero divino. Por ello viven con intensidad: luchan con valentía, aman con fuerza y honran a sus aliados con una lealtad absoluta.\n\nSus cuerpos reflejan el poder del volcán: piel en tonos terracota o bronce, ojos ámbar o rojos como brasas, y cabellos que parecen moverse como llamas vivas. Entre su pueblo, las barbas rojizas o cobrizas son símbolo de orgullo, fuerza y madurez.\n\nRasgos\n\nForjados en Llamas: los Irzak poseen una fuerte resistencia al fuego.\n\nChispa de Zilo: la energía del fuego vive dentro de ellos, permitiéndoles manifestar pequeñas llamas y canalizar el poder ígneo.",
+      },
+      {
+        title: "Nota",
+        content:
+          "Los Irzak destacan en estilos de juego agresivos y directos, siendo una excelente elección para personajes que prefieren el combate frontal, la fuerza de voluntad y el poder del fuego. Son especialmente adecuados para clases marciales o personajes que canalizan energía elemental.",
+      },
     ],
   },
   {
-    name: "Cihuateteo",
-    slug: "cihuateteo",
-    description: "Espiritus guerreros femeninos que caminan entre el mundo de los vivos.",
-    tags: ["No-muerto", "Guerrero", "Raro"],
+    name: "Lok'Naa",
+    slug: "lok-naa",
+    description: "Hijos de Lok. Descendientes del dios del agua, serenos, sabios y ligados a mares, cenotes y ríos.",
+    tags: ["Soporte", "Exploración", "Agua"],
     sections: [
-      { title: "Descripcion", content: "Las Cihuateteo son espiritus de mujeres que murieron en el parto, consideradas guerreras sagradas. En Tonaltlan, algunas eligen regresar al mundo mortal en cuerpos etereos para continuar su lucha. Son temidas y veneradas." },
-      { title: "Rasgos", content: "Resistencia Espectral: resistencia al dano fisico no-magico. Grito de Guerra: atemoriza a enemigos cercanos. Caminar entre Mundos: pueden percibir el plano espiritual." },
-      { title: "Notas", content: "Una especie con una historia profunda y tematicas fuertes. Requiere un jugador maduro que aprecie la narrativa detras de su existencia." },
+      {
+        title: "Descripcion",
+        content:
+          "Hijos de Lok.\n\nLos Lok'Naa son descendientes de Lok, dios del agua, y llevan en su cuerpo la esencia de mares, cenotes y ríos de Tonaltlan. Su presencia transmite una calma profunda, como si el murmullo del agua los acompañara a donde quiera que vayan.\n\nSu piel presenta tonos acuosos que van desde azules suaves hasta verdes jade o turquesas profundas. Su cabello fluye constantemente como si estuviera sumergido, y sus ojos reflejan colores marinos que evocan la serenidad de las aguas tranquilas.\n\nLos Lok'Naa son conocidos por su naturaleza pacífica, su sabiduría emocional y su profunda conexión con el agua. A lo largo de Tonaltlan se les reconoce como sanadores, guardianes de cenotes y exploradores de las profundidades, capaces de moverse bajo el agua con una facilidad extraordinaria.\n\nRasgos\n\nAdaptación Acuática: los Lok'Naa pueden permanecer largos periodos bajo el agua sin necesidad de salir a respirar.\n\nPresencia Serena: su naturaleza calmada y empática les permite influir positivamente en quienes los rodean.",
+      },
+      {
+        title: "Nota",
+        content:
+          "Los Lok'Naa destacan en estilos de juego enfocados en soporte, exploración y conexión con el agua, siendo una excelente elección para personajes que prefieren la calma, la sabiduría y la resiliencia sobre la confrontación directa.",
+      },
+    ],
+  },
+  {
+    name: "Quinametzin",
+    slug: "quinametzin",
+    description: "Hijos de la Tzal. Descendientes de la diosa de la tierra, antiguos, nobles y pilares de su comunidad.",
+    tags: ["Resistencia", "Protección", "Tierra"],
+    sections: [
+      {
+        title: "Descripcion",
+        content:
+          "Hijos de la Tzal.\n\nLos Quinametzin son hijos de Tzal, diosa de la tierra, una de las especies más antiguas y nobles de Tonaltlan. De estatura colosal y complexión poderosa, su presencia impone respeto, pero su naturaleza es sorprendentemente serena y bondadosa. Allí donde un Quinametzin vive, suele convertirse en un pilar de la comunidad.\n\nSu piel tiene la textura de la piedra, con tonos que recuerdan al granito, la obsidiana o el jade. Con el paso de los años, pequeñas grietas aparecen en su superficie, formando un mapa natural que refleja las experiencias de su vida.\n\nCada Quinametzin nace con una gema incrustada en su cuerpo, una manifestación física de su espíritu. Esta gema cambia de color según sus emociones, revelando su estado interior y haciendo casi imposible que oculten sus verdaderos sentimientos.\n\nRasgos\n\nPiel Pétrea: la piel de los Quinametzin posee la dureza de la roca, otorgándoles una resistencia natural excepcional.\n\nGema del Ánimo: cada Quinametzin posee una gema que refleja sus emociones y fortalece su conexión con los demás.",
+      },
+      {
+        title: "Nota",
+        content:
+          "Los Quinametzin destacan en estilos de juego enfocados en resistencia, protección y trabajo en equipo, siendo una excelente elección para personajes fuertes, protectores y profundamente leales a su comunidad.",
+      },
+    ],
+  },
+  {
+    name: "Toh'kari",
+    slug: "tohkari",
+    description: "Hijos de Tohuí. Descendientes del dios de la destrucción y el rayo, impredecibles y cargados de energía.",
+    tags: ["Rayo", "Volátil", "Nómada"],
+    sections: [
+      {
+        title: "Descripcion",
+        content:
+          "Hijos de Tohuí.\n\nLos Toh'kari son descendientes de Tohuí, dios de la destrucción y el rayo. Su presencia es como la calma tensa antes de un relámpago, impredecible, peligrosa y cargada de energía. Son una de las especies más temidas y evitadas de Tonaltlan, conocidos por su naturaleza explosiva y su relación directa con el poder del rayo.\n\nSu piel grisácea parece cargada de electricidad estática, y las marcas en sus manos y antebrazos (como cicatrices de relámpagos) brillan cuando manipulan energía. Sus ojos ámbar intensos y su cabello erizado por la electricidad revelan la tormenta que habita dentro de ellos.\n\nLos Toh'kari no construyen imperios ni ciudades. Viven como nómadas o en pequeños grupos errantes, guiados por su impulso, su búsqueda de poder y la naturaleza indomable de la tormenta que los define.\n\nRasgos\n\nAfinidad con la Tormenta: los Toh'kari poseen una conexión natural con la energía eléctrica y pueden manipular pequeñas descargas.\n\nPercepción Eléctrica: son capaces de sentir corrientes de energía en el entorno, como tormentas cercanas o fuentes de poder mágico.",
+      },
+      {
+        title: "Nota",
+        content:
+          "Los Toh'kari son una especie intensa y volátil, ideal para jugadores que disfrutan personajes impredecibles, impulsivos y difíciles de encasillar. Su fuerza está en su energía caótica y su naturaleza salvaje, lo que los convierte en personajes que suelen destacar por su presencia y su impacto en la historia.",
+      },
+    ],
+  },
+  {
+    name: "Ton",
+    slug: "ton",
+    description: "Hijos de Tonatli. Portadores de la última chispa del sol, de aura luminosa y honestidad absoluta.",
+    tags: ["Luz", "Sabiduría", "Honestidad"],
+    sections: [
+      {
+        title: "Descripcion",
+        content:
+          "Hijos de Tonatli.\n\nLos Ton son descendientes de Tonatli, la diosa de la luz primordial. Son una especie extremadamente rara, mencionada en antiguos cantos y murales dorados como portadores de la última chispa del sol. Su presencia es inconfundible, su piel irradia una luz cálida y su aura ilumina el entorno como si llevaran un pequeño amanecer dentro de sí.\n\nRaza de luz\n\nSus cuerpos emiten un resplandor natural que se intensifica con sus emociones. Cuando sienten alegría, tristeza o ira, su luz puede volverse tan intensa que ilumina grandes distancias. Su cabello, de tonos dorados y anaranjados, es tan fuerte como la propia luz y no puede ser cortado ni destruido.\n\nRaza de luz\n\nLos Ton son conocidos por su honestidad absoluta, pues no pueden mentir. Muchos viven como sabios, protectores o guardianes del conocimiento, dedicando sus largas vidas a ayudar a otros pueblos y preservar la memoria del mundo.\n\nRasgos\n\nLuz Interior: los Ton emiten una luz natural que puede iluminar su entorno.\n\nSinceridad Absoluta: los Ton no pueden mentir, su naturaleza los obliga a ser completamente honestos.",
+      },
+      {
+        title: "Nota",
+        content:
+          "Los Ton son una especie rara y legendaria, ideal para personajes sabios, protectores o figuras morales dentro de una historia. Su naturaleza luminosa y su sinceridad los convierte en individuos difíciles de ocultar, pero profundamente confiables y respetados.",
+      },
     ],
   },
 ];
@@ -320,7 +406,7 @@ export const sectionsMeta = [
   { title: "Clases",    slug: "clases",    description: "Arquetipos de heroes y villanos del mundo mesoamericano.",    count: clases.length },
   { title: "Especies",  slug: "especies",  description: "Seres nacidos del maiz, la obsidiana y el aliento de los dioses.",  count: especies.length },
   { title: "Bestiario", slug: "bestiario", description: "Criaturas del Mictlan y bestias de selvas y montanas sagradas.",   count: bestiario.length },
-  { title: "Monturas",  slug: "monturas",  description: "Companeros leales que surcan cielos, rios y caminos ancestrales.",  count: monturas.length },
+  { title: "Monturas",  slug: "monturas",  description: "Compañeros leales que surcan cielos, rios y caminos ancestrales.",  count: monturas.length },
   { title: "Deidades",  slug: "deidades",  description: "Los dioses que tejen el destino del cosmos y sus elegidos.",        count: deidades.length },
   { title: "Galeria",   slug: "galeria",   description: "Arte conceptual, ilustraciones y vistazos al universo.",            count: 0 },
 ];

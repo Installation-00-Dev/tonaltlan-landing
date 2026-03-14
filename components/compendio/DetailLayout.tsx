@@ -336,15 +336,14 @@ export default function DetailLayout({
 
         {coverImageSrc && (
           <div className="mb-8 overflow-hidden rounded-2xl border border-glass-border/70 bg-background/30">
-            <div className="relative h-[280px] w-full md:h-[380px] lg:h-[460px]">
-              <Image
-                src={coverImageSrc}
-                alt={coverImageAlt ?? title}
-                fill
-                className="object-contain p-2"
-                sizes="(max-width: 1024px) 100vw, 896px"
-              />
-            </div>
+            <Image
+              src={coverImageSrc}
+              alt={coverImageAlt ?? title}
+              width={896}
+              height={600}
+              className="h-auto w-full"
+              sizes="(max-width: 1024px) 100vw, 896px"
+            />
           </div>
         )}
 
