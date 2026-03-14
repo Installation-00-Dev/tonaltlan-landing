@@ -33,7 +33,7 @@ export default function Navbar() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
           ? "glass-card border-b border-glass-border shadow-lg"
-          : "bg-transparent"
+          : "bg-transparent backdrop-blur-sm"
       }`}
     >
       <nav
@@ -45,10 +45,10 @@ export default function Navbar() {
           <Image
             src="/images/tonaltlan_logo.png"
             alt="Tonaltlan logo"
-            width={140}
-            height={40}
+            width={180}
+            height={55}
             className="h-8 lg:h-10"
-            style={{ width: "auto" }}
+            style={{ width: "180px", height: "auto" }}
             priority
           />
         </Link>
@@ -59,8 +59,8 @@ export default function Navbar() {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className={`text-sm font-medium transition-colors hover:text-gold ${
-                  pathname === link.href ? "text-gold" : "text-foreground/80"
+                className={`text-sm font-semibold tracking-wide transition-colors hover:text-gold ${
+                  pathname === link.href ? "text-gold" : "text-white/90"
                 }`}
               >
                 {link.label}
