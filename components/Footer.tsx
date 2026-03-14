@@ -87,10 +87,10 @@ export default function Footer() {
                 target={social.href.startsWith("http") ? "_blank" : undefined}
                 rel={social.href.startsWith("http") ? "noreferrer" : undefined}
               >
-                {"iconSrc" in social ? (
+                {social.iconSrc ? (
                   <Image
                     src={social.iconSrc}
-                    alt={social.iconAlt}
+                    alt={social.iconAlt ?? "Instagram"}
                     width={18}
                     height={18}
                     className="h-[18px] w-[18px] rounded-sm"
