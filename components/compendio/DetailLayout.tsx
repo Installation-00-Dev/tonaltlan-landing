@@ -21,6 +21,10 @@ export default function DetailLayout({
   backHref,
   backLabel,
 }: DetailLayoutProps) {
+  function isTableLikeSection(title: string) {
+    return title.includes("Tabla") || title.includes("Estadisticas");
+  }
+
   return (
     <div className="pt-24 pb-16 lg:pt-32">
       <div className="mx-auto max-w-3xl px-4 lg:px-8">
@@ -63,9 +67,15 @@ export default function DetailLayout({
               <h2 className="mb-3 font-serif text-xl font-semibold text-foreground">
                 {section.title}
               </h2>
-              <p className="text-base leading-relaxed text-muted">
+              <div
+                className={
+                  isTableLikeSection(section.title)
+                    ? "overflow-x-auto whitespace-pre-wrap font-mono text-sm leading-relaxed text-muted"
+                    : "whitespace-pre-line text-base leading-relaxed text-muted"
+                }
+              >
                 {section.content}
-              </p>
+              </div>
             </div>
           ))}
         </div>
