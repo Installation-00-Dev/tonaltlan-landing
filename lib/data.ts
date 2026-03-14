@@ -406,7 +406,7 @@ export const sectionsMeta = [
   { title: "Clases",    slug: "clases",    description: "Arquetipos de heroes y villanos del mundo mesoamericano.",    count: clases.length },
   { title: "Especies",  slug: "especies",  description: "Seres nacidos del maiz, la obsidiana y el aliento de los dioses.",  count: especies.length },
   { title: "Bestiario", slug: "bestiario", description: "Criaturas del Mictlan y bestias de selvas y montanas sagradas.",   count: bestiario.length },
-  { title: "Monturas",  slug: "monturas",  description: "Compañeros leales que surcan cielos, rios y caminos ancestrales.",  count: monturas.length },
+  { title: "Monturas",  slug: "monturas",  description: "Compañeros leales que surcan cielos, rios y caminos ancestrales.",  count: 4 },
   { title: "Deidades",  slug: "deidades",  description: "Los dioses que tejen el destino del cosmos y sus elegidos.",        count: deidades.length },
   { title: "Galeria",   slug: "galeria",   description: "Arte conceptual, ilustraciones y vistazos al universo.",            count: 0 },
 ];

@@ -27,6 +27,15 @@ const pastelCardBackgrounds = [
   "bg-orange-100/32",
 ];
 
+const pastelOverlayTints = [
+  "bg-rose-200/20",
+  "bg-amber-200/20",
+  "bg-emerald-200/20",
+  "bg-sky-200/20",
+  "bg-violet-200/20",
+  "bg-orange-200/20",
+];
+
 function getLabelFromPath(src: string) {
   const raw = src
     .split("/")
@@ -70,6 +79,9 @@ export default function GaleriaPage() {
                   priority={index < 3}
                   className="object-contain p-4 transition-transform duration-500 ease-out group-hover:scale-[1.04]"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
+                <div
+                  className={`pointer-events-none absolute inset-0 ${pastelOverlayTints[index % pastelOverlayTints.length]} mix-blend-soft-light`}
                 />
                 <div className="pointer-events-none absolute inset-0 rounded-[1.4rem] ring-1 ring-white/10 ring-inset" />
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/55 via-black/12 to-transparent px-5 pb-5 pt-14 opacity-80 transition-opacity duration-300 group-hover:opacity-100">
