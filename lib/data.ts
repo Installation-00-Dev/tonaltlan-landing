@@ -296,107 +296,107 @@ export const bestiario: CompendiumEntry[] = [
 
 // ── MONTURAS ────────────────────────────────────────────────
 export const monturas: CompendiumEntry[] = [
-  {
-    name: "Quetzalli",
-    slug: "quetzalli",
-    description: "Serpientes emplumadas menores que surcan los cielos con gracia divina.",
-    tags: ["Voladora", "Divina", "Rara"],
-    sections: [
-      { title: "Descripcion", content: "Las Quetzalli son serpientes emplumadas de menor tamano que el gran Quetzalcoatl. Sus plumas iridiscentes brillan con los colores del arcoiris y pueden llevar a un jinete por los cielos. Son extremadamente raras y solo responden ante quienes poseen un Tonalli puro." },
-      { title: "Rasgos", content: "Vuelo Majestuoso: velocidad de vuelo alta. Plumas Protectoras: otorgan resistencia magica al jinete. Gracia Divina: no provocan ataques de oportunidad al volar." },
-      { title: "Notas", content: "La montura mas codiciada de Tonaltlan. Obtener una Quetzalli puede ser una mision epica en si misma." },
-    ],
-  },
-  {
-    name: "Tepeyollotl",
-    slug: "tepeyollotl",
-    description: "Jaguares montaneses gigantes con rugido que estremece la tierra.",
-    tags: ["Terrestre", "Bestia", "Poco comun"],
-    sections: [
-      { title: "Descripcion", content: "Los Tepeyollotl son jaguares enormes que habitan las montanas mas altas de Tonaltlan. Su nombre significa 'Corazon de la Montana' y su rugido puede causar pequenos derrumbes. Son monturas terrestres de enorme poder." },
-      { title: "Rasgos", content: "Rugido Sismico: aturde a enemigos cercanos. Trepar Montanas: se mueven por terreno vertical sin penalizacion. Vision Nocturna: perfecta para exploracion subterranea." },
-      { title: "Notas", content: "Montura terrestre por excelencia. Excelente para campanas en montanas y cuevas." },
-    ],
-  },
-  {
-    name: "Acocil Ancestral",
-    slug: "acocil-ancestral",
-    description: "Crustaceos gigantes de los lagos antiguos, blindados y veloces en el agua.",
-    tags: ["Acuatica", "Blindada", "Comun"],
-    sections: [
-      { title: "Descripcion", content: "Los Acociles Ancestrales son crustaceos gigantes que habitan los lagos y cenotes de Tonaltlan. Sus caparazones son casi tan duros como la obsidiana y pueden transportar jinetes a gran velocidad bajo el agua. Algunos pescadores los domestican." },
-      { title: "Rasgos", content: "Respiracion Acuatica: permite al jinete respirar bajo el agua a traves de burbujas. Caparazon de Obsidiana: alta armadura natural. Pinzas de Combate: pueden atacar mientras transportan." },
-      { title: "Notas", content: "La montura acuatica mas accesible. Perfecta para campanas en lagos, rios y cenotes." },
-    ],
-  },
 ];
 
 // ── DEIDADES ────────────────────────────────────────────────
 export const deidades: CompendiumEntry[] = [
   {
-    name: "Quetzalcoatl",
-    slug: "quetzalcoatl",
-    description: "La Serpiente Emplumada, dios del viento, la sabiduria y la creacion.",
-    tags: ["Creacion", "Sabiduria", "Viento"],
+    name: "Heka",
+    slug: "heka",
+    description: "Señora del Aire. Diosa del viento, los susurros y los caminos invisibles del cielo.",
+    tags: ["Aire", "Viento", "Susurros"],
+    coverImageSrc: "/preview/images/Heka.webp",
+    coverImageAlt: "Heka, deidad del aire, envuelta en corrientes y brisa celestial.",
     sections: [
-      { title: "Descripcion", content: "Quetzalcoatl, la Serpiente Emplumada, es uno de los dioses mas venerados de Tonaltlan. Senor del viento, la sabiduria y la estrella de la manana, se le atribuye la creacion de la humanidad a partir del maiz y los huesos de los ancestros. Sus templos son lugares de conocimiento y paz." },
-      { title: "Rasgos", content: "Dominio del Viento: sus seguidores dominan magias de aire. Sabiduria Ancestral: otorga ventaja en pruebas de conocimiento. Estrella de la Manana: sus fieles ganan poder al amanecer." },
-      { title: "Notas", content: "Deidad popular entre Nahuales, Tlamacazqui y personajes orientados al conocimiento. Su rivalidad con Tezcatlipoca es un eje narrativo central." },
+      {
+        title: "Descripcion",
+        content:
+          "Señora del Aire.\n\nHeka es la diosa del viento, los susurros y los caminos invisibles del cielo. Se dice que su presencia nunca se ve directamente, pero siempre se siente: en la brisa que guía a los viajeros, en el canto de las hojas y en el soplo que empuja a las aves hacia el horizonte.\n\nEntre los dioses del Panteón, Heka es conocida por su espíritu libre y su corazón compasivo. A diferencia de sus hermanos, que gobiernan desde la distancia, ella suele escuchar las plegarias de los mortales que hablan al viento.\n\nLos eruditos de la Torre de los Sabios creen que aquellos que logran abrir el Punto Tonal del Aire sienten primero su llamado como un murmullo suave en el oído.",
+      },
     ],
   },
   {
-    name: "Tezcatlipoca",
-    slug: "tezcatlipoca",
-    description: "El Espejo Humeante, dios de la noche, el destino y el conflicto.",
-    tags: ["Destruccion", "Noche", "Destino"],
+    name: "Lok",
+    slug: "lok",
+    description: "Dios del Agua. La última deidad primordial creada por Omet, señor de la fluidez, la empatía y el movimiento del agua.",
+    tags: ["Agua", "Calma", "Sanacion"],
+    coverImageSrc: "/preview/images/Lok.webp",
+    coverImageAlt: "Lok, dios del agua, rodeado de corrientes serenas y aguas sagradas.",
     sections: [
-      { title: "Descripcion", content: "Tezcatlipoca, el Espejo Humeante, es el dios de la noche, la magia oscura y el cambio a traves del conflicto. Su espejo de obsidiana muestra verdades terribles y futuros posibles. Es tanto enemigo como aliado, pues cree que solo a traves de la lucha se fortalece el mundo." },
-      { title: "Rasgos", content: "Espejo de Obsidiana: sus seguidores pueden ver visiones del futuro. Manto de Sombras: invisibilidad en la oscuridad. Pruebas del Destino: impone desafios a sus propios fieles para fortalecerlos." },
-      { title: "Notas", content: "Deidad compleja, ni buena ni malvada. Ideal para personajes moralmente ambiguos. Los Guerreros Jaguar le son especialmente devotos." },
+      {
+        title: "Descripcion",
+        content:
+          "Dios del Agua.\n\nLok es la última deidad primordial creada por Omet y el más joven de los dioses. A diferencia de sus hermanos, no nació envuelto en poder violento ni en fuerzas imponentes, sino como un murmullo suave que trajo al mundo la fluidez, la empatía y el movimiento del agua.\n\nAl contemplar por primera vez su creación, Lok se llenó de un gozo tan profundo que sus lágrimas inundaron su propio mundo, formando ríos, mares y corrientes. Omet comprendió entonces que Lok debía aprender a contener sus emociones para que su poder no destruyera lo que deseaba proteger.\n\nDe naturaleza conciliadora, Lok siempre buscó armonía entre sus hermanos. Sin embargo, cuando Tonatli se sacrificó para convertirse en la Luz eterna, el dolor de Lok fue tan grande que decidió contener sus lágrimas para no provocar otra catástrofe. Para dominar sus emociones entró en una profunda meditación, refugiado en el mundo de Tzal.\n\nAun en su silencio, su esencia continuó filtrándose en la tierra. Allí donde una lágrima escapaba nacían cenotes, aguas profundas consideradas portales de calma y sanación.",
+      },
     ],
   },
   {
-    name: "Mictlantecuhtli",
-    slug: "mictlantecuhtli",
-    description: "Senor del Mictlan, gobernante del inframundo y guardian de los muertos.",
-    tags: ["Muerte", "Inframundo", "Equilibrio"],
+    name: "Tzal",
+    slug: "tzal",
+    description: "Madre de la Tierra. Diosa del cimiento, la estabilidad y la permanencia sobre la que florece la vida.",
+    tags: ["Tierra", "Vida", "Estabilidad"],
+    coverImageSrc: "/preview/images/Tzal.webp",
+    coverImageAlt: "Tzal, madre de la tierra, rodeada de raíces, montañas y barro sagrado.",
     sections: [
-      { title: "Descripcion", content: "Mictlantecuhtli reina sobre el Mictlan, el inframundo de Tonaltlan. No es un dios malvado sino un guardian necesario: recibe a las almas de los muertos y les concede descanso. Sus sacerdotes realizan ritos funerarios y pueden comunicarse con los espiritus." },
-      { title: "Rasgos", content: "Dominio de la Muerte: control sobre espiritus y no-muertos. Juicio Final: puede evaluar la verdad en las palabras de cualquier ser. Paso Seguro: sus fieles pueden transitar por el Mictlan sin peligro." },
-      { title: "Notas", content: "Deidad esencial para campanas que involucren el Mictlan. Las Cihuateteo suelen tener una conexion especial con el." },
+      {
+        title: "Descripcion",
+        content:
+          "Madre de la Tierra.\n\nTzal es la diosa de la tierra y el cimiento sobre el cual descansa toda vida. Aunque no fue la primera en surgir de la creación de Omet, pronto quedó claro que su naturaleza era distinta a la de sus hermanos. Mientras otros dioses manifestaban poder en forma de caos, fuego o tormenta, Tzal encarnaba estabilidad, orden y permanencia.\n\nCuando los dioses intentaron crear sus propios mundos, todos fracasaron: algunos se inundaron, otros ardieron o se desmoronaron. Solo el mundo de Tzal prosperó, pues ella lo formó con paciencia y visión. Lo colocó cerca de la luz eterna de Tonatli, para honrar su sacrificio y permitir que la vida floreciera bajo su resplandor.\n\nAl ver que el mundo de Tzal podía sostener la existencia, los siete dioses unieron sus poderes por primera vez para perfeccionarlo. Cada uno aportó su esencia: luz, noche, energía, viento, fuego y agua. Pero el cuerpo del mundo, su suelo, montañas y raíces, pertenecían a Tzal.\n\nDeseosa de crear seres conscientes que caminaran su tierra, Tzal descendió al Mictlan, donde los señores de la muerte guardaban los huesos de sus antiguas creaciones: los Cíclopes de Tierra. Tras enfrentarse a ellos y reclamar aquellos restos, regresó con los huesos sagrados y los mezcló con barro profundo. Con la ayuda de sus hermanos, dio origen a los Tlacas, los primeros pueblos conscientes de Tonaltlán.",
+      },
     ],
   },
   {
-    name: "Tlaloc",
-    slug: "tlaloc",
-    description: "Dios de la lluvia, los relampagos y la fertilidad de la tierra.",
-    tags: ["Naturaleza", "Agua", "Creacion"],
+    name: "Zilo",
+    slug: "zilo",
+    description: "Dios del Fuego. Señor de la pasión, la voluntad ardiente y el corazón volcánico del mundo.",
+    tags: ["Fuego", "Pasion", "Voluntad"],
+    coverImageSrc: "/preview/images/Zilo.webp",
+    coverImageAlt: "Zilo, dios del fuego, ardiendo con energia volcanica y voluntad indomable.",
     sections: [
-      { title: "Descripcion", content: "Tlaloc es el senor de las lluvias y las tormentas. Su dominio sobre el agua lo convierte en una de las deidades mas importantes para la agricultura y la vida. Su paraiso, el Tlalocan, es un lugar de eterna primavera donde van quienes mueren por causas relacionadas con el agua." },
-      { title: "Rasgos", content: "Control del Clima: sus seguidores manipulan el tiempo atmosferico. Relampago Divino: ataques electricos devastadores. Bendicion de Cosecha: curan y nutren la tierra." },
-      { title: "Notas", content: "Deidad fundamental para los Tlalocan-i. Las campanas agricolas y los conflictos por recursos hidricos son su terreno narrativo natural." },
+      {
+        title: "Descripcion",
+        content:
+          "Dios del Fuego.\n\nZilo es el dios del fuego, la pasión y la voluntad ardiente. A diferencia de otros dioses que surgieron con calma o equilibrio, Zilo nació como una explosión de energía dentro del corazón dual de Omet, manifestándose como una llama viva de poder y temperamento indomable.\n\nEra admirado por guerreros, herreros y todos aquellos que vivían con intensidad. Sin embargo, su destino cambió cuando su hermana Tonatli se sacrificó para convertirse en la luz eterna del mundo. Incapaz de aceptar aquella pérdida, Zilo enfrentó a Omet en una furia devastadora que hizo temblar el cielo. El creador, con calma absoluta, lo envió al mundo de Tzal.\n\nAllí, la diosa de la tierra lo sostuvo y calmó su ira. En ese encuentro ambos dioses compartieron su esencia: Zilo otorgó a la tierra el calor interno que daría vida al mundo, mientras Tzal le dio estabilidad para que su fuego no destruyera todo a su paso. Así nació el corazón volcánico del planeta.\n\nAun así, Zilo nunca perdonó del todo a Omet. Decidió vivir lejos de los demás dioses, retirándose a la península de Xitl, donde creó el Volcán de la Lava Eterna, un santuario donde su fuego arde sin destruir el mundo.",
+      },
     ],
   },
   {
-    name: "Xochiquetzal",
-    slug: "xochiquetzal",
-    description: "Diosa de las flores, el amor, las artes y la belleza.",
-    tags: ["Arte", "Amor", "Creacion"],
+    name: "Calti",
+    slug: "calti",
+    description: "Diosa de la Oscuridad. Guardiana del misterio, las verdades ocultas y el equilibrio entre luz y sombra.",
+    tags: ["Oscuridad", "Misterio", "Equilibrio"],
     sections: [
-      { title: "Descripcion", content: "Xochiquetzal es la diosa de la belleza, las flores, el amor y las artes. Patrona de los artesanos, poetas y amantes, su influencia se siente en cada festival y celebracion de Tonaltlan. Sus templos estan adornados con flores eternas y obras de arte vivientes." },
-      { title: "Rasgos", content: "Encantamiento: sus seguidores pueden fascinar a otros. Arte Viviente: crean ilusiones hermosas con efectos reales. Sanacion Floral: curan a traves de esencias y flores magicas." },
-      { title: "Notas", content: "Deidad perfecta para Pochtecas y personajes sociales. Su influencia suaviza conflictos y abre puertas diplomaticas." },
+      {
+        title: "Descripcion",
+        content:
+          "Diosa de la Oscuridad.\n\nCalti es la diosa de la oscuridad, el misterio y las verdades ocultas. Desde su reino de noche eterna observa el mundo a través de su Espejo Obscuro, un artefacto capaz de revelar la verdadera naturaleza de las almas.\n\nCuando los Tlacas, los primeros pueblos conscientes, levantaron grandes imperios, su orgullo creció hasta proclamarse herederos de los dioses. Honraban la luz, pero despreciaban la sombra, olvidando que ambas fuerzas eran necesarias para el equilibrio.\n\nOfendida por esta arrogancia, Calti envió a su servidor Tzayotl, comandante de las sombras, para castigar a la humanidad. Bajo su influencia, los hijos de los Tlacas comenzaron a perder el brillo de sus almas, cayendo en desesperación y vacío.\n\nLos pueblos suplicaron a los dioses por misericordia. Fue entonces cuando Tohui, hermano gemelo de Calti y dios del rayo y el caos, intercedió. Tras un largo debate entre los dioses, Calti aceptó levantar la maldición… pero no sin dejar una marca permanente.\n\nAntes de devolver el fuego a las almas humanas, selló los Puntos Tonales de los Tlacas, impidiendo que la mayoría de los mortales volviera a canalizar el poder divino. Solo unos pocos, aquellos de espíritu humilde, conservaron la capacidad de sentir la energía de los dioses. Estos serían conocidos como los Eruditos de la Magia.\n\nDesde entonces, la humanidad vive bajo la luz de los dioses, pero separada de su poder. Así Calti recordó al mundo que incluso la oscuridad tiene un propósito: preservar el equilibrio y castigar la arrogancia de quienes olvidan su lugar en la creación.",
+      },
     ],
   },
   {
-    name: "Huitzilopochtli",
-    slug: "huitzilopochtli",
-    description: "Dios de la guerra y el sol, protector feroz de Tonaltlan.",
-    tags: ["Guerra", "Sol", "Destruccion"],
+    name: "Tonatli",
+    slug: "tonatli",
+    description: "Diosa de la Luz. Primera manifestación del pensamiento de Omet y llama eterna que sostiene la vida.",
+    tags: ["Luz", "Esperanza", "Sacrificio"],
     sections: [
-      { title: "Descripcion", content: "Huitzilopochtli es el dios del sol y la guerra, el protector supremo de Tonaltlan. Nacio listo para el combate y derroto a cuatrocientos enemigos en su primer aliento. Sus seguidores son los guerreros mas devotos, que luchan para mantener al sol en movimiento y evitar el fin del mundo." },
-      { title: "Rasgos", content: "Furia Solar: ataques de fuego potenciados durante el dia. Voluntad Indomable: inmunidad al miedo. Sacrificio Guerrero: pueden sacrificar puntos de vida para potenciar ataques aliados." },
-      { title: "Notas", content: "La deidad guerrera por excelencia. Los Guerreros Jaguar y Aguila le rinden culto. Perfecto para campanas centradas en grandes batallas." },
+      {
+        title: "Descripcion",
+        content:
+          "Diosa de la Luz.\n\nTonatli es la primera manifestación surgida del pensamiento de Omet, el principio dual del universo. Nació como la primera luz que rompió el silencio del vacío, un destello consciente cuya presencia dio forma al tiempo, al espacio y a la posibilidad misma de la vida.\n\nA diferencia de sus hermanos, cuyo poder surgía en forma de fuego, tierra, viento o tormenta, Tonatli encarnaba la claridad, la esperanza y la armonía. Su luz inspiraba a los demás dioses, y todo aquello que tocaba florecía. Fue ella quien comprendió que la creación no podía sostenerse por la fuerza de un solo dios, sino por la unión de todos.\n\nTras muchos intentos fallidos de sus hermanos por crear mundos estables, Tonatli ofreció su luz para unir sus poderes. Gracias a esa cooperación nació el mundo donde los elementos finalmente encontraron equilibrio.\n\nSin embargo, aquel mundo necesitaba una fuente eterna de energía para sostener la vida. Comprendiendo su destino, Tonatli decidió sacrificarse. Con ayuda del Gran Caimán Celestial, reunió las antiguas creaciones fallidas y las hizo girar alrededor del nuevo mundo.\n\nEntonces Tonatli entregó su forma y se transformó en una esfera radiante de luz eterna: el Séptimo Sol, cuya energía sostiene la vida en Tonaltlán.\n\nDesde entonces, su luz guía a dioses y mortales por igual. Aunque ya no camina entre ellos, cada amanecer recuerda su sacrificio y su promesa: que mientras su luz exista, la vida tendrá esperanza.",
+      },
+    ],
+  },
+  {
+    name: "Tohui",
+    slug: "tohui",
+    description: "Dios del Rayo y la Destrucción. Señor de la tormenta súbita, la energía caótica y el cambio violento.",
+    tags: ["Rayo", "Tormenta", "Destruccion"],
+    sections: [
+      {
+        title: "Descripcion",
+        content:
+          "Dios del Rayo y la Destrucción.\n\nTohui es el dios del rayo, la tormenta y la destrucción súbita. Nació junto a su hermana gemela Calti cuando una sola energía primordial se dividió en dos fuerzas opuestas: la oscuridad silenciosa y la destrucción eléctrica. Desde entonces, ambos comparten un vínculo profundo, representando dos caras del mismo misterio cósmico.\n\nMientras Calti observa y castiga con paciencia, Tohui actúa con violencia repentina. Sus dominios son el trueno, los relámpagos y la energía caótica que rompe el orden para dar paso a algo nuevo.\n\nSin embargo, el corazón de Tohui siempre estuvo marcado por una obsesión: Heka, la diosa del aire. Su naturaleza misteriosa y silenciosa despertó en él una fascinación peligrosa. Cuando Heka estaba cerca, sus tormentas se volvían más poderosas, como si el viento fuera la musa que guiaba sus rayos.\n\nTohui realizaba muchos de sus actos de destrucción sabiendo que Heka lo observaba desde las corrientes invisibles del cielo. Aunque sus acciones podían ser terribles, ella jamás reveló sus secretos. Ese silencio selló entre ambos una extraña lealtad. Tohui entendía que, si Heka decidía hablar, su destino podría terminar en un instante.\n\nPor eso, ante los demás dioses, Tohui siempre aparentaba control, pero a menudo dirigía una ligera sonrisa hacia su hermana del aire, sabiendo que ella guardaba las verdades más oscuras de sus tormentas.\n\nEntre sus propias creaciones, Tohui era un dios severo. Castigaba a quienes consideraba débiles o indignos, marcándolos con descargas divinas. Por esta razón, los descendientes de su linaje suelen portar marcas de electricidad en la piel, especialmente en las manos, lugar donde el dios prefería descargar su poder.\n\nTohui representa la destrucción necesaria para que el mundo cambie, la tormenta que rompe la calma y la energía salvaje que recorre el cielo. Donde cae un rayo, su voluntad ha hablado.",
+      },
     ],
   },
 ];

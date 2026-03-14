@@ -1,6 +1,6 @@
-import { notFound } from "next/navigation";
-import { monturas } from "@/lib/data";
 import DetailLayout from "@/components/compendio/DetailLayout";
+import { monturas } from "@/lib/data";
+import { notFound } from "next/navigation";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -30,6 +30,8 @@ export default async function MonturaDetailPage({ params }: Props) {
       title={item.name}
       tags={item.tags}
       sections={item.sections}
+      coverImageSrc={item.coverImageSrc}
+      coverImageAlt={item.coverImageAlt}
       backHref="/monturas"
       backLabel="Volver a Monturas"
     />

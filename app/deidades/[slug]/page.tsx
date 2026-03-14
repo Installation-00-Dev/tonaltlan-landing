@@ -1,6 +1,6 @@
-import { notFound } from "next/navigation";
-import { deidades } from "@/lib/data";
 import DetailLayout from "@/components/compendio/DetailLayout";
+import { deidades } from "@/lib/data";
+import { notFound } from "next/navigation";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -30,6 +30,8 @@ export default async function DeidadDetailPage({ params }: Props) {
       title={item.name}
       tags={item.tags}
       sections={item.sections}
+      coverImageSrc={item.coverImageSrc}
+      coverImageAlt={item.coverImageAlt}
       backHref="/deidades"
       backLabel="Volver a Deidades"
     />
