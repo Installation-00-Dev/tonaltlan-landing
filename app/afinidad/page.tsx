@@ -11,6 +11,7 @@ export default function AfinidadPage() {
     sessionQuestions,
     currentQuestionIndex,
     results,
+    affinityMode,
     submissionStatus,
     isAutoAdvancing,
     currentQuestion,
@@ -18,6 +19,7 @@ export default function AfinidadPage() {
     totalQuestions,
     updateUserField,
     startTest,
+    startRandomAffinity,
     handleOptionSelect,
     previousQuestion,
     resetTest,
@@ -61,7 +63,7 @@ export default function AfinidadPage() {
                   type="text"
                   value={user.name}
                   onChange={(event) => updateUserField("name", event.target.value)}
-                  className="w-full rounded-xl border border-glass-border bg-background/40 px-4 py-3 text-foreground outline-none transition-colors focus:border-teal"
+                  className="w-full rounded-xl border border-glass-border bg-background/70 px-4 py-3 font-medium text-slate-100 caret-teal outline-none transition-colors placeholder:text-slate-400 focus:border-teal"
                   placeholder="Tu nombre"
                 />
                 {formErrors.name ? <p className="mt-2 text-sm text-red-300">{formErrors.name}</p> : null}
@@ -76,7 +78,7 @@ export default function AfinidadPage() {
                   type="email"
                   value={user.email}
                   onChange={(event) => updateUserField("email", event.target.value)}
-                  className="w-full rounded-xl border border-glass-border bg-background/40 px-4 py-3 text-foreground outline-none transition-colors focus:border-teal"
+                  className="w-full rounded-xl border border-glass-border bg-background/70 px-4 py-3 font-medium text-slate-100 caret-teal outline-none transition-colors placeholder:text-slate-400 focus:border-teal"
                   placeholder="tu@email.com"
                 />
                 {formErrors.email ? <p className="mt-2 text-sm text-red-300">{formErrors.email}</p> : null}
@@ -89,6 +91,18 @@ export default function AfinidadPage() {
               >
                 Comenzar Test
               </button>
+
+              <button
+                type="button"
+                onClick={startRandomAffinity}
+                className="inline-flex min-h-[48px] items-center justify-center rounded-lg border border-gold/60 bg-background/20 px-8 py-3 text-base font-semibold text-gold transition-colors hover:border-gold hover:bg-gold/10"
+              >
+                Afinidad Aleatoria
+              </button>
+
+              <p className="text-center text-sm text-muted">
+                Modo galleta de la suerte: te damos una afinidad al azar sin responder preguntas.
+              </p>
             </div>
           </div>
         ) : null}
@@ -143,6 +157,9 @@ export default function AfinidadPage() {
         {phase === "results" && results ? (
           <div className="glass-card rounded-2xl p-8 md:p-12">
             <div className="mb-8 text-center">
+              {affinityMode === "random" ? (
+                <p className="mb-2 text-xs font-semibold uppercase tracking-[0.25em] text-gold">Modo Fortuna Aleatoria</p>
+              ) : null}
               <p className="mb-2 text-sm font-semibold uppercase tracking-[0.25em] text-teal">
                 {user.name}, tu afinidad es
               </p>

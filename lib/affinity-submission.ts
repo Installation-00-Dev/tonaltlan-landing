@@ -5,6 +5,7 @@ export interface AffinitySubmissionPayload {
   secondaryResult: string | null;
   scores: Record<string, number>;
   subscribed: boolean;
+  mode: "quiz" | "random";
 }
 
 export type AffinitySubmissionOutcome = "saved" | "failed" | "skipped";

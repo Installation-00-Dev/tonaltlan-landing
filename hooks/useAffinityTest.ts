@@ -3,6 +3,7 @@
 import { submitAffinityToWebhook } from "@/lib/affinity-submission";
 import {
     EMAIL_REGEX,
+    RACE_KEYS,
     applyOptionPoints,
     calculateResults,
     createInitialScores,
@@ -17,8 +18,10 @@ import {
 import { useRef, useState } from "react";
 
 const AUTO_ADVANCE_DELAY_MS = 180;
+const RANDOM_SCORE_POOL = [12, 10, 8, 6, 4, 3, 2] as const;
 
 export type TestPhase = "intro" | "questions" | "results";
+export type AffinityMode = "quiz" | "random";
 
 export interface FormErrors {
   name?: string;
@@ -44,6 +47,7 @@ export function useAffinityTest() {
   const [answers, setAnswers] = useState<Array<string | undefined>>([]);
   const [scores, setScores] = useState<Scores>(() => createInitialScores());
   const [results, setResults] = useState<CalculatedResults | null>(null);
+  const [affinityMode, setAffinityMode] = useState<AffinityMode>("quiz");
   const [submissionStatus, setSubmissionStatus] = useState<SubmissionStatus>("idle");
   const [isAutoAdvancing, setIsAutoAdvancing] = useState(false);
   const hasSubmittedRef = useRef(false);
@@ -92,13 +96,51 @@ export function useAffinityTest() {
     setAnswers([]);
     setScores(createInitialScores());
     setResults(null);
+    setAffinityMode("quiz");
     setSubmissionStatus("idle");
     hasSubmittedRef.current = false;
     setPhase("questions");
     return true;
   }
 
-  async function submitParticipantResult(finalResults: CalculatedResults, finalScores: Scores) {
+  function buildRandomScores(): Scores {
+    const randomizedRaces = [...RACE_KEYS].sort(() => Math.random() - 0.5);
+    const nextScores = createInitialScores();
+
+    randomizedRaces.forEach((race, index) => {
+      nextScores[race] = RANDOM_SCORE_POOL[index] ?? 0;
+    });
+
+    return nextScores;
+  }
+
+  function startRandomAffinity() {
+    if (!validateUser()) {
+      return false;
+    }
+
+    const randomScores = buildRandomScores();
+    const randomResults = calculateResults(randomScores);
+
+    setSessionQuestions([]);
+    setCurrentQuestionIndex(0);
+    setAnswers([]);
+    setScores(randomScores);
+    setResults(randomResults);
+    setAffinityMode("random");
+    setSubmissionStatus("idle");
+    hasSubmittedRef.current = false;
+    setPhase("results");
+
+    void submitParticipantResult(randomResults, randomScores, "random");
+    return true;
+  }
+
+  async function submitParticipantResult(
+    finalResults: CalculatedResults,
+    finalScores: Scores,
+    mode: AffinityMode,
+  ) {
     if (hasSubmittedRef.current) {
       return;
     }
@@ -113,6 +155,7 @@ export function useAffinityTest() {
       secondaryResult: finalResults.secondary?.narrative.name ?? null,
       scores: finalScores,
       subscribed: false,
+      mode,
     });
 
     if (outcome === "saved") {
@@ -169,8 +212,9 @@ export function useAffinityTest() {
 
       const finalResults = calculateResults(nextScores);
       setResults(finalResults);
+      setAffinityMode("quiz");
       setPhase("results");
-      void submitParticipantResult(finalResults, nextScores);
+      void submitParticipantResult(finalResults, nextScores, "quiz");
       setIsAutoAdvancing(false);
     }, AUTO_ADVANCE_DELAY_MS);
   }
@@ -206,8 +250,9 @@ export function useAffinityTest() {
 
     const finalResults = calculateResults(scores);
     setResults(finalResults);
+    setAffinityMode("quiz");
     setPhase("results");
-    void submitParticipantResult(finalResults, scores);
+    void submitParticipantResult(finalResults, scores, "quiz");
     return true;
   }
 
@@ -220,6 +265,7 @@ export function useAffinityTest() {
     setAnswers([]);
     setScores(createInitialScores());
     setResults(null);
+    setAffinityMode("quiz");
     setSubmissionStatus("idle");
     hasSubmittedRef.current = false;
   }
@@ -233,6 +279,7 @@ export function useAffinityTest() {
     answers,
     scores,
     results,
+    affinityMode,
     submissionStatus,
     isAutoAdvancing,
     currentQuestion,
@@ -240,6 +287,7 @@ export function useAffinityTest() {
     totalQuestions,
     updateUserField,
     startTest,
+    startRandomAffinity,
     handleOptionSelect,
     previousQuestion,
     nextQuestion,
