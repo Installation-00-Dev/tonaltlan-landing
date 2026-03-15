@@ -157,60 +157,89 @@ export default function AfinidadPage() {
         ) : null}
 
         {phase === "results" && results ? (
-          <div className="glass-card rounded-2xl p-8 md:p-12">
-            <div className="mb-8 text-center">
-              {affinityMode === "random" ? (
-                <p className="mb-2 text-xs font-semibold uppercase tracking-[0.25em] text-gold">Modo Fortuna Aleatoria</p>
-              ) : null}
-              <p className="mb-2 text-sm font-semibold uppercase tracking-[0.25em] text-teal">
-                {user.name}, tu afinidad es
-              </p>
-              <h2 className="font-serif text-3xl font-bold text-gold">{results.dominant.narrative.name}</h2>
-              <p className="mt-3 text-sm leading-relaxed text-muted">Email registrado: {user.email}</p>
-            </div>
+          <div className="space-y-5">
 
-            <div className="mb-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {results.ranking.map((entry) => (
-                <div key={entry.race} className="glass-card rounded-xl p-4">
-                  <p className="text-xs uppercase tracking-[0.2em] text-muted">{entry.race}</p>
-                  <p className="mt-2 text-2xl font-bold text-foreground">{entry.score}</p>
+            {/* ── Hero Reveal ── */}
+            <div className="glass-card overflow-hidden rounded-2xl">
+              <div className="h-1 bg-gradient-to-r from-transparent via-gold to-transparent" />
+              <div className="px-8 py-10 text-center md:px-14 md:py-14">
+                {affinityMode === "random" ? (
+                  <span className="mb-5 inline-block rounded-full border border-gold/40 bg-gold/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-gold">
+                    Modo Fortuna Aleatoria
+                  </span>
+                ) : null}
+
+                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-teal">
+                  {user.name} &mdash; tu afinidad
+                </p>
+
+                <div className="my-5 flex items-center justify-center gap-4">
+                  <div className="h-px w-20 bg-gradient-to-r from-transparent to-gold/50" />
+                  <span className="text-xl text-gold/70">✦</span>
+                  <div className="h-px w-20 bg-gradient-to-l from-transparent to-gold/50" />
                 </div>
-              ))}
+
+                <h2 className="font-serif text-4xl font-bold leading-tight text-gold md:text-5xl">
+                  {results.dominant.narrative.name}
+                </h2>
+
+                <p className="mx-auto mt-6 max-w-lg text-base italic leading-relaxed text-muted">
+                  &ldquo;{results.dominant.narrative.essence.split(".")[0]}.&rdquo;
+                </p>
+
+                <div className="mt-8 flex items-center justify-center gap-4">
+                  <div className="h-px w-20 bg-gradient-to-r from-transparent to-gold/30" />
+                  <span className="text-sm text-gold/40">◆</span>
+                  <div className="h-px w-20 bg-gradient-to-l from-transparent to-gold/30" />
+                </div>
+              </div>
             </div>
 
-            <div className="grid gap-4">
+            {/* ── Cuatro Pilares ── */}
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               {results.sections.map((section) => (
                 <div key={section.title} className="glass-card rounded-xl p-5">
-                  <h3 className="mb-2 font-serif text-xl font-semibold text-foreground">{section.title}</h3>
+                  <p className="mb-2 text-xs font-semibold uppercase tracking-[0.25em] text-teal">
+                    {section.title}
+                  </p>
                   <p className="text-sm leading-relaxed text-muted">{section.content}</p>
                 </div>
               ))}
-
-              <div className="glass-card rounded-xl p-5">
-                <h3 className="mb-3 font-serif text-xl font-semibold text-foreground">Simbolos</h3>
-                <div className="grid gap-3 md:grid-cols-3">
-                  {results.symbols.map((symbol) => (
-                    <div key={symbol.label} className="rounded-xl border border-glass-border bg-background/30 p-4">
-                      <p className="mb-2 text-xs uppercase tracking-[0.2em] text-teal">{symbol.label}</p>
-                      <p className="text-sm leading-relaxed text-muted">{symbol.content}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {results.secondary ? (
-                <div className="glass-card rounded-xl p-5">
-                  <h3 className="mb-2 font-serif text-xl font-semibold text-foreground">
-                    Influencia Secundaria: {results.secondary.narrative.name}
-                  </h3>
-                  <p className="text-sm leading-relaxed text-muted">
-                    Tu afinidad tambien muestra rasgos de {results.secondary.race}. {results.secondary.narrative.essence}
-                  </p>
-                </div>
-              ) : null}
             </div>
 
-            <div className="mt-8 flex justify-center">
+            {/* ── Simbolos Sagrados ── */}
+            <div className="glass-card rounded-xl p-6">
+              <p className="mb-5 text-center text-xs font-semibold uppercase tracking-[0.35em] text-gold">
+                Símbolos Sagrados
+              </p>
+              <div className="grid gap-4 sm:grid-cols-3">
+                {results.symbols.map((symbol) => (
+                  <div
+                    key={symbol.label}
+                    className="rounded-xl border border-gold/25 bg-gold/5 p-5 text-center"
+                  >
+                    <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+                      {symbol.label}
+                    </p>
+                    <p className="text-sm leading-relaxed text-foreground">{symbol.content}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* ── Acciones ── */}
+            <div className="pt-2 text-center">
+              {submissionStatus === "saving" ? (
+                <p className="mb-4 text-sm text-muted">Guardando tu resultado...</p>
+              ) : null}
+              {submissionStatus === "saved" ? (
+                <p className="mb-4 text-sm text-teal">Resultado guardado correctamente.</p>
+              ) : null}
+              {submissionStatus === "error" ? (
+                <p className="mb-4 text-sm text-red-300">
+                  No se pudo guardar tu resultado. Intenta de nuevo en unos segundos.
+                </p>
+              ) : null}
               <button
                 type="button"
                 onClick={resetTest}
@@ -220,19 +249,6 @@ export default function AfinidadPage() {
               </button>
             </div>
 
-            {submissionStatus === "saving" ? (
-              <p className="mt-4 text-center text-sm text-muted">Guardando tu resultado...</p>
-            ) : null}
-
-            {submissionStatus === "saved" ? (
-              <p className="mt-4 text-center text-sm text-teal">Resultado guardado correctamente.</p>
-            ) : null}
-
-            {submissionStatus === "error" ? (
-              <p className="mt-4 text-center text-sm text-red-300">
-                No se pudo guardar tu resultado. Intenta de nuevo en unos segundos.
-              </p>
-            ) : null}
           </div>
         ) : null}
       </div>

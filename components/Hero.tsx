@@ -6,11 +6,12 @@ export default function Hero() {
     <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden">
       {/* Background image */}
       <Image
-        src="/images/piramides_azteca_final.png"
+        src="/images/piramides_azteca_final_1920.jpg"
         alt=""
         fill
         className="object-cover object-center"
         priority
+        sizes="100vw"
         aria-hidden="true"
       />
 
@@ -48,11 +49,12 @@ export default function Hero() {
         <div className="group mt-14 flex w-full justify-center">
           <div className="relative inline-block overflow-hidden rounded-2xl">
             <Image
-              src="/images/tonaltlan_logo.png"
+              src="/images/tonaltlan_logo_1200.png"
               alt="Logo de Tonaltlan"
               width={600}
               height={180}
               className="transition-transform duration-1000 ease-out group-hover:scale-105"
+              sizes="(max-width: 768px) 80vw, 600px"
               style={{ width: "min(600px, 80vw)", height: "auto" }}
             />
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(245,196,95,0.25)_0%,rgba(245,196,95,0)_70%)] opacity-60 transition-opacity duration-700 group-hover:opacity-100" />

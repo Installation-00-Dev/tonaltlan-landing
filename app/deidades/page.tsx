@@ -1,4 +1,4 @@
-import CompendiumListPage from "@/components/compendio/CompendiumListPage";
+import DeitiesFlipGrid from "@/components/compendio/DeitiesFlipGrid";
 import { deidades } from "@/lib/data";
 
 export const metadata = {
@@ -7,12 +7,5 @@ export const metadata = {
 };
 
 export default function DeidadesPage() {
-  return (
-    <CompendiumListPage
-      title="Deidades"
-      subtitle="Los dioses que tejen el destino del cosmos y sus elegidos. Descubre sus dominios, rasgos y la influencia que ejercen sobre los heroes de Tonaltlan."
-      items={deidades}
-      basePath="deidades"
-    />
-  );
+  return <DeitiesFlipGrid items={deidades} />;
 }
