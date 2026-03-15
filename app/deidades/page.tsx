@@ -7,5 +7,11 @@ export const metadata = {
 };
 
 export default function DeidadesPage() {
-  return <DeitiesFlipGrid items={deidades} />;
+  return (
+    <DeitiesFlipGrid
+      items={deidades}
+      title="Deidades"
+      subtitle="Toca cada tarjeta para verla al reverso. Al frente veras su imagen; al girar, su descripcion completa."
+    />
+  );
 }

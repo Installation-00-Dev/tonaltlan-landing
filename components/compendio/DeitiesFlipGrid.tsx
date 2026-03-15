@@ -7,11 +7,14 @@ import { useMemo, useState } from "react";
 
 interface DeitiesFlipGridProps {
   items: CompendiumEntry[];
+  title: string;
+  subtitle: string;
+  columns?: 2 | 3;
 }
 
 const FALLBACK_IMAGE = "/images/piramides_azteca_final_1920.jpg";
 
-export default function DeitiesFlipGrid({ items }: DeitiesFlipGridProps) {
+export default function DeitiesFlipGrid({ items, title, subtitle, columns = 3 }: DeitiesFlipGridProps) {
   const [flipped, setFlipped] = useState<Record<string, boolean>>({});
 
   const cards = useMemo(
@@ -40,11 +43,11 @@ export default function DeitiesFlipGrid({ items }: DeitiesFlipGridProps) {
     <div className="pt-24 pb-16 lg:pt-32">
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
         <SectionHeader
-          title="Deidades"
-          subtitle="Toca cada tarjeta para verla al reverso. Al frente veras su imagen; al girar, su descripcion completa."
+          title={title}
+          subtitle={subtitle}
         />
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className={`grid gap-6 sm:grid-cols-2 ${columns === 2 ? "lg:grid-cols-2" : "lg:grid-cols-3"}`}>
           {cards.map((item) => {
             const isFlipped = Boolean(flipped[item.slug]);
 
