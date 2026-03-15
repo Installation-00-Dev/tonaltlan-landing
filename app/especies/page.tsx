@@ -18,24 +18,24 @@ export default function EspeciesPage() {
         />
 
         <div className="grid gap-6 lg:grid-cols-2">
-          {especies.map((item) => {
+          {[...especies].sort((a, b) => (b.coverImageSrc ? 1 : 0) - (a.coverImageSrc ? 1 : 0)).map((item) => {
             const descriptionSection = item.sections.find((section) => section.title === "Descripcion");
             const noteSection = item.sections.find((section) => section.title === "Nota");
 
             return (
               <article key={item.slug} className="glass-card overflow-hidden rounded-2xl">
-                <div className="relative h-56 w-full bg-background/40">
+                <div className="relative h-64 w-full bg-background/40">
                   {item.coverImageSrc ? (
                     <Image
                       src={item.coverImageSrc}
                       alt={item.coverImageAlt || `${item.name} en Tonaltlan`}
                       fill
-                      className="object-cover"
+                      className="object-contain p-3"
                       sizes="(max-width: 1024px) 100vw, 50vw"
                     />
                   ) : (
                     <div className="flex h-full items-center justify-center text-sm font-semibold uppercase tracking-[0.2em] text-muted">
-                      Imagen pendiente
+                      Próximamente
                     </div>
                   )}
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent" />

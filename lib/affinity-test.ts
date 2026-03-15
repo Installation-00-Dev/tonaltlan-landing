@@ -63,6 +63,17 @@ export const RACE_KEYS: RaceKey[] = [
 
 export const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+// Balance factors tuned from live expo data to reduce repeated outcomes.
+const RACE_BALANCE_WEIGHTS: Record<RaceKey, number> = {
+  Ton: 0.88,
+  "Toh'kari": 1.28,
+  "He'kari": 0.95,
+  Quinametzin: 0.82,
+  "Lok'naa": 1.03,
+  Hualik: 1.18,
+  Irzak: 1.12,
+};
+
 export function createInitialScores(): Scores {
   return {
     Ton: 0,
@@ -502,23 +513,32 @@ export function applyOptionPoints(scores: Scores, option: Option, direction: 1 |
 }
 
 export function calculateResults(scores: Scores): CalculatedResults {
-  const ranking = RACE_KEYS.map((race) => ({ race, score: scores[race] })).sort(
-    (left, right) => right.score - left.score,
-  );
+  const weightedRanking = RACE_KEYS.map((race) => ({
+    race,
+    rawScore: scores[race],
+    weightedScore: scores[race] * RACE_BALANCE_WEIGHTS[race],
+  })).sort((left, right) => right.weightedScore - left.weightedScore);
 
-  const dominant = ranking[0];
-  const secondaryCandidate = ranking[1];
+  const ranking = weightedRanking.map((entry) => ({
+    race: entry.race,
+    score: entry.rawScore,
+  }));
+
+  const dominant = weightedRanking[0];
+  const secondaryCandidate = weightedRanking[1];
   const secondary =
-    secondaryCandidate && secondaryCandidate.score >= dominant.score * 0.6
+    secondaryCandidate && secondaryCandidate.weightedScore >= dominant.weightedScore * 0.6
       ? {
-          ...secondaryCandidate,
+          race: secondaryCandidate.race,
+          score: secondaryCandidate.rawScore,
           narrative: raceResults[secondaryCandidate.race],
         }
       : null;
 
   return {
     dominant: {
-      ...dominant,
+      race: dominant.race,
+      score: dominant.rawScore,
       narrative: raceResults[dominant.race],
     },
     secondary,
