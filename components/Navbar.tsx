@@ -47,8 +47,7 @@ export default function Navbar() {
             alt="Tonaltlan logo"
             width={180}
             height={68}
-            className="h-8 lg:h-10"
-            style={{ width: "auto", height: "46px" }}
+            className="h-11 w-auto lg:h-14"
             priority
           />
         </Link>
