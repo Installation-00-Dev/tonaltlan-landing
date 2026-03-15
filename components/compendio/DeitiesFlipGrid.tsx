@@ -30,6 +30,7 @@ export default function DeitiesFlipGrid({
     () =>
       items.map((item) => {
         const imageSrc = item.coverImageSrc || FALLBACK_IMAGE;
+        const hasCoverImage = Boolean(item.coverImageSrc);
         const descriptionSection = item.sections.find((section) => section.title === "Descripcion");
         const noteSection = item.sections.find((section) => section.title === "Nota");
         const descriptionText = (descriptionSection?.content || item.description).trim();
@@ -38,6 +39,7 @@ export default function DeitiesFlipGrid({
         return {
           ...item,
           imageSrc,
+          hasCoverImage,
           descriptionText,
           noteText,
         };
@@ -89,6 +91,11 @@ export default function DeitiesFlipGrid({
                           className="object-contain p-2"
                           sizes="(max-width: 1024px) 100vw, 33vw"
                         />
+                        {!item.hasCoverImage ? (
+                          <span className="pointer-events-none absolute left-3 top-3 rounded-full border border-gold/35 bg-background/80 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-gold/90 backdrop-blur-sm">
+                            Proximamente
+                          </span>
+                        ) : null}
                         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/80 via-background/15 to-transparent" />
                       </div>
 
