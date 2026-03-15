@@ -13,6 +13,7 @@ export default function ClasesPage() {
       title="Clases"
       subtitle="Toca cada tarjeta para verla al reverso. Al frente veras su imagen; al girar, su descripcion completa."
       columns={2}
+      largeImage
     />
   );
 }

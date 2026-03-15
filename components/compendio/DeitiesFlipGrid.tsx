@@ -10,11 +10,12 @@ interface DeitiesFlipGridProps {
   title: string;
   subtitle: string;
   columns?: 2 | 3;
+  largeImage?: boolean;
 }
 
 const FALLBACK_IMAGE = "/images/piramides_azteca_final_1920.jpg";
 
-export default function DeitiesFlipGrid({ items, title, subtitle, columns = 3 }: DeitiesFlipGridProps) {
+export default function DeitiesFlipGrid({ items, title, subtitle, columns = 3, largeImage = false }: DeitiesFlipGridProps) {
   const [flipped, setFlipped] = useState<Record<string, boolean>>({});
 
   const cards = useMemo(
@@ -65,7 +66,7 @@ export default function DeitiesFlipGrid({ items, title, subtitle, columns = 3 }:
                     }`}
                   >
                     <article className="glass-card absolute inset-0 overflow-hidden rounded-2xl [backface-visibility:hidden]">
-                      <div className="relative h-[52%] w-full">
+                      <div className={`relative w-full ${largeImage ? "h-[68%]" : "h-[52%]"}`}>
                         <Image
                           src={item.imageSrc}
                           alt={item.coverImageAlt || `${item.name} en Tonaltlan`}
@@ -76,7 +77,7 @@ export default function DeitiesFlipGrid({ items, title, subtitle, columns = 3 }:
                         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/80 via-background/15 to-transparent" />
                       </div>
 
-                      <div className="flex h-[48%] flex-col justify-between p-5">
+                      <div className={`flex flex-col justify-between p-5 ${largeImage ? "h-[32%]" : "h-[48%]"}`}>
                         <div>
                           <h2 className="mb-2 font-serif text-2xl font-semibold text-gold">{item.name}</h2>
                           <p className="text-sm leading-relaxed text-muted">{item.description}</p>
