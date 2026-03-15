@@ -24,13 +24,13 @@ export default function ClasesPage() {
 
             return (
               <article key={item.slug} className="glass-card overflow-hidden rounded-2xl">
-                <div className="relative h-56 w-full bg-background/40">
+                <div className="relative h-64 w-full bg-background/60 md:h-72">
                   {item.coverImageSrc ? (
                     <Image
                       src={item.coverImageSrc}
                       alt={item.coverImageAlt || `${item.name} en Tonaltlan`}
                       fill
-                      className="object-cover"
+                      className="object-contain p-3"
                       sizes="(max-width: 1024px) 100vw, 50vw"
                     />
                   ) : (
@@ -38,7 +38,7 @@ export default function ClasesPage() {
                       Imagen pendiente
                     </div>
                   )}
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent" />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/45 via-transparent to-transparent" />
                 </div>
 
                 <div className="p-6 md:p-7">

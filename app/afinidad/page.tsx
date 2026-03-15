@@ -3,6 +3,30 @@
 import SectionHeader from "@/components/compendio/SectionHeader";
 import { useAffinityTest } from "@/hooks/useAffinityTest";
 
+interface ParsedAffinityTitle {
+  race: string;
+  element: string | null;
+  archetype: string;
+}
+
+function parseAffinityTitle(rawTitle: string): ParsedAffinityTitle {
+  const match = rawTitle.match(/^([^()]+?)\s*(?:\(([^)]+)\))?\s*-\s*(.+)$/);
+
+  if (!match) {
+    return {
+      race: rawTitle.trim(),
+      element: null,
+      archetype: "Afinidad revelada",
+    };
+  }
+
+  return {
+    race: match[1].trim(),
+    element: match[2]?.trim() ?? null,
+    archetype: match[3].trim(),
+  };
+}
+
 export default function AfinidadPage() {
   const {
     phase,
@@ -24,6 +48,8 @@ export default function AfinidadPage() {
     previousQuestion,
     resetTest,
   } = useAffinityTest();
+
+  const parsedDominantTitle = results ? parseAffinityTitle(results.dominant.narrative.name) : null;
 
   return (
     <div className="pt-24 pb-16 lg:pt-32">
@@ -179,8 +205,21 @@ export default function AfinidadPage() {
                   <div className="h-px w-20 bg-gradient-to-l from-transparent to-gold/50" />
                 </div>
 
+                {parsedDominantTitle ? (
+                  <div className="mb-4 flex flex-wrap items-center justify-center gap-2">
+                    <span className="rounded-full border border-teal/40 bg-teal/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-teal">
+                      {parsedDominantTitle.race}
+                    </span>
+                    {parsedDominantTitle.element ? (
+                      <span className="rounded-full border border-gold/35 bg-gold/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+                        {parsedDominantTitle.element}
+                      </span>
+                    ) : null}
+                  </div>
+                ) : null}
+
                 <h2 className="font-serif text-4xl font-bold leading-tight text-gold md:text-5xl">
-                  {results.dominant.narrative.name}
+                  {parsedDominantTitle?.archetype ?? results.dominant.narrative.name}
                 </h2>
 
                 <p className="mx-auto mt-6 max-w-lg text-base italic leading-relaxed text-muted">
