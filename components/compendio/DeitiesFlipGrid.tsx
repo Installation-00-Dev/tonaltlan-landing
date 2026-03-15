@@ -11,11 +11,19 @@ interface DeitiesFlipGridProps {
   subtitle: string;
   columns?: 2 | 3;
   largeImage?: boolean;
+  sortWithImageFirst?: boolean;
 }
 
 const FALLBACK_IMAGE = "/images/piramides_azteca_final_1920.jpg";
 
-export default function DeitiesFlipGrid({ items, title, subtitle, columns = 3, largeImage = false }: DeitiesFlipGridProps) {
+export default function DeitiesFlipGrid({
+  items,
+  title,
+  subtitle,
+  columns = 3,
+  largeImage = false,
+  sortWithImageFirst = false,
+}: DeitiesFlipGridProps) {
   const [flipped, setFlipped] = useState<Record<string, boolean>>({});
 
   const cards = useMemo(
@@ -33,8 +41,11 @@ export default function DeitiesFlipGrid({ items, title, subtitle, columns = 3, l
           descriptionText,
           noteText,
         };
+      }).sort((left, right) => {
+        if (!sortWithImageFirst) return 0;
+        return (right.coverImageSrc ? 1 : 0) - (left.coverImageSrc ? 1 : 0);
       }),
-    [items],
+    [items, sortWithImageFirst],
   );
 
   function toggleCard(slug: string) {
@@ -84,11 +95,17 @@ export default function DeitiesFlipGrid({ items, title, subtitle, columns = 3, l
                       <div className={`flex flex-col justify-between p-5 ${largeImage ? "h-[32%]" : "h-[48%]"}`}>
                         <div>
                           <h2 className="mb-2 font-serif text-2xl font-semibold text-gold">{item.name}</h2>
-                          <p className="text-sm leading-relaxed text-muted">{item.description}</p>
+                          <p
+                            className={`overflow-hidden text-muted/85 ${
+                              largeImage ? "max-h-12 text-xs leading-relaxed" : "max-h-16 text-sm leading-relaxed"
+                            }`}
+                          >
+                            {item.description}
+                          </p>
                         </div>
                         <div className="mt-3 flex items-end justify-end">
-                          <span className="shrink-0 text-xs font-semibold uppercase tracking-[0.18em] text-teal">
-                            Tocar para girar
+                          <span className="shrink-0 rounded-full border border-teal/40 bg-teal/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.15em] text-teal">
+                            Ver descripcion
                           </span>
                         </div>
                       </div>
@@ -105,7 +122,7 @@ export default function DeitiesFlipGrid({ items, title, subtitle, columns = 3, l
                             </div>
 
                             {item.noteText ? (
-                              <div>
+                              <div className="border-t border-glass-border/70 pt-4">
                                 <p className="mb-2 text-xs font-semibold uppercase tracking-[0.25em] text-gold">Nota</p>
                                 <p className="text-sm leading-relaxed text-muted whitespace-pre-line">{item.noteText}</p>
                               </div>
@@ -115,7 +132,7 @@ export default function DeitiesFlipGrid({ items, title, subtitle, columns = 3, l
 
                         <div>
                           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">
-                            Tocar para regresar
+                            Volver a imagen
                           </p>
                         </div>
                       </div>
