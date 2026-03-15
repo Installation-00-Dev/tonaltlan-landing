@@ -49,12 +49,12 @@ export default function MonturasPage() {
           subtitle="Galeria visual de monturas del mundo de Tonaltlan."
         />
 
-        <div className="columns-1 gap-6 sm:columns-2 lg:columns-3">
+        <div className="mx-auto grid max-w-6xl grid-cols-1 justify-items-center gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {mountImages.map((src, index) => (
             <article
               key={src}
               className={[
-                "group mb-6 break-inside-avoid overflow-hidden rounded-[1.4rem] border border-glass-border/70 bg-background/35 opacity-0 shadow-[0_18px_50px_rgba(0,0,0,0.22)] transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-[0_24px_60px_rgba(0,0,0,0.3)] hover:ring-1 hover:ring-gold/30 animate-fade-in",
+                "group w-full max-w-[360px] overflow-hidden rounded-[1.4rem] border border-glass-border/70 bg-background/35 opacity-0 shadow-[0_18px_50px_rgba(0,0,0,0.22)] transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-[0_24px_60px_rgba(0,0,0,0.3)] hover:ring-1 hover:ring-gold/30 animate-fade-in",
                 pastelCardBackgrounds[index % pastelCardBackgrounds.length],
               ].join(" ")}
               style={{ animationDelay: `${index * 90}ms` }}
