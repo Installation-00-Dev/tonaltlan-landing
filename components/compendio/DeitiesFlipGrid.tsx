@@ -22,12 +22,16 @@ export default function DeitiesFlipGrid({ items, title, subtitle, columns = 3, l
     () =>
       items.map((item) => {
         const imageSrc = item.coverImageSrc || FALLBACK_IMAGE;
-        const backText = (item.sections[0]?.content || item.description).trim();
+        const descriptionSection = item.sections.find((section) => section.title === "Descripcion");
+        const noteSection = item.sections.find((section) => section.title === "Nota");
+        const descriptionText = (descriptionSection?.content || item.description).trim();
+        const noteText = noteSection?.content?.trim() || null;
 
         return {
           ...item,
           imageSrc,
-          backText,
+          descriptionText,
+          noteText,
         };
       }),
     [items],
@@ -93,11 +97,20 @@ export default function DeitiesFlipGrid({ items, title, subtitle, columns = 3, l
                     <article className="glass-card absolute inset-0 flex rounded-2xl p-6 [backface-visibility:hidden] [transform:rotateY(180deg)]">
                       <div className="flex w-full min-h-0 flex-col justify-between gap-4">
                         <div className="min-h-0">
-                          <p className="mb-2 text-xs font-semibold uppercase tracking-[0.25em] text-teal">Descripcion</p>
                           <h3 className="mb-3 font-serif text-2xl font-semibold text-gold">{item.name}</h3>
-                          <p className="max-h-[270px] overflow-y-auto pr-1 text-sm leading-relaxed text-muted whitespace-pre-line md:max-h-[320px] lg:max-h-[360px]">
-                            {item.backText}
-                          </p>
+                          <div className="max-h-[270px] space-y-4 overflow-y-auto pr-1 md:max-h-[320px] lg:max-h-[360px]">
+                            <div>
+                              <p className="mb-2 text-xs font-semibold uppercase tracking-[0.25em] text-teal">Descripcion</p>
+                              <p className="text-sm leading-relaxed text-muted whitespace-pre-line">{item.descriptionText}</p>
+                            </div>
+
+                            {item.noteText ? (
+                              <div>
+                                <p className="mb-2 text-xs font-semibold uppercase tracking-[0.25em] text-gold">Nota</p>
+                                <p className="text-sm leading-relaxed text-muted whitespace-pre-line">{item.noteText}</p>
+                              </div>
+                            ) : null}
+                          </div>
                         </div>
 
                         <div>
