@@ -1,7 +1,6 @@
 "use client";
 
 import SectionHeader from "@/components/compendio/SectionHeader";
-import TagChips from "@/components/compendio/TagChips";
 import type { CompendiumEntry } from "@/lib/data";
 import Image from "next/image";
 import { useMemo, useState } from "react";
@@ -68,7 +67,7 @@ export default function DeitiesFlipGrid({ items }: DeitiesFlipGridProps) {
                           src={item.imageSrc}
                           alt={item.coverImageAlt || `${item.name} en Tonaltlan`}
                           fill
-                          className="object-cover object-top"
+                          className="object-contain p-2"
                           sizes="(max-width: 1024px) 100vw, 33vw"
                         />
                         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/80 via-background/15 to-transparent" />
@@ -79,8 +78,7 @@ export default function DeitiesFlipGrid({ items }: DeitiesFlipGridProps) {
                           <h2 className="mb-2 font-serif text-2xl font-semibold text-gold">{item.name}</h2>
                           <p className="text-sm leading-relaxed text-muted">{item.description}</p>
                         </div>
-                        <div className="mt-3 flex items-end justify-between gap-3">
-                          <TagChips tags={item.tags.slice(0, 3)} variant="gold" />
+                        <div className="mt-3 flex items-end justify-end">
                           <span className="shrink-0 text-xs font-semibold uppercase tracking-[0.18em] text-teal">
                             Tocar para girar
                           </span>
@@ -99,8 +97,7 @@ export default function DeitiesFlipGrid({ items }: DeitiesFlipGridProps) {
                         </div>
 
                         <div>
-                          <TagChips tags={item.tags.slice(0, 3)} variant="teal" />
-                          <p className="mt-3 text-xs font-semibold uppercase tracking-[0.18em] text-gold">
+                          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">
                             Tocar para regresar
                           </p>
                         </div>
