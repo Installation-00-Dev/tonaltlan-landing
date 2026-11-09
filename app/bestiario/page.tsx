@@ -3,7 +3,7 @@ import Pendiente from "@/components/ui/Pendiente";
 
 export const metadata = {
   title: "Bestiario - Tonaltlan",
-  description: "Criaturas del Mictlan y bestias de selvas y montanas sagradas.",
+  description: "Criaturas del Mictlan y bestias de selvas y montañas sagradas.",
 };
 
 // Regiones tomadas de las etiquetas del Bestiario en la landing.
@@ -22,7 +22,7 @@ export default function BestiarioPage() {
           eyebrow="Compendio"
           eyebrowHref="/explorar"
           title="Bestiario"
-          subtitle="Criaturas del Mictlan y bestias de selvas y montanas sagradas."
+          subtitle="Criaturas del Mictlan y bestias de selvas y montañas sagradas."
         />
 
         <div className="mb-10 flex flex-wrap items-center gap-2">

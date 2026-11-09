@@ -4,7 +4,7 @@ import Pendiente from "@/components/ui/Pendiente";
 import { galleryImages } from "@/lib/site";
 
 export const metadata = {
-  title: "Galeria - Tonaltlan",
+  title: "Galería - Tonaltlan",
   description: "Ilustraciones y arte visual del universo de Tonaltlan.",
 };
 
@@ -14,7 +14,7 @@ export default function GaleriaPage() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <SectionHeader
           eyebrow="Tonaltlan"
-          title="Galeria"
+          title="Galería"
           subtitle="Todas las ilustraciones disponibles del mundo de Tonaltlan."
         />
         <GalleryGrid images={galleryImages} />

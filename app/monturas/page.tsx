@@ -5,7 +5,7 @@ import { mountImages } from "@/lib/site";
 
 export const metadata = {
   title: "Monturas - Tonaltlan",
-  description: "Monturas voladoras, terrestres y acuaticas del mundo de Tonaltlan.",
+  description: "Monturas voladoras, terrestres y acuáticas del mundo de Tonaltlan.",
 };
 
 export default function MonturasPage() {
@@ -16,7 +16,7 @@ export default function MonturasPage() {
           eyebrow="Compendio"
           eyebrowHref="/explorar"
           title="Monturas"
-          subtitle="Galeria visual de monturas del mundo de Tonaltlan."
+          subtitle="Galería visual de monturas del mundo de Tonaltlan."
         />
         <MountCarousel images={mountImages} />
         <Pendiente id="monturas" className="mt-10" />

@@ -24,7 +24,7 @@ export default function NosotrosPage() {
             sizes="(max-width: 768px) 90vw, 448px"
             priority
           />
-          <p className="text-sm text-selva-400">Una produccion de Cuevas & Quetzales</p>
+          <p className="text-sm text-selva-400">Una producción de Cuevas & Quetzales</p>
         </div>
 
         <Pendiente id="nosotros" className="mb-12" />
