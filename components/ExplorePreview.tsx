@@ -59,9 +59,10 @@ export default function ExplorePreview({ proximamente = [] }: { proximamente?: s
   return (
     <section id="explorar-preview" className="relative py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-          <h2 className="font-display text-4xl text-jade-400 md:text-5xl">Explorar Tonaltlan</h2>
-          <p className="max-w-md text-base leading-relaxed text-selva-300 md:text-right md:text-lg">
+        <div className="mb-14 max-w-3xl">
+          <h2 className="font-display text-5xl text-jade-400 md:text-6xl">Explorar Tonaltlan</h2>
+          <Greca className="mt-6 w-40 text-oro-400/60" />
+          <p className="mt-6 font-display text-2xl leading-snug text-selva-100 [text-wrap:balance] md:text-3xl">
             Descubre los secretos del mundo mesoamericano a través de su compendio viviente.
           </p>
         </div>
