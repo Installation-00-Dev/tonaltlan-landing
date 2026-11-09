@@ -1,4 +1,5 @@
-import DeitiesFlipGrid from "@/components/compendio/DeitiesFlipGrid";
+import ClassSelector from "@/components/compendio/ClassSelector";
+import SectionHeader from "@/components/compendio/SectionHeader";
 import { clases } from "@/lib/data";
 
 export const metadata = {
@@ -8,12 +9,16 @@ export const metadata = {
 
 export default function ClasesPage() {
   return (
-    <DeitiesFlipGrid
-      items={clases}
-      title="Clases"
-      subtitle="Toca cada tarjeta para verla al reverso. Al frente veras su imagen; al girar, su descripcion completa."
-      columns={2}
-      largeImage
-    />
+    <div className="pb-24 pt-28 lg:pt-36">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <SectionHeader
+          eyebrow="Compendio"
+          eyebrowHref="/explorar"
+          title="Clases"
+          subtitle="Guerreros, sacerdotes, hechiceros y mas arquetipos del mundo antiguo."
+        />
+        <ClassSelector items={clases} />
+      </div>
+    </div>
   );
 }

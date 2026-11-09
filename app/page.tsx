@@ -3,6 +3,10 @@ import About from "@/components/About";
 import ExplorePreview from "@/components/ExplorePreview";
 import Features from "@/components/Features";
 import Newsletter from "@/components/Newsletter";
+import { sectionsMeta } from "@/lib/data";
+
+// Secciones sin contenido todavia (se marcan "Proximamente" en la landing).
+const proximamente = sectionsMeta.filter((s) => s.count === 0).map((s) => s.title);
 
 function Divider() {
   return (
@@ -26,7 +30,7 @@ export default function Home() {
         <Hero />
         <About />
         <Divider />
-        <ExplorePreview />
+        <ExplorePreview proximamente={proximamente} />
         <Divider />
         <Features />
         <Newsletter />

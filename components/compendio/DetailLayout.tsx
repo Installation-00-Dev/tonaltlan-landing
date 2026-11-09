@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import TagChips from "./TagChips";
+import { themeFor } from "@/lib/site";
 
 interface DetailSection {
   title: string;
@@ -15,6 +15,10 @@ interface DetailLayoutProps {
   coverImageAlt?: string;
   backHref: string;
   backLabel: string;
+  /** Slug de la deidad cuyo color se usa como acento. */
+  accent?: string;
+  /** Enlaces cruzados, p. ej. el linaje de una especie. */
+  related?: { label: string; items: { name: string; href: string }[] };
 }
 
 export default function DetailLayout({
@@ -25,7 +29,10 @@ export default function DetailLayout({
   coverImageAlt,
   backHref,
   backLabel,
+  accent,
+  related,
 }: DetailLayoutProps) {
+  const theme = themeFor(accent);
   const isHekaCover = (coverImageSrc ?? "").includes("Heka.webp");
 
   function toAnchorId(value: string) {
@@ -302,12 +309,12 @@ export default function DetailLayout({
   const quickFacts = buildQuickFacts();
 
   return (
-    <div className="pt-24 pb-16 lg:pt-32">
-      <div className="mx-auto max-w-3xl px-4 lg:px-8">
+    <div className="pb-24 pt-28 lg:pt-36">
+      <div className="mx-auto max-w-3xl px-6 lg:px-8">
         {/* Back link */}
         <Link
           href={backHref}
-          className="mb-6 inline-flex items-center gap-2 text-sm font-medium text-teal transition-colors hover:text-teal/80"
+          className="mb-8 inline-flex items-center gap-2 text-sm font-medium text-slate-400 transition-colors hover:text-amber-300"
         >
           <svg
             className="h-4 w-4"
@@ -327,18 +334,22 @@ export default function DetailLayout({
         </Link>
 
         {/* Title */}
-        <h1 className="mb-4 font-serif text-3xl font-bold text-gold md:text-4xl lg:text-5xl">
+        <span className={`mb-4 block h-1 w-16 rounded-full ${theme.bar}`} aria-hidden="true" />
+        <h1 className={`mb-5 font-serif text-4xl font-bold md:text-5xl ${theme.text}`}>
           {title}
         </h1>
 
         {/* Tags */}
-        <div className="mb-8">
-          <TagChips tags={tags} variant="gold" />
+        <div className="mb-8 flex flex-wrap gap-2">
+          {tags.map((tag) => (
+            <span key={tag} className={`rounded-full px-3 py-1 text-xs font-medium ring-1 ${theme.chip}`}>
+              {tag}
+            </span>
+          ))}
         </div>
 
         {coverImageSrc && (
-          <div className="relative mb-8 overflow-hidden rounded-2xl border border-glass-border/70 bg-gradient-to-br from-amber-100/20 via-rose-100/10 to-sky-100/15">
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_22%_22%,rgba(255,255,255,0.22),transparent_45%),radial-gradient(circle_at_78%_80%,rgba(45,212,191,0.14),transparent_50%)]" />
+          <div className={`relative mb-8 overflow-hidden rounded-3xl bg-gradient-to-b ring-1 ring-slate-700/70 ${theme.glow}`}>
             {isHekaCover && (
               <div className="pointer-events-none absolute inset-4 rounded-2xl bg-sky-100/35" />
             )}
@@ -356,6 +367,21 @@ export default function DetailLayout({
           </div>
         )}
 
+        {related && related.items.length > 0 && (
+          <div className="mb-8 flex flex-wrap items-center gap-3 rounded-2xl bg-slate-800/40 p-4 ring-1 ring-slate-700/70">
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">{related.label}</span>
+            {related.items.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`rounded-full px-4 py-1.5 text-sm font-medium ring-1 transition-colors hover:bg-slate-800 ${theme.chip}`}
+              >
+                {item.name}
+              </Link>
+            ))}
+          </div>
+        )}
+
         {quickFacts.length > 0 && (
           <section className="mb-8 rounded-2xl border border-gold/30 bg-gradient-to-br from-gold/10 via-background/40 to-background/20 p-4 md:p-6">
             <h2 className="mb-4 font-serif text-2xl font-semibold text-gold">Ficha Rapida</h2>
@@ -369,7 +395,7 @@ export default function DetailLayout({
                       : "rounded-xl border border-glass-border bg-background/45 p-4"
                   }
                 >
-                  <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-teal">{fact.label}</p>
+                  <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-amber-400/90">{fact.label}</p>
                   <p className="text-sm leading-relaxed text-foreground">{fact.value}</p>
                 </article>
               ))}
@@ -384,7 +410,7 @@ export default function DetailLayout({
               <a
                 key={`${section.title}-${idx}`}
                 href={`#${id}`}
-                className="rounded-full border border-glass-border bg-background/40 px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-muted transition-colors hover:border-teal hover:text-foreground"
+                className="rounded-full border border-glass-border bg-background/40 px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-muted transition-colors hover:border-amber-400 hover:text-slate-100"
               >
                 {section.title}
               </a>

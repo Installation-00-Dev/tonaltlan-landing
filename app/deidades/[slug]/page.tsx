@@ -1,5 +1,5 @@
 import DetailLayout from "@/components/compendio/DetailLayout";
-import { deidades } from "@/lib/data";
+import { deidades, especies } from "@/lib/data";
 import { notFound } from "next/navigation";
 
 interface Props {
@@ -32,6 +32,13 @@ export default async function DeidadDetailPage({ params }: Props) {
       sections={item.sections}
       coverImageSrc={item.coverImageSrc}
       coverImageAlt={item.coverImageAlt}
+      accent={item.slug}
+      related={{
+        label: "Su linaje",
+        items: especies
+          .filter((e) => e.deidad === item.slug)
+          .map((e) => ({ name: e.name, href: `/especies/${e.slug}` })),
+      }}
       backHref="/deidades"
       backLabel="Volver a Deidades"
     />

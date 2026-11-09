@@ -42,7 +42,8 @@ const exploreSections = [
   },
 ];
 
-export default function ExplorePreview() {
+/** `proximamente`: titulos de secciones que aun no tienen contenido. */
+export default function ExplorePreview({ proximamente = [] }: { proximamente?: string[] }) {
   const sectionRef = useFadeIn<HTMLElement>();
 
   return (
@@ -79,6 +80,11 @@ export default function ExplorePreview() {
                     <h3 className="font-serif text-xl font-semibold text-slate-100 transition-colors group-hover:text-amber-300">
                       {section.title}
                     </h3>
+                    {proximamente.includes(section.title) ? (
+                      <span className="shrink-0 rounded-full border border-dashed border-slate-600 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.15em] text-slate-400">
+                        Próximamente
+                      </span>
+                    ) : (
                     <span
                       className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-slate-700/60 text-slate-300 transition-all duration-300 group-hover:translate-x-1 group-hover:bg-amber-400 group-hover:text-slate-950"
                       aria-hidden="true"
@@ -87,6 +93,7 @@ export default function ExplorePreview() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>
                     </span>
+                    )}
                   </div>
 
                   <p className="mb-6 text-sm leading-relaxed text-slate-300 md:text-base">
