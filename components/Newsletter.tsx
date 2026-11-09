@@ -48,7 +48,7 @@ export default function Newsletter() {
                 />
               </svg>
               <span className="text-base font-medium text-selva-100">
-                Proximamente - Gracias por tu interes
+                Próximamente - Gracias por tu interés
               </span>
             </div>
           ) : (
@@ -57,7 +57,7 @@ export default function Newsletter() {
               className="mx-auto flex max-w-lg flex-col gap-3 sm:flex-row"
             >
               <label htmlFor="newsletter-email" className="sr-only">
-                Correo electronico
+                Correo electrónico
               </label>
               <input
                 id="newsletter-email"
@@ -78,7 +78,7 @@ export default function Newsletter() {
           <p className="mt-6 text-xs leading-relaxed text-selva-400">
             {/* PLACEHOLDER: Reemplaza con tu politica de privacidad real */}
             Respetamos tu privacidad. Puedes darte de baja en cualquier momento.
-            Consulta nuestra politica de privacidad para mas informacion.
+            Consulta nuestra política de privacidad para más información.
           </p>
         </div>
       </div>

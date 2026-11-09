@@ -7,7 +7,7 @@ import { themeFor } from "@/lib/site";
 
 export const metadata = {
   title: "Deidades - Tonaltlan",
-  description: "Los dioses del panteon mesoamericano de Tonaltlan y sus dominios.",
+  description: "Los dioses del panteón mesoamericano de Tonaltlan y sus dominios.",
 };
 
 export default function DeidadesPage() {

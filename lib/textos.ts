@@ -18,6 +18,6 @@ export const textosEspecies = {
   titulo: "Especies Jugables",
   lema: "Ocho especies, ocho formas de vivir Tonaltlan.",
   intro: [
-    "Siete especies nacidas bajo la influencia de las deidades elementales, cada una con su propia historia, cultura y conexión con el Tonal. A ellas se suman los Tlacas, humanos sin una afinidad elemental predeterminada",
+    "Siete especies nacidas bajo la influencia de las deidades elementales, cada una con su propia historia, cultura y conexión con el Tonal. A ellas se suman los Tlacas, humanos sin una afinidad elemental predeterminada.",
   ],
 };

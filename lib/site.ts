@@ -74,17 +74,17 @@ export const contacts = [
   {
     role: "Arquitecto Tonal",
     email: "arquitectotonal@tonaltlan.com",
-    description: "Diseno de juego y contenido creativo",
+    description: "Diseño de juego y contenido creativo",
   },
   {
-    role: "Guarda Codices",
+    role: "Guarda Códices",
     email: "guardacodices@tonaltlan.com",
     description: "Comunidad y eventos",
   },
   {
     role: "Tecnomante",
     email: "tecnomante@tonaltlan.com",
-    description: "Soporte tecnico y digital",
+    description: "Soporte técnico y digital",
   },
 ];
 
@@ -119,8 +119,16 @@ export const mountImages = [
   "/images/monturas/scorpion-archip.webp",
 ];
 
-/** Convierte "/images/galeria/guerrera_aguila.webp" en "Guerrera Aguila". */
-export function labelFromPath(src: string, fallback = "Ilustracion") {
+/** Convierte "/images/galeria/guerrera_aguila.webp" en "Guerrera Águila". */
+// Correcciones de ortografia para nombres que salen del nombre del archivo.
+const correccionesNombre: Record<string, string> = {
+  Aguila: "Águila",
+  Espiritu: "Espíritu",
+  Alquemista: "Alquimista",
+  Sacerdotiza: "Sacerdotisa",
+};
+
+export function labelFromPath(src: string, fallback = "Ilustración") {
   const raw = src
     .split("/")
     .pop()
@@ -131,6 +139,7 @@ export function labelFromPath(src: string, fallback = "Ilustracion") {
   return raw
     .split(/\s+/)
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .map((word) => correccionesNombre[word] ?? word)
     .join(" ");
 }
 

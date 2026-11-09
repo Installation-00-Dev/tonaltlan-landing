@@ -5,7 +5,7 @@ import { textosClases } from "@/lib/textos";
 
 export const metadata = {
   title: "Clases - Tonaltlan",
-  description: "Descubre las clases jugables de Tonaltlan: guerreros, sacerdotisas, nahuales y mas.",
+  description: "Descubre las clases jugables de Tonaltlan: guerreros, sacerdotisas, nahuales y más.",
 };
 
 export default function ClasesPage() {

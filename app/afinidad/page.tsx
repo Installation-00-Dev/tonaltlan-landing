@@ -56,7 +56,7 @@ export default function AfinidadPage() {
       <div className="mx-auto max-w-3xl px-4 lg:px-8">
         <SectionHeader
           title="Test de Afinidad"
-          subtitle="Descubre con que energia racial resuena tu energia tonal. Responde las preguntas y encuentra tu afinidad en el mundo de Tonaltlan."
+          subtitle="Descubre con qué energía racial resuena tu energía tonal. Responde las preguntas y encuentra tu afinidad en el mundo de Tonaltlan."
         />
 
         <div className="mb-8 flex items-center justify-center gap-3">
@@ -167,7 +167,7 @@ export default function AfinidadPage() {
               })}
             </div>
 
-            <p className="mt-6 text-sm text-muted">Toca una opcion para avanzar automaticamente. Usa Anterior para corregir.</p>
+            <p className="mt-6 text-sm text-muted">Toca una opción para avanzar automáticamente. Usa Anterior para corregir.</p>
 
             <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-between">
               <button

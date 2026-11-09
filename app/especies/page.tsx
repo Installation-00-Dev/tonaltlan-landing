@@ -8,7 +8,7 @@ import { textosEspecies } from "@/lib/textos";
 
 export const metadata = {
   title: "Especies - Tonaltlan",
-  description: "Explora las especies jugables de Tonaltlan: humanos, ahuizotl, tlalocan-i y mas.",
+  description: "Explora las especies jugables de Tonaltlan: humanos, ahuizotl, tlalocan-i y más.",
 };
 
 // Agrupa las especies por la deidad de la que descienden, en el orden del panteon.

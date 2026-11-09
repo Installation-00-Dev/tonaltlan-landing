@@ -5,36 +5,36 @@ import Link from "next/link";
 const exploreSections = [
   {
     title: "Clases",
-    description: "Guerreros, sacerdotes, hechiceros y mas arquetipos del mundo antiguo.",
+    description: "Guerreros, sacerdotes, hechiceros y más arquetipos del mundo antiguo.",
     tags: ["Combate", "Magia", "Sigilo"],
     href: "/clases",
   },
   {
     title: "Especies",
-    description: "Seres nacidos del maiz, la obsidiana y el aliento de los dioses.",
+    description: "Seres nacidos del maíz, la obsidiana y el aliento de los dioses.",
     tags: ["Humanos", "Nahual", "Tlalocan"],
     href: "/especies",
   },
   {
     title: "Bestiario",
-    description: "Criaturas del Mictlan y bestias de selvas y montanas sagradas.",
+    description: "Criaturas del Mictlan y bestias de selvas y montañas sagradas.",
     tags: ["Mictlan", "Selva", "Celestial"],
     href: "/bestiario",
   },
   {
     title: "Monturas",
-    description: "Companeros leales que surcan cielos, rios y caminos ancestrales.",
-    tags: ["Voladora", "Acuatica", "Terrestre"],
+    description: "Compañeros leales que surcan cielos, ríos y caminos ancestrales.",
+    tags: ["Voladora", "Acuática", "Terrestre"],
     href: "/monturas",
   },
   {
     title: "Deidades",
     description: "Los dioses que tejen el destino del cosmos y sus elegidos.",
-    tags: ["Creacion", "Destruccion", "Equilibrio"],
+    tags: ["Creación", "Destrucción", "Equilibrio"],
     href: "/deidades",
   },
   {
-    title: "Galeria",
+    title: "Galería",
     description: "Arte conceptual, ilustraciones y vistazos al universo de Tonaltlan.",
     tags: ["Arte", "Conceptos", "Mapas"],
     href: "/galeria",
@@ -54,7 +54,7 @@ export default function ExplorePreview({ proximamente = [] }: { proximamente?: s
             Explorar Tonaltlan
           </h2>
           <p className="text-base leading-relaxed text-selva-300 md:text-lg">
-            Descubre los secretos del mundo mesoamericano a traves de su compendio viviente.
+            Descubre los secretos del mundo mesoamericano a través de su compendio viviente.
           </p>
         </div>
 

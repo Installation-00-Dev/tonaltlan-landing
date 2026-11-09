@@ -29,14 +29,14 @@ export const clases: CompendiumEntry[] = [
     coverImageAlt: "Brujo Catemaco junto a su Ixip en una cueva del reino de Tl'atl.",
     sections: [
       {
-        title: "Descripcion",
+        title: "Descripción",
         content:
           "Los Catemacos son brujos artesanos originarios de las regiones pantanosas del reino de Tl’atl. Su poder no proviene de libros ni de pactos con entidades desconocidas, sino del vínculo espiritual que crean con un Ixip, un muñeco tonal tallado por sus propias manos y animado mediante un ritual ancestral.\n\nA lo largo de su entrenamiento, el Catemaco comparte parte de su esencia con esta creación hasta despertar en ella una fuerza elemental latente. El Ixip se convierte entonces en un aliado vivo que canaliza la energía de los elementos y actúa como extensión de la voluntad de su creador.\n\nEn combate y en aventura, el Catemaco y su Ixip funcionan como una sola entidad: el brujo dirige y planifica mientras su creación ejecuta movimientos tonales. Para muchos pueblos son figuras misteriosas y temidas, mediadores entre los espíritus del pantano y el mundo mortal.",
       },
       {
         title: "Nota",
         content:
-          "Ideal para jugadores que disfrutan pensar cada movimiento con anticipacion y controlar el campo de batalla a traves de un aliado magico.",
+          "Ideal para jugadores que disfrutan pensar cada movimiento con anticipación y controlar el campo de batalla a través de un aliado mágico.",
       },
     ],
   },
@@ -47,17 +47,17 @@ export const clases: CompendiumEntry[] = [
       "Defensores de Zalan. Los Guerreros Otomi son la milicia de elite del norte de Tonaltlan y portadores del Punto Tonal de Tierra.",
     tags: ["Tanque", "cuerpo a cuerpo", "Tonal de Tierra"],
     coverImageSrc: "/images/Otomi.webp",
-    coverImageAlt: "Guerrero Otomi con armadura pesada y estandarte de guerra en primera linea.",
+    coverImageAlt: "Guerrero Otomi con armadura pesada y estandarte de guerra en primera línea.",
     sections: [
       {
-        title: "Descripcion",
+        title: "Descripción",
         content:
-          "Defensores de Zalan.\n\nLos Guerreros Otomi son la milicia de elite del norte de Tonaltlan y portadores del Punto Tonal de Tierra. Su proposito no es la gloria personal, sino mantener la linea de batalla y proteger a su pueblo sin retroceder. Donde un Otomi clava su estandarte, la batalla se sostiene.\n\nCubiertos con armaduras pesadas, portando chimallis geometricos y estandartes de guerra, los Otomi son la encarnacion de la resistencia. Su presencia en el campo de batalla convierte el caos en una formacion solida donde los aliados encuentran proteccion y los enemigos encuentran un muro imposible de romper.\n\nUn Otomi no corre hacia la batalla. La batalla llega a el.",
+          "Defensores de Zalan.\n\nLos Guerreros Otomi son la milicia de elite del norte de Tonaltlan y portadores del Punto Tonal de Tierra. Su propósito no es la gloria personal, sino mantener la línea de batalla y proteger a su pueblo sin retroceder. Donde un Otomi clava su estandarte, la batalla se sostiene.\n\nCubiertos con armaduras pesadas, portando chimallis geométricos y estandartes de guerra, los Otomi son la encarnación de la resistencia. Su presencia en el campo de batalla convierte el caos en una formación sólida donde los aliados encuentran protección y los enemigos encuentran un muro imposible de romper.\n\nUn Otomi no corre hacia la batalla. La batalla llega a él.",
       },
       {
         title: "Nota",
         content:
-          "Ideal para jugadores que disfrutan proteger a su equipo y liderar la linea de batalla, que se sienten atraidos por personajes resistentes capaces de absorber el dano mientras el resto del grupo combate con mayor seguridad. Esta clase resulta perfecta para quienes prefieren un estilo de combate frontal y dominante, donde su presencia define el lugar donde ocurre la pelea. Si te atrae la fantasia de convertirte en el escudo del grupo, sostener la formacion y ser el pilar sobre el que se apoya todo el equipo, el Guerrero Otomi es tu camino.",
+          "Ideal para jugadores que disfrutan proteger a su equipo y liderar la línea de batalla, que se sienten atraídos por personajes resistentes capaces de absorber el daño mientras el resto del grupo combate con mayor seguridad. Esta clase resulta perfecta para quienes prefieren un estilo de combate frontal y dominante, donde su presencia define el lugar donde ocurre la pelea. Si te atrae la fantasía de convertirte en el escudo del grupo, sostener la formación y ser el pilar sobre el que se apoya todo el equipo, el Guerrero Otomi es tu camino.",
       },
     ],
   },
@@ -65,20 +65,20 @@ export const clases: CompendiumEntry[] = [
     name: "Mitotiani",
     slug: "mitotiani",
     description:
-      "Danzante Tonal. Guerreros ritualistas que canalizan la energia del Tonal a traves de danzas sagradas.",
+      "Danzante Tonal. Guerreros ritualistas que canalizan la energía del Tonal a través de danzas sagradas.",
     tags: ["Movilidad", "Soporte", "Multi-Tonal"],
     coverImageSrc: "/images/Mitotiani.webp",
     coverImageAlt: "Mitotiani ejecutando una danza ritual sobre glifos tonales.",
     sections: [
       {
-        title: "Descripcion",
+        title: "Descripción",
         content:
-          "Danzante Tonal.\n\nLos Mitotiani son guerreros ritualistas que canalizan la energia del Tonal a traves de danzas sagradas. Cada paso, cada giro y cada golpe de sus ayoyotes contra la tierra deja marcas de poder que se manifiestan como glifos rituales, alterando el campo de batalla y guiando la energia de los elementos.\n\nA diferencia de otros combatientes, el Mitotiani no depende de armas tradicionales. Su propio cuerpo es su instrumento de combate. Luchan unicamente con piernas y pies, ejecutando patadas, barridas y lanzamientos de dagas ocultas en sus ayoyotes. Durante la danza, sus manos permanecen inmoviles detras de la espalda, preservando el equilibrio y la pureza del ritual. Cualquier arma empunada romperia el ritmo de la danza y debilitaria su conexion con el Tonal.\n\nMediante sus danzas pueden fortalecer aliados, debilitar enemigos o transformar el terreno mismo en un escenario ritual donde el combate se convierte en una coreografia de poder elemental.\n\nUn Mitotiani no solo pelea. Convierte la batalla en un ritual.",
+          "Danzante Tonal.\n\nLos Mitotiani son guerreros ritualistas que canalizan la energía del Tonal a través de danzas sagradas. Cada paso, cada giro y cada golpe de sus ayoyotes contra la tierra deja marcas de poder que se manifiestan como glifos rituales, alterando el campo de batalla y guiando la energía de los elementos.\n\nA diferencia de otros combatientes, el Mitotiani no depende de armas tradicionales. Su propio cuerpo es su instrumento de combate. Luchan únicamente con piernas y pies, ejecutando patadas, barridas y lanzamientos de dagas ocultas en sus ayoyotes. Durante la danza, sus manos permanecen inmóviles detrás de la espalda, preservando el equilibrio y la pureza del ritual. Cualquier arma empuñada rompería el ritmo de la danza y debilitaría su conexión con el Tonal.\n\nMediante sus danzas pueden fortalecer aliados, debilitar enemigos o transformar el terreno mismo en un escenario ritual donde el combate se convierte en una coreografía de poder elemental.\n\nUn Mitotiani no solo pelea. Convierte la batalla en un ritual.",
       },
       {
         title: "Nota",
         content:
-          "Ideal para jugadores que disfrutan personajes rapidos y creativos que se mueven constantemente por el campo de batalla, usando su posicion y sus habilidades para alterar el ritmo del combate. Esta clase es perfecta para quienes prefieren un estilo de juego dinamico, donde la movilidad, el control del terreno y la coordinacion con el equipo son mas importantes que la fuerza bruta.",
+          "Ideal para jugadores que disfrutan personajes rápidos y creativos que se mueven constantemente por el campo de batalla, usando su posición y sus habilidades para alterar el ritmo del combate. Esta clase es perfecta para quienes prefieren un estilo de juego dinámico, donde la movilidad, el control del terreno y la coordinación con el equipo son más importantes que la fuerza bruta.",
       },
     ],
   },
@@ -89,17 +89,17 @@ export const clases: CompendiumEntry[] = [
       "Portador de Sangre Tonal. Practicantes de un conocimiento ritual prohibido que manipula la sangre para debilitar y controlar.",
     tags: ["Controlador", "Debilitador", "Sellos de sangre"],
     coverImageSrc: "/images/Tlapali.webp",
-    coverImageAlt: "Tlapali marcado con simbolos de sangre tonal en un ritual oscuro.",
+    coverImageAlt: "Tlapali marcado con símbolos de sangre tonal en un ritual oscuro.",
     sections: [
       {
-        title: "Descripcion",
+        title: "Descripción",
         content:
-          "Portador de Sangre Tonal.\n\nEl Tlapali es una figura casi mitica. Muchos en los reinos creen que esta disciplina desaparecio hace siglos en lo profundo de los Bosques Obscuros, pero la verdad es que aun existen unos pocos practicantes que custodian este conocimiento ritual prohibido.\n\nSu poder nace de una energia tonal unica, fruto de la union entre la Obscuridad y el Agua, que les permite manipular la sangre como un medio ritual para marcar enemigos, debilitar su esencia vital y alterar el destino del combate. Los Tlapali utilizan sellos de sangre que activan sobre sus objetivos, debilitandolos poco a poco mientras el enemigo queda atrapado en un ciclo de dolor, desgaste y control.\n\nDebido a su dominio sobre la sangre, los Tlapali son temidos y evitados por muchos. Cada uno porta un simbolo pintado con sangre en el rostro, senal de su vinculo con esta tradicion ancestral. Aunque la mayoria permanece aislada en los bosques, algunos abandonan su tierra para aventurarse en el mundo y demostrar que su arte no es solo destruccion, sino tambien poder y conocimiento.\n\nUn Tlapali no busca derrotar a su enemigo de inmediato. Lo marca y deja que la sangre haga su trabajo.",
+          "Portador de Sangre Tonal.\n\nEl Tlapali es una figura casi mítica. Muchos en los reinos creen que esta disciplina desapareció hace siglos en lo profundo de los Bosques Obscuros, pero la verdad es que aun existen unos pocos practicantes que custodian este conocimiento ritual prohibido.\n\nSu poder nace de una energía tonal única, fruto de la union entre la Obscuridad y el Agua, que les permite manipular la sangre como un medio ritual para marcar enemigos, debilitar su esencia vital y alterar el destino del combate. Los Tlapali utilizan sellos de sangre que activan sobre sus objetivos, debilitándolos poco a poco mientras el enemigo queda atrapado en un ciclo de dolor, desgaste y control.\n\nDebido a su dominio sobre la sangre, los Tlapali son temidos y evitados por muchos. Cada uno porta un símbolo pintado con sangre en el rostro, señal de su vínculo con esta tradición ancestral. Aunque la mayoría permanece aislada en los bosques, algunos abandonan su tierra para aventurarse en el mundo y demostrar que su arte no es solo destrucción, sino también poder y conocimiento.\n\nUn Tlapali no busca derrotar a su enemigo de inmediato. Lo marca y deja que la sangre haga su trabajo.",
       },
       {
         title: "Nota",
         content:
-          "Esta clase es ideal para quienes prefieren manipular el flujo del combate, controlar a los enemigos y apoyar al grupo mediante efectos que reducen las capacidades del oponente. Tambien atraera a jugadores que disfrutan mecanicas unicas basadas en preparacion y activacion de habilidades, asi como a quienes se sienten atraidos por personajes oscuros, ritualistas y envueltos en un aura de misterio.",
+          "Esta clase es ideal para quienes prefieren manipular el flujo del combate, controlar a los enemigos y apoyar al grupo mediante efectos que reducen las capacidades del oponente. También atraerá a jugadores que disfrutan mecánicas únicas basadas en preparación y activación de habilidades, así como a quienes se sienten atraídos por personajes oscuros, ritualistas y envueltos en un aura de misterio.",
       },
     ],
   },
@@ -117,7 +117,7 @@ export const especies: CompendiumEntry[] = [
     coverImageAlt: "He'kari de cabello ondulante y ojos verde jade en movimiento.",
     sections: [
       {
-        title: "Descripcion",
+        title: "Descripción",
         content:
           "Hijos de Heka.\n\nLos He'kari son descendientes de Heka, diosa del viento. Altos, esbeltos y de movimientos ligeros, parecen moverse con la misma fluidez que una corriente de aire. Su cabello rara vez permanece quieto y sus ojos verde jade reflejan una curiosidad constante por el mundo.\n\nEn Tonaltlan son conocidos como artistas, mensajeros, espías y guardianes del conocimiento, pues su voz y presencia poseen una cualidad casi hipnótica. Los He'kari creen que las palabras viajan como el viento, y que incluso el susurro más pequeño puede cambiar el destino del mundo.\n\nRasgos\n\nAfinidad con el Aire: los He'kari no necesitan respirar y son inmunes a gases o venenos inhalados.\n\nLigereza del Viento: su cuerpo está naturalmente adaptado a la agilidad y el movimiento.",
       },
@@ -136,7 +136,7 @@ export const especies: CompendiumEntry[] = [
     tags: ["Sigilo", "Estrategia", "Obscuridad"],
     sections: [
       {
-        title: "Descripcion",
+        title: "Descripción",
         content:
           "Hijos de Calti.\n\nLos Hualik son descendientes de Calti, diosa de la obscuridad y el silencio. Son una de las especies más raras y misteriosas de Tonaltlan, tan escasas que muchos creen que solo existen en leyendas.\n\nSu piel oscura absorbe la luz y su presencia parece apagar los sonidos del entorno. Completamente lampiños y de rasgos afilados, sus ojos blancos destacan incluso en la penumbra. Los Hualik se mueven con una quietud inquietante, como si fueran parte natural de las sombras mismas.\n\nNo forman reinos ni grandes sociedades. Prefieren vivir aislados en cuevas, ruinas o bosques profundos, observando el mundo desde la distancia. Muchos los conocen como los ojos de la noche, silenciosos testigos de los acontecimientos del continente.\n\nRasgos\n\nFusión con las Sombras: los Hualik pueden moverse y ocultarse en la oscuridad con una facilidad sobrenatural.\n\nVisión Nocturna Superior: pueden ver con gran claridad incluso en la oscuridad más profunda.",
       },
@@ -157,7 +157,7 @@ export const especies: CompendiumEntry[] = [
     coverImageAlt: "Irzak de mirada ámbar y presencia ígnea forjado por la tierra volcánica.",
     sections: [
       {
-        title: "Descripcion",
+        title: "Descripción",
         content:
           "Hijos de Zilo.\n\nLos Irzak provienen de la península volcánica de Xitl, una tierra dominada por fuego, piedra ardiente y el constante rugido del Volcán Eterno. Forjados en este ambiente extremo, los Irzak son conocidos por su carácter intenso, su orgullo y su código de honor inquebrantable.\n\nCreen que cada alma es una chispa otorgada por Zilo, señor del fuego, y que su deber es arder con pasión durante toda su vida antes de regresar al gran brasero divino. Por ello viven con intensidad: luchan con valentía, aman con fuerza y honran a sus aliados con una lealtad absoluta.\n\nSus cuerpos reflejan el poder del volcán: piel en tonos terracota o bronce, ojos ámbar o rojos como brasas, y cabellos que parecen moverse como llamas vivas. Entre su pueblo, las barbas rojizas o cobrizas son símbolo de orgullo, fuerza y madurez.\n\nRasgos\n\nForjados en Llamas: los Irzak poseen una fuerte resistencia al fuego.\n\nChispa de Zilo: la energía del fuego vive dentro de ellos, permitiéndoles manifestar pequeñas llamas y canalizar el poder ígneo.",
       },
@@ -176,7 +176,7 @@ export const especies: CompendiumEntry[] = [
     tags: ["Soporte", "Exploración", "Agua"],
     sections: [
       {
-        title: "Descripcion",
+        title: "Descripción",
         content:
           "Hijos de Lok.\n\nLos Lok'Naa son descendientes de Lok, dios del agua, y llevan en su cuerpo la esencia de mares, cenotes y ríos de Tonaltlan. Su presencia transmite una calma profunda, como si el murmullo del agua los acompañara a donde quiera que vayan.\n\nSu piel presenta tonos acuosos que van desde azules suaves hasta verdes jade o turquesas profundas. Su cabello fluye constantemente como si estuviera sumergido, y sus ojos reflejan colores marinos que evocan la serenidad de las aguas tranquilas.\n\nLos Lok'Naa son conocidos por su naturaleza pacífica, su sabiduría emocional y su profunda conexión con el agua. A lo largo de Tonaltlan se les reconoce como sanadores, guardianes de cenotes y exploradores de las profundidades, capaces de moverse bajo el agua con una facilidad extraordinaria.\n\nRasgos\n\nAdaptación Acuática: los Lok'Naa pueden permanecer largos periodos bajo el agua sin necesidad de salir a respirar.\n\nPresencia Serena: su naturaleza calmada y empática les permite influir positivamente en quienes los rodean.",
       },
@@ -195,7 +195,7 @@ export const especies: CompendiumEntry[] = [
     tags: ["Resistencia", "Protección", "Tierra"],
     sections: [
       {
-        title: "Descripcion",
+        title: "Descripción",
         content:
           "Hijos de la Tzal.\n\nLos Quinametzin son hijos de Tzal, diosa de la tierra, una de las especies más antiguas y nobles de Tonaltlan. De estatura colosal y complexión poderosa, su presencia impone respeto, pero su naturaleza es sorprendentemente serena y bondadosa. Allí donde un Quinametzin vive, suele convertirse en un pilar de la comunidad.\n\nSu piel tiene la textura de la piedra, con tonos que recuerdan al granito, la obsidiana o el jade. Con el paso de los años, pequeñas grietas aparecen en su superficie, formando un mapa natural que refleja las experiencias de su vida.\n\nCada Quinametzin nace con una gema incrustada en su cuerpo, una manifestación física de su espíritu. Esta gema cambia de color según sus emociones, revelando su estado interior y haciendo casi imposible que oculten sus verdaderos sentimientos.\n\nRasgos\n\nPiel Pétrea: la piel de los Quinametzin posee la dureza de la roca, otorgándoles una resistencia natural excepcional.\n\nGema del Ánimo: cada Quinametzin posee una gema que refleja sus emociones y fortalece su conexión con los demás.",
       },
@@ -214,7 +214,7 @@ export const especies: CompendiumEntry[] = [
     tags: ["Rayo", "Volátil", "Nómada"],
     sections: [
       {
-        title: "Descripcion",
+        title: "Descripción",
         content:
           "Hijos de Tohuí.\n\nLos Toh'kari son descendientes de Tohuí, dios de la destrucción y el rayo. Su presencia es como la calma tensa antes de un relámpago, impredecible, peligrosa y cargada de energía. Son una de las especies más temidas y evitadas de Tonaltlan, conocidos por su naturaleza explosiva y su relación directa con el poder del rayo.\n\nSu piel grisácea parece cargada de electricidad estática, y las marcas en sus manos y antebrazos (como cicatrices de relámpagos) brillan cuando manipulan energía. Sus ojos ámbar intensos y su cabello erizado por la electricidad revelan la tormenta que habita dentro de ellos.\n\nLos Toh'kari no construyen imperios ni ciudades. Viven como nómadas o en pequeños grupos errantes, guiados por su impulso, su búsqueda de poder y la naturaleza indomable de la tormenta que los define.\n\nRasgos\n\nAfinidad con la Tormenta: los Toh'kari poseen una conexión natural con la energía eléctrica y pueden manipular pequeñas descargas.\n\nPercepción Eléctrica: son capaces de sentir corrientes de energía en el entorno, como tormentas cercanas o fuentes de poder mágico.",
       },
@@ -233,7 +233,7 @@ export const especies: CompendiumEntry[] = [
     tags: ["Luz", "Sabiduría", "Honestidad"],
     sections: [
       {
-        title: "Descripcion",
+        title: "Descripción",
         content:
           "Hijos de Tonatli.\n\nLos Ton son descendientes de Tonatli, la diosa de la luz primordial. Son una especie extremadamente rara, mencionada en antiguos cantos y murales dorados como portadores de la última chispa del sol. Su presencia es inconfundible, su piel irradia una luz cálida y su aura ilumina el entorno como si llevaran un pequeño amanecer dentro de sí.\n\nRaza de luz\n\nSus cuerpos emiten un resplandor natural que se intensifica con sus emociones. Cuando sienten alegría, tristeza o ira, su luz puede volverse tan intensa que ilumina grandes distancias. Su cabello, de tonos dorados y anaranjados, es tan fuerte como la propia luz y no puede ser cortado ni destruido.\n\nRaza de luz\n\nLos Ton son conocidos por su honestidad absoluta, pues no pueden mentir. Muchos viven como sabios, protectores o guardianes del conocimiento, dedicando sus largas vidas a ayudar a otros pueblos y preservar la memoria del mundo.\n\nRasgos\n\nLuz Interior: los Ton emiten una luz natural que puede iluminar su entorno.\n\nSinceridad Absoluta: los Ton no pueden mentir, su naturaleza los obliga a ser completamente honestos.",
       },
@@ -264,7 +264,7 @@ export const deidades: CompendiumEntry[] = [
     coverImageAlt: "Heka, deidad del aire, envuelta en corrientes y brisa celestial.",
     sections: [
       {
-        title: "Descripcion",
+        title: "Descripción",
         content:
           "Señora del Aire.\n\nHeka es la diosa del viento, los susurros y los caminos invisibles del cielo. Se dice que su presencia nunca se ve directamente, pero siempre se siente: en la brisa que guía a los viajeros, en el canto de las hojas y en el soplo que empuja a las aves hacia el horizonte.\n\nEntre los dioses del Panteón, Heka es conocida por su espíritu libre y su corazón compasivo. A diferencia de sus hermanos, que gobiernan desde la distancia, ella suele escuchar las plegarias de los mortales que hablan al viento.\n\nLos eruditos de la Torre de los Sabios creen que aquellos que logran abrir el Punto Tonal del Aire sienten primero su llamado como un murmullo suave en el oído.",
       },
@@ -274,12 +274,12 @@ export const deidades: CompendiumEntry[] = [
     name: "Lok",
     slug: "lok",
     description: "Dios del Agua. La última deidad primordial creada por Omet, señor de la fluidez, la empatía y el movimiento del agua.",
-    tags: ["Agua", "Calma", "Sanacion"],
+    tags: ["Agua", "Calma", "Sanación"],
     coverImageSrc: "/images/Lok.webp",
     coverImageAlt: "Lok, dios del agua, rodeado de corrientes serenas y aguas sagradas.",
     sections: [
       {
-        title: "Descripcion",
+        title: "Descripción",
         content:
           "Dios del Agua.\n\nLok es la última deidad primordial creada por Omet y el más joven de los dioses. A diferencia de sus hermanos, no nació envuelto en poder violento ni en fuerzas imponentes, sino como un murmullo suave que trajo al mundo la fluidez, la empatía y el movimiento del agua.\n\nAl contemplar por primera vez su creación, Lok se llenó de un gozo tan profundo que sus lágrimas inundaron su propio mundo, formando ríos, mares y corrientes. Omet comprendió entonces que Lok debía aprender a contener sus emociones para que su poder no destruyera lo que deseaba proteger.\n\nDe naturaleza conciliadora, Lok siempre buscó armonía entre sus hermanos. Sin embargo, cuando Tonatli se sacrificó para convertirse en la Luz eterna, el dolor de Lok fue tan grande que decidió contener sus lágrimas para no provocar otra catástrofe. Para dominar sus emociones entró en una profunda meditación, refugiado en el mundo de Tzal.\n\nAun en su silencio, su esencia continuó filtrándose en la tierra. Allí donde una lágrima escapaba nacían cenotes, aguas profundas consideradas portales de calma y sanación.",
       },
@@ -294,7 +294,7 @@ export const deidades: CompendiumEntry[] = [
     coverImageAlt: "Tzal, madre de la tierra, rodeada de raíces, montañas y barro sagrado.",
     sections: [
       {
-        title: "Descripcion",
+        title: "Descripción",
         content:
           "Madre de la Tierra.\n\nTzal es la diosa de la tierra y el cimiento sobre el cual descansa toda vida. Aunque no fue la primera en surgir de la creación de Omet, pronto quedó claro que su naturaleza era distinta a la de sus hermanos. Mientras otros dioses manifestaban poder en forma de caos, fuego o tormenta, Tzal encarnaba estabilidad, orden y permanencia.\n\nCuando los dioses intentaron crear sus propios mundos, todos fracasaron: algunos se inundaron, otros ardieron o se desmoronaron. Solo el mundo de Tzal prosperó, pues ella lo formó con paciencia y visión. Lo colocó cerca de la luz eterna de Tonatli, para honrar su sacrificio y permitir que la vida floreciera bajo su resplandor.\n\nAl ver que el mundo de Tzal podía sostener la existencia, los siete dioses unieron sus poderes por primera vez para perfeccionarlo. Cada uno aportó su esencia: luz, noche, energía, viento, fuego y agua. Pero el cuerpo del mundo, su suelo, montañas y raíces, pertenecían a Tzal.\n\nDeseosa de crear seres conscientes que caminaran su tierra, Tzal descendió al Mictlan, donde los señores de la muerte guardaban los huesos de sus antiguas creaciones: los Cíclopes de Tierra. Tras enfrentarse a ellos y reclamar aquellos restos, regresó con los huesos sagrados y los mezcló con barro profundo. Con la ayuda de sus hermanos, dio origen a los Tlacas, los primeros pueblos conscientes de Tonaltlán.",
       },
@@ -304,12 +304,12 @@ export const deidades: CompendiumEntry[] = [
     name: "Zilo",
     slug: "zilo",
     description: "Dios del Fuego. Señor de la pasión, la voluntad ardiente y el corazón volcánico del mundo.",
-    tags: ["Fuego", "Pasion", "Voluntad"],
+    tags: ["Fuego", "Pasión", "Voluntad"],
     coverImageSrc: "/images/Zilo.webp",
-    coverImageAlt: "Zilo, dios del fuego, ardiendo con energia volcanica y voluntad indomable.",
+    coverImageAlt: "Zilo, dios del fuego, ardiendo con energía volcánica y voluntad indomable.",
     sections: [
       {
-        title: "Descripcion",
+        title: "Descripción",
         content:
           "Dios del Fuego.\n\nZilo es el dios del fuego, la pasión y la voluntad ardiente. A diferencia de otros dioses que surgieron con calma o equilibrio, Zilo nació como una explosión de energía dentro del corazón dual de Omet, manifestándose como una llama viva de poder y temperamento indomable.\n\nEra admirado por guerreros, herreros y todos aquellos que vivían con intensidad. Sin embargo, su destino cambió cuando su hermana Tonatli se sacrificó para convertirse en la luz eterna del mundo. Incapaz de aceptar aquella pérdida, Zilo enfrentó a Omet en una furia devastadora que hizo temblar el cielo. El creador, con calma absoluta, lo envió al mundo de Tzal.\n\nAllí, la diosa de la tierra lo sostuvo y calmó su ira. En ese encuentro ambos dioses compartieron su esencia: Zilo otorgó a la tierra el calor interno que daría vida al mundo, mientras Tzal le dio estabilidad para que su fuego no destruyera todo a su paso. Así nació el corazón volcánico del planeta.\n\nAun así, Zilo nunca perdonó del todo a Omet. Decidió vivir lejos de los demás dioses, retirándose a la península de Xitl, donde creó el Volcán de la Lava Eterna, un santuario donde su fuego arde sin destruir el mundo.",
       },
@@ -322,7 +322,7 @@ export const deidades: CompendiumEntry[] = [
     tags: ["Oscuridad", "Misterio", "Equilibrio"],
     sections: [
       {
-        title: "Descripcion",
+        title: "Descripción",
         content:
           "Diosa de la Oscuridad.\n\nCalti es la diosa de la oscuridad, el misterio y las verdades ocultas. Desde su reino de noche eterna observa el mundo a través de su Espejo Obscuro, un artefacto capaz de revelar la verdadera naturaleza de las almas.\n\nCuando los Tlacas, los primeros pueblos conscientes, levantaron grandes imperios, su orgullo creció hasta proclamarse herederos de los dioses. Honraban la luz, pero despreciaban la sombra, olvidando que ambas fuerzas eran necesarias para el equilibrio.\n\nOfendida por esta arrogancia, Calti envió a su servidor Tzayotl, comandante de las sombras, para castigar a la humanidad. Bajo su influencia, los hijos de los Tlacas comenzaron a perder el brillo de sus almas, cayendo en desesperación y vacío.\n\nLos pueblos suplicaron a los dioses por misericordia. Fue entonces cuando Tohui, hermano gemelo de Calti y dios del rayo y el caos, intercedió. Tras un largo debate entre los dioses, Calti aceptó levantar la maldición… pero no sin dejar una marca permanente.\n\nAntes de devolver el fuego a las almas humanas, selló los Puntos Tonales de los Tlacas, impidiendo que la mayoría de los mortales volviera a canalizar el poder divino. Solo unos pocos, aquellos de espíritu humilde, conservaron la capacidad de sentir la energía de los dioses. Estos serían conocidos como los Eruditos de la Magia.\n\nDesde entonces, la humanidad vive bajo la luz de los dioses, pero separada de su poder. Así Calti recordó al mundo que incluso la oscuridad tiene un propósito: preservar el equilibrio y castigar la arrogancia de quienes olvidan su lugar en la creación.",
       },
@@ -335,7 +335,7 @@ export const deidades: CompendiumEntry[] = [
     tags: ["Luz", "Esperanza", "Sacrificio"],
     sections: [
       {
-        title: "Descripcion",
+        title: "Descripción",
         content:
           "Diosa de la Luz.\n\nTonatli es la primera manifestación surgida del pensamiento de Omet, el principio dual del universo. Nació como la primera luz que rompió el silencio del vacío, un destello consciente cuya presencia dio forma al tiempo, al espacio y a la posibilidad misma de la vida.\n\nA diferencia de sus hermanos, cuyo poder surgía en forma de fuego, tierra, viento o tormenta, Tonatli encarnaba la claridad, la esperanza y la armonía. Su luz inspiraba a los demás dioses, y todo aquello que tocaba florecía. Fue ella quien comprendió que la creación no podía sostenerse por la fuerza de un solo dios, sino por la unión de todos.\n\nTras muchos intentos fallidos de sus hermanos por crear mundos estables, Tonatli ofreció su luz para unir sus poderes. Gracias a esa cooperación nació el mundo donde los elementos finalmente encontraron equilibrio.\n\nSin embargo, aquel mundo necesitaba una fuente eterna de energía para sostener la vida. Comprendiendo su destino, Tonatli decidió sacrificarse. Con ayuda del Gran Caimán Celestial, reunió las antiguas creaciones fallidas y las hizo girar alrededor del nuevo mundo.\n\nEntonces Tonatli entregó su forma y se transformó en una esfera radiante de luz eterna: el Séptimo Sol, cuya energía sostiene la vida en Tonaltlán.\n\nDesde entonces, su luz guía a dioses y mortales por igual. Aunque ya no camina entre ellos, cada amanecer recuerda su sacrificio y su promesa: que mientras su luz exista, la vida tendrá esperanza.",
       },
@@ -345,10 +345,10 @@ export const deidades: CompendiumEntry[] = [
     name: "Tohui",
     slug: "tohui",
     description: "Dios del Rayo y la Destrucción. Señor de la tormenta súbita, la energía caótica y el cambio violento.",
-    tags: ["Rayo", "Tormenta", "Destruccion"],
+    tags: ["Rayo", "Tormenta", "Destrucción"],
     sections: [
       {
-        title: "Descripcion",
+        title: "Descripción",
         content:
           "Dios del Rayo y la Destrucción.\n\nTohui es el dios del rayo, la tormenta y la destrucción súbita. Nació junto a su hermana gemela Calti cuando una sola energía primordial se dividió en dos fuerzas opuestas: la oscuridad silenciosa y la destrucción eléctrica. Desde entonces, ambos comparten un vínculo profundo, representando dos caras del mismo misterio cósmico.\n\nMientras Calti observa y castiga con paciencia, Tohui actúa con violencia repentina. Sus dominios son el trueno, los relámpagos y la energía caótica que rompe el orden para dar paso a algo nuevo.\n\nSin embargo, el corazón de Tohui siempre estuvo marcado por una obsesión: Heka, la diosa del aire. Su naturaleza misteriosa y silenciosa despertó en él una fascinación peligrosa. Cuando Heka estaba cerca, sus tormentas se volvían más poderosas, como si el viento fuera la musa que guiaba sus rayos.\n\nTohui realizaba muchos de sus actos de destrucción sabiendo que Heka lo observaba desde las corrientes invisibles del cielo. Aunque sus acciones podían ser terribles, ella jamás reveló sus secretos. Ese silencio selló entre ambos una extraña lealtad. Tohui entendía que, si Heka decidía hablar, su destino podría terminar en un instante.\n\nPor eso, ante los demás dioses, Tohui siempre aparentaba control, pero a menudo dirigía una ligera sonrisa hacia su hermana del aire, sabiendo que ella guardaba las verdades más oscuras de sus tormentas.\n\nEntre sus propias creaciones, Tohui era un dios severo. Castigaba a quienes consideraba débiles o indignos, marcándolos con descargas divinas. Por esta razón, los descendientes de su linaje suelen portar marcas de electricidad en la piel, especialmente en las manos, lugar donde el dios prefería descargar su poder.\n\nTohui representa la destrucción necesaria para que el mundo cambie, la tormenta que rompe la calma y la energía salvaje que recorre el cielo. Donde cae un rayo, su voluntad ha hablado.",
       },
@@ -358,10 +358,10 @@ export const deidades: CompendiumEntry[] = [
 
 // ── Section metadata for hub pages ──────────────────────────
 export const sectionsMeta = [
-  { title: "Clases",    slug: "clases",    description: "Arquetipos de heroes y villanos del mundo mesoamericano.",    count: clases.length },
-  { title: "Especies",  slug: "especies",  description: "Seres nacidos del maiz, la obsidiana y el aliento de los dioses.",  count: especies.length },
-  { title: "Bestiario", slug: "bestiario", description: "Criaturas del Mictlan y bestias de selvas y montanas sagradas.",   count: bestiario.length },
-  { title: "Monturas",  slug: "monturas",  description: "Compañeros leales que surcan cielos, rios y caminos ancestrales.",  count: mountImages.length },
+  { title: "Clases",    slug: "clases",    description: "Arquetipos de héroes y villanos del mundo mesoamericano.",    count: clases.length },
+  { title: "Especies",  slug: "especies",  description: "Seres nacidos del maíz, la obsidiana y el aliento de los dioses.",  count: especies.length },
+  { title: "Bestiario", slug: "bestiario", description: "Criaturas del Mictlan y bestias de selvas y montañas sagradas.",   count: bestiario.length },
+  { title: "Monturas",  slug: "monturas",  description: "Compañeros leales que surcan cielos, ríos y caminos ancestrales.",  count: mountImages.length },
   { title: "Deidades",  slug: "deidades",  description: "Los dioses que tejen el destino del cosmos y sus elegidos.",        count: deidades.length },
-  { title: "Galeria",   slug: "galeria",   description: "Arte conceptual, ilustraciones y vistazos al universo.",            count: galleryImages.length },
+  { title: "Galería",   slug: "galeria",   description: "Arte conceptual, ilustraciones y vistazos al universo.",            count: galleryImages.length },
 ];

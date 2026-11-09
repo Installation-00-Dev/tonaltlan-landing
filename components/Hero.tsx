@@ -28,15 +28,18 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center px-6 text-center">
-        <div className="hero-reveal mb-10 flex w-full justify-center">
+        {/* Logo con latido: aura que respira detras y un pulso doble lento (solo transform/opacity) */}
+        <div className="hero-reveal relative mb-10 flex w-full justify-center">
+          <div className="logo-aura pointer-events-none absolute inset-x-[10%] inset-y-[15%]" aria-hidden="true" />
           <Image
             src="/images/tonaltlan_logo_1200.webp"
             alt="Logo de Tonaltlan"
             width={600}
             height={180}
-            className="drop-shadow-[0_0_40px_rgba(245,184,46,0.25)]"
+            className="logo-latido relative drop-shadow-[0_0_40px_rgba(245,184,46,0.25)]"
             sizes="(max-width: 768px) 85vw, 600px"
             style={{ width: "min(600px, 85vw)", height: "auto" }}
+            priority
           />
         </div>
 

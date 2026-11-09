@@ -21,7 +21,7 @@ const macondo = Macondo({
 export const metadata: Metadata = {
   title: "Tonaltlan - Juego de Rol de Mesa Mesoamericano",
   description:
-    "Adentrate en Tonaltlan, un juego de rol de mesa inspirado en la mitologia y cultura mesoamericana. Forja tu destino entre piramides, codices y dioses ancestrales.",
+    "Adéntrate en Tonaltlan, un juego de rol de mesa inspirado en la mitología y cultura mesoamericana. Forja tu destino entre pirámides, códices y dioses ancestrales.",
   keywords: [
     "Tonaltlan",
     "TTRPG",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Tonaltlan - Juego de Rol de Mesa Mesoamericano",
     description:
-      "Forja tu destino en un mundo inspirado en la mitologia mesoamericana.",
+      "Forja tu destino en un mundo inspirado en la mitología mesoamericana.",
     type: "website",
   },
 };

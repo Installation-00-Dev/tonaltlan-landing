@@ -78,7 +78,7 @@ export function useAffinityTest() {
     if (!user.email.trim()) {
       nextErrors.email = "Ingresa tu email para continuar.";
     } else if (!EMAIL_REGEX.test(user.email.trim())) {
-      nextErrors.email = "Ingresa un email valido.";
+      nextErrors.email = "Ingresa un email válido.";
     }
 
     setFormErrors(nextErrors);

@@ -69,7 +69,7 @@ export default function Navbar() {
         className={`mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 transition duration-200 lg:px-8 ${
           solid ? "py-2" : "py-4"
         }`}
-        aria-label="Navegacion principal"
+        aria-label="Navegación principal"
       >
         {/* Logo del producto */}
         <Link
@@ -135,7 +135,7 @@ export default function Navbar() {
         <button
           type="button"
           className="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg text-selva-100 transition duration-150 hover:bg-selva-800/70 motion-safe:active:scale-[0.97]"
-          aria-label={menuOpen ? "Cerrar menu" : "Abrir menu"}
+          aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
           aria-expanded={menuOpen}
           aria-controls="menu-movil"
           onClick={() => setMenuOpen(!menuOpen)}

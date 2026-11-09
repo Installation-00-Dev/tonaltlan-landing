@@ -44,7 +44,7 @@ export default function JuegaPage() {
               <div>
                 <p className="mb-2 font-display text-2xl text-jade-400">Test de Afinidad</p>
                 <p className="max-w-xl text-base leading-relaxed text-selva-300">
-                  Descubre con que energia racial resuena tu energia tonal. Responde las preguntas y encuentra tu afinidad en el mundo de Tonaltlan.
+                  Descubre con qué energía racial resuena tu energía tonal. Responde las preguntas y encuentra tu afinidad en el mundo de Tonaltlan.
                 </p>
               </div>
               <span
@@ -63,7 +63,7 @@ export default function JuegaPage() {
           title: "Descargas",
           content: (
             <div className="space-y-6">
-              <FeatureCard title="Codices de Personaje" />
+              <FeatureCard title="Códices de Personaje" />
               <Pendiente id="juega-descargas" />
             </div>
           ),
@@ -74,7 +74,7 @@ export default function JuegaPage() {
           content: (
             <div className="space-y-6">
               <div className="grid gap-6 md:grid-cols-2">
-                <FeatureCard title="Guias para Narradores" />
+                <FeatureCard title="Guías para Narradores" />
                 <FeatureCard title="Construye tu Mundo" />
               </div>
               <Pendiente id="juega-narradores" />

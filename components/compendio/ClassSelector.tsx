@@ -5,8 +5,11 @@ import { useEffect, useState } from "react";
 import type { CompendiumEntry } from "@/lib/data";
 import Pendiente from "@/components/ui/Pendiente";
 
+const normalizar = (value: string) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+
+// Busca la seccion por titulo sin importar acentos ("Descripción" / "Descripcion").
 function sectionText(item: CompendiumEntry, title: string) {
-  return item.sections.find((section) => section.title === title)?.content.trim() ?? null;
+  return item.sections.find((section) => normalizar(section.title) === normalizar(title))?.content.trim() ?? null;
 }
 
 /**
@@ -29,7 +32,7 @@ export default function ClassSelector({ items }: { items: CompendiumEntry[] }) {
   const active = items.find((item) => item.slug === activeSlug) ?? items[0];
   if (!active) return null;
 
-  const descripcion = sectionText(active, "Descripcion") ?? active.description;
+  const descripcion = sectionText(active, "Descripción") ?? active.description;
   const nota = sectionText(active, "Nota");
 
   return (

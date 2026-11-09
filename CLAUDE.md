@@ -26,10 +26,16 @@ Antes de cada commit: `pnpm typecheck` y `pnpm build` deben pasar.
 
 ### 1. El copy es 100 % intocable
 
-**No modificar, agregar, eliminar, resumir ni "corregir"** textos existentes: títulos, descripciones,
-fichas del compendio, avisos de privacidad, contactos y textos legales. Esto incluye los textos
-**sin acentos** (por ejemplo "Que es Tonaltlan?", "Galeria", "montanas"): se corrigen solo si el
-dueño del proyecto lo pide explícitamente.
+**No modificar, agregar, eliminar ni resumir** textos existentes: títulos, descripciones, fichas del
+compendio, avisos de privacidad, contactos y textos legales.
+
+- **Ortografía:** el dueño autorizó corregir acentos, ñ y signos de apertura (¿ ¡) del español en
+  todo el sitio (hecho en nov. 2026). Los textos nuevos deben llegar o quedar bien escritos.
+- **Lo que NO se corrige:** nombres propios del mundo y de clases o especies (Mictlan, Tonaltlan,
+  Guerrero Otomi, Tlalocan, Catemaco…), ni el tono coloquial del Test de Afinidad ("compa",
+  "qué pedo"). Tonaltlan / Tonaltlán aparece de las dos formas: pendiente de confirmar con el creador.
+- **Comparar títulos sin acentos en el código:** las secciones se buscan por título normalizado
+  (`normalize("NFD")`), así "Descripción" y "Descripcion" coinciden.
 
 - **Sí se permite:** cambiar `className`, la estructura del JSX, el layout y el orden visual.
 - **Reutilizar un texto existente** en otra página es válido, siempre copiado tal cual. Mejor aún:
@@ -39,8 +45,8 @@ dueño del proyecto lo pide explícitamente.
 - **Contenido nuevo del mundo** (lore, reglas, descripciones): nunca se inventa. Si falta, va un
   placeholder `<Pendiente>` (ver regla 3).
 - **Textos nuevos del creador** (el dueño del producto define el contenido; el dev lo implementa):
-  se guardan **tal cual** en `lib/textos.ts` y las páginas los leen de ahí. Si un texto parece
-  incompleto (por ejemplo, le falta el punto final), se respeta y se le avisa al creador.
+  se guardan en `lib/textos.ts` y las páginas los leen de ahí. Solo se corrige ortografía; si un
+  texto parece incompleto, se le avisa al creador.
 
 ### 2. Imágenes: siempre `.webp`
 
@@ -179,6 +185,8 @@ Reglas aplicadas en el código:
   de lo que abren. Al cerrar, el foco vuelve al elemento que los abrió.
 - **Entrada del Hero:** `.hero-reveal` (con `animation-delay` escalonado); con reducir movimiento es
   solo opacidad.
+- **Logo del Hero:** `.logo-latido` (pulso doble lento cada 4 s) y `.logo-aura` (resplandor oro/jade
+  que respira detrás). Es la única animación continua del sitio; se desactiva con reducir movimiento.
 
 ---
 

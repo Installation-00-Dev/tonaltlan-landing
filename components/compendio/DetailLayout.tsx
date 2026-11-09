@@ -35,9 +35,13 @@ export default function DetailLayout({
   const theme = themeFor(accent);
   const isHekaCover = (coverImageSrc ?? "").includes("Heka.webp");
 
+  // Compara sin acentos ni mayusculas ("Descripción" == "descripcion").
+  function normalizar(value: string) {
+    return value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  }
+
   function toAnchorId(value: string) {
-    return value
-      .toLowerCase()
+    return normalizar(value)
       .replace(/[^a-z0-9\s-]/g, "")
       .trim()
       .replace(/\s+/g, "-");
@@ -62,7 +66,7 @@ export default function DetailLayout({
       const cleanLine = line.slice(2);
       const separatorIndex = cleanLine.indexOf(":");
       if (separatorIndex === -1) continue;
-      const key = cleanLine.slice(0, separatorIndex).trim().toLowerCase();
+      const key = normalizar(cleanLine.slice(0, separatorIndex).trim());
       const value = cleanLine.slice(separatorIndex + 1).trim();
       map.set(key, value);
     }
@@ -71,9 +75,9 @@ export default function DetailLayout({
   }
 
   function buildQuickFacts() {
-    const rolSection = sections.find((section) => section.title.toLowerCase().includes("rol"));
+    const rolSection = sections.find((section) => normalizar(section.title).includes("rol"));
     const generalesSection = sections.find((section) =>
-      section.title.toLowerCase().includes("caracteristicas"),
+      normalizar(section.title).includes("caracteristicas"),
     );
 
     if (!rolSection && !generalesSection) {
@@ -82,10 +86,10 @@ export default function DetailLayout({
 
     const bulletMap = generalesSection ? extractBulletMap(generalesSection.content) : new Map();
 
-    const rolText = rolSection?.content.split(".")[0]?.trim() || "Clase de fantasia para Tonaltlan.";
+    const rolText = rolSection?.content.split(".")[0]?.trim() || "Clase de fantasía para Tonaltlan.";
     const atributoClave = tags.find((tag) =>
       ["inteligencia", "sabiduria", "carisma", "fuerza", "destreza", "constitucion"].includes(
-        tag.toLowerCase(),
+        normalizar(tag),
       ),
     );
 
@@ -289,7 +293,7 @@ export default function DetailLayout({
   }
 
   function renderSectionContent(section: DetailSection) {
-    const titleLower = section.title.toLowerCase();
+    const titleLower = normalizar(section.title);
 
     if (titleLower.includes("tabla") || titleLower.includes("estadisticas")) {
       return renderTable(section.content);
@@ -384,7 +388,7 @@ export default function DetailLayout({
 
         {quickFacts.length > 0 && (
           <section className="mb-8 rounded-2xl border border-gold/30 bg-gradient-to-br from-gold/10 via-background/40 to-background/20 p-4 md:p-6">
-            <h2 className="mb-4 font-display text-2xl text-gold">Ficha Rapida</h2>
+            <h2 className="mb-4 font-display text-2xl text-gold">Ficha Rápida</h2>
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {quickFacts.map((fact, idx) => (
                 <article

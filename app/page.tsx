@@ -5,7 +5,7 @@ import Features from "@/components/Features";
 import Newsletter from "@/components/Newsletter";
 import { sectionsMeta } from "@/lib/data";
 
-// Secciones sin contenido todavia (se marcan "Proximamente" en la landing).
+// Secciones sin contenido todavia (se marcan "Próximamente" en la landing).
 const proximamente = sectionsMeta.filter((s) => s.count === 0).map((s) => s.title);
 
 function Divider() {

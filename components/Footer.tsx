@@ -17,7 +17,7 @@ export default function Footer() {
               className="h-auto w-64 md:w-72"
               sizes="288px"
             />
-            <p className="mt-5 text-sm text-selva-400">Una produccion de Cuevas & Quetzales</p>
+            <p className="mt-5 text-sm text-selva-400">Una producción de Cuevas & Quetzales</p>
           </div>
 
           <nav aria-label="Mapa del sitio" className="grid grid-cols-2 gap-8 sm:grid-cols-4 lg:col-span-8">
