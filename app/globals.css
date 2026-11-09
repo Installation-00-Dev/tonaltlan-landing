@@ -116,6 +116,67 @@ section[id] {
   animation: heroReveal 0.7s var(--ease-out) both;
 }
 
+/* Logo del Hero: aura que respira y latido doble lento (como un corazón).
+   Solo transform y opacity; arranca cuando termina la entrada del Hero. */
+.logo-aura {
+  border-radius: 9999px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(245, 184, 46, 0.6) 0%,
+    rgba(74, 222, 128, 0.28) 45%,
+    transparent 72%
+  );
+  filter: blur(28px);
+  mix-blend-mode: screen;
+  opacity: 0.55;
+}
+
+@keyframes latido {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  12% {
+    transform: scale(1.035);
+  }
+  24% {
+    transform: scale(1);
+  }
+  36% {
+    transform: scale(1.022);
+  }
+  60% {
+    transform: scale(1);
+  }
+}
+
+@keyframes auraRespira {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(0.94);
+  }
+  14% {
+    opacity: 0.9;
+    transform: scale(1.06);
+  }
+  40% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .logo-latido {
+    transform-origin: 50% 45%;
+    animation: latido 4s var(--ease-in-out) 0.9s infinite;
+  }
+
+  .logo-aura {
+    animation: auraRespira 4s ease-in-out 0.9s infinite;
+  }
+}
+
 /* Solo opacidad: para quien pide reducir movimiento */
 @keyframes fadeOnly {
   from {
