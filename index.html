@@ -78,14 +78,13 @@
       position: relative;
     }
 
-    main::before{
-      content: "";
+    .main-bg{
       position: absolute;
       inset: 0;
-      background-image: url('/images/piramides_azteca_final_1920.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
       opacity: .72;
       z-index: 0;
       pointer-events: none;
@@ -364,6 +363,7 @@
   <div class="grid"></div>
 
   <main>
+    <img src="piramides_azteca_final.png" class="main-bg" loading="lazy" decoding="async">
     <section class="shell" aria-label="Tonaltlan próximamente">
       <header>
         <img src="/images/tonaltlan_logo_1200.png" alt="Tonaltlan" class="logo" width="1200" height="675" decoding="async" />
