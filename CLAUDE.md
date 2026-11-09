@@ -150,8 +150,12 @@ oro sobre verde selva profundo. Los colores viven como escalas propias en `tailw
   no tiene arte. Es el detalle gráfico mesoamericano del sitio; úsala en lugar de líneas o rombos.
 - **El arte manda:** cuando una sección tiene ilustraciones, preséntala con ellas (mosaico del
   compendio en la landing). Evita tarjetas genéricas de solo texto.
-- **No repetir el mismo formato** en secciones contiguas: en la landing, el compendio es un mosaico de
-  arte y "Tonaltlan de un Vistazo" es una lista editorial con filetes, sin tarjetas.
+- **No repetir el mismo formato:** cada bloque entrega la información de forma distinta.
+  - Landing, compendio: mosaico de arte (`ExplorePreview`).
+  - Landing, "Tonaltlan de un Vistazo": **quincunce** (cosmograma de los cuatro rumbos y el centro;
+    `Features.tsx`). El título vive en el emblema y cada tema ocupa un rumbo cuyo rayo se ilumina.
+  - `/explorar`: **índice de códice**, filas grandes con un abanico de 3 miniaturas del arte de cada
+    sección que se abre al pasar el cursor.
 
 ### Criterios de Impeccable aplicados
 

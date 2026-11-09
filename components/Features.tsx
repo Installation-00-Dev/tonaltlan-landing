@@ -1,32 +1,109 @@
+"use client";
+
+import { useState } from "react";
 import { features } from "@/lib/features";
 
-/**
- * Formato editorial: titulo fijo a la izquierda y una lista con filetes a la
- * derecha. Sin tarjetas ni cuadros de iconos (para no repetir el mosaico).
+/*
+ * "Tonaltlan de un Vistazo" como quincunce: el cosmograma mesoamericano de los
+ * cuatro rumbos y el centro. El titulo vive en el emblema central y cada tema
+ * ocupa un rumbo; al pasar el cursor (o enfocar) un tema se ilumina su rayo.
  */
+
+type Rumbo = "norte" | "este" | "oeste" | "sur";
+
+// Orden de los textos en lib/features.tsx -> rumbo que ocupa cada uno.
+const RUMBOS: Rumbo[] = ["norte", "este", "oeste", "sur"];
+
+const celda: Record<Rumbo, string> = {
+  norte: "lg:col-span-3 lg:col-start-1 lg:row-start-1 lg:text-center lg:items-center",
+  este: "lg:col-start-3 lg:row-start-2 lg:text-left lg:items-start",
+  oeste: "lg:col-start-1 lg:row-start-2 lg:text-right lg:items-end",
+  sur: "lg:col-span-3 lg:col-start-1 lg:row-start-3 lg:text-center lg:items-center",
+};
+
+// Rayo de cada rumbo en el emblema (viewBox 0 0 320 320, centro 160,160).
+const rayo: Record<Rumbo, { x1: number; y1: number; x2: number; y2: number }> = {
+  norte: { x1: 160, y1: 52, x2: 160, y2: 4 },
+  este: { x1: 268, y1: 160, x2: 316, y2: 160 },
+  oeste: { x1: 52, y1: 160, x2: 4, y2: 160 },
+  sur: { x1: 160, y1: 268, x2: 160, y2: 316 },
+};
+
+function Emblema({ activo }: { activo: Rumbo | null }) {
+  return (
+    <svg viewBox="0 0 320 320" className="absolute inset-0 h-full w-full" aria-hidden="true">
+      {/* Anillos */}
+      <circle cx="160" cy="160" r="108" fill="none" stroke="currentColor" strokeOpacity="0.35" strokeWidth="1.5" />
+      <circle cx="160" cy="160" r="96" fill="none" stroke="currentColor" strokeOpacity="0.25" strokeWidth="6" strokeDasharray="6 6" />
+      <circle cx="160" cy="160" r="82" fill="none" stroke="currentColor" strokeOpacity="0.35" strokeWidth="1" />
+      {/* Escalones en los cuatro rumbos */}
+      {(Object.keys(rayo) as Rumbo[]).map((r) => {
+        const { x1, y1, x2, y2 } = rayo[r];
+        const on = activo === r;
+        return (
+          <g key={r} className="transition-colors duration-200" style={{ color: on ? "#f5b82e" : "currentColor" }}>
+            <line x1={x1} y1={y1} x2={x2} y2={y2} stroke="currentColor" strokeOpacity={on ? 1 : 0.35} strokeWidth={on ? 3 : 1.5} />
+            {/* Rombo sobre el anillo exterior, en la direccion del rumbo */}
+            <rect
+              x={160 + ((x1 - 160) / 108) * 108 - 7}
+              y={160 + ((y1 - 160) / 108) * 108 - 7}
+              width="14"
+              height="14"
+              transform={`rotate(45 ${160 + ((x1 - 160) / 108) * 108} ${160 + ((y1 - 160) / 108) * 108})`}
+              fill="currentColor"
+              fillOpacity={on ? 1 : 0.3}
+            />
+          </g>
+        );
+      })}
+    </svg>
+  );
+}
+
 export default function Features() {
+  const [activo, setActivo] = useState<Rumbo | null>(null);
+
   return (
     <section id="features" className="relative py-24 lg:py-32">
-      <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-12 lg:gap-16 lg:px-8">
-        <div className="lg:col-span-4">
-          <h2 className="font-display text-4xl text-jade-400 [text-wrap:balance] md:text-5xl lg:sticky lg:top-28">
+      <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 px-6 lg:grid-cols-[1fr_20rem_1fr] lg:grid-rows-[auto_20rem_auto] lg:gap-x-12 lg:gap-y-8 lg:px-8">
+        {/* Centro: emblema con el titulo */}
+        <div className="relative mx-auto aspect-square w-64 text-jade-400 sm:w-72 lg:col-start-2 lg:row-start-2 lg:w-80">
+          <Emblema activo={activo} />
+          <h2 className="absolute inset-0 flex items-center justify-center px-[24%] text-center font-display text-2xl leading-tight text-jade-400 [text-wrap:balance] sm:text-3xl">
             Tonaltlan de un Vistazo
           </h2>
         </div>
 
-        <dl className="divide-y divide-selva-700/70 border-y border-selva-700/70 lg:col-span-8">
-          {features.map((feature) => (
-            <div key={feature.title} className="grid gap-3 py-8 md:grid-cols-[minmax(0,15rem)_1fr] md:gap-10">
-              <dt className="flex items-start gap-3 font-display text-2xl text-selva-50">
-                <span className="mt-1 shrink-0 text-oro-400 [&>svg]:h-6 [&>svg]:w-6" aria-hidden="true">
+        {/* Los cuatro rumbos */}
+        {features.map((feature, index) => {
+          const rumbo = RUMBOS[index] ?? "sur";
+          const on = activo === rumbo;
+          return (
+            <article
+              key={feature.title}
+              tabIndex={0}
+              onMouseEnter={() => setActivo(rumbo)}
+              onMouseLeave={() => setActivo(null)}
+              onFocus={() => setActivo(rumbo)}
+              onBlur={() => setActivo(null)}
+              className={`flex max-w-md flex-col gap-3 rounded-2xl outline-none focus-visible:ring-2 focus-visible:ring-oro-300 ${celda[rumbo]} ${
+                rumbo === "norte" || rumbo === "sur" ? "lg:mx-auto lg:max-w-md" : "lg:max-w-sm"
+              }`}
+            >
+              <div
+                className={`flex items-center gap-3 font-display text-2xl transition-colors duration-200 md:text-3xl ${
+                  on ? "text-oro-300" : "text-selva-50"
+                } ${rumbo === "oeste" ? "lg:flex-row-reverse" : ""} ${rumbo === "norte" || rumbo === "sur" ? "lg:justify-center" : ""}`}
+              >
+                <span className="shrink-0 text-oro-400 [&>svg]:h-7 [&>svg]:w-7" aria-hidden="true">
                   {feature.icon}
                 </span>
-                {feature.title}
-              </dt>
-              <dd className="text-base leading-8 text-selva-300">{feature.description}</dd>
-            </div>
-          ))}
-        </dl>
+                <h3>{feature.title}</h3>
+              </div>
+              <p className="text-base leading-7 text-selva-300">{feature.description}</p>
+            </article>
+          );
+        })}
       </div>
     </section>
   );
