@@ -54,8 +54,8 @@ export default function Features() {
       ref={sectionRef}
       className="relative py-24 opacity-0 lg:py-32"
     >
-      <div className="mx-auto max-w-7xl px-4 lg:px-8">
-        <h2 className="mb-14 text-center font-serif text-3xl font-bold tracking-wide text-gold md:text-4xl">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <h2 className="mb-16 text-center font-serif text-3xl font-bold tracking-wide text-amber-300 md:text-4xl">
           Tonaltlan de un Vistazo
         </h2>
 
@@ -63,15 +63,15 @@ export default function Features() {
           {features.map((feature) => (
             <div
               key={feature.title}
-              className="group relative overflow-hidden rounded-2xl border border-gold/25 bg-gradient-to-br from-[#0f172a]/80 via-[#0b1120]/75 to-[#07070a]/90 p-7 backdrop-blur-md transition-all duration-300 hover:border-gold/55 hover:shadow-[0_10px_35px_rgba(197,160,89,0.12)] md:p-9"
+              className="group relative overflow-hidden rounded-2xl bg-slate-800/40 p-8 ring-1 ring-slate-700/70 transition-colors duration-300 hover:bg-slate-800/70 hover:ring-slate-600 md:p-10"
             >
-              <div className="mb-5 inline-flex rounded-xl border border-gold/30 bg-gold/10 p-3.5 text-gold shadow-[0_0_20px_rgba(197,160,89,0.15)] transition-colors group-hover:border-teal/40 group-hover:bg-teal/15 group-hover:text-teal">
+              <div className="mb-6 inline-flex rounded-xl bg-amber-400/10 p-3.5 text-amber-300 ring-1 ring-amber-400/25">
                 {feature.icon}
               </div>
-              <h3 className="mb-3 font-serif text-xl font-semibold text-foreground md:text-2xl">
+              <h3 className="mb-3 font-serif text-xl font-semibold text-slate-100 md:text-2xl">
                 {feature.title}
               </h3>
-              <p className="text-sm leading-relaxed text-muted md:text-base">
+              <p className="text-sm leading-7 text-slate-300 md:text-base md:leading-7">
                 {feature.description}
               </p>
             </div>

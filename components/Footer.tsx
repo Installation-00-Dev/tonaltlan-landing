@@ -31,26 +31,26 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer id="contacto" className="border-t border-glass-border py-16">
-      <div className="mx-auto max-w-7xl px-4 lg:px-8">
+    <footer id="contacto" className="border-t border-slate-800 bg-slate-950 py-16">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Contact cards */}
         <div className="mb-12">
-          <h2 className="mb-6 font-serif text-2xl font-bold text-gold">
+          <h2 className="mb-6 font-serif text-2xl font-bold text-amber-300">
             Contacto
           </h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {contacts.map((contact) => (
               <div
                 key={contact.email}
-                className="glass-card rounded-xl p-5"
+                className="rounded-xl bg-slate-900 p-6 ring-1 ring-slate-800"
               >
-                <h3 className="mb-1 font-serif text-base font-semibold text-foreground">
+                <h3 className="mb-1 font-serif text-base font-semibold text-slate-100">
                   {contact.role}
                 </h3>
-                <p className="mb-2 text-xs text-muted">{contact.description}</p>
+                <p className="mb-3 text-sm text-slate-400">{contact.description}</p>
                 <a
                   href={`mailto:${contact.email}`}
-                  className="text-sm font-medium text-teal transition-colors hover:text-teal/80"
+                  className="break-all text-sm font-medium text-amber-300 underline-offset-4 transition-colors hover:text-amber-200 hover:underline"
                 >
                   {contact.email}
                 </a>
@@ -60,7 +60,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom row */}
-        <div className="flex flex-col items-center gap-6 border-t border-glass-border pt-8 md:flex-row md:justify-between">
+        <div className="flex flex-col items-center gap-6 border-t border-slate-800 pt-8 md:flex-row md:justify-between">
           {/* Production credit */}
           <div className="flex items-center gap-3">
             <Image
@@ -68,10 +68,10 @@ export default function Footer() {
               alt="Cuevas y Quetzales"
               width={36}
               height={36}
-              className="h-9 opacity-70"
+              className="h-9 opacity-80"
               style={{ width: "auto" }}
             />
-            <span className="text-sm text-muted">
+            <span className="text-sm text-slate-400">
               Una produccion de Cuevas & Quetzales
             </span>
           </div>
@@ -82,7 +82,7 @@ export default function Footer() {
               <a
                 key={social.label}
                 href={social.href}
-                className="inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-foreground"
+                className="inline-flex items-center gap-2 text-sm text-slate-300 transition-colors hover:text-amber-300"
                 aria-label={social.label}
                 target={social.href.startsWith("http") ? "_blank" : undefined}
                 rel={social.href.startsWith("http") ? "noreferrer" : undefined}
@@ -102,7 +102,7 @@ export default function Footer() {
           </div>
 
           {/* Copyright */}
-          <p className="text-xs text-muted/60">
+          <p className="text-xs text-slate-500">
             {"© 2025 Tonaltlan. Todos los derechos reservados."}
           </p>
         </div>
