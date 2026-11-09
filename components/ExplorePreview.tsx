@@ -68,7 +68,7 @@ export default function ExplorePreview({ proximamente = [] }: { proximamente?: s
             <li key={section.title} className="flex">
               <Link
                 href={section.href}
-                className="group relative flex w-full flex-col justify-between overflow-hidden rounded-2xl bg-slate-800/60 p-7 ring-1 ring-slate-700/80 transition-all duration-300 hover:-translate-y-1 hover:bg-slate-800 hover:shadow-xl hover:shadow-slate-950/50 hover:ring-amber-400/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300 md:p-8"
+                className="group relative flex w-full flex-col justify-between overflow-hidden rounded-2xl bg-slate-800/60 p-7 ring-1 ring-slate-700/80 transition duration-200 motion-safe:hover:-translate-y-1 motion-safe:active:scale-[0.98] hover:bg-slate-800 hover:shadow-xl hover:shadow-slate-950/50 hover:ring-amber-400/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300 md:p-8"
               >
                 <span
                   className="pointer-events-none absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-gradient-to-r from-amber-400 via-amber-300 to-emerald-400 transition-transform duration-500 group-hover:scale-x-100"
@@ -86,7 +86,7 @@ export default function ExplorePreview({ proximamente = [] }: { proximamente?: s
                       </span>
                     ) : (
                     <span
-                      className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-slate-700/60 text-slate-300 transition-all duration-300 group-hover:translate-x-1 group-hover:bg-amber-400 group-hover:text-slate-950"
+                      className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-slate-700/60 text-slate-300 transition duration-200 motion-safe:group-hover:translate-x-1 group-hover:bg-amber-400 group-hover:text-slate-950"
                       aria-hidden="true"
                     >
                       <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

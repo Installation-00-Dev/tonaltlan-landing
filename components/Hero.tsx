@@ -46,7 +46,7 @@ export default function Hero() {
         {/* Unico CTA principal del sitio */}
         <Link
           href="/explorar"
-          className="inline-flex min-h-[56px] items-center justify-center gap-3 rounded-full bg-amber-400 px-12 py-4 font-serif text-base font-bold uppercase tracking-widest text-slate-950 shadow-lg shadow-amber-500/25 ring-1 ring-amber-300/60 transition-all duration-300 hover:-translate-y-0.5 hover:bg-amber-300 hover:shadow-xl hover:shadow-amber-400/30 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-amber-200"
+          className="inline-flex min-h-[56px] items-center justify-center gap-3 rounded-full bg-amber-400 px-12 py-4 font-serif text-base font-bold uppercase tracking-widest text-slate-950 shadow-lg shadow-amber-500/25 ring-1 ring-amber-300/60 transition duration-200 motion-safe:hover:-translate-y-0.5 hover:bg-amber-300 hover:shadow-xl hover:shadow-amber-400/30 motion-safe:active:scale-[0.97] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-amber-200"
         >
           Explorar
           <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -57,7 +57,7 @@ export default function Hero() {
 
       {/* Indicador visual de scroll */}
       <div className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2" aria-hidden="true">
-        <svg className="h-6 w-6 animate-bounce text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="h-6 w-6 motion-safe:animate-bounce text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
         </svg>
       </div>

@@ -52,7 +52,7 @@ export default function ClassSelector({ items }: { items: CompendiumEntry[] }) {
               aria-selected={selected}
               aria-controls="panel-clase"
               onClick={() => select(item.slug)}
-              className={`group flex min-w-[220px] snap-start items-center gap-4 rounded-2xl p-3 text-left ring-1 transition-all duration-300 lg:min-w-0 ${
+              className={`group flex min-w-[220px] snap-start items-center gap-4 rounded-2xl p-3 text-left ring-1 transition duration-200 motion-safe:active:scale-[0.98] lg:min-w-0 ${
                 selected
                   ? "bg-slate-800 ring-amber-400/70"
                   : "bg-slate-800/30 ring-slate-700/70 hover:bg-slate-800/70 hover:ring-slate-600"

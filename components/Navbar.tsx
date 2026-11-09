@@ -57,7 +57,7 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+      className={`fixed inset-x-0 top-0 z-50 transition duration-200 ${
         hidden && !menuOpen ? "-translate-y-full" : "translate-y-0"
       } ${
         solid
@@ -66,7 +66,7 @@ export default function Navbar() {
       }`}
     >
       <nav
-        className={`mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 transition-all duration-300 lg:px-8 ${
+        className={`mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 transition duration-200 lg:px-8 ${
           solid ? "py-2" : "py-4"
         }`}
         aria-label="Navegacion principal"
@@ -75,7 +75,7 @@ export default function Navbar() {
         <Link
           href="/"
           aria-label="Tonaltlan - Inicio"
-          className={`flex shrink-0 items-center rounded-lg transition-all duration-500 ${
+          className={`flex shrink-0 items-center rounded-lg transition duration-500 ${
             showLogo ? "opacity-100" : "pointer-events-none -translate-y-2 opacity-0"
           }`}
           tabIndex={showLogo ? 0 : -1}
@@ -86,7 +86,7 @@ export default function Navbar() {
             width={480}
             height={226}
             priority
-            className={`w-auto transition-all duration-300 ${solid ? "h-10" : "h-12 lg:h-14"}`}
+            className={`w-auto transition duration-200 ${solid ? "h-10" : "h-12 lg:h-14"}`}
           />
         </Link>
 
@@ -106,7 +106,7 @@ export default function Navbar() {
                   >
                     {link.label}
                     <span
-                      className={`absolute inset-x-4 -bottom-0.5 h-px bg-amber-400 transition-transform duration-300 ${
+                      className={`absolute inset-x-4 -bottom-0.5 h-px bg-amber-400 transition-transform duration-200 ${
                         active ? "scale-x-100" : "scale-x-0"
                       }`}
                       aria-hidden="true"
@@ -118,7 +118,7 @@ export default function Navbar() {
           </ul>
           <Link
             href={navCta.href}
-            className="ml-4 inline-flex items-center rounded-full border border-amber-400/60 px-5 py-2 text-sm font-semibold tracking-wide text-amber-300 transition-colors hover:bg-amber-400 hover:text-slate-950"
+            className="ml-4 inline-flex items-center rounded-full border border-amber-400/60 px-5 py-2 text-sm font-semibold tracking-wide text-amber-300 transition duration-150 hover:bg-amber-400 hover:text-slate-950 motion-safe:active:scale-[0.97]"
           >
             {navCta.label}
           </Link>
@@ -127,7 +127,7 @@ export default function Navbar() {
         {/* Mobile hamburger */}
         <button
           type="button"
-          className="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg text-slate-100 transition-colors hover:bg-slate-800/70 lg:hidden"
+          className="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg text-slate-100 transition duration-150 hover:bg-slate-800/70 motion-safe:active:scale-[0.97] lg:hidden"
           aria-label={menuOpen ? "Cerrar menu" : "Abrir menu"}
           aria-expanded={menuOpen}
           aria-controls="menu-movil"
@@ -154,7 +154,7 @@ export default function Navbar() {
                   <Link
                     href={link.href}
                     aria-current={active ? "page" : undefined}
-                    className={`block rounded-lg px-4 py-3 text-base font-medium transition-colors ${
+                    className={`block rounded-lg px-4 py-3 text-base font-medium transition duration-150 motion-safe:active:scale-[0.98] ${
                       active ? "bg-slate-800 text-amber-300" : "text-slate-200 hover:bg-slate-800 hover:text-amber-300"
                     }`}
                     onClick={() => setMenuOpen(false)}
@@ -167,7 +167,7 @@ export default function Navbar() {
             <li className="pt-3">
               <Link
                 href={navCta.href}
-                className="block rounded-full bg-amber-400 px-4 py-3 text-center text-base font-semibold text-slate-950 transition-colors hover:bg-amber-300"
+                className="block rounded-full bg-amber-400 px-4 py-3 text-center text-base font-semibold text-slate-950 transition duration-150 hover:bg-amber-300 motion-safe:active:scale-[0.97]"
                 onClick={() => setMenuOpen(false)}
               >
                 {navCta.label}

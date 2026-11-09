@@ -90,7 +90,7 @@ function EspecieCard({ especie }: { especie: (typeof especies)[number] }) {
   return (
     <Link
       href={`/especies/${especie.slug}`}
-      className={`group grid overflow-hidden rounded-2xl bg-slate-800/40 ring-1 transition-all duration-300 hover:-translate-y-1 hover:bg-slate-800/70 sm:grid-cols-5 ${theme.ring}`}
+      className={`group grid overflow-hidden rounded-2xl bg-slate-800/40 ring-1 transition duration-200 motion-safe:hover:-translate-y-1 motion-safe:active:scale-[0.98] hover:bg-slate-800/70 sm:grid-cols-5 ${theme.ring}`}
     >
       <div className={`relative min-h-[260px] bg-gradient-to-b sm:col-span-2 ${theme.glow}`}>
         {especie.coverImageSrc ? (
@@ -98,7 +98,7 @@ function EspecieCard({ especie }: { especie: (typeof especies)[number] }) {
             src={especie.coverImageSrc}
             alt={especie.coverImageAlt || especie.name}
             fill
-            className="object-contain p-3 transition-transform duration-500 group-hover:scale-105"
+            className="object-contain p-3 transition-transform duration-500 motion-safe:group-hover:scale-105"
             sizes="(max-width: 640px) 100vw, 240px"
           />
         ) : (
