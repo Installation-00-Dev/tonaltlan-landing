@@ -68,9 +68,12 @@ jobs:
           # Next export → raíz del sitio (tonaltlan.com)
           cp -R out/* dist/
 
-          # Landing legacy → /proximamente (usa activos optimizados de /images/)
+          # Landing legacy → /proximamente
           mkdir -p dist/proximamente
           cp -f index.html dist/proximamente/index.html
+          for f in piramides_azteca_final.webp piramides_azteca_final.png produccion.png tonaltlan_logo.png; do
+            if [ -f "$f" ]; then cp -f "$f" "dist/proximamente/$f"; fi
+          done
 
       - name: Configure Pages
         if: github.event_name != 'pull_request'
