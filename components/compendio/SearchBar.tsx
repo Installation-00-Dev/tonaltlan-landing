@@ -17,7 +17,7 @@ export default function SearchBar({
         {placeholder}
       </label>
       <svg
-        className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-500"
+        className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-selva-500"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
@@ -36,7 +36,7 @@ export default function SearchBar({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="min-h-[52px] w-full rounded-full border border-slate-700 bg-slate-800/60 py-3 pl-12 pr-5 text-base text-slate-100 placeholder:text-slate-500 focus:border-amber-400 focus:outline-none focus:ring-2 focus:ring-amber-400/40"
+        className="min-h-[52px] w-full rounded-full border border-selva-700 bg-selva-800/60 py-3 pl-12 pr-5 text-base text-selva-100 placeholder:text-selva-500 focus:border-oro-400 focus:outline-none focus:ring-2 focus:ring-oro-400/40"
       />
     </div>
   );

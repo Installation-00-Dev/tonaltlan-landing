@@ -2,40 +2,46 @@ import Link from "next/link";
 
 interface SectionHeaderProps {
   title: string;
-  subtitle?: string;
-  /** Texto pequeno sobre el titulo, p. ej. "Compendio". */
+  /** Frase destacada bajo el titulo (en la fuente de titulos). */
+  lema?: string;
+  /** Texto bajo el titulo. Acepta varios parrafos. */
+  subtitle?: string | string[];
+  /** Seccion padre: se muestra como ruta de navegacion ("Compendio /") solo si tiene enlace. */
   eyebrow?: string;
-  /** Enlace del eyebrow (miga de pan). */
   eyebrowHref?: string;
   center?: boolean;
 }
 
-export default function SectionHeader({ title, subtitle, eyebrow, eyebrowHref, center = false }: SectionHeaderProps) {
-  const eyebrowClass =
-    "mb-3 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-amber-400/90";
+/**
+ * Encabezado de pagina. Sin etiquetas decorativas sobre el titulo (criterio de
+ * Impeccable): el titulo habla por si mismo. La ruta de navegacion solo aparece
+ * cuando lleva a algun lado.
+ */
+export default function SectionHeader({ title, lema, subtitle, eyebrow, eyebrowHref, center = false }: SectionHeaderProps) {
+  const parrafos = subtitle === undefined ? [] : Array.isArray(subtitle) ? subtitle : [subtitle];
 
   return (
     <header className={`mb-12 ${center ? "mx-auto max-w-2xl text-center" : ""}`}>
-      {eyebrow ? (
-        eyebrowHref ? (
-          <Link href={eyebrowHref} className={`${eyebrowClass} transition-colors hover:text-amber-300`}>
-            <span className="h-1.5 w-1.5 rotate-45 bg-amber-400" aria-hidden="true" />
+      {eyebrow && eyebrowHref ? (
+        <nav aria-label="Ruta" className="mb-4 text-sm text-selva-400">
+          <Link href={eyebrowHref} className="transition-colors hover:text-jade-300">
             {eyebrow}
           </Link>
-        ) : (
-          <p className={eyebrowClass}>
-            <span className="h-1.5 w-1.5 rotate-45 bg-amber-400" aria-hidden="true" />
-            {eyebrow}
-          </p>
-        )
+          <span className="mx-2 text-selva-600" aria-hidden="true">
+            /
+          </span>
+        </nav>
       ) : null}
-      <h1 className="mb-4 font-serif text-4xl font-bold tracking-wide text-amber-300 md:text-5xl">
-        {title}
-      </h1>
-      {subtitle && (
-        <p className={`max-w-2xl text-base leading-relaxed text-slate-300 md:text-lg ${center ? "mx-auto" : ""}`}>
-          {subtitle}
-        </p>
+      <h1 className="mb-5 font-display text-5xl text-jade-400 [text-wrap:balance] md:text-6xl">{title}</h1>
+      {lema ? (
+        <p className={`mb-4 max-w-2xl font-display text-2xl text-selva-100 md:text-3xl ${center ? "mx-auto" : ""}`}>{lema}</p>
+      ) : null}
+      {parrafos.length > 0 && (
+        <div className={`max-w-2xl space-y-4 text-base leading-relaxed text-selva-300 md:text-lg ${center ? "mx-auto" : ""}`}>
+          {parrafos.map((parrafo) => (
+            <p key={parrafo}>{parrafo}</p>
+          ))}
+        </div>
       )}
     </header>
   );

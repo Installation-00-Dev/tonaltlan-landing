@@ -29,14 +29,14 @@ export default function DeidadesPage() {
               <a
                 key={deidad.slug}
                 href={`#${deidad.slug}`}
-                className={`group flex flex-col items-center gap-2 rounded-2xl bg-slate-800/40 p-3 text-center ring-1 transition hover:bg-slate-800 ${theme.ring}`}
+                className={`group flex flex-col items-center gap-2 rounded-2xl bg-selva-800/40 p-3 text-center ring-1 transition hover:bg-selva-800 ${theme.ring}`}
               >
                 <span className={`relative h-16 w-16 overflow-hidden rounded-full bg-gradient-to-b ${theme.glow}`}>
                   {deidad.coverImageSrc ? (
                     <Image src={deidad.coverImageSrc} alt="" fill className="object-cover object-top" sizes="64px" />
                   ) : null}
                 </span>
-                <span className={`font-serif text-sm font-semibold ${theme.text}`}>{deidad.name}</span>
+                <span className={`font-display text-sm ${theme.text}`}>{deidad.name}</span>
               </a>
             );
           })}
@@ -55,7 +55,7 @@ export default function DeidadesPage() {
             return (
               <section key={deidad.slug} id={deidad.slug} className="grid scroll-mt-28 items-center gap-10 lg:grid-cols-2 lg:gap-16">
                 <div
-                  className={`relative aspect-[4/5] overflow-hidden rounded-3xl bg-gradient-to-b ring-1 ring-slate-700/70 ${theme.glow} ${
+                  className={`relative aspect-[4/5] overflow-hidden rounded-3xl bg-gradient-to-b ring-1 ring-selva-700/70 ${theme.glow} ${
                     reverse ? "lg:order-2" : ""
                   }`}
                 >
@@ -74,8 +74,8 @@ export default function DeidadesPage() {
 
                 <div>
                   <span className={`mb-4 block h-1 w-16 rounded-full ${theme.bar}`} aria-hidden="true" />
-                  <h2 className={`mb-4 font-serif text-4xl font-bold md:text-5xl ${theme.text}`}>{deidad.name}</h2>
-                  <p className="mb-6 text-lg leading-8 text-slate-300">{deidad.description}</p>
+                  <h2 className={`mb-4 font-display text-4xl md:text-5xl ${theme.text}`}>{deidad.name}</h2>
+                  <p className="mb-6 text-lg leading-8 text-selva-300">{deidad.description}</p>
                   <div className="mb-8 flex flex-wrap gap-2">
                     {deidad.tags.map((tag) => (
                       <span key={tag} className={`rounded-full px-3 py-1 text-xs font-medium ring-1 ${theme.chip}`}>
@@ -86,13 +86,13 @@ export default function DeidadesPage() {
 
                   {linaje.length > 0 ? (
                     <div className="mb-8">
-                      <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">Su linaje</p>
+                      <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-selva-500">Su linaje</p>
                       <div className="flex flex-wrap gap-2">
                         {linaje.map((especie) => (
                           <Link
                             key={especie.slug}
                             href={`/especies/${especie.slug}`}
-                            className="rounded-full bg-slate-800 px-4 py-2 text-sm font-medium text-slate-100 ring-1 ring-slate-700 transition-colors hover:ring-slate-500"
+                            className="rounded-full bg-selva-800 px-4 py-2 text-sm font-medium text-selva-100 ring-1 ring-selva-700 transition-colors hover:ring-selva-500"
                           >
                             {especie.name}
                           </Link>

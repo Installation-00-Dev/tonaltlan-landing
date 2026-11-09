@@ -151,6 +151,19 @@ export const pendientes = {
       "Equipo: nombre, rol y foto o avatar de cada persona.",
     ],
   },
+  "especie-tlacas": {
+    titulo: "Tlacas",
+    donde: "/especies#tlacas",
+    necesita: [
+      "Ficha de los Tlacas: descripción, rasgos y nota de juego (como las demás especies).",
+      "Etiquetas (3) e ilustración.",
+    ],
+    pistas: [
+      "Intro de Especies: humanos sin una afinidad elemental predeterminada.",
+      "Ficha de Tzal: los Tlacas fueron los primeros pueblos conscientes de Tonaltlán.",
+      "Ficha de Calti: selló los Puntos Tonales de los Tlacas.",
+    ],
+  },
   "especies-arte": {
     titulo: "Arte de especies",
     donde: "/especies",

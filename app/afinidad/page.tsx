@@ -140,7 +140,7 @@ export default function AfinidadPage() {
             <p className="mb-2 text-sm font-medium text-teal">
               Pregunta {currentQuestionIndex + 1} de {sessionQuestions.length}
             </p>
-            <h2 className="mb-3 font-serif text-2xl font-semibold text-foreground">
+            <h2 className="mb-3 font-display text-2xl text-foreground">
               {currentQuestion.title}
             </h2>
             <p className="mb-8 text-base leading-relaxed text-muted">{currentQuestion.scenario}</p>
@@ -218,7 +218,7 @@ export default function AfinidadPage() {
                   </div>
                 ) : null}
 
-                <h2 className="font-serif text-4xl font-bold leading-tight text-gold md:text-5xl">
+                <h2 className="font-display text-4xl leading-tight text-gold md:text-5xl">
                   {parsedDominantTitle?.archetype ?? results.dominant.narrative.name}
                 </h2>
 

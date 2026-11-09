@@ -21,20 +21,20 @@ export default function PendientesPage() {
 
         <ol className="space-y-4">
           {items.map(([id, info], index) => (
-            <li key={id} className="rounded-2xl bg-slate-800/40 p-6 ring-1 ring-slate-700/70">
+            <li key={id} className="rounded-2xl bg-selva-800/40 p-6 ring-1 ring-selva-700/70">
               <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
-                <h2 className="font-serif text-lg font-semibold text-slate-100">
-                  <span className="mr-3 text-sm text-amber-400/70">{String(index + 1).padStart(2, "0")}</span>
+                <h2 className="font-display text-lg text-selva-100">
+                  <span className="mr-3 text-sm text-oro-400/70">{String(index + 1).padStart(2, "0")}</span>
                   {info.titulo}
                 </h2>
-                <Link href={info.donde} className="text-sm font-medium text-amber-300 hover:text-amber-200 hover:underline">
+                <Link href={info.donde} className="text-sm font-medium text-oro-300 hover:text-oro-200 hover:underline">
                   {info.donde}
                 </Link>
               </div>
-              <ul className="space-y-1.5 text-sm leading-relaxed text-slate-300">
+              <ul className="space-y-1.5 text-sm leading-relaxed text-selva-300">
                 {info.necesita.map((item) => (
                   <li key={item} className="flex gap-3">
-                    <span className="mt-0.5 h-4 w-4 shrink-0 rounded border border-slate-600" aria-hidden="true" />
+                    <span className="mt-0.5 h-4 w-4 shrink-0 rounded border border-selva-600" aria-hidden="true" />
                     {item}
                   </li>
                 ))}

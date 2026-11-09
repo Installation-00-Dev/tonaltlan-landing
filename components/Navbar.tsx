@@ -61,7 +61,7 @@ export default function Navbar() {
         hidden && !menuOpen ? "-translate-y-full" : "translate-y-0"
       } ${
         solid
-          ? "border-b border-amber-400/15 bg-slate-900/65 shadow-lg shadow-slate-950/30 backdrop-blur-xl"
+          ? "border-b border-oro-400/15 bg-selva-900/65 shadow-lg shadow-selva-950/30 backdrop-blur-xl"
           : "border-b border-transparent bg-transparent"
       }`}
     >
@@ -101,12 +101,12 @@ export default function Navbar() {
                     href={link.href}
                     aria-current={active ? "page" : undefined}
                     className={`relative rounded-full px-4 py-2 text-sm font-semibold tracking-wide transition-colors ${
-                      active ? "text-amber-300" : "text-slate-200 hover:text-amber-300"
+                      active ? "text-oro-300" : "text-selva-200 hover:text-oro-300"
                     }`}
                   >
                     {link.label}
                     <span
-                      className={`absolute inset-x-4 -bottom-0.5 h-px bg-amber-400 transition-transform duration-200 ${
+                      className={`absolute inset-x-4 -bottom-0.5 h-px bg-oro-400 transition-transform duration-200 ${
                         active ? "scale-x-100" : "scale-x-0"
                       }`}
                       aria-hidden="true"
@@ -118,16 +118,23 @@ export default function Navbar() {
           </ul>
           <Link
             href={navCta.href}
-            className="ml-4 inline-flex items-center rounded-full border border-amber-400/60 px-5 py-2 text-sm font-semibold tracking-wide text-amber-300 transition duration-150 hover:bg-amber-400 hover:text-slate-950 motion-safe:active:scale-[0.97]"
+            className="ml-4 inline-flex items-center rounded-full bg-oro-400 px-5 py-2.5 text-sm font-semibold text-selva-950 shadow-md shadow-oro-500/20 transition duration-150 hover:bg-oro-300 motion-safe:active:scale-[0.97]"
           >
             {navCta.label}
           </Link>
         </div>
 
-        {/* Mobile hamburger */}
+        {/* Movil: Test de Afinidad siempre visible + menu */}
+        <div className="flex items-center gap-2 lg:hidden">
+          <Link
+            href={navCta.href}
+            className="inline-flex min-h-[40px] items-center rounded-full bg-oro-400 px-4 text-sm font-semibold text-selva-950 transition duration-150 hover:bg-oro-300 motion-safe:active:scale-[0.97]"
+          >
+            {navCta.label}
+          </Link>
         <button
           type="button"
-          className="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg text-slate-100 transition duration-150 hover:bg-slate-800/70 motion-safe:active:scale-[0.97] lg:hidden"
+          className="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg text-selva-100 transition duration-150 hover:bg-selva-800/70 motion-safe:active:scale-[0.97]"
           aria-label={menuOpen ? "Cerrar menu" : "Abrir menu"}
           aria-expanded={menuOpen}
           aria-controls="menu-movil"
@@ -141,11 +148,12 @@ export default function Navbar() {
             )}
           </svg>
         </button>
+        </div>
       </nav>
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div id="menu-movil" className="border-t border-slate-800 lg:hidden">
+        <div id="menu-movil" className="border-t border-selva-800 lg:hidden">
           <ul className="flex flex-col gap-1 px-6 py-4">
             {mainNav.map((link) => {
               const active = isActive(pathname, link.href);
@@ -155,7 +163,7 @@ export default function Navbar() {
                     href={link.href}
                     aria-current={active ? "page" : undefined}
                     className={`block rounded-lg px-4 py-3 text-base font-medium transition duration-150 motion-safe:active:scale-[0.98] ${
-                      active ? "bg-slate-800 text-amber-300" : "text-slate-200 hover:bg-slate-800 hover:text-amber-300"
+                      active ? "bg-selva-800 text-oro-300" : "text-selva-200 hover:bg-selva-800 hover:text-oro-300"
                     }`}
                     onClick={() => setMenuOpen(false)}
                   >
@@ -164,15 +172,6 @@ export default function Navbar() {
                 </li>
               );
             })}
-            <li className="pt-3">
-              <Link
-                href={navCta.href}
-                className="block rounded-full bg-amber-400 px-4 py-3 text-center text-base font-semibold text-slate-950 transition duration-150 hover:bg-amber-300 motion-safe:active:scale-[0.97]"
-                onClick={() => setMenuOpen(false)}
-              >
-                {navCta.label}
-              </Link>
-            </li>
           </ul>
         </div>
       )}

@@ -1,6 +1,7 @@
 import ClassSelector from "@/components/compendio/ClassSelector";
 import SectionHeader from "@/components/compendio/SectionHeader";
 import { clases } from "@/lib/data";
+import { textosClases } from "@/lib/textos";
 
 export const metadata = {
   title: "Clases - Tonaltlan",
@@ -14,10 +15,13 @@ export default function ClasesPage() {
         <SectionHeader
           eyebrow="Compendio"
           eyebrowHref="/explorar"
-          title="Clases"
-          subtitle="Guerreros, sacerdotes, hechiceros y mas arquetipos del mundo antiguo."
+          title={textosClases.titulo}
+          subtitle={textosClases.intro}
         />
         <ClassSelector items={clases} />
+        <p className="mx-auto mt-20 max-w-2xl text-center font-display text-2xl text-jade-300 [text-wrap:balance] md:text-3xl">
+          {textosClases.cierre}
+        </p>
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ import SectionHeader from "@/components/compendio/SectionHeader";
 import Pendiente from "@/components/ui/Pendiente";
 import { deidades, especies } from "@/lib/data";
 import { themeFor } from "@/lib/site";
+import { textosEspecies } from "@/lib/textos";
 
 export const metadata = {
   title: "Especies - Tonaltlan",
@@ -23,8 +24,9 @@ export default function EspeciesPage() {
         <SectionHeader
           eyebrow="Compendio"
           eyebrowHref="/explorar"
-          title="Especies"
-          subtitle="Seres nacidos del maiz, la obsidiana y el aliento de los dioses."
+          title={textosEspecies.titulo}
+          lema={textosEspecies.lema}
+          subtitle={textosEspecies.intro}
         />
 
         {/* Indice de linajes */}
@@ -35,7 +37,7 @@ export default function EspeciesPage() {
               <a
                 key={deidad.slug}
                 href={`#linaje-${deidad.slug}`}
-                className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium ring-1 transition-colors ${theme.chip} hover:bg-slate-800`}
+                className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium ring-1 transition-colors ${theme.chip} hover:bg-selva-800`}
               >
                 <span className={`h-2 w-2 rounded-full ${theme.bar}`} aria-hidden="true" />
                 {deidad.name}
@@ -51,13 +53,12 @@ export default function EspeciesPage() {
               <section
                 key={deidad.slug}
                 id={`linaje-${deidad.slug}`}
-                className="grid scroll-mt-28 gap-6 border-t border-slate-800 pt-10 lg:grid-cols-12 lg:gap-10"
+                className="grid scroll-mt-28 gap-6 border-t border-selva-800 pt-10 lg:grid-cols-12 lg:gap-10"
               >
                 <div className="lg:col-span-4">
                   <span className={`mb-4 block h-1 w-12 rounded-full ${theme.bar}`} aria-hidden="true" />
-                  <p className="text-xs font-semibold uppercase tracking-[0.25em] text-slate-500">Linaje</p>
-                  <h2 className={`mb-2 font-serif text-3xl font-bold ${theme.text}`}>{deidad.name}</h2>
-                  <p className="mb-4 text-sm leading-relaxed text-slate-400">{deidad.description}</p>
+                  <h2 className={`mb-2 font-display text-3xl ${theme.text}`}>Hijos de {deidad.name}</h2>
+                  <p className="mb-4 text-sm leading-relaxed text-selva-400">{deidad.description}</p>
                   <Link href={`/deidades/${deidad.slug}`} className={`text-sm font-medium ${theme.text} hover:underline`}>
                     {deidad.name} →
                   </Link>
@@ -71,6 +72,11 @@ export default function EspeciesPage() {
               </section>
             );
           })}
+
+          {/* Tlacas: octava especie, sin afinidad elemental (ficha pendiente) */}
+          <section id="tlacas" className="scroll-mt-28 border-t border-selva-800 pt-10">
+            <Pendiente id="especie-tlacas" />
+          </section>
 
           {sinLinaje.length > 0 ? (
             <section className="grid gap-6 md:grid-cols-2">
@@ -90,7 +96,7 @@ function EspecieCard({ especie }: { especie: (typeof especies)[number] }) {
   return (
     <Link
       href={`/especies/${especie.slug}`}
-      className={`group grid overflow-hidden rounded-2xl bg-slate-800/40 ring-1 transition duration-200 motion-safe:hover:-translate-y-1 motion-safe:active:scale-[0.98] hover:bg-slate-800/70 sm:grid-cols-5 ${theme.ring}`}
+      className={`group grid overflow-hidden rounded-2xl bg-selva-800/40 ring-1 transition duration-200 motion-safe:hover:-translate-y-1 motion-safe:active:scale-[0.98] hover:bg-selva-800/70 sm:grid-cols-5 ${theme.ring}`}
     >
       <div className={`relative min-h-[260px] bg-gradient-to-b sm:col-span-2 ${theme.glow}`}>
         {especie.coverImageSrc ? (
@@ -106,8 +112,8 @@ function EspecieCard({ especie }: { especie: (typeof especies)[number] }) {
         )}
       </div>
       <div className="flex flex-col p-6 sm:col-span-3">
-        <h3 className={`mb-2 font-serif text-2xl font-semibold ${theme.text}`}>{especie.name}</h3>
-        <p className="mb-5 flex-1 text-sm leading-7 text-slate-300">{especie.description}</p>
+        <h3 className={`mb-2 font-display text-2xl ${theme.text}`}>{especie.name}</h3>
+        <p className="mb-5 flex-1 text-sm leading-7 text-selva-300">{especie.description}</p>
         <div className="flex flex-wrap gap-2">
           {especie.tags.map((tag) => (
             <span key={tag} className={`rounded-full px-3 py-1 text-xs font-medium ring-1 ${theme.chip}`}>

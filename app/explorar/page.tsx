@@ -49,8 +49,8 @@ export default function ExplorarPage() {
 
         {query ? (
           resultados.length === 0 ? (
-            <div className="rounded-2xl bg-slate-800/40 p-10 text-center ring-1 ring-slate-700/70">
-              <p className="text-base text-slate-400">Sin resultados para “{search}”.</p>
+            <div className="rounded-2xl bg-selva-800/40 p-10 text-center ring-1 ring-selva-700/70">
+              <p className="text-base text-selva-400">Sin resultados para “{search}”.</p>
             </div>
           ) : (
             <ul className="grid gap-4 md:grid-cols-2">
@@ -58,13 +58,13 @@ export default function ExplorarPage() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="group flex h-full flex-col rounded-2xl bg-slate-800/40 p-5 ring-1 ring-slate-700/70 transition hover:bg-slate-800 hover:ring-amber-400/60"
+                    className="group flex h-full flex-col rounded-2xl bg-selva-800/40 p-5 ring-1 ring-selva-700/70 transition hover:bg-selva-800 hover:ring-oro-400/60"
                   >
-                    <span className="mb-1 text-xs font-semibold uppercase tracking-[0.2em] text-amber-400/90">{item.tipo}</span>
-                    <span className="mb-1 font-serif text-lg font-semibold text-slate-100 group-hover:text-amber-300">
+                    <span className="mb-1 text-xs font-semibold uppercase tracking-[0.2em] text-oro-400/90">{item.tipo}</span>
+                    <span className="mb-1 font-display text-lg text-selva-100 group-hover:text-jade-300">
                       {item.name}
                     </span>
-                    <span className="line-clamp-2 text-sm leading-relaxed text-slate-400">{item.description}</span>
+                    <span className="line-clamp-2 text-sm leading-relaxed text-selva-400">{item.description}</span>
                   </Link>
                 </li>
               ))}
@@ -78,23 +78,23 @@ export default function ExplorarPage() {
                 <>
                   <div className="mb-3 flex items-center justify-between gap-3">
                     <h2
-                      className={`font-serif text-xl font-semibold transition-colors ${
-                        disponible ? "text-slate-100 group-hover:text-amber-300" : "text-slate-400"
-                      }`}
+                      className={`font-display text-xl transition-colors ${
+ disponible ? "text-selva-100 group-hover:text-jade-300": "text-selva-400"
+ }`}
                     >
                       {section.title}
                     </h2>
                     <span
                       className={`rounded-full px-3 py-1 text-xs font-medium ring-1 ${
                         disponible
-                          ? "bg-amber-400/10 text-amber-200 ring-amber-400/25"
-                          : "border border-dashed border-slate-600 text-slate-500 ring-transparent"
+                          ? "bg-oro-400/10 text-oro-200 ring-oro-400/25"
+                          : "border border-dashed border-selva-600 text-selva-500 ring-transparent"
                       }`}
                     >
                       {disponible ? `${section.count} entradas` : "Próximamente"}
                     </span>
                   </div>
-                  <p className="text-sm leading-relaxed text-slate-400">{section.description}</p>
+                  <p className="text-sm leading-relaxed text-selva-400">{section.description}</p>
                 </>
               );
 
@@ -103,12 +103,12 @@ export default function ExplorarPage() {
                   {disponible ? (
                     <Link
                       href={`/${section.slug}`}
-                      className="group flex w-full flex-col rounded-2xl bg-slate-800/40 p-6 ring-1 ring-slate-700/70 transition duration-200 motion-safe:hover:-translate-y-1 motion-safe:active:scale-[0.98] hover:bg-slate-800 hover:ring-amber-400/60"
+                      className="group flex w-full flex-col rounded-2xl bg-selva-800/40 p-6 ring-1 ring-selva-700/70 transition duration-200 motion-safe:hover:-translate-y-1 motion-safe:active:scale-[0.98] hover:bg-selva-800 hover:ring-oro-400/60"
                     >
                       {contenido}
                     </Link>
                   ) : (
-                    <div className="flex w-full flex-col rounded-2xl border border-dashed border-slate-700 p-6">{contenido}</div>
+                    <div className="flex w-full flex-col rounded-2xl border border-dashed border-selva-700 p-6">{contenido}</div>
                   )}
                 </li>
               );

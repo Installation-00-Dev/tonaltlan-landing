@@ -81,7 +81,7 @@ export default function GalleryGrid({ images }: { images: string[] }) {
               <button
                 type="button"
                 onClick={(event) => open(index, event.currentTarget)}
-                className="group relative block w-full overflow-hidden rounded-2xl bg-slate-800/60 ring-1 ring-slate-700/70 transition duration-200 hover:ring-amber-400/60 motion-safe:active:scale-[0.98]"
+                className="group relative block w-full overflow-hidden rounded-2xl bg-selva-800/60 ring-1 ring-selva-700/70 transition duration-200 hover:ring-oro-400/60 motion-safe:active:scale-[0.98]"
                 aria-label={`Ampliar ${name}`}
               >
                 <Image
@@ -93,7 +93,7 @@ export default function GalleryGrid({ images }: { images: string[] }) {
                   className="h-auto w-full transition-transform duration-500 motion-safe:group-hover:scale-[1.03]"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
-                <span className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent px-5 pb-4 pt-12 text-left font-serif text-lg font-semibold text-slate-100 opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">
+                <span className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-selva-950/90 via-selva-950/30 to-transparent px-5 pb-4 pt-12 text-left font-display text-lg text-selva-100 opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">
                   {name}
                 </span>
               </button>
@@ -108,7 +108,7 @@ export default function GalleryGrid({ images }: { images: string[] }) {
           aria-modal="true"
           aria-label={labelFromPath(current)}
           data-closing={closing}
-          className="lightbox-backdrop fixed inset-0 z-[60] flex items-center justify-center bg-slate-950/95 p-4 backdrop-blur-sm"
+          className="lightbox-backdrop fixed inset-0 z-[60] flex items-center justify-center bg-selva-950/95 p-4 backdrop-blur-sm"
           onClick={() => close(true)}
         >
           <figure
@@ -118,9 +118,9 @@ export default function GalleryGrid({ images }: { images: string[] }) {
             <div className="relative h-[80vh] w-full">
               <Image src={current} alt={labelFromPath(current)} fill className="object-contain" sizes="100vw" />
             </div>
-            <figcaption className="mt-4 font-serif text-lg text-slate-200">
+            <figcaption className="mt-4 font-display text-lg text-selva-200">
               {labelFromPath(current)}
-              <span className="ml-3 text-sm text-slate-500">
+              <span className="ml-3 text-sm text-selva-500">
                 {openIndex + 1} / {images.length}
               </span>
             </figcaption>
@@ -134,7 +134,7 @@ export default function GalleryGrid({ images }: { images: string[] }) {
               close(true);
             }}
             aria-label="Cerrar"
-            className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-full bg-slate-800 text-slate-100 transition duration-150 hover:bg-slate-700 motion-safe:active:scale-[0.97]"
+            className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-full bg-selva-800 text-selva-100 transition duration-150 hover:bg-selva-700 motion-safe:active:scale-[0.97]"
           >
             <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -149,7 +149,7 @@ export default function GalleryGrid({ images }: { images: string[] }) {
                 step(direction);
               }}
               aria-label={direction === -1 ? "Anterior" : "Siguiente"}
-              className={`absolute top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-slate-800/80 text-slate-100 transition duration-150 hover:bg-amber-400 hover:text-slate-950 motion-safe:active:scale-[0.97] ${
+              className={`absolute top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-selva-800/80 text-selva-100 transition duration-150 hover:bg-oro-400 hover:text-selva-950 motion-safe:active:scale-[0.97] ${
                 direction === -1 ? "left-4" : "right-4"
               }`}
             >
