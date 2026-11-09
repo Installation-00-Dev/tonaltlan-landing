@@ -39,7 +39,7 @@ export default function JuegaPage() {
           content: (
             <Link
               href="/afinidad"
-              className="group flex flex-col gap-6 overflow-hidden rounded-2xl bg-gradient-to-br from-amber-400/15 via-slate-800/60 to-slate-900 p-8 ring-1 ring-amber-400/30 transition-all duration-300 hover:-translate-y-0.5 hover:ring-amber-400/70 md:flex-row md:items-center md:justify-between md:p-10"
+              className="group flex flex-col gap-6 overflow-hidden rounded-2xl bg-gradient-to-br from-amber-400/15 via-slate-800/60 to-slate-900 p-8 ring-1 ring-amber-400/30 transition duration-200 motion-safe:hover:-translate-y-0.5 motion-safe:active:scale-[0.98] hover:ring-amber-400/70 md:flex-row md:items-center md:justify-between md:p-10"
             >
               <div>
                 <p className="mb-2 font-serif text-2xl font-bold text-amber-300">Test de Afinidad</p>
@@ -48,7 +48,7 @@ export default function JuegaPage() {
                 </p>
               </div>
               <span
-                className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-amber-400 text-slate-950 transition-transform duration-300 group-hover:translate-x-1"
+                className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-amber-400 text-slate-950 transition-transform duration-200 motion-safe:group-hover:translate-x-1"
                 aria-hidden="true"
               >
                 <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

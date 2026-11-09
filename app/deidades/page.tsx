@@ -29,7 +29,7 @@ export default function DeidadesPage() {
               <a
                 key={deidad.slug}
                 href={`#${deidad.slug}`}
-                className={`group flex flex-col items-center gap-2 rounded-2xl bg-slate-800/40 p-3 text-center ring-1 transition-all hover:bg-slate-800 ${theme.ring}`}
+                className={`group flex flex-col items-center gap-2 rounded-2xl bg-slate-800/40 p-3 text-center ring-1 transition hover:bg-slate-800 ${theme.ring}`}
               >
                 <span className={`relative h-16 w-16 overflow-hidden rounded-full bg-gradient-to-b ${theme.glow}`}>
                   {deidad.coverImageSrc ? (

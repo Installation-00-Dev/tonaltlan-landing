@@ -71,7 +71,7 @@ export default function Newsletter() {
               />
               <button
                 type="submit"
-                className="inline-flex min-h-[52px] items-center justify-center rounded-full bg-amber-400 px-8 py-3 font-serif text-base font-bold uppercase tracking-wider text-slate-950 shadow-lg shadow-amber-500/20 transition-all duration-300 hover:bg-amber-300 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-amber-200"
+                className="inline-flex min-h-[52px] items-center justify-center rounded-full bg-amber-400 px-8 py-3 font-serif text-base font-bold uppercase tracking-wider text-slate-950 shadow-lg shadow-amber-500/20 transition duration-200 hover:bg-amber-300 motion-safe:active:scale-[0.97] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-amber-200"
               >
                 Suscribirse
               </button>

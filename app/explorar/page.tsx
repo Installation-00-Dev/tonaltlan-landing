@@ -58,7 +58,7 @@ export default function ExplorarPage() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="group flex h-full flex-col rounded-2xl bg-slate-800/40 p-5 ring-1 ring-slate-700/70 transition-all hover:bg-slate-800 hover:ring-amber-400/60"
+                    className="group flex h-full flex-col rounded-2xl bg-slate-800/40 p-5 ring-1 ring-slate-700/70 transition hover:bg-slate-800 hover:ring-amber-400/60"
                   >
                     <span className="mb-1 text-xs font-semibold uppercase tracking-[0.2em] text-amber-400/90">{item.tipo}</span>
                     <span className="mb-1 font-serif text-lg font-semibold text-slate-100 group-hover:text-amber-300">
@@ -103,7 +103,7 @@ export default function ExplorarPage() {
                   {disponible ? (
                     <Link
                       href={`/${section.slug}`}
-                      className="group flex w-full flex-col rounded-2xl bg-slate-800/40 p-6 ring-1 ring-slate-700/70 transition-all duration-300 hover:-translate-y-1 hover:bg-slate-800 hover:ring-amber-400/60"
+                      className="group flex w-full flex-col rounded-2xl bg-slate-800/40 p-6 ring-1 ring-slate-700/70 transition duration-200 motion-safe:hover:-translate-y-1 motion-safe:active:scale-[0.98] hover:bg-slate-800 hover:ring-amber-400/60"
                     >
                       {contenido}
                     </Link>

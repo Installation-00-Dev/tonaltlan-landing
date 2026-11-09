@@ -52,7 +52,7 @@ export default function About() {
               src="/images/Piramide_onix_color_final_1.webp"
               alt="Piramide de onix en Tonaltlan rodeada de energia mistica"
               fill
-              className="object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
+              className="object-cover transition-transform duration-500 ease-out motion-safe:group-hover:scale-105"
               sizes="(max-width: 1024px) 100vw, 45vw"
             />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-900/50 via-transparent to-transparent" />

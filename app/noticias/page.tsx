@@ -16,7 +16,7 @@ export default function NoticiasPage() {
         <div className="mb-10 grid gap-6 md:grid-cols-2" aria-hidden="true">
           {[0, 1].map((index) => (
             <div key={index} className="overflow-hidden rounded-2xl bg-slate-800/40 ring-1 ring-slate-700/70">
-              <div className="aspect-[16/9] w-full animate-pulse bg-slate-800" />
+              <div className="aspect-[16/9] w-full motion-safe:animate-pulse bg-slate-800" />
               <div className="space-y-3 p-6">
                 <div className="h-3 w-24 rounded bg-slate-700" />
                 <div className="h-5 w-3/4 rounded bg-slate-700" />

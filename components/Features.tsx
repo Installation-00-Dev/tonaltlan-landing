@@ -21,7 +21,7 @@ export default function Features() {
           {features.map((feature) => (
             <div
               key={feature.title}
-              className="group relative overflow-hidden rounded-2xl bg-slate-800/40 p-8 ring-1 ring-slate-700/70 transition-colors duration-300 hover:bg-slate-800/70 hover:ring-slate-600 md:p-10"
+              className="group relative overflow-hidden rounded-2xl bg-slate-800/40 p-8 ring-1 ring-slate-700/70 transition-colors duration-200 hover:bg-slate-800/70 hover:ring-slate-600 md:p-10"
             >
               <div className="mb-6 inline-flex rounded-xl bg-amber-400/10 p-3.5 text-amber-300 ring-1 ring-amber-400/25">
                 {feature.icon}
