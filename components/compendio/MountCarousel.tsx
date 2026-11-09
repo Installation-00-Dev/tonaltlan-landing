@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useRef } from "react";
 import { prefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 import { labelFromPath } from "@/lib/site";
+import { variante } from "@/lib/imagenes";
 
 const tints = ["from-rose-400/20", "from-oro-400/20", "from-turquesa-400/20", "from-sky-400/20"];
 
@@ -53,7 +54,7 @@ export default function MountCarousel({ images }: { images: string[] }) {
               <article className="group overflow-hidden rounded-3xl bg-selva-800/40 ring-1 ring-selva-700/70 transition duration-200 hover:ring-oro-400/60">
                 <div className={`relative aspect-[3/4] bg-gradient-to-b ${tints[index % tints.length]} via-selva-800/40 to-selva-900`}>
                   <Image
-                    src={src}
+                    src={variante(src, 1200)}
                     alt={name}
                     fill
                     priority={index < 3}

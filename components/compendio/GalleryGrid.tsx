@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { prefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 import { labelFromPath } from "@/lib/site";
+import { variante } from "@/lib/imagenes";
 
 const CLOSE_MS = 150;
 
@@ -85,7 +86,7 @@ export default function GalleryGrid({ images }: { images: string[] }) {
                 aria-label={`Ampliar ${name}`}
               >
                 <Image
-                  src={src}
+                  src={variante(src, 1200)}
                   alt={name}
                   width={800}
                   height={1000}
@@ -116,7 +117,7 @@ export default function GalleryGrid({ images }: { images: string[] }) {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="relative h-[80vh] w-full">
-              <Image src={current} alt={labelFromPath(current)} fill className="object-contain" sizes="100vw" />
+              <Image src={variante(current, 1800)} alt={labelFromPath(current)} fill className="object-contain" sizes="100vw" />
             </div>
             <figcaption className="mt-4 font-display text-lg text-selva-200">
               {labelFromPath(current)}

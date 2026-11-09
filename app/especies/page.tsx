@@ -5,6 +5,7 @@ import Pendiente from "@/components/ui/Pendiente";
 import { deidades, especies } from "@/lib/data";
 import { themeFor } from "@/lib/site";
 import { textosEspecies } from "@/lib/textos";
+import { variante } from "@/lib/imagenes";
 
 export const metadata = {
   title: "Especies - Tonaltlan",
@@ -101,7 +102,7 @@ function EspecieCard({ especie }: { especie: (typeof especies)[number] }) {
       <div className={`relative min-h-[260px] bg-gradient-to-b sm:col-span-2 ${theme.glow}`}>
         {especie.coverImageSrc ? (
           <Image
-            src={especie.coverImageSrc}
+            src={variante(especie.coverImageSrc, 480)}
             alt={especie.coverImageAlt || especie.name}
             fill
             className="object-contain p-3 transition-transform duration-500 motion-safe:group-hover:scale-105"

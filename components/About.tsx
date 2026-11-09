@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { variante } from "@/lib/imagenes";
 
 export default function About() {
   return (
@@ -45,7 +46,7 @@ export default function About() {
         <div className="flex items-center justify-center lg:col-span-5">
           <div className="group relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-selva-800 shadow-2xl shadow-selva-950/60 ring-1 ring-selva-700">
             <Image
-              src="/images/Piramide_onix_color_final_1.webp"
+              src={variante("/images/Piramide_onix_color_final_1.webp", 1200)}
               alt="Pirámide de ónix en Tonaltlan rodeada de energía mística"
               fill
               className="object-cover transition-transform duration-500 ease-out motion-safe:group-hover:scale-105"

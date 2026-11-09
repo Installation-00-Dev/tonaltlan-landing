@@ -4,6 +4,7 @@ import SectionHeader from "@/components/compendio/SectionHeader";
 import Pendiente from "@/components/ui/Pendiente";
 import { deidades, especies } from "@/lib/data";
 import { themeFor } from "@/lib/site";
+import { variante } from "@/lib/imagenes";
 
 export const metadata = {
   title: "Deidades - Tonaltlan",
@@ -33,7 +34,7 @@ export default function DeidadesPage() {
               >
                 <span className={`relative h-16 w-16 overflow-hidden rounded-full bg-gradient-to-b ${theme.glow}`}>
                   {deidad.coverImageSrc ? (
-                    <Image src={deidad.coverImageSrc} alt="" fill className="object-cover object-top" sizes="64px" />
+                    <Image src={variante(deidad.coverImageSrc, 1200)} alt="" fill className="object-cover object-top" sizes="64px" />
                   ) : null}
                 </span>
                 <span className={`font-display text-sm ${theme.text}`}>{deidad.name}</span>
@@ -61,7 +62,7 @@ export default function DeidadesPage() {
                 >
                   {deidad.coverImageSrc ? (
                     <Image
-                      src={deidad.coverImageSrc}
+                      src={variante(deidad.coverImageSrc, 1200)}
                       alt={deidad.coverImageAlt || deidad.name}
                       fill
                       className="object-contain p-6"
