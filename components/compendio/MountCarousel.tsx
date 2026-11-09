@@ -5,7 +5,7 @@ import { useRef } from "react";
 import { prefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 import { labelFromPath } from "@/lib/site";
 
-const tints = ["from-rose-400/20", "from-amber-400/20", "from-emerald-400/20", "from-sky-400/20"];
+const tints = ["from-rose-400/20", "from-oro-400/20", "from-turquesa-400/20", "from-sky-400/20"];
 
 export default function MountCarousel({ images }: { images: string[] }) {
   const trackRef = useRef<HTMLUListElement>(null);
@@ -25,7 +25,7 @@ export default function MountCarousel({ images }: { images: string[] }) {
             type="button"
             onClick={() => scrollBy(direction)}
             aria-label={direction === -1 ? "Anterior" : "Siguiente"}
-            className="flex h-11 w-11 items-center justify-center rounded-full bg-slate-800 text-slate-200 ring-1 ring-slate-700 transition duration-150 hover:bg-amber-400 hover:text-slate-950 motion-safe:active:scale-[0.97]"
+            className="flex h-11 w-11 items-center justify-center rounded-full bg-selva-800 text-selva-200 ring-1 ring-selva-700 transition duration-150 hover:bg-oro-400 hover:text-selva-950 motion-safe:active:scale-[0.97]"
           >
             <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path
@@ -50,8 +50,8 @@ export default function MountCarousel({ images }: { images: string[] }) {
               key={src}
               className="w-[80%] shrink-0 snap-start sm:w-[46%] lg:w-[31%]"
             >
-              <article className="group overflow-hidden rounded-3xl bg-slate-800/40 ring-1 ring-slate-700/70 transition duration-200 hover:ring-amber-400/60">
-                <div className={`relative aspect-[3/4] bg-gradient-to-b ${tints[index % tints.length]} via-slate-800/40 to-slate-900`}>
+              <article className="group overflow-hidden rounded-3xl bg-selva-800/40 ring-1 ring-selva-700/70 transition duration-200 hover:ring-oro-400/60">
+                <div className={`relative aspect-[3/4] bg-gradient-to-b ${tints[index % tints.length]} via-selva-800/40 to-selva-900`}>
                   <Image
                     src={src}
                     alt={name}
@@ -62,8 +62,8 @@ export default function MountCarousel({ images }: { images: string[] }) {
                   />
                 </div>
                 <div className="flex items-center justify-between gap-3 p-5">
-                  <h2 className="font-serif text-xl font-semibold text-slate-100">{name}</h2>
-                  <span className="rounded-full border border-dashed border-slate-600 px-3 py-1 text-[11px] uppercase tracking-wider text-slate-500">
+                  <h2 className="font-display text-xl text-selva-100">{name}</h2>
+                  <span className="rounded-full border border-dashed border-selva-600 px-3 py-1 text-[11px] uppercase tracking-wider text-selva-500">
                     Tipo
                   </span>
                 </div>

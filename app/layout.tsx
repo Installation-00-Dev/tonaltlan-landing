@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Cinzel } from "next/font/google";
+import { Inter, Macondo } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -10,9 +10,11 @@ const inter = Inter({
   display: "swap",
 });
 
-const cinzel = Cinzel({
+// Fuente de titulos elegida por el creador del mundo.
+const macondo = Macondo({
+  weight: "400",
   subsets: ["latin"],
-  variable: "--font-cinzel",
+  variable: "--font-display",
   display: "swap",
 });
 
@@ -37,7 +39,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0f172a",
+  themeColor: "#0b1d19",
   width: "device-width",
   initialScale: 1,
 };
@@ -48,8 +50,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es" className={`${inter.variable} ${cinzel.variable}`}>
-      <body className="bg-slate-900 font-sans text-slate-100 antialiased">
+    <html lang="es" className={`${inter.variable} ${macondo.variable}`}>
+      <body className="bg-selva-900 font-sans text-selva-100 antialiased">
         <Navbar />
         <main className="min-h-screen">{children}</main>
         <Footer />

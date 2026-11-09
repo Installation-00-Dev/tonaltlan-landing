@@ -14,7 +14,7 @@ interface AnchorPageProps {
 }
 
 /**
- * Pagina larga con indice lateral fijo (desktop) y secciones numeradas.
+ * Pagina larga con indice lateral fijo (desktop).
  * Se usa en /mundo y /juega.
  */
 export default function AnchorPage({ header, sections, indexLabel = "En esta página" }: AnchorPageProps) {
@@ -26,15 +26,14 @@ export default function AnchorPage({ header, sections, indexLabel = "En esta pá
         <div className="grid gap-12 lg:grid-cols-12">
           <aside className="hidden lg:col-span-3 lg:block">
             <nav aria-label={indexLabel} className="sticky top-28">
-              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">{indexLabel}</p>
-              <ol className="space-y-1 border-l border-slate-800">
-                {sections.map((section, index) => (
+              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-selva-500">{indexLabel}</p>
+              <ol className="space-y-1 border-l border-selva-800">
+                {sections.map((section) => (
                   <li key={section.id}>
                     <a
                       href={`#${section.id}`}
-                      className="-ml-px flex items-baseline gap-3 border-l border-transparent py-2 pl-4 text-sm text-slate-400 transition-colors hover:border-amber-400 hover:text-amber-300"
+                      className="-ml-px block border-l border-transparent py-2 pl-4 text-sm text-selva-400 transition-colors hover:border-oro-400 hover:text-oro-300"
                     >
-                      <span className="font-serif text-xs text-slate-600">{String(index + 1).padStart(2, "0")}</span>
                       {section.title}
                     </a>
                   </li>
@@ -44,14 +43,9 @@ export default function AnchorPage({ header, sections, indexLabel = "En esta pá
           </aside>
 
           <div className="space-y-20 lg:col-span-9">
-            {sections.map((section, index) => (
+            {sections.map((section) => (
               <section key={section.id} id={section.id} className="scroll-mt-28">
-                <div className="mb-6 flex items-baseline gap-4">
-                  <span className="font-serif text-sm text-amber-400/70">{String(index + 1).padStart(2, "0")}</span>
-                  <h2 className="font-serif text-2xl font-bold tracking-wide text-slate-100 md:text-3xl">
-                    {section.title}
-                  </h2>
-                </div>
+                <h2 className="mb-6 font-display text-3xl text-jade-400 md:text-4xl">{section.title}</h2>
                 {section.content}
               </section>
             ))}

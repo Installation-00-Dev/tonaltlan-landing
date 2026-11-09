@@ -3,17 +3,17 @@
 @tailwind utilities;
 
 :root {
-  /* Paleta Tonaltlan: obsidiana (slate), oro solar (amber) y jade (emerald) */
-  --bg: #0f172a; /* slate-900 */
-  --text: #f1f5f9; /* slate-100 */
-  --muted: #cbd5e1; /* slate-300 */
-  --gold: #fbbf24; /* amber-400 */
-  --gold2: #fcd34d; /* amber-300 */
-  --teal: #34d399; /* emerald-400 (jade) */
-  --jade: #10b981; /* emerald-500 */
-  --aqua: #38bdf8; /* sky-400 */
-  --glass: rgba(30, 41, 59, 0.6); /* slate-800/60 */
-  --glass-border: rgba(51, 65, 85, 0.8); /* slate-700/80 */
+  /* Paleta Quetzal (ver tailwind.config.ts) */
+  --bg: #0b1d19; /* selva-900 */
+  --text: #ecf5ef; /* selva-100 */
+  --muted: #a9c9bb; /* selva-300 */
+  --gold: #f5b82e; /* oro-400 */
+  --gold2: #f8cf63; /* oro-300 */
+  --teal: #38bdf8; /* turquesa-400 */
+  --jade: #4ade80; /* jade-400 */
+  --aqua: #38bdf8; /* turquesa-400 */
+  --glass: rgba(18, 48, 41, 0.6); /* selva-800/60 */
+  --glass-border: rgba(36, 68, 58, 0.8); /* selva-700/80 */
 
   /* Curvas de animacion (skill emil-design-eng) */
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
@@ -72,10 +72,10 @@ body {
 
   @media (hover: hover) and (pointer: fine) {
     .glass-card-hover:hover {
-      border-color: rgba(251, 191, 36, 0.5);
+      border-color: rgba(245, 184, 46, 0.5);
       box-shadow:
         0 4px 30px rgba(0, 0, 0, 0.3),
-        0 0 20px rgba(251, 191, 36, 0.08),
+        0 0 20px rgba(245, 184, 46, 0.08),
         inset 0 1px 0 rgba(255, 255, 255, 0.05);
       transform: translateY(-2px);
     }
@@ -102,6 +102,18 @@ section[id] {
 .animate-fade-in {
   opacity: 0;
   animation: fadeInUp 0.6s var(--ease-out) forwards;
+}
+
+/* Entrada del Hero: el unico momento animado de la landing (logo, titulo, botones). */
+@keyframes heroReveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+.hero-reveal {
+  animation: heroReveal 0.7s var(--ease-out) both;
 }
 
 /* Solo opacidad: para quien pide reducir movimiento */
@@ -156,6 +168,10 @@ section[id] {
 /* Reducir movimiento: se conservan las transiciones de opacidad y color,
    se elimina el desplazamiento y el escalado. */
 @media (prefers-reduced-motion: reduce) {
+  .hero-reveal {
+    animation: fadeOnly 0.3s ease both;
+  }
+
   .animate-fade-in {
     animation: fadeOnly 0.2s ease forwards;
   }
@@ -188,7 +204,7 @@ textarea:-webkit-autofill:hover,
 textarea:-webkit-autofill:focus {
   -webkit-text-fill-color: var(--text);
   caret-color: var(--gold);
-  -webkit-box-shadow: 0 0 0 1000px #020617 inset;
+  -webkit-box-shadow: 0 0 0 1000px #061210 inset;
   transition: background-color 6000s ease-in-out 0s;
 }
 
@@ -203,12 +219,12 @@ textarea:-webkit-autofill:focus {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(100, 116, 139, 0.5);
+  background: rgba(106, 143, 127, 0.5);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(148, 163, 184, 0.7);
+  background: rgba(134, 171, 155, 0.7);
 }
 
 /* Horizontal scroll snap */

@@ -27,11 +27,11 @@ export default function MundoPage() {
           content: (
             <div className="space-y-6">
               {sistemaTonal ? (
-                <div className="flex gap-5 rounded-2xl bg-slate-800/40 p-6 ring-1 ring-slate-700/70 md:p-8">
-                  <div className="h-fit shrink-0 rounded-xl bg-amber-400/10 p-3 text-amber-300 ring-1 ring-amber-400/25">
+                <div className="flex gap-5 rounded-2xl bg-selva-800/40 p-6 ring-1 ring-selva-700/70 md:p-8">
+                  <div className="h-fit shrink-0 rounded-xl bg-oro-400/10 p-3 text-oro-300 ring-1 ring-oro-400/25">
                     {sistemaTonal.icon}
                   </div>
-                  <p className="text-base leading-8 text-slate-300">{sistemaTonal.description}</p>
+                  <p className="text-base leading-8 text-selva-300">{sistemaTonal.description}</p>
                 </div>
               ) : null}
               <Pendiente id="mundo-puntos-tonal" />
@@ -43,7 +43,7 @@ export default function MundoPage() {
           title: "Regiones",
           content: (
             <div className="space-y-6">
-              <figure className="overflow-hidden rounded-2xl bg-slate-800 ring-1 ring-slate-700">
+              <figure className="overflow-hidden rounded-2xl bg-selva-800 ring-1 ring-selva-700">
                 <div className="relative aspect-[16/10] w-full">
                   <Image
                     src="/images/galeria/Mapa.webp"

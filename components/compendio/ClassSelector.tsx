@@ -54,13 +54,13 @@ export default function ClassSelector({ items }: { items: CompendiumEntry[] }) {
               onClick={() => select(item.slug)}
               className={`group flex min-w-[220px] snap-start items-center gap-4 rounded-2xl p-3 text-left ring-1 transition duration-200 motion-safe:active:scale-[0.98] lg:min-w-0 ${
                 selected
-                  ? "bg-slate-800 ring-amber-400/70"
-                  : "bg-slate-800/30 ring-slate-700/70 hover:bg-slate-800/70 hover:ring-slate-600"
+                  ? "bg-selva-800 ring-oro-400/70"
+                  : "bg-selva-800/30 ring-selva-700/70 hover:bg-selva-800/70 hover:ring-selva-600"
               }`}
             >
               <span
                 className={`relative h-16 w-16 shrink-0 overflow-hidden rounded-xl bg-gradient-to-b ${
-                  selected ? "from-amber-400/30 to-slate-900" : "from-slate-700/60 to-slate-900"
+                  selected ? "from-jade-400/30 to-selva-900" : "from-selva-700/60 to-selva-900"
                 }`}
               >
                 {item.coverImageSrc ? (
@@ -69,13 +69,13 @@ export default function ClassSelector({ items }: { items: CompendiumEntry[] }) {
               </span>
               <span className="min-w-0">
                 <span
-                  className={`block font-serif text-lg font-semibold transition-colors ${
-                    selected ? "text-amber-300" : "text-slate-100 group-hover:text-amber-200"
-                  }`}
+                  className={`block font-display text-lg transition-colors ${
+ selected ? "text-jade-400": "text-selva-100 group-hover:text-jade-300"
+ }`}
                 >
                   {item.name}
                 </span>
-                <span className="block truncate text-xs uppercase tracking-wider text-slate-400">
+                <span className="block truncate text-xs uppercase tracking-wider text-selva-400">
                   {item.tags.slice(0, 2).join(" · ")}
                 </span>
               </span>
@@ -89,10 +89,10 @@ export default function ClassSelector({ items }: { items: CompendiumEntry[] }) {
         id="panel-clase"
         role="tabpanel"
         aria-labelledby={`tab-${active.slug}`}
-        className="overflow-hidden rounded-3xl bg-slate-800/40 ring-1 ring-slate-700/70 lg:col-span-8"
+        className="overflow-hidden rounded-3xl bg-selva-800/40 ring-1 ring-selva-700/70 lg:col-span-8"
       >
         <div className="grid md:grid-cols-5">
-          <div className="relative min-h-[380px] bg-gradient-to-b from-amber-400/20 via-slate-800/40 to-slate-900 md:col-span-2 md:min-h-[560px]">
+          <div className="relative min-h-[380px] bg-gradient-to-b from-jade-400/20 via-selva-800/40 to-selva-900 md:col-span-2 md:min-h-[560px]">
             {active.coverImageSrc ? (
               <Image
                 key={active.slug}
@@ -109,12 +109,12 @@ export default function ClassSelector({ items }: { items: CompendiumEntry[] }) {
           </div>
 
           <div className="p-6 md:col-span-3 md:p-8">
-            <h2 className="mb-3 font-serif text-3xl font-bold text-amber-300 md:text-4xl">{active.name}</h2>
+            <h2 className="mb-3 font-display text-3xl text-jade-400 md:text-4xl">{active.name}</h2>
             <div className="mb-6 flex flex-wrap gap-2">
               {active.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="rounded-full bg-amber-400/10 px-3 py-1 text-xs font-medium text-amber-200 ring-1 ring-amber-400/25"
+                  className="rounded-full bg-turquesa-400/10 px-3 py-1 text-xs font-medium text-turquesa-200 ring-1 ring-turquesa-400/25"
                 >
                   {tag}
                 </span>
@@ -122,11 +122,11 @@ export default function ClassSelector({ items }: { items: CompendiumEntry[] }) {
             </div>
 
             <div className="max-h-[420px] space-y-6 overflow-y-auto pr-2">
-              <p className="whitespace-pre-line text-base leading-8 text-slate-300">{descripcion}</p>
+              <p className="whitespace-pre-line text-base leading-8 text-selva-300">{descripcion}</p>
               {nota ? (
-                <div className="rounded-xl border-l-2 border-amber-400/60 bg-slate-900/60 p-4">
-                  <p className="mb-1 text-xs font-semibold uppercase tracking-[0.2em] text-amber-400/90">Nota</p>
-                  <p className="whitespace-pre-line text-sm leading-7 text-slate-300">{nota}</p>
+                <div className="rounded-xl bg-selva-900/70 p-5 ring-1 ring-selva-700/70">
+                  <p className="mb-1 text-xs font-semibold uppercase tracking-[0.2em] text-oro-400/90">Nota</p>
+                  <p className="whitespace-pre-line text-sm leading-7 text-selva-300">{nota}</p>
                 </div>
               ) : null}
             </div>
