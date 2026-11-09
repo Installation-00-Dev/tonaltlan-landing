@@ -3,9 +3,14 @@ export interface AffinitySubmissionPayload {
   email: string;
   dominantResult: string;
   secondaryResult: string | null;
+  /** Clave de la especie (igual en ambos idiomas, util para comparar en la hoja). */
+  dominantRace: string;
+  secondaryRace: string | null;
   scores: Record<string, number>;
   subscribed: boolean;
   mode: "quiz" | "random";
+  /** Idioma en que se respondio el Test. */
+  lang: "es" | "en";
 }
 
 export type AffinitySubmissionOutcome = "saved" | "failed" | "skipped";

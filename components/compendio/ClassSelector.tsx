@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import type { CompendiumEntry } from "@/lib/data";
+import { t, type Lang } from "@/lib/i18n";
 import Pendiente from "@/components/ui/Pendiente";
 import { variante } from "@/lib/imagenes";
 
@@ -17,7 +18,8 @@ function sectionText(item: CompendiumEntry, title: string) {
  * Pantalla tipo "elige tu personaje": lista de clases a un lado,
  * arte grande y descripcion completa al otro. Sincroniza #slug en la URL.
  */
-export default function ClassSelector({ items }: { items: CompendiumEntry[] }) {
+export default function ClassSelector({ items, lang = "es" }: { items: CompendiumEntry[]; lang?: Lang }) {
+  const d = t(lang).comun;
   const [activeSlug, setActiveSlug] = useState(items[0]?.slug);
 
   useEffect(() => {
@@ -33,15 +35,15 @@ export default function ClassSelector({ items }: { items: CompendiumEntry[] }) {
   const active = items.find((item) => item.slug === activeSlug) ?? items[0];
   if (!active) return null;
 
-  const descripcion = sectionText(active, "Descripción") ?? active.description;
-  const nota = sectionText(active, "Nota");
+  const descripcion = sectionText(active, d.descripcion) ?? active.description;
+  const nota = sectionText(active, d.nota);
 
   return (
     <div className="grid gap-8 lg:grid-cols-12 lg:gap-10">
       {/* Lista de clases */}
       <div
         role="tablist"
-        aria-label="Clases"
+        aria-label={d.clasesAria}
         aria-orientation="vertical"
         className="-mx-6 flex snap-x gap-3 overflow-x-auto px-6 pb-2 lg:col-span-4 lg:mx-0 lg:flex-col lg:overflow-visible lg:px-0"
       >
@@ -129,7 +131,7 @@ export default function ClassSelector({ items }: { items: CompendiumEntry[] }) {
               <p className="whitespace-pre-line text-base leading-8 text-selva-300">{descripcion}</p>
               {nota ? (
                 <div className="rounded-xl bg-selva-900/70 p-5 ring-1 ring-selva-700/70">
-                  <p className="mb-1 text-xs font-semibold uppercase tracking-[0.2em] text-oro-400/90">Nota</p>
+                  <p className="mb-1 text-xs font-semibold uppercase tracking-[0.2em] text-oro-400/90">{d.nota}</p>
                   <p className="whitespace-pre-line text-sm leading-7 text-selva-300">{nota}</p>
                 </div>
               ) : null}

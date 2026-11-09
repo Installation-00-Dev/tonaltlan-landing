@@ -3,51 +3,19 @@ import Link from "next/link";
 import Greca from "@/components/ui/Greca";
 import { variante } from "@/lib/imagenes";
 import { galleryImages } from "@/lib/site";
+import { ruta, t, type Lang } from "@/lib/i18n";
 
 // Tira de la franja de Galeria: algunas ilustraciones reales.
 const tiraGaleria = galleryImages.filter((src) => !src.includes("Mapa")).slice(0, 5);
 
-const exploreSections: { title: string; description: string; tags: string[]; href: string; imagen?: string }[] = [
-  {
-    title: "Clases",
-    description: "Guerreros, sacerdotes, hechiceros y más arquetipos del mundo antiguo.",
-    tags: ["Combate", "Magia", "Sigilo"],
-    href: "/clases",
-    imagen: "/images/Brujo_Catemaco.webp",
-  },
-  {
-    title: "Especies",
-    description: "Seres nacidos del maíz, la obsidiana y el aliento de los dioses.",
-    tags: ["Humanos", "Nahual", "Tlalocan"],
-    href: "/especies",
-    imagen: "/images/especie_Hekari.webp",
-  },
-  {
-    title: "Bestiario",
-    description: "Criaturas del Mictlan y bestias de selvas y montañas sagradas.",
-    tags: ["Mictlan", "Selva", "Celestial"],
-    href: "/bestiario",
-  },
-  {
-    title: "Monturas",
-    description: "Compañeros leales que surcan cielos, ríos y caminos ancestrales.",
-    tags: ["Voladora", "Acuática", "Terrestre"],
-    href: "/monturas",
-    imagen: "/images/monturas/ajolote-cue.webp",
-  },
-  {
-    title: "Deidades",
-    description: "Los dioses que tejen el destino del cosmos y sus elegidos.",
-    tags: ["Creación", "Destrucción", "Equilibrio"],
-    href: "/deidades",
-    imagen: "/images/Heka.webp",
-  },
-  {
-    title: "Galería",
-    description: "Arte conceptual, ilustraciones y vistazos al universo de Tonaltlan.",
-    tags: ["Arte", "Conceptos", "Mapas"],
-    href: "/galeria",
-  },
+// Rutas e imagenes de cada seccion (en el orden de t(lang).explore.secciones).
+const exploreSections: { href: string; imagen?: string }[] = [
+  { href: "/clases/", imagen: "/images/Brujo_Catemaco.webp" },
+  { href: "/especies/", imagen: "/images/especie_Hekari.webp" },
+  { href: "/bestiario/" },
+  { href: "/monturas/", imagen: "/images/monturas/ajolote-cue.webp" },
+  { href: "/deidades/", imagen: "/images/Heka.webp" },
+  { href: "/galeria/" },
 ];
 
 /**
@@ -55,31 +23,40 @@ const exploreSections: { title: string; description: string; tags: string[]; hre
  * Clases ocupa el bloque grande. Las secciones sin contenido (`proximamente`)
  * muestran la greca en lugar de ilustracion.
  */
-export default function ExplorePreview({ proximamente = [] }: { proximamente?: string[] }) {
+export default function ExplorePreview({
+  proximamente = [],
+  lang = "es",
+}: {
+  /** Rutas (href) de secciones sin contenido todavia. */
+  proximamente?: string[];
+  lang?: Lang;
+}) {
+  const d = t(lang);
+  const secciones = exploreSections.map((seccion, i) => ({ ...seccion, ...d.explore.secciones[i] }));
   return (
     <section id="explorar-preview" className="relative py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mb-14 max-w-3xl">
-          <h2 className="font-display text-5xl text-jade-400 md:text-6xl">Explorar Tonaltlan</h2>
+          <h2 className="font-display text-5xl text-jade-400 md:text-6xl">{d.explore.titulo}</h2>
           <Greca className="mt-6 w-40 text-oro-400/60" />
           <p className="mt-6 font-display text-2xl leading-snug text-selva-100 [text-wrap:balance] md:text-3xl">
-            Descubre los secretos del mundo mesoamericano a través de su compendio viviente.
+            {d.explore.subtitulo}
           </p>
         </div>
 
         <ul className="grid auto-rows-[15rem] grid-cols-1 gap-4 sm:grid-cols-2 lg:auto-rows-[17rem] lg:grid-cols-4">
-          {exploreSections.map((section, index) => {
-            const pendiente = proximamente.includes(section.title);
+          {secciones.map((section, index) => {
+            const pendiente = proximamente.includes(section.href);
             const grande = index === 0;
             // La ultima seccion cierra el mosaico como franja de ancho completo.
-            const franja = index === exploreSections.length - 1;
+            const franja = index === secciones.length - 1;
             return (
               <li
                 key={section.title}
                 className={grande ? "sm:col-span-2 sm:row-span-2" : franja ? "sm:col-span-2 lg:col-span-4" : ""}
               >
                 <Link
-                  href={section.href}
+                  href={ruta(lang, section.href)}
                   className="group relative flex h-full flex-col justify-end overflow-hidden rounded-3xl bg-selva-800 ring-1 ring-selva-700/70 transition duration-200 hover:ring-jade-400/70 motion-safe:active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-oro-300"
                 >
                   {franja ? (
@@ -121,7 +98,7 @@ export default function ExplorePreview({ proximamente = [] }: { proximamente?: s
                       <h3 className={`font-display text-selva-50 ${grande || franja ? "text-4xl" : "text-2xl"}`}>{section.title}</h3>
                       {pendiente ? (
                         <span className="shrink-0 rounded-full border border-oro-400/60 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.15em] text-oro-300">
-                          Próximamente
+                          {d.comun.proximamente}
                         </span>
                       ) : (
                         <span

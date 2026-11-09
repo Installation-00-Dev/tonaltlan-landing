@@ -1,0 +1,84 @@
+import SectionHeader from "@/components/compendio/SectionHeader";
+import Pendiente from "@/components/ui/Pendiente";
+import { metaPagina, ruta, t, type Lang } from "@/lib/i18n";
+
+export function metadataBestiario(lang: Lang) {
+  const d = t(lang).paginas.bestiario;
+  return metaPagina(lang, "/bestiario/", d.meta, d.subtitulo);
+}
+
+function Campo({ className = "" }: { className?: string }) {
+  return <span className={`block h-3 rounded bg-selva-700/70 ${className}`} />;
+}
+
+export default function Bestiario({ lang }: { lang: Lang }) {
+  const d = t(lang).paginas.bestiario;
+  return (
+    <div className="pb-24 pt-28 lg:pt-36">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <SectionHeader
+          lang={lang}
+          eyebrow={t(lang).comun.compendio}
+          eyebrowHref={ruta(lang, "/explorar/")}
+          title={d.titulo}
+          subtitle={d.subtitulo}
+        />
+
+        <div className="mb-10 flex flex-wrap items-center gap-2">
+          <span className="mr-2 text-xs font-semibold uppercase tracking-[0.2em] text-selva-500">{d.region}</span>
+          {d.regiones.map((region) => (
+            <span
+              key={region}
+              className="rounded-full bg-selva-800/60 px-4 py-2 text-sm font-medium text-selva-300 ring-1 ring-selva-700"
+            >
+              {region}
+            </span>
+          ))}
+        </div>
+
+        <div className="grid gap-10 lg:grid-cols-2">
+          {/* Plantilla: asi se vera cada criatura (ficha estilo manual de monstruos) */}
+          <article aria-label={d.ejemploAria} className="overflow-hidden rounded-3xl bg-selva-800/40 ring-1 ring-selva-700/70">
+            <div className="flex aspect-[16/9] items-center justify-center bg-gradient-to-b from-violet-500/15 via-selva-800/40 to-selva-900">
+              <span className="rounded-full border border-dashed border-selva-600 px-4 py-2 text-xs uppercase tracking-[0.2em] text-selva-500">
+                {d.ilustracion}
+              </span>
+            </div>
+            <div className="space-y-5 p-6 md:p-8" aria-hidden="true">
+              <div className="space-y-2">
+                <Campo className="h-6 w-1/2 bg-selva-600/70" />
+                <Campo className="w-1/3" />
+              </div>
+              <div className="h-px bg-gradient-to-r from-oro-400/60 to-transparent" />
+              <div className="grid grid-cols-3 gap-3 text-xs">
+                {d.stats.map((label) => (
+                  <div key={label} className="rounded-lg bg-selva-900/60 p-3">
+                    <p className="mb-2 font-semibold uppercase tracking-wider text-oro-400/90">{label}</p>
+                    <Campo className="w-2/3" />
+                  </div>
+                ))}
+              </div>
+              <div className="grid grid-cols-6 gap-2 text-center text-xs">
+                {d.atributos.map((attr) => (
+                  <div key={attr} className="rounded-lg bg-selva-900/60 p-2">
+                    <p className="mb-2 font-semibold text-selva-400">{attr}</p>
+                    <Campo className="mx-auto w-8" />
+                  </div>
+                ))}
+              </div>
+              <div className="h-px bg-gradient-to-r from-oro-400/60 to-transparent" />
+              <div className="space-y-2">
+                <p className="text-xs font-semibold uppercase tracking-wider text-oro-400/90">{d.acciones}</p>
+                <Campo />
+                <Campo className="w-5/6" />
+                <Campo className="w-2/3" />
+              </div>
+            </div>
+          </article>
+
+          <Pendiente id="bestiario" className="h-fit" lang={lang} />
+        </div>
+      </div>
+    </div>
+  );
+}

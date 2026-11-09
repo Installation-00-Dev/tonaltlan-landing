@@ -63,7 +63,28 @@ compendio, avisos de privacidad, contactos y textos legales.
   original directamente para mostrar arte: usa `variante(src, anchoEnPixelesReales)` de
   `lib/imagenes.ts` (pide el doble de lo que se ve, por pantallas retina).
 
-### 3. Contenido faltante: `<Pendiente id>`
+### 3. Dos idiomas: español e inglés
+
+- **Rutas:** español en las de siempre (`/clases/`), inglés bajo `/en/` (`/en/clases/`). Cada idioma
+  tiene su layout raíz con su `<html lang>`: `app/(es)/layout.tsx` y `app/(en)/layout.tsx`.
+- **Las páginas son componentes** en `components/paginas/` que reciben `lang`. Los archivos de
+  `app/(es)/…/page.tsx` y `app/(en)/en/…/page.tsx` solo los envuelven. Una página nueva necesita
+  las dos rutas.
+- **Todo texto nuevo va en ambos idiomas:**
+  - interfaz y landing → `lib/i18n.ts` (`t(lang)`).
+  - fichas del compendio → `lib/data.ts` y `lib/data.en.ts` (mismos slugs, imágenes y `deidad`).
+  - textos del creador → `lib/textos.ts` (`getTextos(lang)`).
+  - "Tonaltlan de un Vistazo" → `lib/features.tsx` (`getFeatures(lang)`).
+  - Test de Afinidad → `lib/affinity-test.ts` y `lib/affinity-test.en.ts` (mismos ids y puntos).
+- **Enlaces internos:** siempre con `ruta(lang, "/ruta/")`, para no sacar al visitante de su idioma.
+- **Metadatos:** `metaPagina(lang, path, título, descripción)` agrega la URL canónica y `hreflang`.
+- **Traducción al inglés:** borrador fiel, pendiente de revisión por el creador (entrada
+  `traduccion-ingles` en `/pendientes`, con glosario). Los nombres propios mesoamericanos no se
+  traducen.
+- **Test de Afinidad:** el envío al webhook incluye `lang`, `dominantRace` y `secondaryRace` (clave
+  de especie igual en ambos idiomas).
+
+### 4. Contenido faltante: `<Pendiente id>`
 
 - **Registro único:** todo hueco de contenido sale de `lib/pendientes.ts`. Cada entrada tiene un
   título, en qué página aparece (`donde`), qué se necesita (`necesita`) y, opcionalmente, pistas
@@ -80,19 +101,22 @@ compendio, avisos de privacidad, contactos y textos legales.
 
 | Archivo | Contenido |
 |---|---|
-| `lib/site.ts` | Navegación (`mainNav`, `navCta`), columnas del footer, contactos, redes, listas de imágenes de Galería y Monturas, **colores por deidad** (`deityThemes`, `themeFor`) |
+| `lib/site.ts` | Botones del Hero (`heroCtas`), contactos, redes, listas de imágenes de Galería y Monturas, **colores por deidad** (`deityThemes`, `themeFor`). La navegación y el footer viven en `lib/i18n.ts` |
 | `lib/data.ts` | Fichas del compendio: `clases`, `especies`, `deidades`, `bestiario`, `monturas` y `sectionsMeta` (conteos para Explorar). Las especies llevan `deidad: "<slug>"` para agruparse por linaje y heredar su color |
-| `lib/textos.ts` | Textos entregados por el creador (intros de Clases y Especies, cierre de Clases) |
+| `lib/i18n.ts` | Idiomas: `t(lang)` (textos de interfaz y landing), `ruta(lang, path)`, `metaPagina(...)` |
+| `lib/compendio.ts` | `getCompendio(lang)`: fichas del compendio en el idioma pedido |
+| `lib/textos.ts` | Textos entregados por el creador (intros de Clases y Especies, cierre de Clases), con versión en inglés |
 | `lib/features.tsx` | Textos de "Tonaltlan de un Vistazo" (landing, `/mundo` y `/juega`) |
 | `lib/pendientes.ts` | Registro de contenido pendiente |
 | `lib/affinity-*.ts`, `hooks/useAffinityTest.ts` | Test de Afinidad y su envío por webhook |
 | `components/ui/` | Piezas genéricas: `Pendiente`, `AnchorPage` (página con índice lateral) |
+| `components/paginas/` | Cada página como componente con `lang` (las rutas de `app/` las envuelven) |
 | `components/compendio/` | Piezas del compendio: `SectionHeader`, `ClassSelector`, `GalleryGrid`, `MountCarousel`, `DetailLayout`, `SearchBar` |
 
 ### Estructura del sitio
 
 - **Navbar:** El Mundo (`/mundo`) · Compendio (`/explorar`) · Juega (`/juega`) · Galería (`/galeria`),
-  más el botón dorado **Test de Afinidad** (`navCta` en `lib/site.ts`). En celular ese botón queda
+  más el selector **ES / EN** y el botón dorado **Test de Afinidad**. En celular ese botón queda
   visible en la barra, junto al menú: es la puerta de entrada en convenciones.
 - **Suscríbete** vive en el footer (columna Estudio) y en la sección Newsletter de la landing.
 - **Compendio:** `/clases`, `/especies` (+ `/especies/[slug]`), `/deidades` (+ `/deidades/[slug]`),
@@ -111,8 +135,9 @@ compendio, avisos de privacidad, contactos y textos legales.
 
 - **Una entrada al compendio:** se agrega en `lib/data.ts`. A una especie nueva se le asigna su `deidad`.
 - **Una deidad nueva:** se agrega en `lib/data.ts` y se le define un color en `deityThemes` (`lib/site.ts`).
-- **Una página o sección:** se crea la ruta en `app/`, se enlaza desde `mainNav` o `footerColumns`
-  (`lib/site.ts`) y, si aún no tiene contenido, se le pone un `<Pendiente>`.
+- **Una página o sección:** se crea el componente en `components/paginas/`, sus dos rutas
+  (`app/(es)/…` y `app/(en)/en/…`), sus textos en `lib/i18n.ts` (es y en) y el enlace en la
+  navegación o el footer (`lib/i18n.ts`). Si aún no tiene contenido, se le pone un `<Pendiente>`.
 - **Imágenes de Galería o Monturas:** se agregan a `galleryImages` o `mountImages` en `lib/site.ts`.
 - **Clases de Tailwind escritas en `lib/`:** deben ir completas (nada de `bg-${color}-400`), porque
   Tailwind solo detecta las clases que aparecen literalmente en el código. `lib/` ya está en el

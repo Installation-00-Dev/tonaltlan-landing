@@ -439,7 +439,7 @@ export const raceResults: Record<RaceKey, RaceResult> = {
     essence:
       'Eres la estabilidad absoluta: el pilar, la roca firme, el gigante amable que sostiene al mundo. Eres colosal (2.30m), imposible de pasar por alto, pero tu presencia calma en vez de intimidar. Eres protector nato, figura de guía y soporte emocional. Eres el "hogar" encarnado, la base sobre la que otros construyen.',
     virtue:
-      "Tu honestidad e integridad inquebrantable. Tu Gema del Animo te delata siempre: no puedes mentir emocionalmente. La gema cambia de color según tu emoción: blanco para calma, amarillo para alegría, verde para armonía, azul para tristeza, rojo para amor o furia, negro para desesperación. Tu virtud es una honestidad profunda, transparente y llena de bondad. Eres el que construye, repara, protege y mantiene el orden natural.",
+      "Tu honestidad e integridad inquebrantable. Tu Gema del Ánimo te delata siempre: no puedes mentir emocionalmente. La gema cambia de color según tu emoción: blanco para calma, amarillo para alegría, verde para armonía, azul para tristeza, rojo para amor o furia, negro para desesperación. Tu virtud es una honestidad profunda, transparente y llena de bondad. Eres el que construye, repara, protege y mantiene el orden natural.",
     shadow:
       "Tu carga del deber y auto-sacrificio. Puedes sentirte obligado a cargar con el mundo, incluso cuando ya no puedes más. Tu sentido del deber puede ahogarte. Si fallas en proteger a alguien, tu gema lo revela de inmediato... y esa culpa puede marcarte por siglos.",
     path:
@@ -495,6 +495,20 @@ export const raceResults: Record<RaceKey, RaceResult> = {
   },
 };
 
+import { questionsEn, raceResultsEn } from "./affinity-test.en";
+
+type Idioma = "es" | "en";
+
+/** Preguntas del Test en el idioma pedido (mismos ids y puntos en ambos). */
+export function getQuestions(lang: Idioma = "es"): Question[] {
+  return lang === "en" ? questionsEn : questions;
+}
+
+const ETIQUETAS: Record<Idioma, { secciones: [string, string, string, string]; simbolos: [string, string, string] }> = {
+  es: { secciones: ["Esencia", "Virtud", "Sombra", "Camino"], simbolos: ["Símbolo Mítico", "Objeto Cotidiano", "Glifo"] },
+  en: { secciones: ["Essence", "Virtue", "Shadow", "Path"], simbolos: ["Mythic Symbol", "Everyday Object", "Glyph"] },
+};
+
 export function prepareQuestionsForSession(source: Question[] = questions): Question[] {
   return shuffleArray(source).map((question) => ({
     ...question,
@@ -512,7 +526,9 @@ export function applyOptionPoints(scores: Scores, option: Option, direction: 1 |
   return nextScores;
 }
 
-export function calculateResults(scores: Scores): CalculatedResults {
+export function calculateResults(scores: Scores, lang: Idioma = "es"): CalculatedResults {
+  const narrativas = lang === "en" ? raceResultsEn : raceResults;
+  const etiquetas = ETIQUETAS[lang];
   const weightedRanking = RACE_KEYS.map((race) => ({
     race,
     rawScore: scores[race],
@@ -531,7 +547,7 @@ export function calculateResults(scores: Scores): CalculatedResults {
       ? {
           race: secondaryCandidate.race,
           score: secondaryCandidate.rawScore,
-          narrative: raceResults[secondaryCandidate.race],
+          narrative: narrativas[secondaryCandidate.race],
         }
       : null;
 
@@ -539,20 +555,20 @@ export function calculateResults(scores: Scores): CalculatedResults {
     dominant: {
       race: dominant.race,
       score: dominant.rawScore,
-      narrative: raceResults[dominant.race],
+      narrative: narrativas[dominant.race],
     },
     secondary,
     ranking,
     sections: [
-      { title: "Esencia", content: raceResults[dominant.race].essence },
-      { title: "Virtud", content: raceResults[dominant.race].virtue },
-      { title: "Sombra", content: raceResults[dominant.race].shadow },
-      { title: "Camino", content: raceResults[dominant.race].path },
+      { title: etiquetas.secciones[0], content: narrativas[dominant.race].essence },
+      { title: etiquetas.secciones[1], content: narrativas[dominant.race].virtue },
+      { title: etiquetas.secciones[2], content: narrativas[dominant.race].shadow },
+      { title: etiquetas.secciones[3], content: narrativas[dominant.race].path },
     ],
     symbols: [
-      { label: "Símbolo Mítico", content: raceResults[dominant.race].symbol },
-      { label: "Objeto Cotidiano", content: raceResults[dominant.race].object },
-      { label: "Glifo", content: raceResults[dominant.race].glyph },
+      { label: etiquetas.simbolos[0], content: narrativas[dominant.race].symbol },
+      { label: etiquetas.simbolos[1], content: narrativas[dominant.race].object },
+      { label: etiquetas.simbolos[2], content: narrativas[dominant.race].glyph },
     ],
   };
 }

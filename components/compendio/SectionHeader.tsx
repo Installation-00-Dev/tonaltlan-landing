@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { t, type Lang } from "@/lib/i18n";
 
 interface SectionHeaderProps {
   title: string;
@@ -10,6 +11,7 @@ interface SectionHeaderProps {
   eyebrow?: string;
   eyebrowHref?: string;
   center?: boolean;
+  lang?: Lang;
 }
 
 /**
@@ -17,13 +19,13 @@ interface SectionHeaderProps {
  * Impeccable): el titulo habla por si mismo. La ruta de navegacion solo aparece
  * cuando lleva a algun lado.
  */
-export default function SectionHeader({ title, lema, subtitle, eyebrow, eyebrowHref, center = false }: SectionHeaderProps) {
+export default function SectionHeader({ title, lema, subtitle, eyebrow, eyebrowHref, center = false, lang = "es" }: SectionHeaderProps) {
   const parrafos = subtitle === undefined ? [] : Array.isArray(subtitle) ? subtitle : [subtitle];
 
   return (
     <header className={`mb-12 ${center ? "mx-auto max-w-2xl text-center" : ""}`}>
       {eyebrow && eyebrowHref ? (
-        <nav aria-label="Ruta" className="mb-4 text-sm text-selva-400">
+        <nav aria-label={t(lang).comun.ruta} className="mb-4 text-sm text-selva-400">
           <Link href={eyebrowHref} className="transition-colors hover:text-jade-300">
             {eyebrow}
           </Link>

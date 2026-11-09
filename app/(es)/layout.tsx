@@ -1,40 +1,22 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Macondo } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { inter, macondo } from "@/lib/fuentes";
+import { t } from "@/lib/i18n";
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
-// Fuente de titulos elegida por el creador del mundo.
-const macondo = Macondo({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-display",
-  display: "swap",
-});
+const d = t("es").meta;
 
 export const metadata: Metadata = {
-  title: "Tonaltlan - Juego de Rol de Mesa Mesoamericano",
-  description:
-    "Adéntrate en Tonaltlan, un juego de rol de mesa inspirado en la mitología y cultura mesoamericana. Forja tu destino entre pirámides, códices y dioses ancestrales.",
-  keywords: [
-    "Tonaltlan",
-    "TTRPG",
-    "juego de rol",
-    "mesoamericano",
-    "azteca",
-    "juego de mesa",
-  ],
+  metadataBase: new URL("https://tonaltlan.com"),
+  title: d.title,
+  description: d.description,
+  keywords: d.keywords,
   openGraph: {
-    title: "Tonaltlan - Juego de Rol de Mesa Mesoamericano",
-    description:
-      "Forja tu destino en un mundo inspirado en la mitología mesoamericana.",
+    title: d.title,
+    description: d.ogDescription,
     type: "website",
+    locale: "es_MX",
   },
 };
 
@@ -44,17 +26,13 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" className={`${inter.variable} ${macondo.variable}`}>
       <body className="bg-selva-900 font-sans text-selva-100 antialiased">
         <Navbar />
         <main className="min-h-screen">{children}</main>
-        <Footer />
+        <Footer lang="es" />
       </body>
     </html>
   );

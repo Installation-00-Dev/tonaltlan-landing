@@ -174,6 +174,17 @@ export const pendientes = {
     donde: "/deidades",
     necesita: sinArte(deidades).map((nombre) => `Ilustración de ${nombre}.`),
   },
+  "traduccion-ingles": {
+    titulo: "Revisión de la traducción al inglés",
+    donde: "/en/",
+    necesita: [
+      "Revisar el borrador en inglés de las fichas: lib/data.en.ts (clases, especies, deidades).",
+      "Revisar el Test de Afinidad en inglés: lib/affinity-test.en.ts (tono coloquial adaptado).",
+      "Revisar textos de la landing e interfaz (lib/i18n.ts) y del creador (lib/textos.ts, parte en inglés).",
+      "Aprobar el glosario: Punto Tonal = Tonal Point, Torre de los Sabios = Tower of the Sages, Volcán Eterno = Eternal Volcano, Volcán de la Lava Eterna = Volcano of Eternal Lava, Bosques Obscuros = Dark Forests, Espejo Obscuro = Dark Mirror, Gran Caimán Celestial = Great Celestial Caiman, Séptimo Sol = Seventh Sun, Eruditos de la Magia = Scholars of Magic, Cíclopes de Tierra = Earth Cyclopes, Gema del Ánimo = Gem of Spirit, Danzante Tonal = Tonal Dancer.",
+      "Confirmar los nombres que se dejaron en español: clases (Brujo Catemaco, Guerrero Otomi), lugares (Mictlan, Xitl, Zalan, Tl'atl) y objetos (Ixip, chimallis, ayoyotes).",
+    ],
+  },
   "clases-arte": {
     titulo: "Arte de clases",
     donde: "/clases",
@@ -182,3 +193,25 @@ export const pendientes = {
 } satisfies Record<string, PendienteInfo>;
 
 export type PendienteId = keyof typeof pendientes;
+
+/** Titulos en ingles de cada placeholder (en /en solo se muestra "Coming soon" + titulo). */
+export const titulosEn: Partial<Record<PendienteId, string>> = {
+  "mundo-cosmovision": "Worldview",
+  "mundo-puntos-tonal": "Tonal Points",
+  "mundo-regiones": "Regions and map",
+  "mundo-historia": "History and timeline",
+  omet: "Omet",
+  "juega-como-empezar": "Getting started",
+  "juega-descargas": "Downloads",
+  "juega-narradores": "Game master resources",
+  bestiario: "Bestiary creatures",
+  monturas: "Mount profiles",
+  galeria: "Gallery details",
+  noticias: "News",
+  nosotros: "About us",
+  "especie-tlacas": "Tlacas",
+  "especies-arte": "Species art",
+  "deidades-arte": "Deity art",
+  "clases-arte": "Class art",
+  "traduccion-ingles": "English translation review",
+};

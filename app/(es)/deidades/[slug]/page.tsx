@@ -1,46 +1,22 @@
-import DetailLayout from "@/components/compendio/DetailLayout";
-import { deidades, especies } from "@/lib/data";
 import { notFound } from "next/navigation";
+import { DetalleDeidad, metadataDeidad, slugsDeidades } from "@/components/paginas/Detalles";
+import { getCompendio } from "@/lib/compendio";
 
 interface Props {
   params: Promise<{ slug: string }>;
 }
 
-export async function generateStaticParams() {
-  return deidades.map((d) => ({ slug: d.slug }));
+export function generateStaticParams() {
+  return slugsDeidades();
 }
 
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
-  const item = deidades.find((d) => d.slug === slug);
-  if (!item) return { title: "No encontrado - Tonaltlan" };
-  return {
-    title: `${item.name} - Deidades - Tonaltlan`,
-    description: item.description,
-  };
+  return metadataDeidad("es", slug);
 }
 
-export default async function DeidadDetailPage({ params }: Props) {
+export default async function Page({ params }: Props) {
   const { slug } = await params;
-  const item = deidades.find((d) => d.slug === slug);
-  if (!item) notFound();
-
-  return (
-    <DetailLayout
-      title={item.name}
-      tags={item.tags}
-      sections={item.sections}
-      coverImageSrc={item.coverImageSrc}
-      coverImageAlt={item.coverImageAlt}
-      accent={item.slug}
-      related={{
-        label: "Su linaje",
-        items: especies
-          .filter((e) => e.deidad === item.slug)
-          .map((e) => ({ name: e.name, href: `/especies/${e.slug}` })),
-      }}
-      backHref="/deidades"
-      backLabel="Volver a Deidades"
-    />
-  );
+  if (!getCompendio("es").deidades.some((item) => item.slug === slug)) notFound();
+  return <DetalleDeidad lang="es" slug={slug} />;
 }

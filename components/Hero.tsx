@@ -1,8 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { heroCtas } from "@/lib/site";
+import { ruta, t, type Lang } from "@/lib/i18n";
 
-export default function Hero() {
+export default function Hero({ lang = "es" }: { lang?: Lang }) {
+  const d = t(lang);
+  // Etiquetas por idioma; las rutas salen de heroCtas (lib/site.ts).
+  const etiqueta = (href: string) => (href.includes("afinidad") ? d.nav.cta : d.nav.explorar);
   return (
     <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden pt-24 pb-20">
       {/* Background image */}
@@ -33,7 +37,7 @@ export default function Hero() {
           <div className="logo-aura pointer-events-none absolute inset-x-[10%] inset-y-[15%]" aria-hidden="true" />
           <Image
             src="/images/tonaltlan_logo_1200.webp"
-            alt="Logo de Tonaltlan"
+            alt={d.hero.logoAlt}
             width={600}
             height={180}
             className="logo-latido relative drop-shadow-[0_0_40px_rgba(245,184,46,0.25)]"
@@ -44,25 +48,25 @@ export default function Hero() {
         </div>
 
         <h1 className="hero-reveal mb-10 font-display text-5xl text-selva-100 drop-shadow-[0_2px_16px_rgba(6,18,16,0.85)] [animation-delay:90ms] [text-wrap:balance] md:text-6xl lg:text-7xl">
-          Tu Aventura Comienza
+          {d.hero.titulo}
         </h1>
 
         {/* CTA principal (Explorar) + Test de Afinidad, configurables en lib/site.ts */}
         <div className="hero-reveal flex flex-col items-center gap-4 [animation-delay:180ms] sm:flex-row">
           <Link
-            href={heroCtas.principal.href}
+            href={ruta(lang, heroCtas.principal.href)}
             className="inline-flex min-h-[56px] items-center justify-center gap-3 rounded-full bg-oro-400 px-12 py-4 font-display text-lg text-selva-950 shadow-lg shadow-oro-500/25 ring-1 ring-oro-300/60 transition duration-200 motion-safe:hover:-translate-y-0.5 hover:bg-oro-300 hover:shadow-xl hover:shadow-oro-400/30 motion-safe:active:scale-[0.97] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-oro-200"
           >
-            {heroCtas.principal.label}
+            {etiqueta(heroCtas.principal.href)}
             <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5-5 5M6 12h12" />
             </svg>
           </Link>
           <Link
-            href={heroCtas.secundario.href}
+            href={ruta(lang, heroCtas.secundario.href)}
             className="inline-flex min-h-[56px] items-center justify-center rounded-full border border-jade-300/70 bg-selva-950/40 px-8 py-4 font-display text-lg text-jade-200 backdrop-blur-sm transition duration-200 hover:border-jade-300 hover:bg-jade-400/15 hover:text-jade-100 motion-safe:active:scale-[0.97] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-jade-200"
           >
-            {heroCtas.secundario.label}
+            {etiqueta(heroCtas.secundario.href)}
           </Link>
         </div>
       </div>

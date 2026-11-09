@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { features } from "@/lib/features";
+import { getFeatures } from "@/lib/features";
+import { t, type Lang } from "@/lib/i18n";
 
 /*
  * "Tonaltlan de un Vistazo" como quincunce: el cosmograma mesoamericano de los
@@ -60,7 +61,8 @@ function Emblema({ activo }: { activo: Rumbo | null }) {
   );
 }
 
-export default function Features() {
+export default function Features({ lang = "es" }: { lang?: Lang }) {
+  const features = getFeatures(lang);
   const [activo, setActivo] = useState<Rumbo | null>(null);
 
   return (
@@ -70,7 +72,7 @@ export default function Features() {
         <div className="relative mx-auto aspect-square w-64 text-jade-400 sm:w-72 lg:col-start-2 lg:row-start-2 lg:w-80">
           <Emblema activo={activo} />
           <h2 className="absolute inset-0 flex items-center justify-center px-[24%] text-center font-display text-2xl leading-tight text-jade-400 [text-wrap:balance] sm:text-3xl">
-            Tonaltlan de un Vistazo
+            {t(lang).vistazo.titulo}
           </h2>
         </div>
 

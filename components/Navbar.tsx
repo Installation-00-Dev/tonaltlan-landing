@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { mainNav, navCta } from "@/lib/site";
+import { idiomaDeRuta, ruta, rutaEnOtroIdioma, t } from "@/lib/i18n";
 
 // Rutas que cuentan como "dentro" de cada seccion para marcarla activa.
 const sectionMatches: Record<string, string[]> = {
@@ -19,13 +19,24 @@ function normalize(path: string) {
 }
 
 function isActive(pathname: string, href: string) {
-  const current = normalize(pathname);
+  // Las rutas en ingles (/en/...) se comparan sin el prefijo.
+  const current = normalize(pathname.replace(/^\/en(?=\/|$)/, "") || "/");
   return (sectionMatches[href] ?? [href]).some((base) => current === base || current.startsWith(`${base}/`));
 }
 
 export default function Navbar() {
   const pathname = usePathname();
-  const isHome = normalize(pathname) === "/";
+  const lang = idiomaDeRuta(pathname);
+  const d = t(lang).nav;
+  const mainNav = [
+    { label: d.mundo, base: "/mundo", href: ruta(lang, "/mundo/") },
+    { label: d.compendio, base: "/explorar", href: ruta(lang, "/explorar/") },
+    { label: d.juega, base: "/juega", href: ruta(lang, "/juega/") },
+    { label: d.galeria, base: "/galeria", href: ruta(lang, "/galeria/") },
+  ];
+  const navCta = { label: d.cta, href: ruta(lang, "/afinidad/") };
+  const otroIdioma = rutaEnOtroIdioma(pathname);
+  const isHome = normalize(pathname) === "/" || normalize(pathname) === "/en";
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
@@ -69,12 +80,12 @@ export default function Navbar() {
         className={`mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 transition duration-200 lg:px-8 ${
           solid ? "py-2" : "py-4"
         }`}
-        aria-label="Navegación principal"
+        aria-label={d.aria}
       >
         {/* Logo del producto */}
         <Link
-          href="/"
-          aria-label="Tonaltlan - Inicio"
+          href={ruta(lang, "/")}
+          aria-label={d.inicioAria}
           className={`flex shrink-0 items-center rounded-lg transition duration-500 ${
             showLogo ? "opacity-100" : "pointer-events-none -translate-y-2 opacity-0"
           }`}
@@ -94,7 +105,7 @@ export default function Navbar() {
         <div className="hidden items-center gap-2 lg:flex">
           <ul className="flex items-center gap-1">
             {mainNav.map((link) => {
-              const active = isActive(pathname, link.href);
+              const active = isActive(pathname, link.base);
               return (
                 <li key={link.href}>
                   <Link
@@ -116,9 +127,17 @@ export default function Navbar() {
               );
             })}
           </ul>
+          <a
+            href={otroIdioma}
+            hrefLang={lang === "es" ? "en" : "es"}
+            aria-label={d.otroIdiomaAria}
+            className="ml-4 inline-flex min-h-[40px] min-w-[40px] items-center justify-center rounded-full px-3 text-sm font-semibold text-selva-200 ring-1 ring-selva-600 transition duration-150 hover:text-jade-200 hover:ring-jade-400/60 motion-safe:active:scale-[0.97]"
+          >
+            {d.otroIdioma}
+          </a>
           <Link
             href={navCta.href}
-            className="ml-4 inline-flex items-center rounded-full bg-oro-400 px-5 py-2.5 text-sm font-semibold text-selva-950 shadow-md shadow-oro-500/20 transition duration-150 hover:bg-oro-300 motion-safe:active:scale-[0.97]"
+            className="ml-2 inline-flex items-center rounded-full bg-oro-400 px-5 py-2.5 text-sm font-semibold text-selva-950 shadow-md shadow-oro-500/20 transition duration-150 hover:bg-oro-300 motion-safe:active:scale-[0.97]"
           >
             {navCta.label}
           </Link>
@@ -126,6 +145,14 @@ export default function Navbar() {
 
         {/* Movil: Test de Afinidad siempre visible + menu */}
         <div className="flex items-center gap-2 lg:hidden">
+          <a
+            href={otroIdioma}
+            hrefLang={lang === "es" ? "en" : "es"}
+            aria-label={d.otroIdiomaAria}
+            className="inline-flex min-h-[40px] min-w-[40px] items-center justify-center rounded-full px-3 text-sm font-semibold text-selva-200 ring-1 ring-selva-600 transition duration-150 hover:text-jade-200 hover:ring-jade-400/60 motion-safe:active:scale-[0.97]"
+          >
+            {d.otroIdioma}
+          </a>
           <Link
             href={navCta.href}
             className="inline-flex min-h-[40px] items-center rounded-full bg-oro-400 px-4 text-sm font-semibold text-selva-950 transition duration-150 hover:bg-oro-300 motion-safe:active:scale-[0.97]"
@@ -135,7 +162,7 @@ export default function Navbar() {
         <button
           type="button"
           className="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg text-selva-100 transition duration-150 hover:bg-selva-800/70 motion-safe:active:scale-[0.97]"
-          aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+          aria-label={menuOpen ? d.cerrar : d.abrir}
           aria-expanded={menuOpen}
           aria-controls="menu-movil"
           onClick={() => setMenuOpen(!menuOpen)}
@@ -156,7 +183,7 @@ export default function Navbar() {
         <div id="menu-movil" className="border-t border-selva-800 lg:hidden">
           <ul className="flex flex-col gap-1 px-6 py-4">
             {mainNav.map((link) => {
-              const active = isActive(pathname, link.href);
+              const active = isActive(pathname, link.base);
               return (
                 <li key={link.href}>
                   <Link

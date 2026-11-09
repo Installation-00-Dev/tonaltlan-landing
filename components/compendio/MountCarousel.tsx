@@ -4,11 +4,13 @@ import Image from "next/image";
 import { useRef } from "react";
 import { prefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 import { labelFromPath } from "@/lib/site";
+import { t, type Lang } from "@/lib/i18n";
 import { variante } from "@/lib/imagenes";
 
 const tints = ["from-rose-400/20", "from-oro-400/20", "from-turquesa-400/20", "from-sky-400/20"];
 
-export default function MountCarousel({ images }: { images: string[] }) {
+export default function MountCarousel({ images, lang = "es" }: { images: string[]; lang?: Lang }) {
+  const d = t(lang).comun;
   const trackRef = useRef<HTMLUListElement>(null);
 
   function scrollBy(direction: 1 | -1) {
@@ -25,7 +27,7 @@ export default function MountCarousel({ images }: { images: string[] }) {
             key={direction}
             type="button"
             onClick={() => scrollBy(direction)}
-            aria-label={direction === -1 ? "Anterior" : "Siguiente"}
+            aria-label={direction === -1 ? d.anterior : d.siguiente}
             className="flex h-11 w-11 items-center justify-center rounded-full bg-selva-800 text-selva-200 ring-1 ring-selva-700 transition duration-150 hover:bg-oro-400 hover:text-selva-950 motion-safe:active:scale-[0.97]"
           >
             <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -45,7 +47,7 @@ export default function MountCarousel({ images }: { images: string[] }) {
         className="-mx-6 flex snap-x snap-mandatory gap-6 overflow-x-auto motion-safe:scroll-smooth px-6 pb-6 [scrollbar-width:thin] lg:-mx-8 lg:px-8"
       >
         {images.map((src, index) => {
-          const name = labelFromPath(src, "Montura");
+          const name = labelFromPath(src, d.montura);
           return (
             <li
               key={src}
@@ -65,7 +67,7 @@ export default function MountCarousel({ images }: { images: string[] }) {
                 <div className="flex items-center justify-between gap-3 p-5">
                   <h2 className="font-display text-xl text-selva-100">{name}</h2>
                   <span className="rounded-full border border-dashed border-selva-600 px-3 py-1 text-[11px] uppercase tracking-wider text-selva-500">
-                    Tipo
+                    {d.tipo}
                   </span>
                 </div>
               </article>
