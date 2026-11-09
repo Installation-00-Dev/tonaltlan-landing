@@ -22,7 +22,7 @@ const socialLinks = [
   {
     label: "Instagram",
     href: "https://www.instagram.com/tonaltlan/",
-    iconSrc: "/images/social/instagram.png",
+    iconSrc: "/images/social/instagram.webp",
     iconAlt: "Instagram",
   },
   { label: "X / Twitter", href: "#" },
@@ -64,7 +64,7 @@ export default function Footer() {
           {/* Production credit */}
           <div className="flex items-center gap-3">
             <Image
-              src="/images/produccion.png"
+              src="/images/produccion.webp"
               alt="Cuevas y Quetzales"
               width={36}
               height={36}

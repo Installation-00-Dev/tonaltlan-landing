@@ -14,7 +14,7 @@ interface DeitiesFlipGridProps {
   sortWithImageFirst?: boolean;
 }
 
-const FALLBACK_IMAGE = "/images/piramides_azteca_final_1920.jpg";
+const FALLBACK_IMAGE = "/images/piramides_azteca_final_1920.webp";
 
 export default function DeitiesFlipGrid({
   items,

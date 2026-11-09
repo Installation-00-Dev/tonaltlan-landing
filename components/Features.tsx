@@ -52,10 +52,10 @@ export default function Features() {
     <section
       id="features"
       ref={sectionRef}
-      className="py-20 opacity-0 lg:py-28"
+      className="relative py-24 opacity-0 lg:py-32"
     >
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
-        <h2 className="mb-10 text-center font-serif text-3xl font-bold text-gold md:text-4xl">
+        <h2 className="mb-14 text-center font-serif text-3xl font-bold tracking-wide text-gold md:text-4xl">
           Tonaltlan de un Vistazo
         </h2>
 
@@ -63,15 +63,15 @@ export default function Features() {
           {features.map((feature) => (
             <div
               key={feature.title}
-              className="glass-card group rounded-xl p-6 transition-colors hover:border-teal/40 md:p-8"
+              className="group relative overflow-hidden rounded-2xl border border-gold/25 bg-gradient-to-br from-[#0f172a]/80 via-[#0b1120]/75 to-[#07070a]/90 p-7 backdrop-blur-md transition-all duration-300 hover:border-gold/55 hover:shadow-[0_10px_35px_rgba(197,160,89,0.12)] md:p-9"
             >
-              <div className="mb-4 inline-flex rounded-lg bg-teal/10 p-3 text-teal transition-colors group-hover:bg-teal/20">
+              <div className="mb-5 inline-flex rounded-xl border border-gold/30 bg-gold/10 p-3.5 text-gold shadow-[0_0_20px_rgba(197,160,89,0.15)] transition-colors group-hover:border-teal/40 group-hover:bg-teal/15 group-hover:text-teal">
                 {feature.icon}
               </div>
-              <h3 className="mb-2 font-serif text-xl font-semibold text-foreground">
+              <h3 className="mb-3 font-serif text-xl font-semibold text-foreground md:text-2xl">
                 {feature.title}
               </h3>
-              <p className="text-sm leading-relaxed text-muted">
+              <p className="text-sm leading-relaxed text-muted md:text-base">
                 {feature.description}
               </p>
             </div>
@@ -81,3 +81,4 @@ export default function Features() {
     </section>
   );
 }
+

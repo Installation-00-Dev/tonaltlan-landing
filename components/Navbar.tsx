@@ -43,7 +43,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2" aria-label="Tonaltlan - Inicio">
           <Image
-            src="/images/produccion.png"
+            src="/images/produccion.webp"
             alt="Tonaltlan logo"
             width={180}
             height={68}
@@ -53,7 +53,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop links */}
-        <ul className="hidden items-center gap-6 lg:flex">
+        <ul className="hidden items-center gap-8 lg:flex">
           {navLinks.map((link) => (
             <li key={link.href}>
               <Link
@@ -67,14 +67,6 @@ export default function Navbar() {
             </li>
           ))}
         </ul>
-
-        {/* Desktop CTA */}
-        <Link
-          href="/explorar"
-          className="hidden min-h-[44px] items-center rounded-lg bg-teal px-5 py-2 text-sm font-semibold text-background transition-opacity hover:opacity-90 lg:flex"
-        >
-          Explorar Tonaltlan
-        </Link>
 
         {/* Mobile hamburger */}
         <button
@@ -127,15 +119,6 @@ export default function Navbar() {
                 </Link>
               </li>
             ))}
-            <li>
-              <Link
-                href="/explorar"
-                className="mt-2 block min-h-[44px] rounded-lg bg-teal px-4 py-3 text-center text-sm font-semibold text-background transition-opacity hover:opacity-90"
-                onClick={() => setMenuOpen(false)}
-              >
-                Explorar Tonaltlan
-              </Link>
-            </li>
           </ul>
         </div>
       )}
