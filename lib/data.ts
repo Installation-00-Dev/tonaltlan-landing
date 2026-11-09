@@ -3,6 +3,8 @@
    Replace with real content when ready.
    ============================================================ */
 
+import { galleryImages, mountImages } from "./site";
+
 export interface CompendiumEntry {
   name: string;
   slug: string;
@@ -10,6 +12,8 @@ export interface CompendiumEntry {
   tags: string[];
   coverImageSrc?: string;
   coverImageAlt?: string;
+  /** Solo especies: slug de la deidad de la que descienden (define su color). */
+  deidad?: string;
   sections: { title: string; content: string }[];
 }
 
@@ -106,6 +110,7 @@ export const especies: CompendiumEntry[] = [
   {
     name: "He'kari",
     slug: "hekari",
+    deidad: "heka",
     description: "Hijos de Heka. Descendientes de la diosa del viento, ágiles, expresivos y portadores de palabras que cambian el destino.",
     tags: ["Agilidad", "Social", "Viento"],
     coverImageSrc: "/images/especie_Hekari.webp",
@@ -126,6 +131,7 @@ export const especies: CompendiumEntry[] = [
   {
     name: "Hualik",
     slug: "hualik",
+    deidad: "calti",
     description: "Hijos de Calti. Descendientes de la diosa de la obscuridad y el silencio, raros y misteriosos habitantes de las sombras.",
     tags: ["Sigilo", "Estrategia", "Obscuridad"],
     sections: [
@@ -144,6 +150,7 @@ export const especies: CompendiumEntry[] = [
   {
     name: "Irzak",
     slug: "irzak",
+    deidad: "zilo",
     description: "Hijos de Zilo. Originarios de la península volcánica de Xitl, orgullosos, intensos y guiados por un honor inquebrantable.",
     tags: ["Fuego", "Combate frontal", "Honor"],
     coverImageSrc: "/images/especie_fuego.webp",
@@ -164,6 +171,7 @@ export const especies: CompendiumEntry[] = [
   {
     name: "Lok'Naa",
     slug: "lok-naa",
+    deidad: "lok",
     description: "Hijos de Lok. Descendientes del dios del agua, serenos, sabios y ligados a mares, cenotes y ríos.",
     tags: ["Soporte", "Exploración", "Agua"],
     sections: [
@@ -182,6 +190,7 @@ export const especies: CompendiumEntry[] = [
   {
     name: "Quinametzin",
     slug: "quinametzin",
+    deidad: "tzal",
     description: "Hijos de la Tzal. Descendientes de la diosa de la tierra, antiguos, nobles y pilares de su comunidad.",
     tags: ["Resistencia", "Protección", "Tierra"],
     sections: [
@@ -200,6 +209,7 @@ export const especies: CompendiumEntry[] = [
   {
     name: "Toh'kari",
     slug: "tohkari",
+    deidad: "tohui",
     description: "Hijos de Tohuí. Descendientes del dios de la destrucción y el rayo, impredecibles y cargados de energía.",
     tags: ["Rayo", "Volátil", "Nómada"],
     sections: [
@@ -218,6 +228,7 @@ export const especies: CompendiumEntry[] = [
   {
     name: "Ton",
     slug: "ton",
+    deidad: "tonatli",
     description: "Hijos de Tonatli. Portadores de la última chispa del sol, de aura luminosa y honestidad absoluta.",
     tags: ["Luz", "Sabiduría", "Honestidad"],
     sections: [
@@ -350,7 +361,7 @@ export const sectionsMeta = [
   { title: "Clases",    slug: "clases",    description: "Arquetipos de heroes y villanos del mundo mesoamericano.",    count: clases.length },
   { title: "Especies",  slug: "especies",  description: "Seres nacidos del maiz, la obsidiana y el aliento de los dioses.",  count: especies.length },
   { title: "Bestiario", slug: "bestiario", description: "Criaturas del Mictlan y bestias de selvas y montanas sagradas.",   count: bestiario.length },
-  { title: "Monturas",  slug: "monturas",  description: "Compañeros leales que surcan cielos, rios y caminos ancestrales.",  count: 4 },
+  { title: "Monturas",  slug: "monturas",  description: "Compañeros leales que surcan cielos, rios y caminos ancestrales.",  count: mountImages.length },
   { title: "Deidades",  slug: "deidades",  description: "Los dioses que tejen el destino del cosmos y sus elegidos.",        count: deidades.length },
-  { title: "Galeria",   slug: "galeria",   description: "Arte conceptual, ilustraciones y vistazos al universo.",            count: 0 },
+  { title: "Galeria",   slug: "galeria",   description: "Arte conceptual, ilustraciones y vistazos al universo.",            count: galleryImages.length },
 ];

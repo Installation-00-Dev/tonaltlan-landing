@@ -12,12 +12,12 @@ export default function SearchBar({
   placeholder = "Buscar por nombre...",
 }: SearchBarProps) {
   return (
-    <div className="relative mb-6">
+    <div className="relative mb-10 max-w-2xl">
       <label htmlFor="search-input" className="sr-only">
         {placeholder}
       </label>
       <svg
-        className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted/60"
+        className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-500"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
@@ -36,7 +36,7 @@ export default function SearchBar({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="glass-card min-h-[48px] w-full rounded-xl py-3 pl-12 pr-4 text-base text-foreground placeholder:text-muted/50 focus:outline-none focus:ring-2 focus:ring-teal"
+        className="min-h-[52px] w-full rounded-full border border-slate-700 bg-slate-800/60 py-3 pl-12 pr-5 text-base text-slate-100 placeholder:text-slate-500 focus:border-amber-400 focus:outline-none focus:ring-2 focus:ring-amber-400/40"
       />
     </div>
   );
