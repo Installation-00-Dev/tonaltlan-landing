@@ -37,7 +37,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#07070a",
+  themeColor: "#0f172a",
   width: "device-width",
   initialScale: 1,
 };
@@ -49,7 +49,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es" className={`${inter.variable} ${cinzel.variable}`}>
-      <body className="font-sans antialiased">
+      <body className="bg-slate-900 font-sans text-slate-100 antialiased">
         <Navbar />
         <main className="min-h-screen">{children}</main>
         <Footer />

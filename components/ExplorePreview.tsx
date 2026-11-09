@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useFadeIn } from "@/hooks/useFadeIn";
-import TagChips from "@/components/compendio/TagChips";
 
 const exploreSections = [
   {
@@ -52,64 +51,64 @@ export default function ExplorePreview() {
       ref={sectionRef}
       className="relative py-24 opacity-0 lg:py-32"
     >
-      <div className="mx-auto max-w-7xl px-4 lg:px-8">
-        {/* Encabezado centrado sin boton redundante */}
-        <div className="mx-auto mb-14 max-w-2xl text-center">
-          <h2 className="mb-3 font-serif text-3xl font-bold tracking-wide text-gold md:text-4xl">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="mx-auto mb-16 max-w-2xl text-center">
+          <h2 className="mb-4 font-serif text-3xl font-bold tracking-wide text-amber-300 md:text-4xl">
             Explorar Tonaltlan
           </h2>
-          <p className="text-base leading-relaxed text-muted md:text-lg">
+          <p className="text-base leading-relaxed text-slate-300 md:text-lg">
             Descubre los secretos del mundo mesoamericano a traves de su compendio viviente.
           </p>
         </div>
 
-        {/* Tarjetas interactivas del compendio sin botones repetitivos en cada card */}
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {/* La tarjeta completa es el enlace: sin botones "Ver mas" repetidos */}
+        <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
           {exploreSections.map((section) => (
-            <Link
-              key={section.title}
-              href={section.href}
-              className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-gold/20 bg-gradient-to-b from-[#0f172a]/70 to-[#07070a]/90 p-6 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-teal/50 hover:shadow-[0_12px_35px_rgba(45,212,191,0.12)] md:p-7"
-            >
-              <div
-                className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent opacity-60 transition-opacity group-hover:via-teal/70 group-hover:opacity-100"
-                aria-hidden="true"
-              />
+            <li key={section.title} className="flex">
+              <Link
+                href={section.href}
+                className="group relative flex w-full flex-col justify-between overflow-hidden rounded-2xl bg-slate-800/60 p-7 ring-1 ring-slate-700/80 transition-all duration-300 hover:-translate-y-1 hover:bg-slate-800 hover:shadow-xl hover:shadow-slate-950/50 hover:ring-amber-400/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300 md:p-8"
+              >
+                <span
+                  className="pointer-events-none absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-gradient-to-r from-amber-400 via-amber-300 to-emerald-400 transition-transform duration-500 group-hover:scale-x-100"
+                  aria-hidden="true"
+                />
 
-              <div>
-                <div className="mb-3 flex items-center justify-between">
-                  <h3 className="font-serif text-xl font-semibold text-foreground transition-colors group-hover:text-gold-light">
-                    {section.title}
-                  </h3>
-                  <svg
-                    className="h-4 w-4 text-gold/50 transition-all duration-300 group-hover:translate-x-1 group-hover:text-teal"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
+                <div>
+                  <div className="mb-3 flex items-center justify-between gap-4">
+                    <h3 className="font-serif text-xl font-semibold text-slate-100 transition-colors group-hover:text-amber-300">
+                      {section.title}
+                    </h3>
+                    <span
+                      className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-slate-700/60 text-slate-300 transition-all duration-300 group-hover:translate-x-1 group-hover:bg-amber-400 group-hover:text-slate-950"
+                      aria-hidden="true"
+                    >
+                      <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </span>
+                  </div>
+
+                  <p className="mb-6 text-sm leading-relaxed text-slate-300 md:text-base">
+                    {section.description}
+                  </p>
                 </div>
 
-                <p className="mb-6 text-sm leading-relaxed text-muted">
-                  {section.description}
-                </p>
-              </div>
-
-              <div className="pt-2 border-t border-white/5">
-                <TagChips tags={section.tags} />
-              </div>
-            </Link>
+                <div className="flex flex-wrap gap-2 border-t border-slate-700/70 pt-4">
+                  {section.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="inline-flex rounded-full bg-emerald-400/10 px-3 py-1 text-xs font-medium text-emerald-300 ring-1 ring-emerald-400/20"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </Link>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );
 }
-

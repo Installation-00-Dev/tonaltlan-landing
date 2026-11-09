@@ -18,26 +18,26 @@ export default function Newsletter() {
       ref={sectionRef}
       className="relative py-24 opacity-0 lg:py-32"
     >
-      <div className="mx-auto max-w-3xl px-4 lg:px-8">
-        <div className="relative overflow-hidden rounded-3xl border border-gold/35 bg-gradient-to-b from-[#0f172a]/90 via-[#090d16]/95 to-[#07070a] p-8 text-center shadow-[0_25px_70px_rgba(0,0,0,0.65),0_0_40px_rgba(197,160,89,0.1)] md:p-12">
+      <div className="mx-auto max-w-3xl px-6 lg:px-8">
+        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-b from-slate-800 to-slate-900 p-8 text-center shadow-2xl shadow-slate-950/60 ring-1 ring-amber-400/30 md:p-14">
           <div
-            className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold/70 to-transparent"
+            className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-amber-300/80 to-transparent"
             aria-hidden="true"
           />
 
-          <h2 className="mb-4 font-serif text-3xl font-bold tracking-wide text-gold md:text-4xl">
+          <h2 className="mb-4 font-serif text-3xl font-bold tracking-wide text-amber-300 md:text-4xl">
             Mantente Informado
           </h2>
-          <p className="mx-auto mb-8 max-w-xl text-base leading-relaxed text-muted md:text-lg">
+          <p className="mx-auto mb-10 max-w-xl text-base leading-relaxed text-slate-300 md:text-lg">
             {/* PLACEHOLDER */}
             Recibe noticias sobre lanzamientos, nuevos suplementos y eventos exclusivos
             directamente en tu correo.
           </p>
 
           {submitted ? (
-            <div className="glass-card inline-flex items-center gap-2 rounded-xl border border-teal/40 px-8 py-4">
+            <div className="inline-flex items-center gap-2 rounded-xl bg-emerald-400/10 px-8 py-4 ring-1 ring-emerald-400/40">
               <svg
-                className="h-5 w-5 text-teal"
+                className="h-5 w-5 text-emerald-300"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -50,7 +50,7 @@ export default function Newsletter() {
                   d="M5 13l4 4L19 7"
                 />
               </svg>
-              <span className="text-base font-medium text-foreground">
+              <span className="text-base font-medium text-slate-100">
                 Proximamente - Gracias por tu interes
               </span>
             </div>
@@ -67,18 +67,18 @@ export default function Newsletter() {
                 type="email"
                 required
                 placeholder="tu@correo.com"
-                className="min-h-[50px] flex-1 rounded-xl border border-gold/25 bg-[#07070a]/80 px-5 py-3 text-base text-foreground placeholder:text-muted/60 focus:border-teal focus:outline-none focus:ring-2 focus:ring-teal/50"
+                className="min-h-[52px] flex-1 rounded-full border border-slate-600 bg-slate-950/60 px-6 py-3 text-base text-slate-100 placeholder:text-slate-500 focus:border-amber-400 focus:outline-none focus:ring-2 focus:ring-amber-400/40"
               />
               <button
                 type="submit"
-                className="inline-flex min-h-[50px] items-center justify-center rounded-xl bg-teal px-8 py-3 font-serif text-base font-bold tracking-wider uppercase text-[#07070a] shadow-[0_0_25px_rgba(45,212,191,0.3)] transition-all duration-300 hover:bg-teal/90 hover:shadow-[0_0_35px_rgba(45,212,191,0.5)]"
+                className="inline-flex min-h-[52px] items-center justify-center rounded-full bg-amber-400 px-8 py-3 font-serif text-base font-bold uppercase tracking-wider text-slate-950 shadow-lg shadow-amber-500/20 transition-all duration-300 hover:bg-amber-300 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-amber-200"
               >
                 Suscribirse
               </button>
             </form>
           )}
 
-          <p className="mt-5 text-xs text-muted/60">
+          <p className="mt-6 text-xs leading-relaxed text-slate-400">
             {/* PLACEHOLDER: Reemplaza con tu politica de privacidad real */}
             Respetamos tu privacidad. Puedes darte de baja en cualquier momento.
             Consulta nuestra politica de privacidad para mas informacion.
