@@ -3,6 +3,7 @@ import SectionHeader from "@/components/compendio/SectionHeader";
 import AnchorPage from "@/components/ui/AnchorPage";
 import Pendiente from "@/components/ui/Pendiente";
 import { features } from "@/lib/features";
+import { variante } from "@/lib/imagenes";
 
 export const metadata = {
   title: "El Mundo - Tonaltlan",
@@ -46,7 +47,7 @@ export default function MundoPage() {
               <figure className="overflow-hidden rounded-2xl bg-selva-800 ring-1 ring-selva-700">
                 <div className="relative aspect-[16/10] w-full">
                   <Image
-                    src="/images/galeria/Mapa.webp"
+                    src={variante("/images/galeria/Mapa.webp", 1800)}
                     alt="Mapa de Tonaltlan"
                     fill
                     className="object-cover"

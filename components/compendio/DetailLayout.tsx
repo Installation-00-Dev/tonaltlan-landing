@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { themeFor } from "@/lib/site";
+import { variante } from "@/lib/imagenes";
 
 interface DetailSection {
   title: string;
@@ -358,7 +359,7 @@ export default function DetailLayout({
               <div className="pointer-events-none absolute inset-4 rounded-2xl bg-sky-100/35" />
             )}
             <Image
-              src={coverImageSrc}
+              src={variante(coverImageSrc, 1200)}
               alt={coverImageAlt ?? title}
               width={896}
               height={600}

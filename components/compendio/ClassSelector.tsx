@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import type { CompendiumEntry } from "@/lib/data";
 import Pendiente from "@/components/ui/Pendiente";
+import { variante } from "@/lib/imagenes";
 
 const normalizar = (value: string) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 
@@ -67,7 +68,7 @@ export default function ClassSelector({ items }: { items: CompendiumEntry[] }) {
                 }`}
               >
                 {item.coverImageSrc ? (
-                  <Image src={item.coverImageSrc} alt="" fill className="object-cover object-top" sizes="64px" />
+                  <Image src={variante(item.coverImageSrc, 160)} alt="" fill className="object-cover object-top" sizes="64px" />
                 ) : null}
               </span>
               <span className="min-w-0">
@@ -99,7 +100,7 @@ export default function ClassSelector({ items }: { items: CompendiumEntry[] }) {
             {active.coverImageSrc ? (
               <Image
                 key={active.slug}
-                src={active.coverImageSrc}
+                src={variante(active.coverImageSrc, 1200)}
                 alt={active.coverImageAlt || active.name}
                 fill
                 className="animate-fade-in object-contain p-4"
