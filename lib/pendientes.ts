@@ -160,7 +160,7 @@ export const pendientes = {
     ],
     pistas: [
       "Intro de Especies: humanos sin una afinidad elemental predeterminada.",
-      "Ficha de Tzal: los Tlacas fueron los primeros pueblos conscientes de Tonaltlán.",
+      "Ficha de Tzal: los Tlacas fueron los primeros pueblos conscientes de Tonaltlan.",
       "Ficha de Calti: selló los Puntos Tonales de los Tlacas.",
     ],
   },

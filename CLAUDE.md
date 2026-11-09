@@ -33,7 +33,7 @@ compendio, avisos de privacidad, contactos y textos legales.
   todo el sitio (hecho en nov. 2026). Los textos nuevos deben llegar o quedar bien escritos.
 - **Lo que NO se corrige:** nombres propios del mundo y de clases o especies (Mictlan, Tonaltlan,
   Guerrero Otomi, Tlalocan, Catemaco…), ni el tono coloquial del Test de Afinidad ("compa",
-  "qué pedo"). Tonaltlan / Tonaltlán aparece de las dos formas: pendiente de confirmar con el creador.
+  "qué pedo"). El nombre oficial es **Tonaltlan, sin acento** (confirmado por el creador).
 - **Comparar títulos sin acentos en el código:** las secciones se buscan por título normalizado
   (`normalize("NFD")`), así "Descripción" y "Descripcion" coinciden.
 
@@ -57,6 +57,11 @@ compendio, avisos de privacidad, contactos y textos legales.
 - **Versiones derivadas** (recortes, tamaños menores) llevan sufijo (`tonaltlan_logo_nav.webp`,
   `produccion_footer.webp`). El original no se sobrescribe.
 - **Verificación tras el build:** cada `/images/...` del HTML generado debe existir en `out/`.
+- **Versiones ligeras (obligatorio al agregar imágenes):** el export estático no redimensiona, así
+  que hay que correr `python3 scripts/variantes.py` (requiere Pillow). Genera `-480`, `-1200` (y
+  `-1800` en galería) y actualiza `lib/variantes.generated.ts`. En el código, nunca uses la ruta
+  original directamente para mostrar arte: usa `variante(src, anchoEnPixelesReales)` de
+  `lib/imagenes.ts` (pide el doble de lo que se ve, por pantallas retina).
 
 ### 3. Contenido faltante: `<Pendiente id>`
 
@@ -138,6 +143,15 @@ oro sobre verde selva profundo. Los colores viven como escalas propias en `tailw
 - **Contraste verificado (WCAG AA):** `selva-300` sobre `selva-900` 9.8:1, `selva-400` 6.9:1,
   `oro-400` con texto `selva-950` 10.7:1.
 - `.github/copilot-instructions.md` describe una paleta anterior; para diseño manda este archivo.
+
+### Lenguaje visual propio
+
+- **Greca escalonada** (`components/ui/Greca.tsx`): separador entre secciones y relleno de lo que aún
+  no tiene arte. Es el detalle gráfico mesoamericano del sitio; úsala en lugar de líneas o rombos.
+- **El arte manda:** cuando una sección tiene ilustraciones, preséntala con ellas (mosaico del
+  compendio en la landing). Evita tarjetas genéricas de solo texto.
+- **No repetir el mismo formato** en secciones contiguas: en la landing, el compendio es un mosaico de
+  arte y "Tonaltlan de un Vistazo" es una lista editorial con filetes, sin tarjetas.
 
 ### Criterios de Impeccable aplicados
 
