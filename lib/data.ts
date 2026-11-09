@@ -21,7 +21,7 @@ export const clases: CompendiumEntry[] = [
     description:
       "Los Catemacos son brujos artesanos originarios de las regiones pantanosas del reino de Tl’atl. Su poder no proviene de libros ni de pactos con entidades desconocidas, sino del vínculo espiritual que crean con un Ixip, un muñeco tonal tallado por sus propias manos y animado mediante un ritual ancestral.",
     tags: ["Invocador", "Multi-tonal", "rango"],
-    coverImageSrc: "/images/Brujo_Catemaco.jpg",
+    coverImageSrc: "/images/Brujo_Catemaco.webp",
     coverImageAlt: "Brujo Catemaco junto a su Ixip en una cueva del reino de Tl'atl.",
     sections: [
       {
@@ -42,7 +42,7 @@ export const clases: CompendiumEntry[] = [
     description:
       "Defensores de Zalan. Los Guerreros Otomi son la milicia de elite del norte de Tonaltlan y portadores del Punto Tonal de Tierra.",
     tags: ["Tanque", "cuerpo a cuerpo", "Tonal de Tierra"],
-    coverImageSrc: "/images/Otomi.jpg",
+    coverImageSrc: "/images/Otomi.webp",
     coverImageAlt: "Guerrero Otomi con armadura pesada y estandarte de guerra en primera linea.",
     sections: [
       {
@@ -63,7 +63,7 @@ export const clases: CompendiumEntry[] = [
     description:
       "Danzante Tonal. Guerreros ritualistas que canalizan la energia del Tonal a traves de danzas sagradas.",
     tags: ["Movilidad", "Soporte", "Multi-Tonal"],
-    coverImageSrc: "/images/Mitotiani.jpg",
+    coverImageSrc: "/images/Mitotiani.webp",
     coverImageAlt: "Mitotiani ejecutando una danza ritual sobre glifos tonales.",
     sections: [
       {
@@ -84,7 +84,7 @@ export const clases: CompendiumEntry[] = [
     description:
       "Portador de Sangre Tonal. Practicantes de un conocimiento ritual prohibido que manipula la sangre para debilitar y controlar.",
     tags: ["Controlador", "Debilitador", "Sellos de sangre"],
-    coverImageSrc: "/images/Tlapali.jpg",
+    coverImageSrc: "/images/Tlapali.webp",
     coverImageAlt: "Tlapali marcado con simbolos de sangre tonal en un ritual oscuro.",
     sections: [
       {
@@ -108,7 +108,7 @@ export const especies: CompendiumEntry[] = [
     slug: "hekari",
     description: "Hijos de Heka. Descendientes de la diosa del viento, ágiles, expresivos y portadores de palabras que cambian el destino.",
     tags: ["Agilidad", "Social", "Viento"],
-    coverImageSrc: "/images/especie_Hekari.png",
+    coverImageSrc: "/images/especie_Hekari.webp",
     coverImageAlt: "He'kari de cabello ondulante y ojos verde jade en movimiento.",
     sections: [
       {
@@ -146,7 +146,7 @@ export const especies: CompendiumEntry[] = [
     slug: "irzak",
     description: "Hijos de Zilo. Originarios de la península volcánica de Xitl, orgullosos, intensos y guiados por un honor inquebrantable.",
     tags: ["Fuego", "Combate frontal", "Honor"],
-    coverImageSrc: "/images/especie_fuego.png",
+    coverImageSrc: "/images/especie_fuego.webp",
     coverImageAlt: "Irzak de mirada ámbar y presencia ígnea forjado por la tierra volcánica.",
     sections: [
       {
