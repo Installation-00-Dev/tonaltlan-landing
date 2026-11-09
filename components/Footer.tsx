@@ -1,8 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import { contacts, footerColumns, socialLinks } from "@/lib/site";
+import { contacts, socialLinks } from "@/lib/site";
+import { ruta, t, type Lang } from "@/lib/i18n";
 
-export default function Footer() {
+export default function Footer({ lang = "es" }: { lang?: Lang }) {
+  const d = t(lang).footer;
   return (
     <footer id="contacto" className="border-t border-selva-800 bg-selva-950 pt-20 pb-10">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -17,20 +19,20 @@ export default function Footer() {
               className="h-auto w-64 md:w-72"
               sizes="288px"
             />
-            <p className="mt-5 text-sm text-selva-400">Una producción de Cuevas & Quetzales</p>
+            <p className="mt-5 text-sm text-selva-400">{d.produccion}</p>
           </div>
 
-          <nav aria-label="Mapa del sitio" className="grid grid-cols-2 gap-8 sm:grid-cols-4 lg:col-span-8">
-            {footerColumns.map((column) => (
-              <div key={column.title}>
+          <nav aria-label={d.mapa} className="grid grid-cols-2 gap-8 sm:grid-cols-4 lg:col-span-8">
+            {d.columnas.map((column) => (
+              <div key={column.titulo}>
                 <p className="mb-4 font-display text-sm text-jade-400">
-                  {column.title}
+                  {column.titulo}
                 </p>
                 <ul className="space-y-2.5">
                   {column.links.map((link) => (
                     <li key={link.href + link.label}>
                       <Link
-                        href={link.href}
+                        href={ruta(lang, link.href)}
                         className="text-sm text-selva-400 transition-colors hover:text-selva-100"
                       >
                         {link.label}
@@ -45,12 +47,12 @@ export default function Footer() {
 
         {/* Contact cards */}
         <div className="mt-16 border-t border-selva-800 pt-12">
-          <h2 className="mb-6 font-display text-2xl text-jade-400">Contacto</h2>
+          <h2 className="mb-6 font-display text-2xl text-jade-400">{d.contacto}</h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {contacts.map((contact) => (
               <div key={contact.email} className="rounded-xl bg-selva-900 p-6 ring-1 ring-selva-800">
                 <h3 className="mb-1 font-display text-base text-selva-100">{contact.role}</h3>
-                <p className="mb-3 text-sm text-selva-400">{contact.description}</p>
+                <p className="mb-3 text-sm text-selva-400">{d.contactos[contact.email] ?? contact.description}</p>
                 <a
                   href={`mailto:${contact.email}`}
                   className="break-all text-sm font-medium text-oro-300 underline-offset-4 transition-colors hover:text-oro-200 hover:underline"
@@ -87,7 +89,7 @@ export default function Footer() {
               </a>
             ))}
           </div>
-          <p className="text-xs text-selva-500">{"© 2025 Tonaltlan. Todos los derechos reservados."}</p>
+          <p className="text-xs text-selva-500">{d.copyright}</p>
         </div>
       </div>
     </footer>

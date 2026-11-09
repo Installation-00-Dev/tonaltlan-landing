@@ -7,8 +7,8 @@ import {
     applyOptionPoints,
     calculateResults,
     createInitialScores,
+    getQuestions,
     prepareQuestionsForSession,
-    questions,
     type CalculatedResults,
     type Option,
     type Question,
@@ -38,7 +38,22 @@ function findOptionById(question: Question, optionId?: string): Option | undefin
   return question.options.find((option) => option.id === optionId);
 }
 
-export function useAffinityTest() {
+const MENSAJES = {
+  es: {
+    nombre: "Ingresa tu nombre para continuar.",
+    email: "Ingresa tu email para continuar.",
+    emailInvalido: "Ingresa un email válido.",
+  },
+  en: {
+    nombre: "Enter your name to continue.",
+    email: "Enter your email to continue.",
+    emailInvalido: "Enter a valid email.",
+  },
+};
+
+export function useAffinityTest(lang: "es" | "en" = "es") {
+  const questions = getQuestions(lang);
+  const mensajes = MENSAJES[lang];
   const [phase, setPhase] = useState<TestPhase>("intro");
   const [user, setUser] = useState<User>({ name: "", email: "" });
   const [formErrors, setFormErrors] = useState<FormErrors>({});
@@ -72,13 +87,13 @@ export function useAffinityTest() {
     const nextErrors: FormErrors = {};
 
     if (!user.name.trim()) {
-      nextErrors.name = "Ingresa tu nombre para continuar.";
+      nextErrors.name = mensajes.nombre;
     }
 
     if (!user.email.trim()) {
-      nextErrors.email = "Ingresa tu email para continuar.";
+      nextErrors.email = mensajes.email;
     } else if (!EMAIL_REGEX.test(user.email.trim())) {
-      nextErrors.email = "Ingresa un email válido.";
+      nextErrors.email = mensajes.emailInvalido;
     }
 
     setFormErrors(nextErrors);
@@ -91,7 +106,7 @@ export function useAffinityTest() {
       return false;
     }
 
-    setSessionQuestions(prepareQuestionsForSession());
+    setSessionQuestions(prepareQuestionsForSession(questions));
     setCurrentQuestionIndex(0);
     setAnswers([]);
     setScores(createInitialScores());
@@ -120,7 +135,7 @@ export function useAffinityTest() {
     }
 
     const randomScores = buildRandomScores();
-    const randomResults = calculateResults(randomScores);
+    const randomResults = calculateResults(randomScores, lang);
 
     setSessionQuestions([]);
     setCurrentQuestionIndex(0);
@@ -153,9 +168,12 @@ export function useAffinityTest() {
       email: user.email.trim(),
       dominantResult: finalResults.dominant.narrative.name,
       secondaryResult: finalResults.secondary?.narrative.name ?? null,
+      dominantRace: finalResults.dominant.race,
+      secondaryRace: finalResults.secondary?.race ?? null,
       scores: finalScores,
       subscribed: false,
       mode,
+      lang,
     });
 
     if (outcome === "saved") {
@@ -210,7 +228,7 @@ export function useAffinityTest() {
         return;
       }
 
-      const finalResults = calculateResults(nextScores);
+      const finalResults = calculateResults(nextScores, lang);
       setResults(finalResults);
       setAffinityMode("quiz");
       setPhase("results");
@@ -248,7 +266,7 @@ export function useAffinityTest() {
       return true;
     }
 
-    const finalResults = calculateResults(scores);
+    const finalResults = calculateResults(scores, lang);
     setResults(finalResults);
     setAffinityMode("quiz");
     setPhase("results");

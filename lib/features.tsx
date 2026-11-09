@@ -49,3 +49,22 @@ export const features: Feature[] = [
     ),
   },
 ];
+
+
+/* ── ENGLISH (traduccion pendiente de revision) ──
+   Mismo orden e iconos que `features`; `id` conserva el titulo en espanol
+   para que las paginas encuentren cada tema en ambos idiomas. */
+const textosEn: Record<string, { title: string; description: string }> = {
+  "Sistema Tonal": { title: "Tonal System", description: "A unique system of spiritual energy that connects your character with Mesoamerican cosmic forces. Your tonal energy defines your abilities, your destiny and your relationship with the gods." },
+  "Códices de Personaje": { title: "Character Codices", description: "Character sheets inspired by pre-Hispanic codices. Record your deeds, tonal abilities and your hero's story in a visual format that honors Mesoamerican tradition." },
+  "Construye tu Mundo": { title: "Build Your World", description: "Tools for game masters to create their own kingdoms, factions and legends within the universe of Tonaltlan. Every table is a unique world full of possibilities." },
+  "Guías para Narradores": { title: "Game Master Guides", description: "Tips, random tables, adventure generators and resources designed to make running games as exciting as playing them. Ideal for game masters of every level." },
+};
+
+export function getFeatures(lang: "es" | "en"): (Feature & { id: string })[] {
+  return features.map((feature) => ({
+    ...feature,
+    id: feature.title,
+    ...(lang === "en" ? textosEn[feature.title] : {}),
+  }));
+}

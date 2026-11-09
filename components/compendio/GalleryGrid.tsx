@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { prefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 import { labelFromPath } from "@/lib/site";
+import { t, type Lang } from "@/lib/i18n";
 import { variante } from "@/lib/imagenes";
 
 const CLOSE_MS = 150;
@@ -14,7 +15,8 @@ const CLOSE_MS = 150;
  * Cerrar con clic: 150ms (salida mas rapida que la entrada).
  * Teclado (Esc / flechas): sin animacion, la respuesta es inmediata.
  */
-export default function GalleryGrid({ images }: { images: string[] }) {
+export default function GalleryGrid({ images, lang = "es" }: { images: string[]; lang?: Lang }) {
+  const d = t(lang).comun;
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const [closing, setClosing] = useState(false);
   const triggerRef = useRef<HTMLElement | null>(null);
@@ -83,7 +85,7 @@ export default function GalleryGrid({ images }: { images: string[] }) {
                 type="button"
                 onClick={(event) => open(index, event.currentTarget)}
                 className="group relative block w-full overflow-hidden rounded-2xl bg-selva-800/60 ring-1 ring-selva-700/70 transition duration-200 hover:ring-oro-400/60 motion-safe:active:scale-[0.98]"
-                aria-label={`Ampliar ${name}`}
+                aria-label={`${d.ampliar} ${name}`}
               >
                 <Image
                   src={variante(src, 1200)}
@@ -134,7 +136,7 @@ export default function GalleryGrid({ images }: { images: string[] }) {
               e.stopPropagation();
               close(true);
             }}
-            aria-label="Cerrar"
+            aria-label={d.cerrar}
             className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-full bg-selva-800 text-selva-100 transition duration-150 hover:bg-selva-700 motion-safe:active:scale-[0.97]"
           >
             <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -149,7 +151,7 @@ export default function GalleryGrid({ images }: { images: string[] }) {
                 e.stopPropagation();
                 step(direction);
               }}
-              aria-label={direction === -1 ? "Anterior" : "Siguiente"}
+              aria-label={direction === -1 ? d.anterior : d.siguiente}
               className={`absolute top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-selva-800/80 text-selva-100 transition duration-150 hover:bg-oro-400 hover:text-selva-950 motion-safe:active:scale-[0.97] ${
                 direction === -1 ? "left-4" : "right-4"
               }`}

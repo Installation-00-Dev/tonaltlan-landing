@@ -9,66 +9,14 @@ export interface NavItem {
   href: string;
 }
 
-// Navbar principal: las 4 grandes areas del sitio.
-export const mainNav: NavItem[] = [
-  { label: "El Mundo", href: "/mundo" },
-  { label: "Compendio", href: "/explorar" },
-  { label: "Juega", href: "/juega" },
-  { label: "Galería", href: "/galeria" },
-];
+// La navegacion y el footer (textos y enlaces) viven en lib/i18n.ts, por idioma.
 
-// Boton destacado de la navbar: el Test de Afinidad es la puerta de entrada
-// (convenciones, primer contacto con el mundo).
-export const navCta: NavItem = { label: "Test de Afinidad", href: "/afinidad" };
-
-// Botones del Hero. Para una convencion se puede invertir el orden y dejar el
-// Test de Afinidad como principal.
+// Botones del Hero (rutas; las etiquetas salen de lib/i18n.ts). Para una
+// convencion se puede invertir el orden y dejar el Test de Afinidad como principal.
 export const heroCtas: { principal: NavItem; secundario: NavItem } = {
   principal: { label: "Explorar", href: "/explorar" },
   secundario: { label: "Test de Afinidad", href: "/afinidad" },
 };
-
-// Columnas del footer (mapa del sitio).
-export const footerColumns: { title: string; links: NavItem[] }[] = [
-  {
-    title: "El Mundo",
-    links: [
-      { label: "Cosmovisión", href: "/mundo#cosmovision" },
-      { label: "Puntos Tonal", href: "/mundo#puntos-tonal" },
-      { label: "Regiones", href: "/mundo#regiones" },
-      { label: "Historia", href: "/mundo#historia" },
-    ],
-  },
-  {
-    title: "Compendio",
-    links: [
-      { label: "Clases", href: "/clases" },
-      { label: "Especies", href: "/especies" },
-      { label: "Deidades", href: "/deidades" },
-      { label: "Bestiario", href: "/bestiario" },
-      { label: "Monturas", href: "/monturas" },
-    ],
-  },
-  {
-    title: "Juega",
-    links: [
-      { label: "Cómo empezar", href: "/juega#como-empezar" },
-      { label: "Test de Afinidad", href: "/afinidad" },
-      { label: "Descargas", href: "/juega#descargas" },
-      { label: "Guías para narradores", href: "/juega#narradores" },
-    ],
-  },
-  {
-    title: "Estudio",
-    links: [
-      { label: "Nosotros", href: "/nosotros" },
-      { label: "Noticias", href: "/noticias" },
-      { label: "Suscríbete", href: "/#newsletter" },
-      { label: "Galería", href: "/galeria" },
-      { label: "Contacto", href: "/#contacto" },
-    ],
-  },
-];
 
 export const contacts = [
   {

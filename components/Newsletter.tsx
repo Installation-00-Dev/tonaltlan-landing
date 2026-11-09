@@ -1,8 +1,10 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { t, type Lang } from "@/lib/i18n";
 
-export default function Newsletter() {
+export default function Newsletter({ lang = "es" }: { lang?: Lang }) {
+  const d = t(lang).newsletter;
   const [submitted, setSubmitted] = useState(false);
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
@@ -23,12 +25,10 @@ export default function Newsletter() {
           />
 
           <h2 className="mb-4 font-display text-3xl text-jade-400 md:text-4xl">
-            Mantente Informado
+            {d.titulo}
           </h2>
           <p className="mx-auto mb-10 max-w-xl text-base leading-relaxed text-selva-300 md:text-lg">
-            {/* PLACEHOLDER */}
-            Recibe noticias sobre lanzamientos, nuevos suplementos y eventos exclusivos
-            directamente en tu correo.
+            {d.texto}
           </p>
 
           {submitted ? (
@@ -48,7 +48,7 @@ export default function Newsletter() {
                 />
               </svg>
               <span className="text-base font-medium text-selva-100">
-                Próximamente - Gracias por tu interés
+                {d.gracias}
               </span>
             </div>
           ) : (
@@ -57,28 +57,27 @@ export default function Newsletter() {
               className="mx-auto flex max-w-lg flex-col gap-3 sm:flex-row"
             >
               <label htmlFor="newsletter-email" className="sr-only">
-                Correo electrónico
+                {d.label}
               </label>
               <input
                 id="newsletter-email"
                 type="email"
                 required
-                placeholder="tu@correo.com"
+                placeholder={d.placeholder}
                 className="min-h-[52px] flex-1 rounded-full border border-selva-600 bg-selva-950/60 px-6 py-3 text-base text-selva-100 placeholder:text-selva-500 focus:border-oro-400 focus:outline-none focus:ring-2 focus:ring-oro-400/40"
               />
               <button
                 type="submit"
                 className="inline-flex min-h-[52px] items-center justify-center rounded-full bg-oro-400 px-8 py-3 font-display text-base text-selva-950 shadow-lg shadow-oro-500/20 transition duration-200 hover:bg-oro-300 motion-safe:active:scale-[0.97] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-oro-200"
               >
-                Suscribirse
+                {d.boton}
               </button>
             </form>
           )}
 
           <p className="mt-6 text-xs leading-relaxed text-selva-400">
             {/* PLACEHOLDER: Reemplaza con tu politica de privacidad real */}
-            Respetamos tu privacidad. Puedes darte de baja en cualquier momento.
-            Consulta nuestra política de privacidad para más información.
+            {d.privacidad}
           </p>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { themeFor } from "@/lib/site";
+import { t, type Lang } from "@/lib/i18n";
 import { variante } from "@/lib/imagenes";
 
 interface DetailSection {
@@ -16,6 +17,7 @@ interface DetailLayoutProps {
   coverImageAlt?: string;
   backHref: string;
   backLabel: string;
+  lang?: Lang;
   /** Slug de la deidad cuyo color se usa como acento. */
   accent?: string;
   /** Enlaces cruzados, p. ej. el linaje de una especie. */
@@ -30,10 +32,12 @@ export default function DetailLayout({
   coverImageAlt,
   backHref,
   backLabel,
+  lang = "es",
   accent,
   related,
 }: DetailLayoutProps) {
   const theme = themeFor(accent);
+  const dl = t(lang).paginas.detalle;
   const isHekaCover = (coverImageSrc ?? "").includes("Heka.webp");
 
   // Compara sin acentos ni mayusculas ("Descripción" == "descripcion").
@@ -87,7 +91,7 @@ export default function DetailLayout({
 
     const bulletMap = generalesSection ? extractBulletMap(generalesSection.content) : new Map();
 
-    const rolText = rolSection?.content.split(".")[0]?.trim() || "Clase de fantasía para Tonaltlan.";
+    const rolText = rolSection?.content.split(".")[0]?.trim() || dl.rolDefecto;
     const atributoClave = tags.find((tag) =>
       ["inteligencia", "sabiduria", "carisma", "fuerza", "destreza", "constitucion"].includes(
         normalizar(tag),
@@ -95,12 +99,12 @@ export default function DetailLayout({
     );
 
     return [
-      { label: "Rol", value: rolText },
-      { label: "Atributo clave", value: atributoClave ?? "Por definir" },
-      { label: "Dado de golpe", value: bulletMap.get("dado de golpe") ?? "-" },
-      { label: "Salvaciones", value: bulletMap.get("tiradas de salvacion") ?? "-" },
-      { label: "Armaduras", value: bulletMap.get("competencia con armaduras") ?? "-" },
-      { label: "Armas", value: bulletMap.get("competencia con armas") ?? "-" },
+      { label: dl.rol, value: rolText },
+      { label: dl.atributo, value: atributoClave ?? dl.porDefinir },
+      { label: dl.dado, value: bulletMap.get("dado de golpe") ?? "-" },
+      { label: dl.salvaciones, value: bulletMap.get("tiradas de salvacion") ?? "-" },
+      { label: dl.armaduras, value: bulletMap.get("competencia con armaduras") ?? "-" },
+      { label: dl.armas, value: bulletMap.get("competencia con armas") ?? "-" },
     ];
   }
 
@@ -389,7 +393,7 @@ export default function DetailLayout({
 
         {quickFacts.length > 0 && (
           <section className="mb-8 rounded-2xl border border-gold/30 bg-gradient-to-br from-gold/10 via-background/40 to-background/20 p-4 md:p-6">
-            <h2 className="mb-4 font-display text-2xl text-gold">Ficha Rápida</h2>
+            <h2 className="mb-4 font-display text-2xl text-gold">{dl.fichaRapida}</h2>
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {quickFacts.map((fact, idx) => (
                 <article
