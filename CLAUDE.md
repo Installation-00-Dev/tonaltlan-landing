@@ -38,6 +38,9 @@ dueño del proyecto lo pide explícitamente.
   funcionalidad nueva las necesite, y se mencionan explícitamente en el resumen del PR.
 - **Contenido nuevo del mundo** (lore, reglas, descripciones): nunca se inventa. Si falta, va un
   placeholder `<Pendiente>` (ver regla 3).
+- **Textos nuevos del creador** (el dueño del producto define el contenido; el dev lo implementa):
+  se guardan **tal cual** en `lib/textos.ts` y las páginas los leen de ahí. Si un texto parece
+  incompleto (por ejemplo, le falta el punto final), se respeta y se le avisa al creador.
 
 ### 2. Imágenes: siempre `.webp`
 
@@ -68,6 +71,7 @@ dueño del proyecto lo pide explícitamente.
 |---|---|
 | `lib/site.ts` | Navegación (`mainNav`, `navCta`), columnas del footer, contactos, redes, listas de imágenes de Galería y Monturas, **colores por deidad** (`deityThemes`, `themeFor`) |
 | `lib/data.ts` | Fichas del compendio: `clases`, `especies`, `deidades`, `bestiario`, `monturas` y `sectionsMeta` (conteos para Explorar). Las especies llevan `deidad: "<slug>"` para agruparse por linaje y heredar su color |
+| `lib/textos.ts` | Textos entregados por el creador (intros de Clases y Especies, cierre de Clases) |
 | `lib/features.tsx` | Textos de "Tonaltlan de un Vistazo" (landing, `/mundo` y `/juega`) |
 | `lib/pendientes.ts` | Registro de contenido pendiente |
 | `lib/affinity-*.ts`, `hooks/useAffinityTest.ts` | Test de Afinidad y su envío por webhook |
@@ -77,9 +81,12 @@ dueño del proyecto lo pide explícitamente.
 ### Estructura del sitio
 
 - **Navbar:** El Mundo (`/mundo`) · Compendio (`/explorar`) · Juega (`/juega`) · Galería (`/galeria`),
-  más el botón Suscríbete (`/#newsletter`).
+  más el botón dorado **Test de Afinidad** (`navCta` en `lib/site.ts`). En celular ese botón queda
+  visible en la barra, junto al menú: es la puerta de entrada en convenciones.
+- **Suscríbete** vive en el footer (columna Estudio) y en la sección Newsletter de la landing.
 - **Compendio:** `/clases`, `/especies` (+ `/especies/[slug]`), `/deidades` (+ `/deidades/[slug]`),
-  `/bestiario`, `/monturas`.
+  `/bestiario`, `/monturas`. Especies tiene ocho: siete por linaje divino y los **Tlacas**
+  (humanos sin afinidad elemental; ficha pendiente).
 - **Estudio** (en el footer): `/nosotros`, `/noticias`, contacto.
 - **Cada tipo de contenido tiene su propia presentación**; no se repite un solo patrón de tarjeta:
   - Clases: selector "elige tu personaje".
@@ -104,28 +111,42 @@ dueño del proyecto lo pide explícitamente.
 
 ## Diseño
 
-> ⚠️ **La paleta de colores y la tipografía actuales son PROVISIONALES.** No convencen todavía y
-> la identidad visual va a evolucionar. No las trates como un sistema cerrado: no agregues más
-> colores sueltos ni dependas de los tonos exactos. Centraliza en tokens para que el cambio sea
-> barato.
+**Identidad definida: dirección "Quetzal"** (elegida por el creador). Sale del logo: jade, turquesa y
+oro sobre verde selva profundo. Los colores viven como escalas propias en `tailwind.config.ts`;
+**no uses `slate`, `amber` ni `emerald`**, y no agregues colores sueltos: extiende las escalas.
 
-Estado actual (provisional):
+| Escala | Rol | Clave |
+|---|---|---|
+| `selva` | Fondos y texto | fondo `selva-900` (`#0b1d19`), footer `selva-950`, tarjetas `selva-800`, texto `selva-100` / párrafos `selva-300` / metadatos `selva-400` |
+| `jade` | Títulos | `jade-400` (`#4ade80`) |
+| `turquesa` | Etiquetas y detalles | `turquesa-400` (`#38bdf8`) |
+| `oro` | **Solo acción principal** y estado activo | `oro-400` (`#f5b82e`) con texto `selva-950` |
 
-- **Fondo:** `slate-900`; el footer usa `slate-950`.
-- **Texto:** `slate-100` en títulos, `slate-300` en párrafos.
-- **Acento principal:** `amber-400`/`amber-300` (botones y títulos). Acento secundario: `emerald`.
-- **Colores por deidad** en `lib/site.ts`: Heka cielo, Lok cian, Tzal lima, Zilo naranja, Calti
-  violeta, Tonatli amarillo, Tohui fucsia.
-- **Tipografía:** **Cinzel** para títulos (provisional: se busca algo con más carácter mesoamericano
-  y de fantasía, menos romano) e **Inter** para el cuerpo.
-- **Variables CSS** en `app/globals.css`: `--gold`, `--teal`, `--bg` y otras, que usan las páginas
-  antiguas como tokens.
-- `.github/copilot-instructions.md` describe una paleta anterior (dorado `#c5a059` y teal sobre
-  `#07070a`); para diseño, manda este archivo.
+- **Colores por deidad** en `lib/site.ts` (Heka cielo, Lok cian, Tzal lima, Zilo naranja, Calti violeta,
+  Tonatli amarillo, Tohui fucsia); sus especies los heredan.
+- **Tipografía:** **Macondo** para títulos (`font-display`, elegida por el creador) e **Inter** para
+  el texto. Macondo tiene **un solo peso (400)**: nunca la combines con `font-bold`/`font-semibold`
+  (el navegador inventa una negrita fea), ni con `uppercase` o `tracking-*`.
+- **Tokens antiguos** (`gold`, `teal`, `muted`, `foreground`, `background`) siguen existiendo para
+  páginas previas (Afinidad, detalle) y apuntan a la paleta Quetzal.
+- **Contraste verificado (WCAG AA):** `selva-300` sobre `selva-900` 9.8:1, `selva-400` 6.9:1,
+  `oro-400` con texto `selva-950` 10.7:1.
+- `.github/copilot-instructions.md` describe una paleta anterior; para diseño manda este archivo.
+
+### Criterios de Impeccable aplicados
+
+- **Sin etiquetas pequeñas sobre los títulos** (kickers/eyebrows). `SectionHeader` solo muestra una
+  ruta de navegación ("Compendio /") cuando enlaza a algún lado.
+- **Sin números de sección** decorativos (01, 02…).
+- **Sin bordes laterales de color** de más de 1 px en tarjetas o notas.
+- **Un solo momento animado por página:** en la landing, la entrada del Hero (`.hero-reveal`). Las
+  secciones se ven siempre, sin animación de aparición.
+- **El oro se reserva para la acción**; los títulos van en jade.
 
 ### Flujo de la landing
 
-- **Un solo CTA principal:** "Explorar", en el Hero. El logo grande del Hero no es un botón.
+- **Hero:** botón principal "Explorar" + secundario "Test de Afinidad" (`heroCtas` en `lib/site.ts`;
+  para una convención se puede invertir el orden). El logo grande no es un botón.
 - **El Newsletter cierra el embudo.**
 - **Tarjetas:** son enlaces completos; no se agregan botones de "Ver más".
 
@@ -133,8 +154,14 @@ Estado actual (provisional):
 
 ## Interacción y animación
 
-La skill `.claude/skills/emil-design-eng` (fijada en el repo, ver su `ORIGEN.md`) es la referencia
-para animaciones e interacción. Reglas aplicadas en el código:
+Skills fijadas en el repo (ver el `ORIGEN.md` de cada una):
+
+- **`.claude/skills/emil-design-eng`:** referencia para animaciones e interacción.
+- **`.claude/skills/impeccable`:** auditoría y crítica de diseño (`/impeccable audit`, `critique`,
+  `typeset`, `polish`…). Su detector automático necesita descargar y ejecutar un binario la primera
+  vez; sin él, la skill sigue sirviendo como guía.
+
+Reglas aplicadas en el código:
 
 - **Reducir movimiento:** todo lo que se desplaza o escala lleva `motion-safe:` (por ejemplo,
   `motion-safe:hover:-translate-y-1`). Con `prefers-reduced-motion` se conservan opacidad y color.
@@ -150,8 +177,8 @@ para animaciones e interacción. Reglas aplicadas en el código:
 - **Teclado sin animación:** Esc, flechas y atajos responden de inmediato.
 - **Modales:** entran desde `scale(0.96)` con opacidad, nunca desde `scale(0)`, y cierran más rápido
   de lo que abren. Al cerrar, el foco vuelve al elemento que los abrió.
-- **Aparición de secciones:** el hook `useFadeIn` usa `animate-fade-in`, o `animate-fade-only` si se
-  pidió reducir movimiento.
+- **Entrada del Hero:** `.hero-reveal` (con `animation-delay` escalonado); con reducir movimiento es
+  solo opacidad.
 
 ---
 
