@@ -46,7 +46,7 @@ export const pendientes = {
       "Qué es un Punto Tonal y cuántos hay.",
       "Qué elemento o deidad corresponde a cada uno.",
       "Cómo se abren o despiertan durante el juego.",
-      "Un diagrama o ilustración de los Puntos Tonal en el cuerpo.",
+      "Explicar el diagrama de los Puntos Tonal (qué representa cada emblema y cada corriente de color).",
     ],
     pistas: [
       "Calti selló los Puntos Tonales de los Tlacas; solo los Eruditos de la Magia conservan el acceso.",
@@ -112,17 +112,17 @@ export const pendientes = {
     titulo: "Criaturas del Bestiario",
     donde: "/bestiario",
     necesita: [
-      "Por cada criatura: nombre, tipo, región, nivel de desafío y descripción.",
+      "Ya hay arte de Atlanchan, Coo ñu un, Hombre Jaguar, Huay y Neke: confirmar sus nombres oficiales (salen del nombre del archivo).",
+      "Por cada criatura: tipo, región, nivel de desafío y descripción.",
       "Estadísticas: CA, puntos de golpe, velocidad, FUE, DES, CON, INT, SAB, CAR.",
       "Rasgos y acciones.",
-      "Ilustración (fondo transparente ideal).",
     ],
   },
   monturas: {
     titulo: "Fichas de Monturas",
     donde: "/monturas",
     necesita: [
-      "Nombre oficial de cada montura (hoy se usa el nombre del archivo).",
+      "Nombre oficial de cada montura (hoy se usa el nombre del archivo; incluye el Escarabajo nuevo).",
       "Tipo: voladora, acuática o terrestre.",
       "Descripción corta y rasgos de juego (velocidad, carga, habilidades).",
     ],
@@ -139,7 +139,8 @@ export const pendientes = {
     titulo: "Noticias",
     donde: "/noticias",
     necesita: [
-      "Primeras entradas: fecha, título, resumen de 2 a 3 frases e imagen.",
+      "La primera entrada (One Shot en Roll a Game CDMX) sale de los carteles: confirmar el año y si se quiere un resumen más largo.",
+      "Siguientes entradas: fecha, título, resumen de 2 a 3 frases e imagen.",
       "Temas sugeridos: avances del desarrollo, arte nuevo, playtests, eventos.",
     ],
   },
@@ -155,10 +156,12 @@ export const pendientes = {
     titulo: "Tlacas",
     donde: "/especies#tlacas",
     necesita: [
-      "Ficha de los Tlacas: descripción, rasgos y nota de juego (como las demás especies).",
-      "Etiquetas (3) e ilustración.",
+      "La descripción y la ilustración ya están (texto del creador en Tlaca.docx).",
+      "Faltan los rasgos y la nota de juego (como las demás especies).",
+      "Etiquetas (3).",
     ],
     pistas: [
+      "Texto del creador: viven en Yecan, una ciudad en la Zona del Silencio, donde la energía tonal no funciona.",
       "Intro de Especies: humanos sin una afinidad elemental predeterminada.",
       "Ficha de Tzal: los Tlacas fueron los primeros pueblos conscientes de Tonaltlan.",
       "Ficha de Calti: selló los Puntos Tonales de los Tlacas.",
@@ -182,6 +185,7 @@ export const pendientes = {
       "Revisar el Test de Afinidad en inglés: lib/affinity-test.en.ts (tono coloquial adaptado).",
       "Revisar textos de la landing e interfaz (lib/i18n.ts) y del creador (lib/textos.ts, parte en inglés).",
       "Aprobar el glosario: Punto Tonal = Tonal Point, Torre de los Sabios = Tower of the Sages, Volcán Eterno = Eternal Volcano, Volcán de la Lava Eterna = Volcano of Eternal Lava, Bosques Obscuros = Dark Forests, Espejo Obscuro = Dark Mirror, Gran Caimán Celestial = Great Celestial Caiman, Séptimo Sol = Seventh Sun, Eruditos de la Magia = Scholars of Magic, Cíclopes de Tierra = Earth Cyclopes, Gema del Ánimo = Gem of Spirit, Danzante Tonal = Tonal Dancer.",
+      "Aprobar las traducciones nuevas: Zona del Silencio = Zone of Silence, Hombre Jaguar = Jaguar Man (Bestiario), despierta tu Tonal = awaken your Tonal (Noticias).",
       "Confirmar los nombres que se dejaron en español: clases (Brujo Catemaco, Guerrero Otomi), lugares (Mictlan, Xitl, Zalan, Tl'atl) y objetos (Ixip, chimallis, ayoyotes).",
     ],
   },

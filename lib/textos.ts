@@ -40,8 +40,68 @@ export const textosEspeciesEn: typeof textosEspecies = {
   ],
 };
 
+/* ── NOTICIAS ──
+   Textos copiados de los carteles del evento (public/images/noticias/).
+   Solo se corrigieron acentos y signos de apertura; el año se dedujo de la fecha de entrega. */
+export interface Noticia {
+  id: string;
+  fecha: string;
+  titulo: string;
+  lugar: string;
+  texto: string[];
+  imagenes: { src: string; alt: string }[];
+}
+
+export const textosNoticias: Noticia[] = [
+  {
+    id: "despierta-tu-tonal-cdmx",
+    fecha: "28 y 29 de noviembre de 2026",
+    titulo: "Tonaltlan: despierta tu Tonal",
+    lugar: "One Shot en Roll a Game CDMX",
+    texto: [
+      "Conoce las clases y especies originales de Tonaltlan.",
+      "Fantasía inspirada en culturas mesoamericanas.",
+      "¿Te convertirás en el héroe de Aztlan?",
+    ],
+    imagenes: [
+      {
+        src: "/images/noticias/despierta_tu_tonal_cdmx_1.webp",
+        alt: "Cartel de Tonaltlan: despierta tu Tonal. One Shot en Roll a Game CDMX, 28 y 29 de noviembre.",
+      },
+      {
+        src: "/images/noticias/despierta_tu_tonal_cdmx_2.webp",
+        alt: "Cartel alterno del One Shot de Tonaltlan en Roll a Game CDMX, 28 y 29 de noviembre.",
+      },
+    ],
+  },
+];
+
+export const textosNoticiasEn: Noticia[] = [
+  {
+    id: "despierta-tu-tonal-cdmx",
+    fecha: "November 28 and 29, 2026",
+    titulo: "Tonaltlan: awaken your Tonal",
+    lugar: "One Shot at Roll a Game CDMX",
+    texto: [
+      "Discover the original classes and species of Tonaltlan.",
+      "Fantasy inspired by Mesoamerican cultures.",
+      "Will you become the hero of Aztlan?",
+    ],
+    imagenes: [
+      {
+        src: "/images/noticias/despierta_tu_tonal_cdmx_1.webp",
+        alt: "Poster for Tonaltlan: awaken your Tonal. One Shot at Roll a Game CDMX, November 28 and 29.",
+      },
+      {
+        src: "/images/noticias/despierta_tu_tonal_cdmx_2.webp",
+        alt: "Alternate poster for the Tonaltlan One Shot at Roll a Game CDMX, November 28 and 29.",
+      },
+    ],
+  },
+];
+
 export function getTextos(lang: "es" | "en") {
   return lang === "en"
-    ? { clases: textosClasesEn, especies: textosEspeciesEn }
-    : { clases: textosClases, especies: textosEspecies };
+    ? { clases: textosClasesEn, especies: textosEspeciesEn, noticias: textosNoticiasEn }
+    : { clases: textosClases, especies: textosEspecies, noticias: textosNoticias };
 }

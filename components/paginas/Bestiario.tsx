@@ -1,6 +1,9 @@
+import Image from "next/image";
 import SectionHeader from "@/components/compendio/SectionHeader";
 import Pendiente from "@/components/ui/Pendiente";
 import { metaPagina, ruta, t, type Lang } from "@/lib/i18n";
+import { variante } from "@/lib/imagenes";
+import { bestiaryImages } from "@/lib/site";
 
 export function metadataBestiario(lang: Lang) {
   const d = t(lang).paginas.bestiario;
@@ -36,48 +39,50 @@ export default function Bestiario({ lang }: { lang: Lang }) {
           ))}
         </div>
 
-        <div className="grid gap-10 lg:grid-cols-2">
-          {/* Plantilla: asi se vera cada criatura (ficha estilo manual de monstruos) */}
-          <article aria-label={d.ejemploAria} className="overflow-hidden rounded-3xl bg-selva-800/40 ring-1 ring-selva-700/70">
-            <div className="flex aspect-[16/9] items-center justify-center bg-gradient-to-b from-violet-500/15 via-selva-800/40 to-selva-900">
-              <span className="rounded-full border border-dashed border-selva-600 px-4 py-2 text-xs uppercase tracking-[0.2em] text-selva-500">
-                {d.ilustracion}
-              </span>
-            </div>
-            <div className="space-y-5 p-6 md:p-8" aria-hidden="true">
-              <div className="space-y-2">
-                <Campo className="h-6 w-1/2 bg-selva-600/70" />
-                <Campo className="w-1/3" />
-              </div>
-              <div className="h-px bg-gradient-to-r from-oro-400/60 to-transparent" />
-              <div className="grid grid-cols-3 gap-3 text-xs">
-                {d.stats.map((label) => (
-                  <div key={label} className="rounded-lg bg-selva-900/60 p-3">
-                    <p className="mb-2 font-semibold uppercase tracking-wider text-oro-400/90">{label}</p>
-                    <Campo className="w-2/3" />
+        {/* Cada criatura con su arte; las estadisticas quedan como esqueleto hasta tener la ficha */}
+        <ul className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {bestiaryImages.map((criatura, index) => {
+            const nombre = (lang === "en" && criatura.nombreEn) || criatura.nombre;
+            return (
+              <li key={criatura.src}>
+                <article className="h-full overflow-hidden rounded-3xl bg-selva-800/40 ring-1 ring-selva-700/70">
+                  <div className="relative aspect-[4/5] bg-gradient-to-b from-violet-500/15 via-selva-800/40 to-selva-900">
+                    <Image
+                      src={variante(criatura.src, 1200)}
+                      alt={nombre}
+                      fill
+                      priority={index < 3}
+                      className="object-contain p-6"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
+                    />
                   </div>
-                ))}
-              </div>
-              <div className="grid grid-cols-6 gap-2 text-center text-xs">
-                {d.atributos.map((attr) => (
-                  <div key={attr} className="rounded-lg bg-selva-900/60 p-2">
-                    <p className="mb-2 font-semibold text-selva-400">{attr}</p>
-                    <Campo className="mx-auto w-8" />
+                  <div className="space-y-5 p-6">
+                    <h2 className="font-display text-3xl text-jade-400">{nombre}</h2>
+                    <div className="h-px bg-gradient-to-r from-oro-400/60 to-transparent" />
+                    <div className="grid grid-cols-3 gap-3 text-xs" aria-hidden="true">
+                      {d.stats.map((label) => (
+                        <div key={label} className="rounded-lg bg-selva-900/60 p-3">
+                          <p className="mb-2 font-semibold uppercase tracking-wider text-oro-400/90">{label}</p>
+                          <Campo className="w-2/3" />
+                        </div>
+                      ))}
+                    </div>
+                    <div className="grid grid-cols-6 gap-1.5 text-center text-[11px]" aria-hidden="true">
+                      {d.atributos.map((attr) => (
+                        <div key={attr} className="rounded-lg bg-selva-900/60 px-1 py-2">
+                          <p className="mb-2 font-semibold text-selva-400">{attr}</p>
+                          <Campo className="mx-auto w-5" />
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                ))}
-              </div>
-              <div className="h-px bg-gradient-to-r from-oro-400/60 to-transparent" />
-              <div className="space-y-2">
-                <p className="text-xs font-semibold uppercase tracking-wider text-oro-400/90">{d.acciones}</p>
-                <Campo />
-                <Campo className="w-5/6" />
-                <Campo className="w-2/3" />
-              </div>
-            </div>
-          </article>
+                </article>
+              </li>
+            );
+          })}
+        </ul>
 
-          <Pendiente id="bestiario" className="h-fit" lang={lang} />
-        </div>
+        <Pendiente id="bestiario" className="mt-10" lang={lang} />
       </div>
     </div>
   );

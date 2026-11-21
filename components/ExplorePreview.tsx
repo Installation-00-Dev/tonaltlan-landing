@@ -11,8 +11,8 @@ const tiraGaleria = galleryImages.filter((src) => !src.includes("Mapa")).slice(0
 // Rutas e imagenes de cada seccion (en el orden de t(lang).explore.secciones).
 const exploreSections: { href: string; imagen?: string }[] = [
   { href: "/clases/", imagen: "/images/Brujo_Catemaco.webp" },
-  { href: "/especies/", imagen: "/images/especie_Hekari.webp" },
-  { href: "/bestiario/" },
+  { href: "/especies/", imagen: "/images/especies/Hekari_retrato.webp" },
+  { href: "/bestiario/", imagen: "/images/bestiario/Coo_nu_un.webp" },
   { href: "/monturas/", imagen: "/images/monturas/ajolote-cue.webp" },
   { href: "/deidades/", imagen: "/images/Heka.webp" },
   { href: "/galeria/" },

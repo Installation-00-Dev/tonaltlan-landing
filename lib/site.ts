@@ -58,6 +58,8 @@ export const galleryImages = [
   "/images/galeria/guerrero_rapado.webp",
   "/images/galeria/raza_fuego.webp",
   "/images/galeria/sacerdotiza_lok.webp",
+  "/images/galeria/Aztlan.webp",
+  "/images/galeria/ciudad_agua.webp",
 ];
 
 export const mountImages = [
@@ -65,6 +67,17 @@ export const mountImages = [
   "/images/monturas/Armadillo.webp",
   "/images/monturas/hormiga-mielera.webp",
   "/images/monturas/scorpion-archip.webp",
+  "/images/monturas/escarabajo.webp",
+];
+
+// ── Criaturas del Bestiario con arte (fichas pendientes) ────
+// El nombre sale del archivo original del creador. Solo se traduce si no es nombre propio.
+export const bestiaryImages: { nombre: string; nombreEn?: string; src: string }[] = [
+  { nombre: "Atlanchan", src: "/images/bestiario/Atlanchan.webp" },
+  { nombre: "Coo ñu un", src: "/images/bestiario/Coo_nu_un.webp" },
+  { nombre: "Hombre Jaguar", nombreEn: "Jaguar Man", src: "/images/bestiario/Hombre_Jaguar.webp" },
+  { nombre: "Huay", src: "/images/bestiario/Huay.webp" },
+  { nombre: "Neke", src: "/images/bestiario/Neke.webp" },
 ];
 
 /** Convierte "/images/galeria/guerrera_aguila.webp" en "Guerrera Águila". */

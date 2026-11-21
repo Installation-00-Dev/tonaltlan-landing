@@ -1,7 +1,7 @@
 import ExplorarCliente, { type Resultado } from "@/components/paginas/ExplorarCliente";
 import { getCompendio } from "@/lib/compendio";
 import { ruta, t, type Lang } from "@/lib/i18n";
-import { galleryImages, mountImages } from "@/lib/site";
+import { bestiaryImages, galleryImages, mountImages } from "@/lib/site";
 
 export function metadataExplorar(lang: Lang) {
   const d = t(lang).paginas.explorar;
@@ -37,7 +37,7 @@ export default function Explorar({ lang }: { lang: Lang }) {
     deidades: conArte(deidades).slice(0, 3),
     monturas: mountImages.slice(0, 3),
     galeria: galleryImages.filter((src) => !src.includes("Mapa")).slice(0, 3),
-    bestiario: [],
+    bestiario: bestiaryImages.slice(0, 3).map((c) => c.src),
   };
 
   const secciones = sectionsMeta.map((s) => ({ ...s, href: ruta(lang, `/${s.slug}/`) }));

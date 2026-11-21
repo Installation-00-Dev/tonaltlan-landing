@@ -3,7 +3,7 @@
    Replace with real content when ready.
    ============================================================ */
 
-import { galleryImages, mountImages } from "./site";
+import { bestiaryImages, galleryImages, mountImages } from "./site";
 
 export interface CompendiumEntry {
   name: string;
@@ -113,7 +113,7 @@ export const especies: CompendiumEntry[] = [
     deidad: "heka",
     description: "Hijos de Heka. Descendientes de la diosa del viento, ágiles, expresivos y portadores de palabras que cambian el destino.",
     tags: ["Agilidad", "Social", "Viento"],
-    coverImageSrc: "/images/especie_Hekari.webp",
+    coverImageSrc: "/images/especies/Hekari_retrato.webp",
     coverImageAlt: "He'kari de cabello ondulante y ojos verde jade en movimiento.",
     sections: [
       {
@@ -134,6 +134,8 @@ export const especies: CompendiumEntry[] = [
     deidad: "calti",
     description: "Hijos de Calti. Descendientes de la diosa de la obscuridad y el silencio, raros y misteriosos habitantes de las sombras.",
     tags: ["Sigilo", "Estrategia", "Obscuridad"],
+    coverImageSrc: "/images/especies/Hualik_retrato.webp",
+    coverImageAlt: "Hualik de piel violeta oscura entre volutas de sombra.",
     sections: [
       {
         title: "Descripción",
@@ -153,7 +155,7 @@ export const especies: CompendiumEntry[] = [
     deidad: "zilo",
     description: "Hijos de Zilo. Originarios de la península volcánica de Xitl, orgullosos, intensos y guiados por un honor inquebrantable.",
     tags: ["Fuego", "Combate frontal", "Honor"],
-    coverImageSrc: "/images/especie_fuego.webp",
+    coverImageSrc: "/images/especies/Irzak_retrato.webp",
     coverImageAlt: "Irzak de mirada ámbar y presencia ígnea forjado por la tierra volcánica.",
     sections: [
       {
@@ -174,6 +176,8 @@ export const especies: CompendiumEntry[] = [
     deidad: "lok",
     description: "Hijos de Lok. Descendientes del dios del agua, serenos, sabios y ligados a mares, cenotes y ríos.",
     tags: ["Soporte", "Exploración", "Agua"],
+    coverImageSrc: "/images/especies/Lok-Naa_retrato.webp",
+    coverImageAlt: "Lok'Naa de piel turquesa envuelto en corrientes de agua.",
     sections: [
       {
         title: "Descripción",
@@ -193,6 +197,8 @@ export const especies: CompendiumEntry[] = [
     deidad: "tzal",
     description: "Hijos de la Tzal. Descendientes de la diosa de la tierra, antiguos, nobles y pilares de su comunidad.",
     tags: ["Resistencia", "Protección", "Tierra"],
+    coverImageSrc: "/images/especies/Quinametzin_retrato.webp",
+    coverImageAlt: "Quinametzin de piel pétrea con una gema roja incrustada en la rodilla.",
     sections: [
       {
         title: "Descripción",
@@ -212,6 +218,8 @@ export const especies: CompendiumEntry[] = [
     deidad: "tohui",
     description: "Hijos de Tohuí. Descendientes del dios de la destrucción y el rayo, impredecibles y cargados de energía.",
     tags: ["Rayo", "Volátil", "Nómada"],
+    coverImageSrc: "/images/especies/Tohkari_retrato.webp",
+    coverImageAlt: "Toh'kari de cabello erizado rodeado de relámpagos.",
     sections: [
       {
         title: "Descripción",
@@ -231,6 +239,8 @@ export const especies: CompendiumEntry[] = [
     deidad: "tonatli",
     description: "Hijos de Tonatli. Portadores de la última chispa del sol, de aura luminosa y honestidad absoluta.",
     tags: ["Luz", "Sabiduría", "Honestidad"],
+    coverImageSrc: "/images/especies/Ton_retrato.webp",
+    coverImageAlt: "Ton de cabello dorado que irradia luz.",
     sections: [
       {
         title: "Descripción",
@@ -241,6 +251,21 @@ export const especies: CompendiumEntry[] = [
         title: "Nota",
         content:
           "Los Ton son una especie rara y legendaria, ideal para personajes sabios, protectores o figuras morales dentro de una historia. Su naturaleza luminosa y su sinceridad los convierte en individuos difíciles de ocultar, pero profundamente confiables y respetados.",
+      },
+    ],
+  },
+  {
+    name: "Tlacas",
+    slug: "tlaca",
+    description: "Los tlacas son una especie de vida breve, pero de voluntad inquebrantable.",
+    tags: [],
+    coverImageSrc: "/images/especies/Tlaca_retrato.webp",
+    coverImageAlt: "Una pareja de Tlacas, mujer y hombre, con atuendos mesoamericanos.",
+    sections: [
+      {
+        title: "Descripción",
+        content:
+          "Los tlacas son una especie de vida breve, pero de voluntad inquebrantable. A diferencia de otras especies de Tonaltlan, pocos logran despertar su punto tonal, por lo que han aprendido a sobrevivir mediante el ingenio, la adaptación y la perseverancia.\n\nConsiderados abandonados por los dioses, encontraron su hogar en Yecan, una ciudad en la Zona del Silencio, donde la energía tonal no funciona y las ventajas de las otras especies desaparecen.\n\nNo poseen grandes dones, pero tienen algo que pocos pueden igualar: la capacidad de adaptarse, resistir y superar cualquier adversidad.\n\nPorque en un mundo gobernado por el tonal, los tlacas demuestran que el verdadero poder también nace de la voluntad.",
       },
     ],
   },
@@ -320,6 +345,8 @@ export const deidades: CompendiumEntry[] = [
     slug: "calti",
     description: "Diosa de la Oscuridad. Guardiana del misterio, las verdades ocultas y el equilibrio entre luz y sombra.",
     tags: ["Oscuridad", "Misterio", "Equilibrio"],
+    coverImageSrc: "/images/Calti.webp",
+    coverImageAlt: "Calti, diosa de la oscuridad, sostiene su Espejo Obscuro entre sombras violetas.",
     sections: [
       {
         title: "Descripción",
@@ -333,6 +360,8 @@ export const deidades: CompendiumEntry[] = [
     slug: "tonatli",
     description: "Diosa de la Luz. Primera manifestación del pensamiento de Omet y llama eterna que sostiene la vida.",
     tags: ["Luz", "Esperanza", "Sacrificio"],
+    coverImageSrc: "/images/Tonatli.webp",
+    coverImageAlt: "Tonatli, diosa de la luz, envuelta en listones de tela clara.",
     sections: [
       {
         title: "Descripción",
@@ -346,6 +375,8 @@ export const deidades: CompendiumEntry[] = [
     slug: "tohui",
     description: "Dios del Rayo y la Destrucción. Señor de la tormenta súbita, la energía caótica y el cambio violento.",
     tags: ["Rayo", "Tormenta", "Destrucción"],
+    coverImageSrc: "/images/Tohui.webp",
+    coverImageAlt: "Tohui, dios del rayo, empuña una lanza; en su piel brillan marcas eléctricas.",
     sections: [
       {
         title: "Descripción",
@@ -360,7 +391,7 @@ export const deidades: CompendiumEntry[] = [
 export const sectionsMeta = [
   { title: "Clases",    slug: "clases",    description: "Arquetipos de héroes y villanos del mundo mesoamericano.",    count: clases.length },
   { title: "Especies",  slug: "especies",  description: "Seres nacidos del maíz, la obsidiana y el aliento de los dioses.",  count: especies.length },
-  { title: "Bestiario", slug: "bestiario", description: "Criaturas del Mictlan y bestias de selvas y montañas sagradas.",   count: bestiario.length },
+  { title: "Bestiario", slug: "bestiario", description: "Criaturas del Mictlan y bestias de selvas y montañas sagradas.",   count: bestiaryImages.length },
   { title: "Monturas",  slug: "monturas",  description: "Compañeros leales que surcan cielos, ríos y caminos ancestrales.",  count: mountImages.length },
   { title: "Deidades",  slug: "deidades",  description: "Los dioses que tejen el destino del cosmos y sus elegidos.",        count: deidades.length },
   { title: "Galería",   slug: "galeria",   description: "Arte conceptual, ilustraciones y vistazos al universo.",            count: galleryImages.length },
