@@ -1,10 +1,12 @@
 import Image from "next/image";
 import SectionHeader from "@/components/compendio/SectionHeader";
 import AnchorPage from "@/components/ui/AnchorPage";
+import Greca from "@/components/ui/Greca";
 import Pendiente from "@/components/ui/Pendiente";
 import { getFeatures } from "@/lib/features";
 import { metaPagina, t, type Lang } from "@/lib/i18n";
 import { variante } from "@/lib/imagenes";
+import { getTextos } from "@/lib/textos";
 
 export function metadataMundo(lang: Lang) {
   const d = t(lang).paginas.mundo;
@@ -13,6 +15,7 @@ export function metadataMundo(lang: Lang) {
 
 export default function Mundo({ lang }: { lang: Lang }) {
   const d = t(lang).paginas.mundo;
+  const cosmovision = getTextos(lang).mundo.cosmovision;
   const sistemaTonal = getFeatures(lang).find((feature) => feature.id === "Sistema Tonal");
   return (
     <AnchorPage
@@ -22,7 +25,20 @@ export default function Mundo({ lang }: { lang: Lang }) {
         {
           id: "cosmovision",
           title: d.secciones.cosmovision,
-          content: <Pendiente id="mundo-cosmovision" lang={lang} />,
+          content: (
+            <div className="max-w-3xl">
+              <p className="font-display text-2xl leading-snug text-selva-100 [text-wrap:balance] md:text-3xl">
+                {cosmovision.titulo}
+              </p>
+              <div className="mt-6 space-y-5 text-base leading-8 text-selva-300">
+                {cosmovision.parrafos.map((parrafo) => (
+                  <p key={parrafo}>{parrafo}</p>
+                ))}
+              </div>
+              <Greca className="mt-10 w-40 text-oro-400/60" />
+              <p className="mt-6 font-display text-2xl text-jade-400 [text-wrap:balance]">{cosmovision.cierre}</p>
+            </div>
+          ),
         },
         {
           id: "puntos-tonal",
