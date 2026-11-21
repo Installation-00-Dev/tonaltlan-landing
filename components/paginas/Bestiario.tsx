@@ -1,6 +1,5 @@
 import Image from "next/image";
 import SectionHeader from "@/components/compendio/SectionHeader";
-import Pendiente from "@/components/ui/Pendiente";
 import { metaPagina, ruta, t, type Lang } from "@/lib/i18n";
 import { variante } from "@/lib/imagenes";
 import { bestiaryImages } from "@/lib/site";
@@ -81,8 +80,6 @@ export default function Bestiario({ lang }: { lang: Lang }) {
             );
           })}
         </ul>
-
-        <Pendiente id="bestiario" className="mt-10" lang={lang} />
       </div>
     </div>
   );

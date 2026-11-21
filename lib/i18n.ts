@@ -80,7 +80,6 @@ const es = {
           { label: "Cosmovisión", href: "/mundo/#cosmovision" },
           { label: "Puntos Tonal", href: "/mundo/#puntos-tonal" },
           { label: "Regiones", href: "/mundo/#regiones" },
-          { label: "Historia", href: "/mundo/#historia" },
         ],
       },
       {
@@ -339,7 +338,6 @@ const en: Diccionario = {
           { label: "Worldview", href: "/mundo/#cosmovision" },
           { label: "Tonal Points", href: "/mundo/#puntos-tonal" },
           { label: "Regions", href: "/mundo/#regiones" },
-          { label: "History", href: "/mundo/#historia" },
         ],
       },
       {
