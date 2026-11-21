@@ -51,6 +51,16 @@ export default function Especies({ lang }: { lang: Lang }) {
               </a>
             );
           })}
+          {sinLinaje.map((especie) => (
+            <a
+              key={especie.slug}
+              href="#tlacas"
+              className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium ring-1 transition-colors ${themeFor().chip} hover:bg-selva-800`}
+            >
+              <span className={`h-2 w-2 rounded-full ${themeFor().bar}`} aria-hidden="true" />
+              {especie.name}
+            </a>
+          ))}
         </nav>
 
         <div className="space-y-14">
@@ -80,18 +90,18 @@ export default function Especies({ lang }: { lang: Lang }) {
             );
           })}
 
-          {/* Tlacas: octava especie, sin afinidad elemental (ficha pendiente) */}
-          <section id="tlacas" className="scroll-mt-28 border-t border-selva-800 pt-10">
+          {/* Tlacas: octava especie, sin linaje divino (faltan rasgos, nota y etiquetas) */}
+          <section id="tlacas" className="scroll-mt-28 space-y-6 border-t border-selva-800 pt-10">
+            {/* Alineada con las tarjetas de los linajes */}
+            <div className="grid gap-6 lg:grid-cols-12 lg:gap-10">
+              {sinLinaje.map((especie) => (
+                <div key={especie.slug} className="lg:col-span-8 lg:col-start-5">
+                  <EspecieCard especie={especie} lang={lang} />
+                </div>
+              ))}
+            </div>
             <Pendiente id="especie-tlacas" lang={lang} />
           </section>
-
-          {sinLinaje.length > 0 ? (
-            <section className="grid gap-6 md:grid-cols-2">
-              {sinLinaje.map((especie) => (
-                <EspecieCard key={especie.slug} especie={especie} lang={lang} />
-              ))}
-            </section>
-          ) : null}
         </div>
       </div>
     </div>

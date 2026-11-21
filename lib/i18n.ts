@@ -249,6 +249,8 @@ const es = {
       titulo: "El Mundo",
       secciones: { cosmovision: "Cosmovisión", puntos: "Puntos Tonal", regiones: "Regiones", historia: "Historia" },
       mapaAlt: "Mapa de Tonaltlan",
+      puntosAlt:
+        "Diagrama de los Puntos Tonal: dos figuras humanas con corrientes de energía de colores que recorren el cuerpo hasta un círculo en el pecho, y arriba los siete emblemas de los dioses.",
     },
     juega: {
       meta: "Juega - Tonaltlan",
@@ -506,6 +508,8 @@ const en: Diccionario = {
       titulo: "The World",
       secciones: { cosmovision: "Worldview", puntos: "Tonal Points", regiones: "Regions", historia: "History" },
       mapaAlt: "Map of Tonaltlan",
+      puntosAlt:
+        "Diagram of the Tonal Points: two human figures with colored currents of energy running through the body to a circle on the chest, with the seven emblems of the gods above.",
     },
     juega: {
       meta: "Play - Tonaltlan",

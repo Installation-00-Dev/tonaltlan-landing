@@ -6,7 +6,7 @@
    ============================================================ */
 
 import type { CompendiumEntry } from "./data";
-import { galleryImages, mountImages } from "./site";
+import { bestiaryImages, galleryImages, mountImages } from "./site";
 
 // ── CLASSES ─────────────────────────────────────────────────
 export const clases: CompendiumEntry[] = [
@@ -104,7 +104,7 @@ export const especies: CompendiumEntry[] = [
     deidad: "heka",
     description: "Children of Heka. Descendants of the goddess of the wind: agile, expressive bearers of words that change fate.",
     tags: ["Agility", "Social", "Wind"],
-    coverImageSrc: "/images/especie_Hekari.webp",
+    coverImageSrc: "/images/especies/Hekari_retrato.webp",
     coverImageAlt: "A He'kari with flowing hair and jade-green eyes, in motion.",
     sections: [
       {
@@ -125,6 +125,8 @@ export const especies: CompendiumEntry[] = [
     deidad: "calti",
     description: "Children of Calti. Descendants of the goddess of darkness and silence: rare, mysterious dwellers of the shadows.",
     tags: ["Stealth", "Strategy", "Darkness"],
+    coverImageSrc: "/images/especies/Hualik_retrato.webp",
+    coverImageAlt: "A dark violet-skinned Hualik amid wisps of shadow.",
     sections: [
       {
         title: "Description",
@@ -144,7 +146,7 @@ export const especies: CompendiumEntry[] = [
     deidad: "zilo",
     description: "Children of Zilo. Natives of the volcanic peninsula of Xitl: proud, intense and guided by unbreakable honor.",
     tags: ["Fire", "Frontline combat", "Honor"],
-    coverImageSrc: "/images/especie_fuego.webp",
+    coverImageSrc: "/images/especies/Irzak_retrato.webp",
     coverImageAlt: "An amber-eyed Irzak with a fiery presence, forged by the volcanic land.",
     sections: [
       {
@@ -165,6 +167,8 @@ export const especies: CompendiumEntry[] = [
     deidad: "lok",
     description: "Children of Lok. Descendants of the god of water: serene, wise and bound to seas, cenotes and rivers.",
     tags: ["Support", "Exploration", "Water"],
+    coverImageSrc: "/images/especies/Lok-Naa_retrato.webp",
+    coverImageAlt: "A turquoise-skinned Lok'Naa wrapped in currents of water.",
     sections: [
       {
         title: "Description",
@@ -184,6 +188,8 @@ export const especies: CompendiumEntry[] = [
     deidad: "tzal",
     description: "Children of Tzal. Descendants of the goddess of the earth: ancient, noble pillars of their community.",
     tags: ["Endurance", "Protection", "Earth"],
+    coverImageSrc: "/images/especies/Quinametzin_retrato.webp",
+    coverImageAlt: "A stone-skinned Quinametzin with a red gem set in their knee.",
     sections: [
       {
         title: "Description",
@@ -203,6 +209,8 @@ export const especies: CompendiumEntry[] = [
     deidad: "tohui",
     description: "Children of Tohuí. Descendants of the god of destruction and lightning: unpredictable and charged with energy.",
     tags: ["Lightning", "Volatile", "Nomad"],
+    coverImageSrc: "/images/especies/Tohkari_retrato.webp",
+    coverImageAlt: "A Toh'kari with bristling hair surrounded by lightning.",
     sections: [
       {
         title: "Description",
@@ -222,6 +230,8 @@ export const especies: CompendiumEntry[] = [
     deidad: "tonatli",
     description: "Children of Tonatli. Bearers of the last spark of the sun, with a luminous aura and absolute honesty.",
     tags: ["Light", "Wisdom", "Honesty"],
+    coverImageSrc: "/images/especies/Ton_retrato.webp",
+    coverImageAlt: "A golden-haired Ton radiating light.",
     sections: [
       {
         title: "Description",
@@ -232,6 +242,21 @@ export const especies: CompendiumEntry[] = [
         title: "Note",
         content:
           "The Ton are a rare and legendary species, ideal for wise, protective characters or moral figures within a story. Their luminous nature and sincerity make them individuals who are hard to hide, but deeply trustworthy and respected.",
+      },
+    ],
+  },
+  {
+    name: "Tlacas",
+    slug: "tlaca",
+    description: "The tlacas are a short-lived species, but of unbreakable will.",
+    tags: [],
+    coverImageSrc: "/images/especies/Tlaca_retrato.webp",
+    coverImageAlt: "A pair of Tlacas, a woman and a man, in Mesoamerican attire.",
+    sections: [
+      {
+        title: "Description",
+        content:
+          "The tlacas are a short-lived species, but of unbreakable will. Unlike other species of Tonaltlan, few manage to awaken their tonal point, so they have learned to survive through ingenuity, adaptation and perseverance.\n\nConsidered abandoned by the gods, they found their home in Yecan, a city in the Zone of Silence, where tonal energy does not work and the advantages of the other species disappear.\n\nThey have no great gifts, but they have something few can match: the ability to adapt, endure and overcome any adversity.\n\nBecause in a world ruled by the tonal, the tlacas prove that true power is also born of will.",
       },
     ],
   },
@@ -310,6 +335,8 @@ export const deidades: CompendiumEntry[] = [
     slug: "calti",
     description: "Goddess of Darkness. Keeper of mystery, of hidden truths and of the balance between light and shadow.",
     tags: ["Darkness", "Mystery", "Balance"],
+    coverImageSrc: "/images/Calti.webp",
+    coverImageAlt: "Calti, goddess of darkness, holds her Dark Mirror amid violet shadows.",
     sections: [
       {
         title: "Description",
@@ -323,6 +350,8 @@ export const deidades: CompendiumEntry[] = [
     slug: "tonatli",
     description: "Goddess of Light. First manifestation of Omet's thought and eternal flame that sustains life.",
     tags: ["Light", "Hope", "Sacrifice"],
+    coverImageSrc: "/images/Tonatli.webp",
+    coverImageAlt: "Tonatli, goddess of light, wrapped in pale ribbons of cloth.",
     sections: [
       {
         title: "Description",
@@ -336,6 +365,8 @@ export const deidades: CompendiumEntry[] = [
     slug: "tohui",
     description: "God of Lightning and Destruction. Lord of the sudden storm, chaotic energy and violent change.",
     tags: ["Lightning", "Storm", "Destruction"],
+    coverImageSrc: "/images/Tohui.webp",
+    coverImageAlt: "Tohui, god of lightning, wields a spear; electric marks glow on his skin.",
     sections: [
       {
         title: "Description",
@@ -350,7 +381,7 @@ export const deidades: CompendiumEntry[] = [
 export const sectionsMeta = [
   { title: "Classes",  slug: "clases",    description: "Archetypes of heroes and villains from the Mesoamerican world.", count: clases.length },
   { title: "Species",  slug: "especies",  description: "Beings born of maize, obsidian and the breath of the gods.",       count: especies.length },
-  { title: "Bestiary", slug: "bestiario", description: "Creatures of Mictlan and beasts of the sacred jungles and mountains.", count: bestiario.length },
+  { title: "Bestiary", slug: "bestiario", description: "Creatures of Mictlan and beasts of the sacred jungles and mountains.", count: bestiaryImages.length },
   { title: "Mounts",   slug: "monturas",  description: "Loyal companions that ride the skies, rivers and ancestral roads.", count: mountImages.length },
   { title: "Deities",  slug: "deidades",  description: "The gods who weave the fate of the cosmos and their chosen ones.",  count: deidades.length },
   { title: "Gallery",  slug: "galeria",   description: "Concept art, illustrations and glimpses into the universe.",         count: galleryImages.length },

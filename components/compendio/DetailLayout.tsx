@@ -38,7 +38,6 @@ export default function DetailLayout({
 }: DetailLayoutProps) {
   const theme = themeFor(accent);
   const dl = t(lang).paginas.detalle;
-  const isHekaCover = (coverImageSrc ?? "").includes("Heka.webp");
 
   // Compara sin acentos ni mayusculas ("Descripción" == "descripcion").
   function normalizar(value: string) {
@@ -359,18 +358,12 @@ export default function DetailLayout({
 
         {coverImageSrc && (
           <div className={`relative mb-8 overflow-hidden rounded-3xl bg-gradient-to-b ring-1 ring-selva-700/70 ${theme.glow}`}>
-            {isHekaCover && (
-              <div className="pointer-events-none absolute inset-4 rounded-2xl bg-sky-100/35" />
-            )}
             <Image
               src={variante(coverImageSrc, 1200)}
               alt={coverImageAlt ?? title}
               width={896}
               height={600}
-              className={[
-                "relative h-auto w-full",
-                isHekaCover ? "brightness-110 contrast-125" : "",
-              ].join(" ")}
+              className="relative h-auto w-full"
               sizes="(max-width: 1024px) 100vw, 896px"
             />
           </div>

@@ -37,6 +37,16 @@ export default function Mundo({ lang }: { lang: Lang }) {
                   <p className="text-base leading-8 text-selva-300">{sistemaTonal.description}</p>
                 </div>
               ) : null}
+              <figure className="overflow-hidden rounded-2xl bg-white ring-1 ring-selva-700">
+                <Image
+                  src={variante("/images/mundo/puntos_tonales.webp", 1800)}
+                  alt={d.puntosAlt}
+                  width={1600}
+                  height={1125}
+                  className="h-auto w-full"
+                  sizes="(max-width: 1024px) 100vw, 900px"
+                />
+              </figure>
               <Pendiente id="mundo-puntos-tonal" lang={lang} />
             </div>
           ),
