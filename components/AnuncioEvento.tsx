@@ -11,7 +11,7 @@ const CLOSE_MS = 150;
 
 /**
  * Anuncio del proximo evento: los carteles se abren en grande al entrar a la
- * landing y se cierran con la X, el boton "Cerrar", un clic fuera o Esc.
+ * landing (uno de ellos, al azar) y se cierran con la X, el boton "Cerrar", un clic fuera o Esc.
  * - Solo aparece mientras el evento no ha pasado (`anuncioHasta` en lib/textos.ts).
  * - Una vez cerrado, no vuelve a salir en la misma sesion del navegador.
  * - Entra desde scale(0.96) con opacidad y cierra mas rapido (clases .lightbox-*).
@@ -21,6 +21,7 @@ export default function AnuncioEvento({ lang = "es" }: { lang?: Lang }) {
   const noticia = getTextos(lang).noticias.find((n) => n.anuncioHasta);
   const clave = noticia ? `anuncio-cerrado:${noticia.id}` : "";
   const [abierto, setAbierto] = useState(false);
+  const [indice, setIndice] = useState(0);
   const [closing, setClosing] = useState(false);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
@@ -36,6 +37,7 @@ export default function AnuncioEvento({ lang = "es" }: { lang?: Lang }) {
       // Sin acceso a sessionStorage: se muestra igual.
     }
     focoPrevio.current = document.activeElement as HTMLElement | null;
+    setIndice(Math.floor(Math.random() * noticia.imagenes.length));
     setAbierto(true);
   }, [noticia, clave]);
 
@@ -87,6 +89,7 @@ export default function AnuncioEvento({ lang = "es" }: { lang?: Lang }) {
   useEffect(() => () => clearTimeout(closeTimer.current), []);
 
   if (!abierto || !noticia) return null;
+  const cartel = noticia.imagenes[indice] ?? noticia.imagenes[0];
 
   // Portal a <body>: la landing vive en un contenedor con z-10 y la barra quedaria encima.
   return createPortal(
@@ -103,18 +106,11 @@ export default function AnuncioEvento({ lang = "es" }: { lang?: Lang }) {
         className="lightbox-content flex max-h-full w-full max-w-5xl flex-col items-center"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Celular: se desliza entre carteles. Escritorio: los dos lado a lado. */}
-        <ul className="-mx-4 flex w-screen snap-x snap-mandatory gap-4 overflow-x-auto px-4 md:mx-0 md:w-auto md:justify-center md:overflow-visible md:px-0">
-          {noticia.imagenes.map((imagen, index) => (
-            <li
-              key={imagen.src}
-              className="relative aspect-[1131/1600] w-[78vw] max-w-[26rem] shrink-0 snap-center overflow-hidden rounded-2xl ring-1 ring-selva-700 md:h-[min(78vh,40rem)] md:w-auto md:max-w-none"
-            >
-              {/* Los carteles miden 1131 px de ancho: se usa el original para verlos nitidos en grande. */}
-              <Image src={imagen.src} alt={imagen.alt} fill priority={index === 0} className="object-cover" sizes="(max-width: 768px) 78vw, 450px" />
-            </li>
-          ))}
-        </ul>
+        {/* Un solo cartel, elegido al azar cada vez que se abre el anuncio */}
+        <div className="relative aspect-[1131/1600] w-[min(82vw,26rem)] overflow-hidden rounded-2xl ring-1 ring-selva-700 md:w-auto md:h-[min(78vh,42rem)]">
+          {/* Los carteles miden 1131 px de ancho: se usa el original para verlos nitidos en grande. */}
+          <Image src={cartel.src} alt={cartel.alt} fill priority className="object-cover" sizes="(max-width: 768px) 82vw, 480px" />
+        </div>
 
         <button
           type="button"

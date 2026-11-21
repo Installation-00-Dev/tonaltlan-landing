@@ -1,4 +1,4 @@
-import { MOSTRAR_NECESIDADES, pendientes, titulosEn, type PendienteId } from "@/lib/pendientes";
+import { MOSTRAR_NECESIDADES, pendientes, titulosEn, titulosFr, type PendienteId } from "@/lib/pendientes";
 import { t, type Lang } from "@/lib/i18n";
 
 interface PendienteProps {
@@ -16,7 +16,8 @@ interface PendienteProps {
 export default function Pendiente({ id, variante = "bloque", className = "", lang = "es" }: PendienteProps) {
   const info = pendientes[id];
   const d = t(lang).comun;
-  const titulo = lang === "en" ? (titulosEn[id] ?? info.titulo) : info.titulo;
+  const traducidos = { es: {}, en: titulosEn, fr: titulosFr }[lang] as Partial<Record<PendienteId, string>>;
+  const titulo = traducidos[id] ?? info.titulo;
   const mostrarNecesidades = MOSTRAR_NECESIDADES && lang === "es";
   const necesita = info.necesita;
   const pistas = "pistas" in info ? info.pistas : undefined;

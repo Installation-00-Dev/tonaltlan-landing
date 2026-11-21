@@ -63,26 +63,30 @@ compendio, avisos de privacidad, contactos y textos legales.
   original directamente para mostrar arte: usa `variante(src, anchoEnPixelesReales)` de
   `lib/imagenes.ts` (pide el doble de lo que se ve, por pantallas retina).
 
-### 3. Dos idiomas: español e inglés
+### 3. Tres idiomas: español, inglés y francés
 
-- **Rutas:** español en las de siempre (`/clases/`), inglés bajo `/en/` (`/en/clases/`). Cada idioma
-  tiene su layout raíz con su `<html lang>`: `app/(es)/layout.tsx` y `app/(en)/layout.tsx`.
+- **Rutas:** español en las de siempre (`/clases/`), inglés bajo `/en/` y francés bajo `/fr/`
+  (`/en/clases/`, `/fr/clases/`). Cada idioma tiene su layout raíz con su `<html lang>`:
+  `app/(es)/layout.tsx`, `app/(en)/layout.tsx` y `app/(fr)/layout.tsx`.
 - **Las páginas son componentes** en `components/paginas/` que reciben `lang`. Los archivos de
-  `app/(es)/…/page.tsx` y `app/(en)/en/…/page.tsx` solo los envuelven. Una página nueva necesita
-  las dos rutas.
-- **Todo texto nuevo va en ambos idiomas:**
+  `app/(es)/…/page.tsx`, `app/(en)/en/…/page.tsx` y `app/(fr)/fr/…/page.tsx` solo los envuelven.
+  Una página nueva necesita las tres rutas.
+- **Todo texto nuevo va en los tres idiomas:**
   - interfaz y landing → `lib/i18n.ts` (`t(lang)`).
-  - fichas del compendio → `lib/data.ts` y `lib/data.en.ts` (mismos slugs, imágenes y `deidad`).
+  - fichas del compendio → `lib/data.ts`, `lib/data.en.ts` y `lib/data.fr.ts` (mismos slugs, imágenes y `deidad`).
   - textos del creador → `lib/textos.ts` (`getTextos(lang)`).
   - "Tonaltlan de un Vistazo" → `lib/features.tsx` (`getFeatures(lang)`).
-  - Test de Afinidad → `lib/affinity-test.ts` y `lib/affinity-test.en.ts` (mismos ids y puntos).
+  - Test de Afinidad → `lib/affinity-test.ts`, `.en.ts` y `.fr.ts` (mismos ids y puntos).
+  - títulos de `<Pendiente>` → `titulosEn` y `titulosFr` en `lib/pendientes.ts`.
+- **Selector de idioma:** ES · EN · FR en la barra (en celular, dentro del menú). Usa `rutaEnIdioma()`
+  para abrir la misma página en el otro idioma. Los nombres y códigos viven en `IDIOMAS` (`lib/i18n.ts`).
 - **Enlaces internos:** siempre con `ruta(lang, "/ruta/")`, para no sacar al visitante de su idioma.
 - **Metadatos:** `metaPagina(lang, path, título, descripción)` agrega la URL canónica y `hreflang`.
-- **Traducción al inglés:** borrador fiel, pendiente de revisión por el creador (entrada
-  `traduccion-ingles` en `/pendientes`, con glosario). Los nombres propios mesoamericanos no se
-  traducen.
-- **Test de Afinidad:** el envío al webhook incluye `lang`, `dominantRace` y `secondaryRace` (clave
-  de especie igual en ambos idiomas).
+- **Traducciones:** borradores fieles, pendientes de revisión (entradas `traduccion-ingles` y
+  `traduccion-frances` en `/pendientes`). Glosario inglés aprobado por el creador (nov. 2026).
+  Los nombres propios mesoamericanos y de personajes no se traducen (Hombre Jaguar, Brujo Catemaco…).
+- **Test de Afinidad:** el envío al webhook incluye `lang` (`es`, `en` o `fr`), `dominantRace` y
+  `secondaryRace` (clave de especie igual en todos los idiomas).
 
 ### 4. Contenido faltante: `<Pendiente id>`
 
@@ -116,7 +120,7 @@ compendio, avisos de privacidad, contactos y textos legales.
 ### Estructura del sitio
 
 - **Navbar:** El Mundo (`/mundo`) · Compendio (`/explorar`) · Juega (`/juega`) · Galería (`/galeria`),
-  más el selector **ES / EN** y el botón dorado **Test de Afinidad**. En celular ese botón queda
+  más el selector **ES / EN / FR** y el botón dorado **Test de Afinidad**. En celular ese botón queda
   visible en la barra, junto al menú: es la puerta de entrada en convenciones.
 - **Suscríbete** vive en el footer (columna Estudio) y en la sección Newsletter de la landing.
 - **Compendio:** `/clases`, `/especies` (+ `/especies/[slug]`), `/deidades` (+ `/deidades/[slug]`),
@@ -226,6 +230,10 @@ Reglas aplicadas en el código:
 - **Teclado sin animación:** Esc, flechas y atajos responden de inmediato.
 - **Modales:** entran desde `scale(0.96)` con opacidad, nunca desde `scale(0)`, y cierran más rápido
   de lo que abren. Al cerrar, el foco vuelve al elemento que los abrió.
+- **Anuncio de evento** (`components/AnuncioEvento.tsx`, solo en la landing): abre en grande uno de los
+  carteles (al azar) de la noticia que tenga `anuncioHasta` en `lib/textos.ts`. Desaparece solo después
+  de esa fecha y, una vez cerrado, no vuelve a salir en la misma sesión. Se monta con un portal en `<body>`
+  para quedar encima de la barra.
 - **Entrada del Hero:** `.hero-reveal` (con `animation-delay` escalonado); con reducir movimiento es
   solo opacidad.
 - **Logo del Hero:** `.logo-latido` (pulso doble lento cada 4 s) y `.logo-aura` (resplandor oro/jade

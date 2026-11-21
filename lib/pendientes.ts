@@ -178,6 +178,19 @@ export const pendientes = {
       "Glosario aprobado por el creador (nov. 2026). Los nombres propios y de personajes se quedan en español (ej. Hombre Jaguar, Brujo Catemaco, Guerrero Otomi).",
     ],
   },
+  "traduccion-frances": {
+    titulo: "Revisión de la traducción al francés",
+    donde: "/fr/",
+    necesita: [
+      "Revisar el borrador en francés de las fichas: lib/data.fr.ts (clases, especies, deidades).",
+      "Revisar el Test de Afinidad en francés: lib/affinity-test.fr.ts (tono coloquial adaptado: « pote », tuteo).",
+      "Revisar textos de la landing e interfaz (lib/i18n.ts) y del creador (lib/textos.ts, parte en francés).",
+    ],
+    pistas: [
+      "Mismo criterio que el inglés: los nombres propios y de personajes se quedan en español (Hombre Jaguar, Brujo Catemaco, Guerrero Otomi, Mictlan, Tl'atl).",
+      "Glosario usado: Punto Tonal = Point Tonal, Torre de los Sabios = Tour des Sages, Volcán Eterno = Volcan Éternel, Espejo Obscuro = Miroir Obscur, Gran Caimán Celestial = Grand Caïman Céleste, Séptimo Sol = Septième Soleil, Eruditos de la Magia = Érudits de la Magie, Zona del Silencio = Zone du Silence, Bosques Obscuros = Forêts Obscures.",
+    ],
+  },
   "clases-arte": {
     titulo: "Arte de clases",
     donde: "/clases",
@@ -206,4 +219,26 @@ export const titulosEn: Partial<Record<PendienteId, string>> = {
   "deidades-arte": "Deity art",
   "clases-arte": "Class art",
   "traduccion-ingles": "English translation review",
+};
+
+/** Titulos en frances de cada placeholder (en /fr solo se muestra "Bientôt" + titulo). */
+export const titulosFr: Partial<Record<PendienteId, string>> = {
+  "mundo-cosmovision": "Cosmovision",
+  "mundo-puntos-tonal": "Points Tonal",
+  "mundo-regiones": "Régions et carte",
+  "mundo-historia": "Histoire et chronologie",
+  omet: "Omet",
+  "juega-como-empezar": "Pour commencer",
+  "juega-descargas": "Téléchargements",
+  "juega-narradores": "Ressources pour MJ",
+  bestiario: "Créatures du Bestiaire",
+  monturas: "Fiches des montures",
+  noticias: "Actualités",
+  nosotros: "À propos",
+  "especie-tlacas": "Tlacas",
+  "especies-arte": "Art des espèces",
+  "deidades-arte": "Art des divinités",
+  "clases-arte": "Art des classes",
+  "traduccion-ingles": "Relecture de la traduction anglaise",
+  "traduccion-frances": "Relecture de la traduction française",
 };

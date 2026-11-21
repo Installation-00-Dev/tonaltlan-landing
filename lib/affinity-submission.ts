@@ -10,7 +10,7 @@ export interface AffinitySubmissionPayload {
   subscribed: boolean;
   mode: "quiz" | "random";
   /** Idioma en que se respondio el Test. */
-  lang: "es" | "en";
+  lang: "es" | "en" | "fr";
 }
 
 export type AffinitySubmissionOutcome = "saved" | "failed" | "skipped";
