@@ -6,7 +6,7 @@
    Si les questions ou les points changent en espagnol, il faut aussi
    les mettre à jour ici.
    ============================================================ */
-import type { Question, RaceKey, RaceResult } from "./affinity-test";
+import type { Question, RaceKey, RaceResult, TextosVisuales } from "./affinity-test";
 
 export const questionsFr: Question[] = [
   {
@@ -158,22 +158,22 @@ export const questionsFr: Question[] = [
       {
         id: "q6-o1",
         text: "Je deviens un bouclier. Je protège ceux qui ne peuvent pas fuir.",
-        points: { Quinametzin: 3, Ton: 2, "Lok'naa": 1 },
+        points: { Quinametzin: 2, "Lok'naa": 1 },
       },
       {
         id: "q6-o2",
         text: "Je calme les gens. Je fais baisser la tension avant que quelqu'un se blesse.",
-        points: { "Lok'naa": 3, Quinametzin: 2, Ton: 1 },
+        points: { "Lok'naa": 2, "He'kari": 1 },
       },
       {
         id: "q6-o3",
         text: "Je me place à un endroit stratégique et j'organise une sortie sûre.",
-        points: { "He'kari": 3, Hualik: 2, Quinametzin: 1 },
+        points: { Hualik: 2 },
       },
       {
         id: "q6-o4",
         text: "Je fonce droit vers la source du problème. Je coupe le danger à la racine.",
-        points: { "Toh'kari": 3, Irzak: 2, Hualik: 1 },
+        points: { "Toh'kari": 2 },
       },
     ],
   },
@@ -214,22 +214,22 @@ export const questionsFr: Question[] = [
       {
         id: "q8-o1",
         text: "Je m'organise tout de suite. Je répartis les rôles et je remets de l'ordre. La stabilité d'abord.",
-        points: { Quinametzin: 3, Ton: 2, "Lok'naa": 1 },
+        points: { Quinametzin: 2, Irzak: 1 },
       },
       {
         id: "q8-o2",
         text: "Je change de plan à la volée. J'improvise vite quelque chose de nouveau.",
-        points: { "He'kari": 3, "Toh'kari": 2, "Lok'naa": 1 },
+        points: { "He'kari": 2, "Toh'kari": 1 },
       },
       {
         id: "q8-o3",
         text: "D'abord je calme le groupe. Je fais baisser la tension avant de décider.",
-        points: { "Lok'naa": 3, Quinametzin: 2, Ton: 1 },
+        points: { "Lok'naa": 2, Ton: 1 },
       },
       {
         id: "q8-o4",
         text: "Je prends le commandement, sans excuses. J'affronte ça en face.",
-        points: { Irzak: 3, Ton: 2, Quinametzin: 1 },
+        points: { Irzak: 2, Ton: 1 },
       },
     ],
   },
@@ -242,27 +242,27 @@ export const questionsFr: Question[] = [
       {
         id: "q9-o1",
         text: "Un médaillon qui vibre quand tu essaies de te mentir à toi-même.",
-        points: { Ton: 3, Quinametzin: 2, "Lok'naa": 1 },
+        points: { Ton: 2, Hualik: 1 },
       },
       {
         id: "q9-o2",
         text: "Une pièce qui ne tombe jamais deux fois du même côté.",
-        points: { "Toh'kari": 3, "He'kari": 2, Hualik: 1 },
+        points: { "Toh'kari": 2 },
       },
       {
         id: "q9-o3",
         text: "Une boussole qui indique ce que tu as le plus besoin d'apprendre.",
-        points: { "He'kari": 3, "Lok'naa": 2, Ton: 1 },
+        points: { "He'kari": 2, "Lok'naa": 1 },
       },
       {
         id: "q9-o4",
         text: "Une pierre qui s'alourdit quand le danger approche.",
-        points: { Quinametzin: 3, Hualik: 2, Ton: 1 },
+        points: { Hualik: 2 },
       },
       {
         id: "q9-o5",
         text: "Un anneau qui chauffe quand tu romps une promesse.",
-        points: { Irzak: 3, Ton: 2, Quinametzin: 1 },
+        points: { Irzak: 2, Ton: 1 },
       },
     ],
   },
@@ -275,27 +275,27 @@ export const questionsFr: Question[] = [
       {
         id: "q10-o1",
         text: "Je parle franchement et je clos l'affaire avec la vérité.",
-        points: { Ton: 3, Quinametzin: 2, "Lok'naa": 1 },
+        points: { Ton: 2, Quinametzin: 1 },
       },
       {
         id: "q10-o2",
         text: "Je bouge. Je change d'endroit, je respire un air nouveau. Je reviens différent.",
-        points: { "He'kari": 3, "Toh'kari": 2, "Lok'naa": 1 },
+        points: { "He'kari": 2, "Toh'kari": 1 },
       },
       {
         id: "q10-o3",
         text: "Je me réorganise. Je remets de l'ordre dans mes habitudes, mes tâches, quelque chose de concret qui me stabilise.",
-        points: { Quinametzin: 3, Ton: 2, Hualik: 1 },
+        points: { Quinametzin: 2, Ton: 1 },
       },
       {
         id: "q10-o4",
         text: "Je disparais un moment. Silence, distance. Je recalcule tout seul.",
-        points: { Hualik: 3, "Lok'naa": 2, "He'kari": 1 },
+        points: { Hualik: 2, "Lok'naa": 1 },
       },
       {
         id: "q10-o5",
         text: "Je fais quelque chose de physique et d'intense. Je transforme ce que j'ai vécu en force.",
-        points: { Irzak: 3, "Toh'kari": 2, Quinametzin: 1 },
+        points: { Irzak: 2, "Toh'kari": 1 },
       },
     ],
   },
@@ -315,6 +315,11 @@ export const raceResultsFr: Record<RaceKey, RaceResult> = {
     symbol: "L'Aube - Le moment où la lumière revient et où le monde se révèle.",
     object: "Un miroir qui reflète la vérité sans la déformer.",
     glyph: "Un soleil dont les rayons brillent dans toutes les directions.",
+    lectura: [
+      "Tu as une boussole intérieure qui ne se trompe presque jamais : tu sais ce qui est juste, même quand personne ne te le dit.",
+      "Les gens te font confiance plus vite que tu ne l'imagines ; ta seule présence rend tout plus clair.",
+      "Parfois tu portes plus que ta part, mais ta lumière trouve toujours le moyen de se rallumer.",
+    ],
   },
   "Toh'kari": {
     name: "TOH'KARI (Foudre) - Le Chaotique",
@@ -330,6 +335,11 @@ export const raceResultsFr: Record<RaceKey, RaceResult> = {
       "La Foudre qui frappe une montagne solitaire - Brutale, imprévisible, belle et terrifiante.",
     object: "Un éclat de métal qui garde encore une charge électrique.",
     glyph: "Un éclair en zigzag qui ne frappe jamais deux fois au même endroit.",
+    lectura: [
+      "Quand quelque chose compte pour toi, tu t'y donnes à fond ; tu ne fais jamais les choses à moitié.",
+      "Ton énergie est contagieuse : partout où tu arrives, les choses se mettent à bouger.",
+      "Même si l'impulsion l'emporte parfois, ton instinct te mène souvent exactement là où tu devais être.",
+    ],
   },
   "He'kari": {
     name: "HE'KARI (Air) - Le Visionnaire",
@@ -344,6 +354,11 @@ export const raceResultsFr: Record<RaceKey, RaceResult> = {
     symbol: "La Plume suspendue - Légère mais puissante, symbole du message et du vol.",
     object: "Un carnet que tu portes toujours sur toi.",
     glyph: "Une spirale de vent qui s'élève vers le ciel.",
+    lectura: [
+      "Ton esprit ne reste jamais immobile : tu vois des idées et des chemins là où d'autres ne voient que des problèmes.",
+      "Tu as le don des mots ; tu sais dire exactement ce qui fait que les autres se sentent compris.",
+      "Tu as besoin de liberté pour être toi-même, et pourtant tu reviens toujours vers ceux que tu aimes.",
+    ],
   },
   Quinametzin: {
     name: "QUINAMETZIN (Terre) - Le Gardien Colossal",
@@ -358,6 +373,11 @@ export const raceResultsFr: Record<RaceKey, RaceResult> = {
     symbol: "La Montagne ancienne - Haute, ferme, patiente et éternelle. Témoin et protectrice.",
     object: "Un outil de travail qui t'accompagne toujours.",
     glyph: "Une montagne aux racines profondes qui s'étendent vers le bas.",
+    lectura: [
+      "Tu es le pilier des tiens : quand tout tremble, c'est toi qu'on cherche.",
+      "Tu n'as pas besoin de faire du bruit pour te faire remarquer ; ta constance parle pour toi.",
+      "Tu prends tellement soin des autres que tu oublies parfois que toi aussi, tu mérites du repos.",
+    ],
   },
   "Lok'naa": {
     name: "LOK'NAA (Eau) - Le Guérisseur",
@@ -373,6 +393,11 @@ export const raceResultsFr: Record<RaceKey, RaceResult> = {
       "Le Cénote sacré - Profond, limpide, porteur de vie, mais aussi mystérieux et sombre dans ses profondeurs.",
     object: "Un récipient d'eau que tu portes toujours sur toi.",
     glyph: "Une onde d'eau qui se propage en cercles concentriques.",
+    lectura: [
+      "Tu ressens ce que les autres ne disent pas ; ton empathie est un don que peu possèdent.",
+      "Tu as ce talent rare d'apaiser n'importe quelle tempête rien qu'en écoutant.",
+      "Tu t'adaptes à tout comme l'eau, mais au fond, tu sais très bien qui tu es.",
+    ],
   },
   Hualik: {
     name: "HUALIK (Obscurité) - Le Veilleur des Ombres",
@@ -387,6 +412,11 @@ export const raceResultsFr: Record<RaceKey, RaceResult> = {
     symbol: "La Nouvelle Lune - L'obscurité totale. Non pas l'absence, mais une présence invisible.",
     object: "Un petit objet toujours entre tes mains (une pierre, une pièce, etc.)",
     glyph: "Une ombre qui s'étend sans forme définie.",
+    lectura: [
+      "Tu observes plus que tu ne parles, et c'est pour ça que tu comprends ce qui échappe aux autres.",
+      "Ton calme est ta force : tu sais attendre le moment exact pour agir.",
+      "Peu de gens te connaissent vraiment, mais ceux qui y parviennent trouvent quelqu'un de profondément loyal.",
+    ],
   },
   Irzak: {
     name: "IRZAK (Feu) - La Flamme de l'Honneur",
@@ -403,5 +433,29 @@ export const raceResultsFr: Record<RaceKey, RaceResult> = {
     object:
       "Un outil de forge ou un objet que tu portes toujours sur toi et qui représente ton étincelle.",
     glyph: "Une flamme qui brûle vers le haut, intense et constante.",
+    lectura: [
+      "Ta passion enflamme ceux qui t'entourent ; quand tu crois en quelque chose, tu le défends de toutes tes forces.",
+      "Ta parole vaut de l'or : si tu promets quelque chose, tu le tiens.",
+      "Tu as un caractère fort, mais aussi un cœur immense pour les tiens.",
+    ],
   },
+};
+
+/** Preguntas visuales (opciones con imagen o color): titulo, instruccion y nombres de color. */
+export const textosVisualesFr: TextosVisuales = {
+  simbolo: { title: "Choisis un symbole", scenario: "Ne réfléchis pas trop : lequel t'appelle en premier ?" },
+  color: {
+    title: "Choisis une couleur",
+    scenario: "Fais confiance à ton instinct.",
+    nombres: {
+      Ton: "Jaune soleil",
+      "Toh'kari": "Fuchsia",
+      "He'kari": "Bleu ciel",
+      Quinametzin: "Vert citron",
+      "Lok'naa": "Turquoise",
+      Hualik: "Violet",
+      Irzak: "Orange",
+    },
+  },
+  deidad: { title: "Quel dieu t'appelle ?", scenario: "Sept dieux t'observent. Choisis celui dont tu te sens le plus proche." },
 };

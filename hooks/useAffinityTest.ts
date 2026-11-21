@@ -4,12 +4,13 @@ import { submitAffinityToWebhook } from "@/lib/affinity-submission";
 import type { Lang } from "@/lib/i18n";
 import {
     EMAIL_REGEX,
-    RACE_KEYS,
     applyOptionPoints,
     calculateResults,
     createInitialScores,
     getQuestions,
+    preferenciasVisuales,
     prepareQuestionsForSession,
+    puntosAleatorios,
     type CalculatedResults,
     type Option,
     type Question,
@@ -19,7 +20,6 @@ import {
 import { useRef, useState } from "react";
 
 const AUTO_ADVANCE_DELAY_MS = 180;
-const RANDOM_SCORE_POOL = [12, 10, 8, 6, 4, 3, 2] as const;
 
 export type TestPhase = "intro" | "questions" | "results";
 export type AffinityMode = "quiz" | "random";
@@ -124,23 +124,12 @@ export function useAffinityTest(lang: Lang = "es") {
     return true;
   }
 
-  function buildRandomScores(): Scores {
-    const randomizedRaces = [...RACE_KEYS].sort(() => Math.random() - 0.5);
-    const nextScores = createInitialScores();
-
-    randomizedRaces.forEach((race, index) => {
-      nextScores[race] = RANDOM_SCORE_POOL[index] ?? 0;
-    });
-
-    return nextScores;
-  }
-
   function startRandomAffinity() {
     if (!validateUser()) {
       return false;
     }
 
-    const randomScores = buildRandomScores();
+    const randomScores = puntosAleatorios();
     const randomResults = calculateResults(randomScores, lang);
 
     setSessionQuestions([]);
@@ -218,11 +207,9 @@ export function useAffinityTest(lang: Lang = "es") {
 
     nextScores = applyOptionPoints(nextScores, nextOption, 1);
 
-    setAnswers((previousAnswers) => {
-      const nextAnswers = [...previousAnswers];
-      nextAnswers[currentQuestionIndex] = optionId;
-      return nextAnswers;
-    });
+    const nextAnswers = [...answers];
+    nextAnswers[currentQuestionIndex] = optionId;
+    setAnswers(nextAnswers);
 
     setScores(nextScores);
     setIsAutoAdvancing(true);
@@ -234,7 +221,7 @@ export function useAffinityTest(lang: Lang = "es") {
         return;
       }
 
-      const finalResults = calculateResults(nextScores, lang);
+      const finalResults = calculateResults(nextScores, lang, preferenciasVisuales(sessionQuestions, nextAnswers));
       setResults(finalResults);
       setAffinityMode("quiz");
       setPhase("results");
@@ -272,7 +259,7 @@ export function useAffinityTest(lang: Lang = "es") {
       return true;
     }
 
-    const finalResults = calculateResults(scores, lang);
+    const finalResults = calculateResults(scores, lang, preferenciasVisuales(sessionQuestions, answers));
     setResults(finalResults);
     setAffinityMode("quiz");
     setPhase("results");

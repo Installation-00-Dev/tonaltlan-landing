@@ -5,7 +5,7 @@
    Generado a partir del archivo en espanol: si cambian preguntas o
    puntos alla, hay que actualizar aqui tambien.
    ============================================================ */
-import type { Question, RaceKey, RaceResult } from "./affinity-test";
+import type { Question, RaceKey, RaceResult, TextosVisuales } from "./affinity-test";
 
 export const questionsEn: Question[] = [
   {
@@ -157,22 +157,22 @@ export const questionsEn: Question[] = [
       {
         id: "q6-o1",
         text: "I become a shield. I protect those who can't run.",
-        points: { Quinametzin: 3, Ton: 2, "Lok'naa": 1 },
+        points: { Quinametzin: 2, "Lok'naa": 1 },
       },
       {
         id: "q6-o2",
         text: "I calm people down. I lower the tension before someone gets hurt.",
-        points: { "Lok'naa": 3, Quinametzin: 2, Ton: 1 },
+        points: { "Lok'naa": 2, "He'kari": 1 },
       },
       {
         id: "q6-o3",
         text: "I move to a strategic spot and coordinate a safe way out.",
-        points: { "He'kari": 3, Hualik: 2, Quinametzin: 1 },
+        points: { Hualik: 2 },
       },
       {
         id: "q6-o4",
         text: "I charge straight at the source of the trouble. I cut the danger off at the root.",
-        points: { "Toh'kari": 3, Irzak: 2, Hualik: 1 },
+        points: { "Toh'kari": 2 },
       },
     ],
   },
@@ -213,22 +213,22 @@ export const questionsEn: Question[] = [
       {
         id: "q8-o1",
         text: "I organize right away. I assign roles and restore order. Stability first.",
-        points: { Quinametzin: 3, Ton: 2, "Lok'naa": 1 },
+        points: { Quinametzin: 2, Irzak: 1 },
       },
       {
         id: "q8-o2",
         text: "I change plans on the fly. I improvise something new, fast.",
-        points: { "He'kari": 3, "Toh'kari": 2, "Lok'naa": 1 },
+        points: { "He'kari": 2, "Toh'kari": 1 },
       },
       {
         id: "q8-o3",
         text: "First I calm the group down. I lower the tension before deciding.",
-        points: { "Lok'naa": 3, Quinametzin: 2, Ton: 1 },
+        points: { "Lok'naa": 2, Ton: 1 },
       },
       {
         id: "q8-o4",
         text: "I take command, no excuses. I face it head-on.",
-        points: { Irzak: 3, Ton: 2, Quinametzin: 1 },
+        points: { Irzak: 2, Ton: 1 },
       },
     ],
   },
@@ -241,27 +241,27 @@ export const questionsEn: Question[] = [
       {
         id: "q9-o1",
         text: "A medallion that vibrates when you try to lie to yourself.",
-        points: { Ton: 3, Quinametzin: 2, "Lok'naa": 1 },
+        points: { Ton: 2, Hualik: 1 },
       },
       {
         id: "q9-o2",
         text: "A coin that never lands the same way twice.",
-        points: { "Toh'kari": 3, "He'kari": 2, Hualik: 1 },
+        points: { "Toh'kari": 2 },
       },
       {
         id: "q9-o3",
         text: "A compass that points to what you most need to learn.",
-        points: { "He'kari": 3, "Lok'naa": 2, Ton: 1 },
+        points: { "He'kari": 2, "Lok'naa": 1 },
       },
       {
         id: "q9-o4",
         text: "A stone that grows heavy when danger is near.",
-        points: { Quinametzin: 3, Hualik: 2, Ton: 1 },
+        points: { Hualik: 2 },
       },
       {
         id: "q9-o5",
         text: "A ring that heats up when you break a promise.",
-        points: { Irzak: 3, Ton: 2, Quinametzin: 1 },
+        points: { Irzak: 2, Ton: 1 },
       },
     ],
   },
@@ -274,27 +274,27 @@ export const questionsEn: Question[] = [
       {
         id: "q10-o1",
         text: "I speak plainly and close the matter with the truth.",
-        points: { Ton: 3, Quinametzin: 2, "Lok'naa": 1 },
+        points: { Ton: 2, Quinametzin: 1 },
       },
       {
         id: "q10-o2",
         text: "I move. I change places, breathe new air. I come back different.",
-        points: { "He'kari": 3, "Toh'kari": 2, "Lok'naa": 1 },
+        points: { "He'kari": 2, "Toh'kari": 1 },
       },
       {
         id: "q10-o3",
         text: "I reorganize. I sort out habits, tasks, something tangible that steadies me.",
-        points: { Quinametzin: 3, Ton: 2, Hualik: 1 },
+        points: { Quinametzin: 2, Ton: 1 },
       },
       {
         id: "q10-o4",
         text: "I disappear for a while. Silence, distance. I recalculate everything alone.",
-        points: { Hualik: 3, "Lok'naa": 2, "He'kari": 1 },
+        points: { Hualik: 2, "Lok'naa": 1 },
       },
       {
         id: "q10-o5",
         text: "I do something physical and intense. I turn what I lived through into strength.",
-        points: { Irzak: 3, "Toh'kari": 2, Quinametzin: 1 },
+        points: { Irzak: 2, "Toh'kari": 1 },
       },
     ],
   },
@@ -314,6 +314,11 @@ export const raceResultsEn: Record<RaceKey, RaceResult> = {
     symbol: "The Dawn - The moment when light returns and the world is revealed.",
     object: "A mirror that reflects the truth without distortion.",
     glyph: "A sun with rays shining in every direction.",
+    lectura: [
+      "You have an inner compass that almost never fails: you know what's right, even when no one tells you.",
+      "People trust you faster than you imagine; your presence alone makes everything feel clearer.",
+      "Sometimes you carry more than your share, but your light always finds a way to shine again.",
+    ],
   },
   "Toh'kari": {
     name: "TOH'KARI (Lightning) - The Chaotic",
@@ -329,6 +334,11 @@ export const raceResultsEn: Record<RaceKey, RaceResult> = {
       "The Lightning That Strikes a Lonely Mountain - Brutal, unpredictable, beautiful and terrifying.",
     object: "A shard of metal that still holds an electric charge.",
     glyph: "A zigzag bolt that never strikes the same place twice.",
+    lectura: [
+      "When something matters to you, you give it everything; you don't do things halfway.",
+      "Your energy is contagious: wherever you go, things start to move.",
+      "Even if impulse sometimes gets the better of you, your instinct usually takes you exactly where you needed to be.",
+    ],
   },
   "He'kari": {
     name: "HE'KARI (Air) - The Visionary",
@@ -343,6 +353,11 @@ export const raceResultsEn: Record<RaceKey, RaceResult> = {
     symbol: "The Suspended Feather - Light but powerful, a symbol of message and flight.",
     object: "A notebook you always carry with you.",
     glyph: "A spiral of wind rising toward the sky.",
+    lectura: [
+      "Your mind never stands still: you see ideas and paths where others only see problems.",
+      "You have a gift for words; you know exactly what to say to make others feel understood.",
+      "You need freedom to be yourself, and still you always come back for the people you love.",
+    ],
   },
   Quinametzin: {
     name: "QUINAMETZIN (Earth) - The Colossal Guardian",
@@ -357,6 +372,11 @@ export const raceResultsEn: Record<RaceKey, RaceResult> = {
     symbol: "The Ancient Mountain - Tall, firm, patient and eternal. Witness and protector.",
     object: "A work tool that is always with you.",
     glyph: "A mountain with deep roots spreading downward.",
+    lectura: [
+      "You are the pillar of your people: when everything shakes, they look for you.",
+      "You don't need to make noise to be noticed; your steadiness speaks for you.",
+      "You care so much for others that sometimes you forget you deserve rest too.",
+    ],
   },
   "Lok'naa": {
     name: "LOK'NAA (Water) - The Healer",
@@ -372,6 +392,11 @@ export const raceResultsEn: Record<RaceKey, RaceResult> = {
       "The Sacred Cenote - Deep, clear, a bearer of life, but also mysterious and dark at its depths.",
     object: "A water vessel you always carry with you.",
     glyph: "A ripple of water flowing in concentric circles.",
+    lectura: [
+      "You feel what others don't say; your empathy is a gift few people have.",
+      "You have the rare ability to calm any storm just by listening.",
+      "You adapt to everything like water, but deep down you know exactly who you are.",
+    ],
   },
   Hualik: {
     name: "HUALIK (Darkness) - The Shadow Watcher",
@@ -386,6 +411,11 @@ export const raceResultsEn: Record<RaceKey, RaceResult> = {
     symbol: "The New Moon - Total darkness. Not absence, but invisible presence.",
     object: "A small object that is always in your hands (a stone, a coin, etc.)",
     glyph: "A shadow that spreads with no defined shape.",
+    lectura: [
+      "You observe more than you speak, and that's why you understand what others miss.",
+      "Your calm is your strength: you know how to wait for the exact moment to act.",
+      "Few people truly know you, but those who do find someone deeply loyal.",
+    ],
   },
   Irzak: {
     name: "IRZAK (Fire) - The Flame of Honor",
@@ -402,5 +432,29 @@ export const raceResultsEn: Record<RaceKey, RaceResult> = {
     object:
       "A forging tool or an object you always carry with you that represents your spark.",
     glyph: "A flame burning upward, intense and steady.",
+    lectura: [
+      "Your passion lights up the people around you; when you believe in something, you defend it with everything.",
+      "Your word is gold: if you promise something, you keep it.",
+      "You have a strong temper, but also a huge heart for the people you love.",
+    ],
   },
+};
+
+/** Preguntas visuales (opciones con imagen o color): titulo, instruccion y nombres de color. */
+export const textosVisualesEn: TextosVisuales = {
+  simbolo: { title: "Pick a symbol", scenario: "Don't overthink it: which one calls to you first?" },
+  color: {
+    title: "Pick a color",
+    scenario: "Trust your instinct.",
+    nombres: {
+      Ton: "Sun yellow",
+      "Toh'kari": "Fuchsia",
+      "He'kari": "Sky blue",
+      Quinametzin: "Lime green",
+      "Lok'naa": "Turquoise",
+      Hualik: "Violet",
+      Irzak: "Orange",
+    },
+  },
+  deidad: { title: "Which god calls to you?", scenario: "Seven gods are watching you. Choose the one you feel closest to." },
 };
