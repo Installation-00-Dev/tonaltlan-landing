@@ -1,39 +1,46 @@
 /* ============================================================
-   IDIOMAS (es / en)
+   IDIOMAS (es / en / fr)
    - Español vive en las rutas de siempre (/clases/).
-   - Inglés vive bajo /en (/en/clases/).
+   - Inglés vive bajo /en (/en/clases/) y francés bajo /fr (/fr/clases/).
    - Los textos de interfaz y de la landing estan aqui. El espanol se
-     copio tal cual de los componentes; el ingles es traduccion pendiente
-     de revision por el creador (ver /pendientes).
+     copio tal cual de los componentes; ingles y frances son traducciones
+     pendientes de revision (ver /pendientes).
    ============================================================ */
 
-export type Lang = "es" | "en";
-export const LANGS: Lang[] = ["es", "en"];
+export type Lang = "es" | "en" | "fr";
+export const LANGS: Lang[] = ["es", "en", "fr"];
+
+/** Nombre corto y nombre propio de cada idioma (para el selector). */
+export const IDIOMAS: Record<Lang, { corto: string; nombre: string; locale: string }> = {
+  es: { corto: "ES", nombre: "Español", locale: "es_MX" },
+  en: { corto: "EN", nombre: "English", locale: "en_US" },
+  fr: { corto: "FR", nombre: "Français", locale: "fr_FR" },
+};
 
 /** Ruta en el idioma pedido: ruta("en", "/clases/") -> "/en/clases/". */
 export function ruta(lang: Lang, path: string): string {
   if (lang === "es") return path;
-  if (path === "/") return "/en/";
-  if (path.startsWith("/#")) return `/en/${path.slice(1)}`;
-  return `/en${path}`;
+  if (path === "/") return `/${lang}/`;
+  if (path.startsWith("/#")) return `/${lang}/${path.slice(1)}`;
+  return `/${lang}${path}`;
 }
 
-/** Idioma de una ruta y la misma ruta en el otro idioma (para el selector ES/EN). */
+/** Idioma de una ruta: "/fr/clases/" -> "fr". */
 export function idiomaDeRuta(pathname: string): Lang {
-  return pathname === "/en" || pathname.startsWith("/en/") ? "en" : "es";
+  const prefijo = LANGS.find((l) => l !== "es" && (pathname === `/${l}` || pathname.startsWith(`/${l}/`)));
+  return prefijo ?? "es";
 }
 
-export function rutaEnOtroIdioma(pathname: string): string {
-  if (idiomaDeRuta(pathname) === "en") {
-    const sin = pathname.replace(/^\/en/, "");
-    return sin === "" ? "/" : sin;
-  }
-  return ruta("en", pathname || "/");
+/** La misma pagina en otro idioma (para el selector ES / EN / FR). */
+export function rutaEnIdioma(pathname: string, destino: Lang): string {
+  const actual = idiomaDeRuta(pathname);
+  const base = actual === "es" ? pathname || "/" : pathname.replace(new RegExp(`^/${actual}`), "") || "/";
+  return ruta(destino, base);
 }
 
 /**
  * Metadatos de una pagina: titulo, descripcion y `alternates` para que Google
- * relacione ambas versiones (es / en). `path` es la ruta en espanol.
+ * relacione las versiones (es / en / fr). `path` es la ruta en espanol.
  */
 export function metaPagina(lang: Lang, path: string, title: string, description?: string) {
   return {
@@ -41,7 +48,7 @@ export function metaPagina(lang: Lang, path: string, title: string, description?
     ...(description ? { description } : {}),
     alternates: {
       canonical: ruta(lang, path),
-      languages: { es: path, en: ruta("en", path), "x-default": path },
+      languages: { es: path, en: ruta("en", path), fr: ruta("fr", path), "x-default": path },
     },
   };
 }
@@ -65,8 +72,7 @@ const es = {
     inicioAria: "Tonaltlan - Inicio",
     abrir: "Abrir menú",
     cerrar: "Cerrar menú",
-    otroIdioma: "EN",
-    otroIdiomaAria: "Ver el sitio en inglés",
+    idiomaAria: "Idioma",
   },
   footer: {
     produccion: "Una producción de Cuevas & Quetzales",
@@ -323,8 +329,7 @@ const en: Diccionario = {
     inicioAria: "Tonaltlan - Home",
     abrir: "Open menu",
     cerrar: "Close menu",
-    otroIdioma: "ES",
-    otroIdiomaAria: "Ver el sitio en español",
+    idiomaAria: "Language",
   },
   footer: {
     produccion: "A Cuevas & Quetzales production",
@@ -560,7 +565,263 @@ const en: Diccionario = {
   },
 };
 
-const diccionarios: Record<Lang, Diccionario> = { es, en };
+/* ── FRANÇAIS (traduction en attente de relecture) ── */
+const fr: Diccionario = {
+  meta: {
+    title: "Tonaltlan - Jeu de rôle sur table mésoaméricain",
+    description:
+      "Plongez dans Tonaltlan, un jeu de rôle sur table inspiré de la mythologie et de la culture mésoaméricaines. Forgez votre destin parmi les pyramides, les codex et les dieux ancestraux.",
+    ogDescription: "Forgez votre destin dans un monde inspiré de la mythologie mésoaméricaine.",
+    keywords: ["Tonaltlan", "JDR", "jeu de rôle", "mésoaméricain", "aztèque", "jeu de société"],
+  },
+  nav: {
+    mundo: "Le Monde",
+    compendio: "Compendium",
+    juega: "Jouer",
+    galeria: "Galerie",
+    cta: "Test d'Affinité",
+    explorar: "Explorer",
+    aria: "Navigation principale",
+    inicioAria: "Tonaltlan - Accueil",
+    abrir: "Ouvrir le menu",
+    cerrar: "Fermer le menu",
+    idiomaAria: "Langue",
+  },
+  footer: {
+    produccion: "Une production Cuevas & Quetzales",
+    mapa: "Plan du site",
+    contacto: "Contact",
+    copyright: "© 2025 Tonaltlan. Tous droits réservés.",
+    columnas: [
+      {
+        titulo: "Le Monde",
+        links: [
+          { label: "Cosmovision", href: "/mundo/#cosmovision" },
+          { label: "Points Tonal", href: "/mundo/#puntos-tonal" },
+          { label: "Régions", href: "/mundo/#regiones" },
+        ],
+      },
+      {
+        titulo: "Compendium",
+        links: [
+          { label: "Classes", href: "/clases/" },
+          { label: "Espèces", href: "/especies/" },
+          { label: "Divinités", href: "/deidades/" },
+          { label: "Bestiaire", href: "/bestiario/" },
+          { label: "Montures", href: "/monturas/" },
+        ],
+      },
+      {
+        titulo: "Jouer",
+        links: [
+          { label: "Pour commencer", href: "/juega/#como-empezar" },
+          { label: "Test d'Affinité", href: "/afinidad/" },
+          { label: "Téléchargements", href: "/juega/#descargas" },
+          { label: "Guides pour MJ", href: "/juega/#narradores" },
+        ],
+      },
+      {
+        titulo: "Studio",
+        links: [
+          { label: "À propos", href: "/nosotros/" },
+          { label: "Actualités", href: "/noticias/" },
+          { label: "S'abonner", href: "/#newsletter" },
+          { label: "Galerie", href: "/galeria/" },
+          { label: "Contact", href: "/#contacto" },
+        ],
+      },
+    ],
+    contactos: {
+      "arquitectotonal@tonaltlan.com": "Conception du jeu et contenu créatif",
+      "guardacodices@tonaltlan.com": "Communauté et événements",
+      "tecnomante@tonaltlan.com": "Assistance technique et numérique",
+    },
+  },
+  hero: {
+    titulo: "Votre aventure commence",
+    logoAlt: "Logo de Tonaltlan",
+  },
+  about: {
+    titulo: "Qu'est-ce que Tonaltlan ?",
+    parrafos: [
+      "Tonaltlan est un jeu de rôle sur table qui se déroule dans un monde inspiré des grandes civilisations mésoaméricaines. Il utilise un système de règles basé sur Dungeons & Dragons 2024, adapté pour refléter la cosmovision et les forces divines de cet univers.",
+      "Les joueurs y incarnent des héros choisis par les dieux, capables d'éveiller les Points Tonal, des centres d'énergie spirituelle qui relient les mortels aux divinités élémentaires et à l'équilibre du cosmos.",
+      "Parcourez des jungles sacrées, explorez des temples oubliés et affrontez des créatures venues du Mictlan lui-même. Chaque session est l'occasion de tisser des légendes qui vivront dans les codex de votre table, tout en découvrant de nouvelles classes, créatures, régions et traditions inspirées de la cosmovision mésoaméricaine.",
+    ],
+    imagenAlt: "Une pyramide d'onyx à Tonaltlan entourée d'énergie mystique",
+  },
+  explore: {
+    titulo: "Explorer Tonaltlan",
+    subtitulo: "Découvrez les secrets du monde mésoaméricain à travers son compendium vivant.",
+    secciones: [
+      { title: "Classes", description: "Guerriers, prêtres, sorciers et autres archétypes du monde ancien.", tags: ["Combat", "Magie", "Discrétion"] },
+      { title: "Espèces", description: "Des êtres nés du maïs, de l'obsidienne et du souffle des dieux.", tags: ["Humains", "Nahual", "Tlalocan"] },
+      { title: "Bestiaire", description: "Créatures du Mictlan et bêtes des jungles et montagnes sacrées.", tags: ["Mictlan", "Jungle", "Céleste"] },
+      { title: "Montures", description: "De fidèles compagnons qui parcourent les cieux, les rivières et les routes ancestrales.", tags: ["Volantes", "Aquatiques", "Terrestres"] },
+      { title: "Divinités", description: "Les dieux qui tissent le destin du cosmos et leurs élus.", tags: ["Création", "Destruction", "Équilibre"] },
+      { title: "Galerie", description: "Art conceptuel, illustrations et aperçus de l'univers de Tonaltlan.", tags: ["Art", "Concepts", "Cartes"] },
+    ],
+  },
+  vistazo: { titulo: "Tonaltlan en un coup d'œil" },
+  newsletter: {
+    titulo: "Restez informé",
+    texto: "Recevez les nouvelles sur les sorties, les nouveaux suppléments et les événements exclusifs directement dans votre boîte mail.",
+    gracias: "Bientôt disponible - Merci de votre intérêt",
+    label: "Adresse e-mail",
+    placeholder: "vous@email.com",
+    boton: "S'abonner",
+    privacidad:
+      "Nous respectons votre vie privée. Vous pouvez vous désabonner à tout moment. Consultez notre politique de confidentialité pour plus d'informations.",
+  },
+  comun: {
+    proximamente: "Bientôt",
+    compendio: "Compendium",
+    ruta: "Fil d'Ariane",
+    secciones: "Sections",
+    anterior: "Précédent",
+    siguiente: "Suivant",
+    cerrar: "Fermer",
+    ampliar: "Agrandir",
+    tipo: "Type",
+    nota: "Note",
+    descripcion: "Description",
+    clasesAria: "Classes",
+    noEncontrado: "Introuvable - Tonaltlan",
+    queSeNecesita: "Ce qu'il faut",
+    yaMencionado: "Déjà mentionné sur le site",
+    montura: "Monture",
+    ilustracion: "Illustration",
+  },
+  paginas: {
+    clases: {
+      meta: "Classes - Tonaltlan",
+      metaDesc: "Découvrez les classes jouables de Tonaltlan : guerriers, prêtresses, nahuales et plus encore.",
+    },
+    especies: {
+      meta: "Espèces - Tonaltlan",
+      metaDesc: "Explorez les espèces jouables de Tonaltlan : humains, ahuizotl, tlalocan-i et plus encore.",
+      hijosDe: "Enfants de",
+      linajesAria: "Lignées",
+      volver: "Retour aux Espèces",
+      linaje: "Lignée",
+      sufijo: "Espèces",
+    },
+    deidades: {
+      meta: "Divinités - Tonaltlan",
+      metaDesc: "Les dieux du panthéon mésoaméricain de Tonaltlan et leurs domaines.",
+      titulo: "Divinités",
+      subtitulo: "Les dieux qui tissent le destin du cosmos et leurs élus.",
+      panteonAria: "Panthéon",
+      suLinaje: "Sa lignée",
+      leer: "Lire son histoire",
+      volver: "Retour aux Divinités",
+      sufijo: "Divinités",
+    },
+    detalle: {
+      fichaRapida: "Fiche rapide",
+      rol: "Rôle",
+      atributo: "Caractéristique clé",
+      porDefinir: "À définir",
+      dado: "Dé de vie",
+      salvaciones: "Jets de sauvegarde",
+      armaduras: "Armures",
+      armas: "Armes",
+      rolDefecto: "Classe de fantasy pour Tonaltlan.",
+    },
+    bestiario: {
+      meta: "Bestiaire - Tonaltlan",
+      titulo: "Bestiaire",
+      subtitulo: "Créatures du Mictlan et bêtes des jungles et montagnes sacrées.",
+      region: "Région",
+      regiones: ["Mictlan", "Jungle", "Céleste"],
+      ejemploAria: "Exemple de fiche de créature",
+      ilustracion: "Illustration",
+      stats: ["CA", "PV", "Vitesse"],
+      atributos: ["FOR", "DEX", "CON", "INT", "SAG", "CHA"],
+      acciones: "Actions",
+    },
+    monturas: {
+      meta: "Montures - Tonaltlan",
+      metaDesc: "Montures volantes, terrestres et aquatiques du monde de Tonaltlan.",
+      titulo: "Montures",
+      subtitulo: "Une galerie visuelle des montures du monde de Tonaltlan.",
+    },
+    galeria: {
+      meta: "Galerie - Tonaltlan",
+      metaDesc: "Illustrations et art visuel de l'univers de Tonaltlan.",
+      titulo: "Galerie",
+      subtitulo: "Toutes les illustrations disponibles du monde de Tonaltlan.",
+    },
+    explorar: {
+      titulo: "Explorer Tonaltlan",
+      subtitulo:
+        "Le compendium vivant du monde mésoaméricain. Cherchez parmi les classes, espèces, créatures, montures et divinités.",
+      buscar: "Rechercher dans le compendium...",
+      entradas: "entrées",
+      sinResultados: "Aucun résultat pour",
+      tipos: { clase: "Classe", especie: "Espèce", deidad: "Divinité" },
+    },
+    mundo: {
+      meta: "Le Monde - Tonaltlan",
+      metaDesc: "Cosmovision, Points Tonal, régions et histoire du monde de Tonaltlan.",
+      titulo: "Le Monde",
+      secciones: { cosmovision: "Cosmovision", puntos: "Points Tonal", regiones: "Régions", historia: "Histoire" },
+      mapaAlt: "Carte de Tonaltlan",
+      puntosAlt:
+        "Diagramme des Points Tonal : deux silhouettes humaines parcourues de courants d'énergie colorés jusqu'à un cercle sur la poitrine, avec au-dessus les sept emblèmes des dieux.",
+    },
+    juega: {
+      meta: "Jouer - Tonaltlan",
+      metaDesc:
+        "Tout ce qu'il faut pour jouer à Tonaltlan : pour commencer, le Test d'Affinité, les téléchargements et les ressources pour MJ.",
+      titulo: "Jouer",
+      secciones: { empezar: "Pour commencer", afinidad: "Test d'Affinité", descargas: "Téléchargements", narradores: "Maîtres du jeu" },
+      afinidadTitulo: "Test d'Affinité",
+      afinidadTexto:
+        "Découvrez avec quelle énergie raciale résonne votre énergie tonale. Répondez aux questions et trouvez votre affinité dans le monde de Tonaltlan.",
+    },
+    nosotros: {
+      meta: "À propos - Cuevas & Quetzales",
+      metaDesc: "Cuevas & Quetzales, le studio derrière Tonaltlan.",
+      titulo: "À propos",
+      equipo: "Équipe",
+      foto: "Photo",
+    },
+    noticias: {
+      meta: "Actualités - Tonaltlan",
+      metaDesc: "Les avancées du développement de Tonaltlan.",
+      titulo: "Actualités",
+    },
+    afinidad: {
+      meta: "Test d'Affinité - Tonaltlan",
+      titulo: "Test d'Affinité",
+      subtitulo:
+        "Découvrez avec quelle énergie raciale résonne votre énergie tonale. Répondez aux questions et trouvez votre affinité dans le monde de Tonaltlan.",
+      paso: "Étape",
+      de: "sur",
+      nombre: "Nom",
+      nombrePlaceholder: "Votre nom",
+      email: "E-mail",
+      emailPlaceholder: "vous@email.com",
+      comenzar: "Commencer le test",
+      aleatoria: "Affinité aléatoire",
+      aleatoriaNota: "Mode fortune cookie : on vous donne une affinité au hasard, sans répondre aux questions.",
+      pregunta: "Question",
+      ayuda: "Touchez une option pour avancer automatiquement. Utilisez Précédent pour corriger.",
+      anterior: "Précédent",
+      modoAleatorio: "Mode Fortune Aléatoire",
+      tuAfinidad: "votre affinité",
+      revelada: "Affinité révélée",
+      simbolos: "Symboles sacrés",
+      guardando: "Enregistrement de votre résultat...",
+      guardado: "Résultat enregistré.",
+      error: "Impossible d'enregistrer votre résultat. Réessayez dans quelques secondes.",
+      reiniciar: "Refaire le test",
+    },
+  },
+};
+
+const diccionarios: Record<Lang, Diccionario> = { es, en, fr };
 
 /** Textos de interfaz en el idioma pedido. */
 export function t(lang: Lang): Diccionario {

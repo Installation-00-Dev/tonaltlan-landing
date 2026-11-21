@@ -496,17 +496,19 @@ export const raceResults: Record<RaceKey, RaceResult> = {
 };
 
 import { questionsEn, raceResultsEn } from "./affinity-test.en";
+import { questionsFr, raceResultsFr } from "./affinity-test.fr";
 
-type Idioma = "es" | "en";
+type Idioma = "es" | "en" | "fr";
 
 /** Preguntas del Test en el idioma pedido (mismos ids y puntos en ambos). */
 export function getQuestions(lang: Idioma = "es"): Question[] {
-  return lang === "en" ? questionsEn : questions;
+  return { es: questions, en: questionsEn, fr: questionsFr }[lang];
 }
 
 const ETIQUETAS: Record<Idioma, { secciones: [string, string, string, string]; simbolos: [string, string, string] }> = {
   es: { secciones: ["Esencia", "Virtud", "Sombra", "Camino"], simbolos: ["Símbolo Mítico", "Objeto Cotidiano", "Glifo"] },
   en: { secciones: ["Essence", "Virtue", "Shadow", "Path"], simbolos: ["Mythic Symbol", "Everyday Object", "Glyph"] },
+  fr: { secciones: ["Essence", "Vertu", "Ombre", "Chemin"], simbolos: ["Symbole mythique", "Objet du quotidien", "Glyphe"] },
 };
 
 export function prepareQuestionsForSession(source: Question[] = questions): Question[] {
@@ -527,7 +529,7 @@ export function applyOptionPoints(scores: Scores, option: Option, direction: 1 |
 }
 
 export function calculateResults(scores: Scores, lang: Idioma = "es"): CalculatedResults {
-  const narrativas = lang === "en" ? raceResultsEn : raceResults;
+  const narrativas = { es: raceResults, en: raceResultsEn, fr: raceResultsFr }[lang];
   const etiquetas = ETIQUETAS[lang];
   const weightedRanking = RACE_KEYS.map((race) => ({
     race,

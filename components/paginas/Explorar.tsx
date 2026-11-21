@@ -10,7 +10,7 @@ export function metadataExplorar(lang: Lang) {
     description: d.subtitulo,
     alternates: {
       canonical: ruta(lang, "/explorar/"),
-      languages: { es: "/explorar/", en: ruta("en", "/explorar/"), "x-default": "/explorar/" },
+      languages: { es: "/explorar/", en: ruta("en", "/explorar/"), fr: ruta("fr", "/explorar/"), "x-default": "/explorar/" },
     },
   };
 }

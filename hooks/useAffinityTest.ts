@@ -1,6 +1,7 @@
 "use client";
 
 import { submitAffinityToWebhook } from "@/lib/affinity-submission";
+import type { Lang } from "@/lib/i18n";
 import {
     EMAIL_REGEX,
     RACE_KEYS,
@@ -49,9 +50,14 @@ const MENSAJES = {
     email: "Enter your email to continue.",
     emailInvalido: "Enter a valid email.",
   },
+  fr: {
+    nombre: "Saisissez votre nom pour continuer.",
+    email: "Saisissez votre e-mail pour continuer.",
+    emailInvalido: "Saisissez un e-mail valide.",
+  },
 };
 
-export function useAffinityTest(lang: "es" | "en" = "es") {
+export function useAffinityTest(lang: Lang = "es") {
   const questions = getQuestions(lang);
   const mensajes = MENSAJES[lang];
   const [phase, setPhase] = useState<TestPhase>("intro");

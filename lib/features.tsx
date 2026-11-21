@@ -61,10 +61,19 @@ const textosEn: Record<string, { title: string; description: string }> = {
   "Guías para Narradores": { title: "Game Master Guides", description: "Tips, random tables, adventure generators and resources designed to make running games as exciting as playing them. Ideal for game masters of every level." },
 };
 
-export function getFeatures(lang: "es" | "en"): (Feature & { id: string })[] {
+/* ── FRANÇAIS (traduction en attente de relecture) ── */
+const textosFr: Record<string, { title: string; description: string }> = {
+  "Sistema Tonal": { title: "Système Tonal", description: "Un système unique d'énergie spirituelle qui relie votre personnage aux forces cosmiques mésoaméricaines. Votre énergie tonale définit vos capacités, votre destin et votre relation avec les dieux." },
+  "Códices de Personaje": { title: "Codex de personnage", description: "Des fiches de personnage inspirées des codex préhispaniques. Consignez les exploits, les capacités tonales et l'histoire de votre héros dans un format visuel qui honore la tradition mésoaméricaine." },
+  "Construye tu Mundo": { title: "Construis ton monde", description: "Des outils pour que les maîtres du jeu créent leurs propres royaumes, factions et légendes dans l'univers de Tonaltlan. Chaque table est un monde unique, plein de possibilités." },
+  "Guías para Narradores": { title: "Guides pour MJ", description: "Conseils, tables aléatoires, générateurs d'aventures et ressources conçus pour que mener une partie soit aussi passionnant que d'y jouer. Idéal pour les maîtres du jeu de tous niveaux." },
+};
+
+export function getFeatures(lang: "es" | "en" | "fr"): (Feature & { id: string })[] {
+  const traducidos = { es: {}, en: textosEn, fr: textosFr }[lang] as Record<string, { title: string; description: string }>;
   return features.map((feature) => ({
     ...feature,
     id: feature.title,
-    ...(lang === "en" ? textosEn[feature.title] : {}),
+    ...traducidos[feature.title],
   }));
 }

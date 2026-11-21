@@ -132,8 +132,68 @@ export const textosNoticiasEn: Noticia[] = [
   },
 ];
 
-export function getTextos(lang: "es" | "en") {
-  return lang === "en"
-    ? { clases: textosClasesEn, especies: textosEspeciesEn, noticias: textosNoticiasEn, mundo: textosMundoEn }
-    : { clases: textosClases, especies: textosEspecies, noticias: textosNoticias, mundo: textosMundo };
+/* ── FRANÇAIS (traduction en attente de relecture par le créateur) ── */
+export const textosClasesFr: typeof textosClases = {
+  titulo: "Classes originales",
+  intro: [
+    "Forge ton propre chemin avec des classes uniques créées pour l'univers de Tonaltlan, inspirées des cultures et des mythologies mésoaméricaines.",
+    "Chaque classe offre une identité, un style de combat et des capacités qui lui sont propres. Découvre différentes spécialisations liées aux sept éléments et développe des pouvoirs qui transformeront ta façon de jouer.",
+  ],
+  cierre: "Et ce n'est que le début… Tous les chemins n'ont pas encore été révélés.",
+};
+
+export const textosEspeciesFr: typeof textosEspecies = {
+  titulo: "Espèces jouables",
+  lema: "Huit espèces, huit façons de vivre Tonaltlan.",
+  intro: [
+    "Sept espèces nées sous l'influence des divinités élémentaires, chacune avec sa propre histoire, sa culture et son lien avec le Tonal. À elles s'ajoutent les Tlacas, des humains sans affinité élémentaire prédéterminée.",
+  ],
+};
+
+export const textosMundoFr: typeof textosMundo = {
+  cosmovision: {
+    titulo: "L'origine de tout, l'équilibre des sept dieux.",
+    parrafos: [
+      "Avant que le temps n'existe, il n'y avait qu'Omet, l'essence primordiale de l'équilibre et de la dualité. De sa volonté naquirent sept dieux, chacun porteur d'une force fondamentale : Tonatli, la Lumière ; Calti, l'Obscurité ; Tohui, la Foudre ; Tzal, la Terre ; Heka, l'Air ; Zilo, le Feu ; et Lok, l'Eau.",
+      "Chaque divinité tenta de créer son propre monde, mais ses créations finirent consumées par le déséquilibre de leurs propres éléments. Ils comprirent alors qu'aucune force ne pouvait soutenir la vie à elle seule.",
+      "Pour unir leurs créations, Tonatli offrit son existence et se transforma en Soleil, devenant la lumière éternelle qui permettrait aux mondes de fleurir. Sous la conduite de Tzalcóatl, le Caïman Céleste, les astres trouvèrent leur mouvement et leur place dans le firmament.",
+      "Ainsi naquit l'équilibre qui soutient Tonaltlan, un monde où les dieux, leurs éléments et le destin des mortels restent entrelacés.",
+    ],
+    cierre: "Sept dieux. Sept éléments. Un monde né du sacrifice.",
+  },
+};
+
+export const textosNoticiasFr: Noticia[] = [
+  {
+    id: "despierta-tu-tonal-cdmx",
+    fecha: "28 et 29 novembre 2026",
+    titulo: "Tonaltlan : éveille ton Tonal",
+    lugar: "One Shot à Roll a Game CDMX",
+    anuncioHasta: "2026-11-30T06:00:00Z",
+    texto: [
+      "Découvre les classes et espèces originales de Tonaltlan.",
+      "Une fantasy inspirée des cultures mésoaméricaines.",
+      "Deviendras-tu le héros d'Aztlan ?",
+    ],
+    imagenes: [
+      {
+        src: "/images/noticias/despierta_tu_tonal_cdmx_1.webp",
+        alt: "Affiche de Tonaltlan : éveille ton Tonal. One Shot à Roll a Game CDMX, 28 et 29 novembre.",
+      },
+      {
+        src: "/images/noticias/despierta_tu_tonal_cdmx_2.webp",
+        alt: "Affiche alternative du One Shot de Tonaltlan à Roll a Game CDMX, 28 et 29 novembre.",
+      },
+    ],
+  },
+];
+
+const textosPorIdioma = {
+  es: { clases: textosClases, especies: textosEspecies, noticias: textosNoticias, mundo: textosMundo },
+  en: { clases: textosClasesEn, especies: textosEspeciesEn, noticias: textosNoticiasEn, mundo: textosMundoEn },
+  fr: { clases: textosClasesFr, especies: textosEspeciesFr, noticias: textosNoticiasFr, mundo: textosMundoFr },
+};
+
+export function getTextos(lang: "es" | "en" | "fr") {
+  return textosPorIdioma[lang];
 }

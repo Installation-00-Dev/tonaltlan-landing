@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { idiomaDeRuta, ruta, rutaEnOtroIdioma, t } from "@/lib/i18n";
+import { IDIOMAS, LANGS, idiomaDeRuta, ruta, rutaEnIdioma, t, type Lang } from "@/lib/i18n";
 
 // Rutas que cuentan como "dentro" de cada seccion para marcarla activa.
 const sectionMatches: Record<string, string[]> = {
@@ -19,9 +19,35 @@ function normalize(path: string) {
 }
 
 function isActive(pathname: string, href: string) {
-  // Las rutas en ingles (/en/...) se comparan sin el prefijo.
-  const current = normalize(pathname.replace(/^\/en(?=\/|$)/, "") || "/");
+  // Las rutas en otros idiomas (/en/..., /fr/...) se comparan sin el prefijo.
+  const current = normalize(pathname.replace(/^\/(en|fr)(?=\/|$)/, "") || "/");
   return (sectionMatches[href] ?? [href]).some((base) => current === base || current.startsWith(`${base}/`));
+}
+
+/** ES · EN · FR: la pagina actual en cada idioma. El idioma activo queda marcado. */
+function SelectorIdioma({ pathname, lang, aria, className = "" }: { pathname: string; lang: Lang; aria: string; className?: string }) {
+  return (
+    <div role="group" aria-label={aria} className={`flex items-center rounded-full p-0.5 ring-1 ring-selva-600 ${className}`}>
+      {LANGS.map((destino) => {
+        const activo = destino === lang;
+        return (
+          <a
+            key={destino}
+            href={rutaEnIdioma(pathname, destino)}
+            hrefLang={destino}
+            lang={destino}
+            aria-label={IDIOMAS[destino].nombre}
+            aria-current={activo ? "true" : undefined}
+            className={`inline-flex min-h-[36px] min-w-[40px] items-center justify-center rounded-full px-2.5 text-sm font-semibold transition duration-150 motion-safe:active:scale-[0.97] ${
+              activo ? "bg-selva-700 text-jade-200" : "text-selva-300 hover:text-jade-200"
+            }`}
+          >
+            {IDIOMAS[destino].corto}
+          </a>
+        );
+      })}
+    </div>
+  );
 }
 
 export default function Navbar() {
@@ -35,8 +61,7 @@ export default function Navbar() {
     { label: d.galeria, base: "/galeria", href: ruta(lang, "/galeria/") },
   ];
   const navCta = { label: d.cta, href: ruta(lang, "/afinidad/") };
-  const otroIdioma = rutaEnOtroIdioma(pathname);
-  const isHome = normalize(pathname) === "/" || normalize(pathname) === "/en";
+  const isHome = ["/", "/en", "/fr"].includes(normalize(pathname));
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
@@ -127,14 +152,7 @@ export default function Navbar() {
               );
             })}
           </ul>
-          <a
-            href={otroIdioma}
-            hrefLang={lang === "es" ? "en" : "es"}
-            aria-label={d.otroIdiomaAria}
-            className="ml-4 inline-flex min-h-[40px] min-w-[40px] items-center justify-center rounded-full px-3 text-sm font-semibold text-selva-200 ring-1 ring-selva-600 transition duration-150 hover:text-jade-200 hover:ring-jade-400/60 motion-safe:active:scale-[0.97]"
-          >
-            {d.otroIdioma}
-          </a>
+          <SelectorIdioma pathname={pathname} lang={lang} aria={d.idiomaAria} className="ml-4" />
           <Link
             href={navCta.href}
             className="ml-2 inline-flex items-center rounded-full bg-oro-400 px-5 py-2.5 text-sm font-semibold text-selva-950 shadow-md shadow-oro-500/20 transition duration-150 hover:bg-oro-300 motion-safe:active:scale-[0.97]"
@@ -145,14 +163,6 @@ export default function Navbar() {
 
         {/* Movil: Test de Afinidad siempre visible + menu */}
         <div className="flex items-center gap-2 lg:hidden">
-          <a
-            href={otroIdioma}
-            hrefLang={lang === "es" ? "en" : "es"}
-            aria-label={d.otroIdiomaAria}
-            className="inline-flex min-h-[40px] min-w-[40px] items-center justify-center rounded-full px-3 text-sm font-semibold text-selva-200 ring-1 ring-selva-600 transition duration-150 hover:text-jade-200 hover:ring-jade-400/60 motion-safe:active:scale-[0.97]"
-          >
-            {d.otroIdioma}
-          </a>
           <Link
             href={navCta.href}
             className="inline-flex min-h-[40px] items-center rounded-full bg-oro-400 px-4 text-sm font-semibold text-selva-950 transition duration-150 hover:bg-oro-300 motion-safe:active:scale-[0.97]"
@@ -181,6 +191,9 @@ export default function Navbar() {
       {/* Mobile menu */}
       {menuOpen && (
         <div id="menu-movil" className="border-t border-selva-800 lg:hidden">
+          <div className="px-6 pt-4">
+            <SelectorIdioma pathname={pathname} lang={lang} aria={d.idiomaAria} className="w-fit" />
+          </div>
           <ul className="flex flex-col gap-1 px-6 py-4">
             {mainNav.map((link) => {
               const active = isActive(pathname, link.base);
