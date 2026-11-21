@@ -1,3 +1,4 @@
+import AnuncioEvento from "@/components/AnuncioEvento";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import ExplorePreview from "@/components/ExplorePreview";
@@ -29,6 +30,7 @@ export default function Inicio({ lang }: { lang: Lang }) {
     <div className="relative overflow-hidden bg-selva-900 text-selva-100 selection:bg-oro-400/30 selection:text-oro-100">
 
       <div className="relative z-10">
+        <AnuncioEvento lang={lang} />
         <Hero lang={lang} />
         <About lang={lang} />
         <Divider />

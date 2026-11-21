@@ -40,9 +40,36 @@ export const textosEspeciesEn: typeof textosEspecies = {
   ],
 };
 
+/* ── EL MUNDO: Cosmovisión ── (texto del creador) */
+export const textosMundo = {
+  cosmovision: {
+    titulo: "El origen de todo, el equilibrio de los siete dioses.",
+    parrafos: [
+      "Antes de que existiera el tiempo, solo estaba Omet, la esencia primordial del equilibrio y la dualidad. De su voluntad nacieron siete dioses, cada uno portador de una fuerza fundamental: Tonatli, la Luz; Calti, la Obscuridad; Tohui, el Rayo; Tzal, la Tierra; Heka, el Aire; Zilo, el Fuego; y Lok, el Agua.",
+      "Cada deidad intentó crear su propio mundo, pero sus creaciones terminaron consumidas por el desequilibrio de sus propios elementos. Comprendieron entonces que ninguna fuerza podía sostener la vida por sí sola.",
+      "Para unir sus creaciones, Tonatli entregó su existencia y se transformó en el Sol, convirtiéndose en la luz eterna que permitiría florecer a los mundos. Bajo la guía de Tzalcóatl, el Caimán Celeste, los astros encontraron su movimiento y su lugar en el firmamento.",
+      "Así nació el equilibrio que sostiene a Tonaltlan, un mundo donde los dioses, sus elementos y el destino de los mortales permanecen entrelazados.",
+    ],
+    cierre: "Siete dioses. Siete elementos. Un mundo nacido del sacrificio.",
+  },
+};
+
+export const textosMundoEn: typeof textosMundo = {
+  cosmovision: {
+    titulo: "The origin of everything, the balance of the seven gods.",
+    parrafos: [
+      "Before time existed, there was only Omet, the primordial essence of balance and duality. From Omet's will seven gods were born, each the bearer of a fundamental force: Tonatli, Light; Calti, Darkness; Tohui, Lightning; Tzal, Earth; Heka, Air; Zilo, Fire; and Lok, Water.",
+      "Each deity tried to create their own world, but their creations ended up consumed by the imbalance of their own elements. They understood then that no force could sustain life on its own.",
+      "To unite their creations, Tonatli gave up her existence and became the Sun, the eternal light that would allow the worlds to flourish. Under the guidance of Tzalcóatl, the Celestial Caiman, the stars found their motion and their place in the firmament.",
+      "Thus was born the balance that sustains Tonaltlan, a world where the gods, their elements and the fate of mortals remain intertwined.",
+    ],
+    cierre: "Seven gods. Seven elements. A world born of sacrifice.",
+  },
+};
+
 /* ── NOTICIAS ──
    Textos copiados de los carteles del evento (public/images/noticias/).
-   Solo se corrigieron acentos y signos de apertura; el año se dedujo de la fecha de entrega. */
+   Solo se corrigieron acentos y signos de apertura. Año confirmado por el creador. */
 export interface Noticia {
   id: string;
   fecha: string;
@@ -50,6 +77,8 @@ export interface Noticia {
   lugar: string;
   texto: string[];
   imagenes: { src: string; alt: string }[];
+  /** Si existe, los carteles se abren en grande al entrar a la landing hasta esta fecha (ISO, UTC). */
+  anuncioHasta?: string;
 }
 
 export const textosNoticias: Noticia[] = [
@@ -58,6 +87,8 @@ export const textosNoticias: Noticia[] = [
     fecha: "28 y 29 de noviembre de 2026",
     titulo: "Tonaltlan: despierta tu Tonal",
     lugar: "One Shot en Roll a Game CDMX",
+    // Fin del 29 de noviembre en la Ciudad de México (UTC-6).
+    anuncioHasta: "2026-11-30T06:00:00Z",
     texto: [
       "Conoce las clases y especies originales de Tonaltlan.",
       "Fantasía inspirada en culturas mesoamericanas.",
@@ -82,6 +113,7 @@ export const textosNoticiasEn: Noticia[] = [
     fecha: "November 28 and 29, 2026",
     titulo: "Tonaltlan: awaken your Tonal",
     lugar: "One Shot at Roll a Game CDMX",
+    anuncioHasta: "2026-11-30T06:00:00Z",
     texto: [
       "Discover the original classes and species of Tonaltlan.",
       "Fantasy inspired by Mesoamerican cultures.",
@@ -102,6 +134,6 @@ export const textosNoticiasEn: Noticia[] = [
 
 export function getTextos(lang: "es" | "en") {
   return lang === "en"
-    ? { clases: textosClasesEn, especies: textosEspeciesEn, noticias: textosNoticiasEn }
-    : { clases: textosClases, especies: textosEspecies, noticias: textosNoticias };
+    ? { clases: textosClasesEn, especies: textosEspeciesEn, noticias: textosNoticiasEn, mundo: textosMundoEn }
+    : { clases: textosClases, especies: textosEspecies, noticias: textosNoticias, mundo: textosMundo };
 }

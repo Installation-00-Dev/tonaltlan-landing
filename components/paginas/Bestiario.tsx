@@ -42,7 +42,7 @@ export default function Bestiario({ lang }: { lang: Lang }) {
         {/* Cada criatura con su arte; las estadisticas quedan como esqueleto hasta tener la ficha */}
         <ul className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {bestiaryImages.map((criatura, index) => {
-            const nombre = (lang === "en" && criatura.nombreEn) || criatura.nombre;
+            const nombre = criatura.nombre;
             return (
               <li key={criatura.src}>
                 <article className="h-full overflow-hidden rounded-3xl bg-selva-800/40 ring-1 ring-selva-700/70">

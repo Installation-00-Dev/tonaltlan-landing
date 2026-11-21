@@ -31,12 +31,7 @@ export const pendientes = {
     titulo: "Cosmovisión",
     donde: "/mundo#cosmovision",
     necesita: [
-      "Texto introductorio: cómo se creó el mundo y quiénes lo sostienen (2 a 4 párrafos).",
-      "Una ilustración horizontal para encabezar la sección.",
-    ],
-    pistas: [
-      "Las fichas de deidades ya mencionan a Omet, el principio dual, y a los siete dioses.",
-      "Tonatli se convierte en el Séptimo Sol.",
+      "El texto ya está (El origen de todo). Falta una ilustración horizontal para encabezar la sección (opcional).",
     ],
   },
   "mundo-puntos-tonal": {
@@ -81,6 +76,9 @@ export const pendientes = {
     necesita: [
       "Ficha de Omet: descripción, dominios y relación con los siete dioses.",
       "Ilustración (opcional: puede ser un símbolo en lugar de un retrato).",
+    ],
+    pistas: [
+      "Cosmovisión (/mundo): Omet es la esencia primordial del equilibrio y la dualidad; de su voluntad nacieron los siete dioses.",
     ],
   },
   "juega-como-empezar": {
@@ -127,19 +125,10 @@ export const pendientes = {
       "Descripción corta y rasgos de juego (velocidad, carga, habilidades).",
     ],
   },
-  galeria: {
-    titulo: "Datos de la Galería",
-    donde: "/galeria",
-    necesita: [
-      "Título oficial de cada ilustración (hoy se usa el nombre del archivo).",
-      "Nombre del artista y una línea de descripción por obra.",
-    ],
-  },
   noticias: {
     titulo: "Noticias",
     donde: "/noticias",
     necesita: [
-      "La primera entrada (One Shot en Roll a Game CDMX) sale de los carteles: confirmar el año y si se quiere un resumen más largo.",
       "Siguientes entradas: fecha, título, resumen de 2 a 3 frases e imagen.",
       "Temas sugeridos: avances del desarrollo, arte nuevo, playtests, eventos.",
     ],
@@ -184,9 +173,9 @@ export const pendientes = {
       "Revisar el borrador en inglés de las fichas: lib/data.en.ts (clases, especies, deidades).",
       "Revisar el Test de Afinidad en inglés: lib/affinity-test.en.ts (tono coloquial adaptado).",
       "Revisar textos de la landing e interfaz (lib/i18n.ts) y del creador (lib/textos.ts, parte en inglés).",
-      "Aprobar el glosario: Punto Tonal = Tonal Point, Torre de los Sabios = Tower of the Sages, Volcán Eterno = Eternal Volcano, Volcán de la Lava Eterna = Volcano of Eternal Lava, Bosques Obscuros = Dark Forests, Espejo Obscuro = Dark Mirror, Gran Caimán Celestial = Great Celestial Caiman, Séptimo Sol = Seventh Sun, Eruditos de la Magia = Scholars of Magic, Cíclopes de Tierra = Earth Cyclopes, Gema del Ánimo = Gem of Spirit, Danzante Tonal = Tonal Dancer.",
-      "Aprobar las traducciones nuevas: Zona del Silencio = Zone of Silence, Hombre Jaguar = Jaguar Man (Bestiario), despierta tu Tonal = awaken your Tonal (Noticias).",
-      "Confirmar los nombres que se dejaron en español: clases (Brujo Catemaco, Guerrero Otomi), lugares (Mictlan, Xitl, Zalan, Tl'atl) y objetos (Ixip, chimallis, ayoyotes).",
+    ],
+    pistas: [
+      "Glosario aprobado por el creador (nov. 2026). Los nombres propios y de personajes se quedan en español (ej. Hombre Jaguar, Brujo Catemaco, Guerrero Otomi).",
     ],
   },
   "clases-arte": {
@@ -210,7 +199,6 @@ export const titulosEn: Partial<Record<PendienteId, string>> = {
   "juega-narradores": "Game master resources",
   bestiario: "Bestiary creatures",
   monturas: "Mount profiles",
-  galeria: "Gallery details",
   noticias: "News",
   nosotros: "About us",
   "especie-tlacas": "Tlacas",

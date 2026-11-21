@@ -71,11 +71,11 @@ export const mountImages = [
 ];
 
 // ── Criaturas del Bestiario con arte (fichas pendientes) ────
-// El nombre sale del archivo original del creador. Solo se traduce si no es nombre propio.
-export const bestiaryImages: { nombre: string; nombreEn?: string; src: string }[] = [
+// El nombre sale del archivo original del creador. Es nombre propio: igual en ambos idiomas.
+export const bestiaryImages: { nombre: string; src: string }[] = [
   { nombre: "Atlanchan", src: "/images/bestiario/Atlanchan.webp" },
   { nombre: "Coo ñu un", src: "/images/bestiario/Coo_nu_un.webp" },
-  { nombre: "Hombre Jaguar", nombreEn: "Jaguar Man", src: "/images/bestiario/Hombre_Jaguar.webp" },
+  { nombre: "Hombre Jaguar", src: "/images/bestiario/Hombre_Jaguar.webp" },
   { nombre: "Huay", src: "/images/bestiario/Huay.webp" },
   { nombre: "Neke", src: "/images/bestiario/Neke.webp" },
 ];

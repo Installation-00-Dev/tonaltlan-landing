@@ -1,6 +1,5 @@
 import GalleryGrid from "@/components/compendio/GalleryGrid";
 import SectionHeader from "@/components/compendio/SectionHeader";
-import Pendiente from "@/components/ui/Pendiente";
 import { metaPagina, t, type Lang } from "@/lib/i18n";
 import { galleryImages } from "@/lib/site";
 
@@ -16,7 +15,6 @@ export default function Galeria({ lang }: { lang: Lang }) {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <SectionHeader lang={lang} eyebrow="Tonaltlan" title={d.titulo} subtitle={d.subtitulo} />
         <GalleryGrid images={galleryImages} lang={lang} />
-        <Pendiente id="galeria" className="mt-10" lang={lang} />
       </div>
     </div>
   );
