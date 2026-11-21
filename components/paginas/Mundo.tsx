@@ -2,7 +2,6 @@ import Image from "next/image";
 import SectionHeader from "@/components/compendio/SectionHeader";
 import AnchorPage from "@/components/ui/AnchorPage";
 import Greca from "@/components/ui/Greca";
-import Pendiente from "@/components/ui/Pendiente";
 import { getFeatures } from "@/lib/features";
 import { metaPagina, t, type Lang } from "@/lib/i18n";
 import { variante } from "@/lib/imagenes";
@@ -63,7 +62,6 @@ export default function Mundo({ lang }: { lang: Lang }) {
                   sizes="(max-width: 1024px) 100vw, 900px"
                 />
               </figure>
-              <Pendiente id="mundo-puntos-tonal" lang={lang} />
             </div>
           ),
         },
@@ -83,14 +81,8 @@ export default function Mundo({ lang }: { lang: Lang }) {
                   />
                 </div>
               </figure>
-              <Pendiente id="mundo-regiones" lang={lang} />
             </div>
           ),
-        },
-        {
-          id: "historia",
-          title: d.secciones.historia,
-          content: <Pendiente id="mundo-historia" lang={lang} />,
         },
       ]}
     />

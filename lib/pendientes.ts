@@ -62,7 +62,7 @@ export const pendientes = {
   },
   "mundo-historia": {
     titulo: "Historia y cronología",
-    donde: "/mundo#historia",
+    donde: "/mundo (sección retirada hasta tener contenido)",
     necesita: [
       "Las grandes eras o eventos en orden, con un título y 1 o 2 frases cada uno.",
     ],

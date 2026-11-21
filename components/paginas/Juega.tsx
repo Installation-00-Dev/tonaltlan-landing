@@ -79,7 +79,6 @@ export default function Juega({ lang }: { lang: Lang }) {
                 <FeatureCard id="Guías para Narradores" lang={lang} />
                 <FeatureCard id="Construye tu Mundo" lang={lang} />
               </div>
-              <Pendiente id="juega-narradores" lang={lang} />
             </div>
           ),
         },
