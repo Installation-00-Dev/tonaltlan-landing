@@ -5,7 +5,7 @@ import Pendiente from "@/components/ui/Pendiente";
 import { getCompendio } from "@/lib/compendio";
 import type { CompendiumEntry } from "@/lib/data";
 import { metaPagina, ruta, t, type Lang } from "@/lib/i18n";
-import { themeFor } from "@/lib/site";
+import { emblemas, themeFor } from "@/lib/site";
 import { getTextos } from "@/lib/textos";
 import { variante } from "@/lib/imagenes";
 
@@ -73,8 +73,14 @@ export default function Especies({ lang }: { lang: Lang }) {
                 className="grid scroll-mt-28 gap-6 border-t border-selva-800 pt-10 lg:grid-cols-12 lg:gap-10"
               >
                 <div className="lg:col-span-4">
-                  <span className={`mb-4 block h-1 w-12 rounded-full ${theme.bar}`} aria-hidden="true" />
-                  <h2 className={`mb-2 font-display text-3xl ${theme.text}`}>{d.hijosDe} {deidad.name}</h2>
+                  <div className="mb-3 flex items-center gap-3">
+                    {emblemas[deidad.slug] ? (
+                      <Image src={emblemas[deidad.slug]} alt="" width={134} height={134} className="h-12 w-12 shrink-0" />
+                    ) : (
+                      <span className={`block h-1 w-12 rounded-full ${theme.bar}`} aria-hidden="true" />
+                    )}
+                    <h2 className={`font-display text-3xl ${theme.text}`}>{d.hijosDe} {deidad.name}</h2>
+                  </div>
                   <p className="mb-4 text-sm leading-relaxed text-selva-400">{deidad.description}</p>
                   <Link href={ruta(lang, `/deidades/${deidad.slug}/`)} className={`text-sm font-medium ${theme.text} hover:underline`}>
                     {deidad.name} →

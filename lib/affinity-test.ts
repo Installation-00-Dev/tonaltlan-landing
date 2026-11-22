@@ -495,7 +495,7 @@ export const ORDEN_SESION: Array<number | "simbolo" | "color" | "deidad"> = ["si
 /** Puntos de las opciones visuales (cada opcion apunta a una sola especie). */
 const PUNTOS_VISUALES = 3;
 
-/** Emblema de cada dios (recortado del diagrama de Puntos Tonal). */
+/** Emblema del dios de cada especie: misma asignación que `emblemas` en lib/site.ts (confirmada por el diseñador). */
 const EMBLEMA: Record<RaceKey, string> = {
   Ton: "/images/mundo/puntos_tonales_emblema_luz.webp",
   "Toh'kari": "/images/mundo/puntos_tonales_emblema_rayo.webp",

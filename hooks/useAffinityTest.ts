@@ -1,6 +1,6 @@
 "use client";
 
-import { submitAffinityToWebhook, type AffinitySubmissionPayload } from "@/lib/affinity-submission";
+import { guardarEnvio, vaciarCola, type AffinitySubmissionPayload } from "@/lib/affinity-submission";
 import {
   EMAIL_REGEX,
   applyOptionPoints,
@@ -58,66 +58,6 @@ const MENSAJES = {
     emailInvalido: "Saisis un e-mail valide.",
   },
 };
-
-/* ── Guardado a prueba de Wi-Fi de convención ──────────────────
-   1. Se reintenta 2 veces con espera, solo si el envio no salio
-      (sin conexion): asi no se duplican filas en la hoja.
-   2. Si aun falla, el resultado se guarda en el telefono y se reenvia
-      al volver la conexion o la proxima vez que se abra el test.     */
-const REINTENTOS_MS = [1500, 4000];
-const COLA_KEY = "tonaltlan-afinidad-pendientes";
-const COLA_MAX = 50;
-
-function leerCola(): AffinitySubmissionPayload[] {
-  try {
-    const guardado = JSON.parse(localStorage.getItem(COLA_KEY) ?? "[]");
-    return Array.isArray(guardado) ? guardado : [];
-  } catch {
-    return [];
-  }
-}
-
-function guardarCola(cola: AffinitySubmissionPayload[]) {
-  try {
-    if (cola.length) localStorage.setItem(COLA_KEY, JSON.stringify(cola.slice(-COLA_MAX)));
-    else localStorage.removeItem(COLA_KEY);
-  } catch {
-    // Sin almacenamiento (modo privado): solo queda el boton de reintentar.
-  }
-}
-
-function quitarDeCola(payload: AffinitySubmissionPayload) {
-  const clave = JSON.stringify(payload);
-  guardarCola(leerCola().filter((p) => JSON.stringify(p) !== clave));
-}
-
-async function enviarConReintentos(payload: AffinitySubmissionPayload) {
-  let outcome = await submitAffinityToWebhook(payload);
-  for (const espera of REINTENTOS_MS) {
-    if (outcome !== "failed") break;
-    await new Promise((listo) => setTimeout(listo, espera));
-    outcome = await submitAffinityToWebhook(payload);
-  }
-  return outcome;
-}
-
-let vaciandoCola = false;
-async function vaciarCola() {
-  if (vaciandoCola) return;
-  vaciandoCola = true;
-  try {
-    const pendientes = leerCola();
-    if (!pendientes.length) return;
-    const quedan: AffinitySubmissionPayload[] = [];
-    for (const payload of pendientes) {
-      if ((await submitAffinityToWebhook(payload)) === "failed") quedan.push(payload);
-    }
-    // Lo que se agrego mientras se enviaba va al final de la cola.
-    guardarCola([...quedan, ...leerCola().slice(pendientes.length)]);
-  } finally {
-    vaciandoCola = false;
-  }
-}
 
 /**
  * Estado del Test de Afinidad. Recibe las preguntas y lecturas ya en el idioma
@@ -222,10 +162,9 @@ export function useAffinityTest(lang: Lang, questions: Question[], narrativas: R
 
   async function guardar(payload: AffinitySubmissionPayload) {
     setSubmissionStatus("saving");
-    const outcome = await enviarConReintentos(payload);
+    const outcome = await guardarEnvio(payload);
 
     if (outcome === "saved") {
-      quitarDeCola(payload);
       setSubmissionStatus("saved");
       return;
     }
@@ -236,10 +175,7 @@ export function useAffinityTest(lang: Lang, questions: Question[], narrativas: R
       return;
     }
 
-    // Sin conexion: se queda guardado en el telefono para reenviarlo despues.
-    if (!leerCola().some((p) => JSON.stringify(p) === JSON.stringify(payload))) {
-      guardarCola([...leerCola(), payload]);
-    }
+    // Sin conexion: quedo guardado en el telefono para reenviarlo despues.
     setSubmissionStatus("error");
   }
 

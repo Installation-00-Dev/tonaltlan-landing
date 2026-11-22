@@ -10,7 +10,7 @@ import { prefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 import type { Option, Question, RaceKey, RaceResult } from "@/lib/affinity-core";
 import { ruta, t, type Lang } from "@/lib/i18n";
 import { variante } from "@/lib/imagenes";
-import { themeFor } from "@/lib/site";
+import { emblemas, themeFor } from "@/lib/site";
 
 /** Arte y nombres de cada especie y su dios (los prepara Afinidad.tsx desde el compendio). */
 export type InfoEspecies = Record<
@@ -447,7 +447,10 @@ export default function AfinidadCliente({
                   <p className="revelacion-texto mt-3 font-display text-2xl text-selva-100" style={retraso(360)}>
                     {parsedDominantTitle?.archetype ?? results.dominant.narrative.name}
                   </p>
-                  <p className="revelacion-texto mt-1 text-sm text-selva-400" style={retraso(420)}>
+                  <p className="revelacion-texto mt-1 flex flex-wrap items-center gap-x-2 text-sm text-selva-400" style={retraso(420)}>
+                    {principal.deidad && emblemas[principal.deidad.slug] ? (
+                      <Image src={emblemas[principal.deidad.slug]} alt="" width={134} height={134} className="h-6 w-6 shrink-0" />
+                    ) : null}
                     {linaje}
                     {affinityMode === "random" ? <span className="text-oro-300"> · {d.modoAleatorio}</span> : null}
                   </p>

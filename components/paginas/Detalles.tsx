@@ -2,6 +2,7 @@ import TarjetaTest from "@/components/afinidad/TarjetaTest";
 import DetailLayout from "@/components/compendio/DetailLayout";
 import { getCompendio } from "@/lib/compendio";
 import { metaPagina, ruta, t, type Lang } from "@/lib/i18n";
+import { emblemas } from "@/lib/site";
 import { vistaPrevia } from "@/lib/vista-previa";
 
 /** Slugs para generateStaticParams (iguales en ambos idiomas). */
@@ -68,6 +69,7 @@ export function DetalleDeidad({ lang, slug }: { lang: Lang; slug: string }) {
       coverImageSrc={item.coverImageSrc}
       coverImageAlt={item.coverImageAlt}
       accent={item.slug}
+      emblema={emblemas[item.slug]}
       related={{
         label: d.suLinaje,
         items: especies

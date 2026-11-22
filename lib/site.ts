@@ -43,8 +43,6 @@ export const socialLinks: { label: string; href: string; iconSrc?: string; iconA
     iconSrc: "/images/social/instagram.webp",
     iconAlt: "Instagram",
   },
-  { label: "X / Twitter", href: "#" },
-  { label: "Discord", href: "#" },
 ];
 
 // ── Imagenes de Galeria y Monturas ──────────────────────────
@@ -195,6 +193,21 @@ export const deityThemes: Record<string, DeityTheme> = {
     hex: "#e879f9",
     hexTexto: "#f0abfc",
   },
+};
+
+/**
+ * Emblema de cada deidad: recortes del diagrama de Puntos Tonal (public/images/mundo/).
+ * Asignacion confirmada por el diseñador (nov. 2026): luz, obscuridad, rayo, tierra,
+ * aire, fuego y agua. Va junto al nombre del dios y de su linaje (decorativo: alt="").
+ */
+export const emblemas: Record<string, string> = {
+  tonatli: "/images/mundo/puntos_tonales_emblema_luz.webp",
+  calti: "/images/mundo/puntos_tonales_emblema_obscuridad.webp",
+  tohui: "/images/mundo/puntos_tonales_emblema_rayo.webp",
+  tzal: "/images/mundo/puntos_tonales_emblema_tierra.webp",
+  heka: "/images/mundo/puntos_tonales_emblema_aire.webp",
+  zilo: "/images/mundo/puntos_tonales_emblema_fuego.webp",
+  lok: "/images/mundo/puntos_tonales_emblema_agua.webp",
 };
 
 export function themeFor(deitySlug?: string): DeityTheme {

@@ -87,8 +87,8 @@ export const textosNoticias: Noticia[] = [
     fecha: "28 y 29 de noviembre de 2026",
     titulo: "Tonaltlan: despierta tu Tonal",
     lugar: "One Shot en Roll a Game CDMX",
-    // Fin del 29 de noviembre en la Ciudad de México (UTC-6).
-    anuncioHasta: "2026-11-30T06:00:00Z",
+    // Hasta el final del 30 de noviembre en la Ciudad de México (UTC-6), a pedido del estudio.
+    anuncioHasta: "2026-12-01T06:00:00Z",
     texto: [
       "Conoce las clases y especies originales de Tonaltlan.",
       "Fantasía inspirada en culturas mesoamericanas.",
@@ -113,7 +113,7 @@ export const textosNoticiasEn: Noticia[] = [
     fecha: "November 28 and 29, 2026",
     titulo: "Tonaltlan: awaken your Tonal",
     lugar: "One Shot at Roll a Game CDMX",
-    anuncioHasta: "2026-11-30T06:00:00Z",
+    anuncioHasta: "2026-12-01T06:00:00Z",
     texto: [
       "Discover the original classes and species of Tonaltlan.",
       "Fantasy inspired by Mesoamerican cultures.",
@@ -169,7 +169,7 @@ export const textosNoticiasFr: Noticia[] = [
     fecha: "28 et 29 novembre 2026",
     titulo: "Tonaltlan : éveille ton Tonal",
     lugar: "One Shot à Roll a Game CDMX",
-    anuncioHasta: "2026-11-30T06:00:00Z",
+    anuncioHasta: "2026-12-01T06:00:00Z",
     texto: [
       "Découvre les classes et espèces originales de Tonaltlan.",
       "Une fantasy inspirée des cultures mésoaméricaines.",

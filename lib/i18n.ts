@@ -38,8 +38,11 @@ export function rutaEnIdioma(pathname: string, destino: Lang): string {
   return ruta(destino, base);
 }
 
-/** Imagen que se ve al compartir un enlace (Open Graph, 1200x630). */
-export const IMAGEN_COMPARTIR = "/images/piramides_azteca_final_og.webp";
+/**
+ * Imagen que se ve al compartir un enlace (Open Graph, 1200x630).
+ * Excepcion a la regla de solo .webp: JPG para que WhatsApp siempre la muestre.
+ */
+export const IMAGEN_COMPARTIR = "/images/piramides_azteca_final_og.jpg";
 
 /**
  * Metadatos de una pagina: titulo, descripcion, `alternates` para que Google
@@ -161,8 +164,8 @@ const es = {
     titulo: "Explorar Tonaltlan",
     subtitulo: "Descubre los secretos del mundo mesoamericano a través de su compendio viviente.",
     secciones: [
-      { title: "Clases", description: "Guerreros, sacerdotes, hechiceros y más arquetipos del mundo antiguo.", tags: ["Combate", "Magia", "Sigilo"] },
-      { title: "Especies", description: "Seres nacidos del maíz, la obsidiana y el aliento de los dioses.", tags: ["Humanos", "Nahual", "Tlalocan"] },
+      { title: "Clases", description: "Brujo Catemaco, Guerrero Otomi, Mitotiani y Tlapali.", tags: ["Combate", "Magia", "Sigilo"] },
+      { title: "Especies", description: "Seres nacidos del maíz, la obsidiana y el aliento de los dioses.", tags: ["He'kari", "Hualik", "Irzak"] },
       { title: "Bestiario", description: "Criaturas del Mictlan y bestias de selvas y montañas sagradas.", tags: ["Mictlan", "Selva", "Celestial"] },
       { title: "Monturas", description: "Compañeros leales que surcan cielos, ríos y caminos ancestrales.", tags: ["Voladora", "Acuática", "Terrestre"] },
       { title: "Deidades", description: "Los dioses que tejen el destino del cosmos y sus elegidos.", tags: ["Creación", "Destrucción", "Equilibrio"] },
@@ -173,7 +176,10 @@ const es = {
   newsletter: {
     titulo: "Mantente Informado",
     texto: "Recibe noticias sobre lanzamientos, nuevos suplementos y eventos exclusivos directamente en tu correo.",
-    gracias: "Próximamente - Gracias por tu interés",
+    enviando: "Enviando…",
+    suscrito: "¡Listo! Te escribiremos con las novedades de Tonaltlan.",
+    error: "No pudimos guardar tu correo. Revisa tu conexión e intenta de nuevo.",
+    reintentar: "Reintentar",
     label: "Correo electrónico",
     placeholder: "tu@correo.com",
     boton: "Suscribirse",
@@ -202,11 +208,11 @@ const es = {
   paginas: {
     clases: {
       meta: "Clases - Tonaltlan",
-      metaDesc: "Descubre las clases jugables de Tonaltlan: guerreros, sacerdotisas, nahuales y más.",
+      metaDesc: "Descubre las clases jugables de Tonaltlan: Brujo Catemaco, Guerrero Otomi, Mitotiani y Tlapali.",
     },
     especies: {
       meta: "Especies - Tonaltlan",
-      metaDesc: "Explora las especies jugables de Tonaltlan: humanos, ahuizotl, tlalocan-i y más.",
+      metaDesc: "Explora las especies jugables de Tonaltlan: He'kari, Hualik, Irzak, Lok'Naa, Quinametzin, Toh'kari, Ton y Tlacas.",
       hijosDe: "Hijos de",
       linajesAria: "Linajes",
       volver: "Volver a Especies",
@@ -432,8 +438,8 @@ const en: Diccionario = {
     titulo: "Explore Tonaltlan",
     subtitulo: "Uncover the secrets of the Mesoamerican world through its living compendium.",
     secciones: [
-      { title: "Classes", description: "Warriors, priests, sorcerers and more archetypes of the ancient world.", tags: ["Combat", "Magic", "Stealth"] },
-      { title: "Species", description: "Beings born of maize, obsidian and the breath of the gods.", tags: ["Humans", "Nahual", "Tlalocan"] },
+      { title: "Classes", description: "Brujo Catemaco, Guerrero Otomi, Mitotiani and Tlapali.", tags: ["Combat", "Magic", "Stealth"] },
+      { title: "Species", description: "Beings born of maize, obsidian and the breath of the gods.", tags: ["He'kari", "Hualik", "Irzak"] },
       { title: "Bestiary", description: "Creatures of Mictlan and beasts of the sacred jungles and mountains.", tags: ["Mictlan", "Jungle", "Celestial"] },
       { title: "Mounts", description: "Loyal companions that ride the skies, rivers and ancestral roads.", tags: ["Flying", "Aquatic", "Land"] },
       { title: "Deities", description: "The gods who weave the fate of the cosmos and their chosen ones.", tags: ["Creation", "Destruction", "Balance"] },
@@ -444,7 +450,10 @@ const en: Diccionario = {
   newsletter: {
     titulo: "Stay Informed",
     texto: "Get news about releases, new supplements and exclusive events straight to your inbox.",
-    gracias: "Coming soon - Thanks for your interest",
+    enviando: "Sending…",
+    suscrito: "Done! We'll write to you with news from Tonaltlan.",
+    error: "We couldn't save your email. Check your connection and try again.",
+    reintentar: "Try again",
     label: "Email address",
     placeholder: "you@email.com",
     boton: "Subscribe",
@@ -473,11 +482,11 @@ const en: Diccionario = {
   paginas: {
     clases: {
       meta: "Classes - Tonaltlan",
-      metaDesc: "Discover the playable classes of Tonaltlan: warriors, priestesses, nahuales and more.",
+      metaDesc: "Discover the playable classes of Tonaltlan: Brujo Catemaco, Guerrero Otomi, Mitotiani and Tlapali.",
     },
     especies: {
       meta: "Species - Tonaltlan",
-      metaDesc: "Explore the playable species of Tonaltlan: humans, ahuizotl, tlalocan-i and more.",
+      metaDesc: "Explore the playable species of Tonaltlan: He'kari, Hualik, Irzak, Lok'Naa, Quinametzin, Toh'kari, Ton and Tlacas.",
       hijosDe: "Children of",
       linajesAria: "Lineages",
       volver: "Back to Species",
@@ -702,8 +711,8 @@ const fr: Diccionario = {
     titulo: "Explorer Tonaltlan",
     subtitulo: "Découvrez les secrets du monde mésoaméricain à travers son compendium vivant.",
     secciones: [
-      { title: "Classes", description: "Guerriers, prêtres, sorciers et autres archétypes du monde ancien.", tags: ["Combat", "Magie", "Discrétion"] },
-      { title: "Espèces", description: "Des êtres nés du maïs, de l'obsidienne et du souffle des dieux.", tags: ["Humains", "Nahual", "Tlalocan"] },
+      { title: "Classes", description: "Brujo Catemaco, Guerrero Otomi, Mitotiani et Tlapali.", tags: ["Combat", "Magie", "Discrétion"] },
+      { title: "Espèces", description: "Des êtres nés du maïs, de l'obsidienne et du souffle des dieux.", tags: ["He'kari", "Hualik", "Irzak"] },
       { title: "Bestiaire", description: "Créatures du Mictlan et bêtes des jungles et montagnes sacrées.", tags: ["Mictlan", "Jungle", "Céleste"] },
       { title: "Montures", description: "De fidèles compagnons qui parcourent les cieux, les rivières et les routes ancestrales.", tags: ["Volantes", "Aquatiques", "Terrestres"] },
       { title: "Divinités", description: "Les dieux qui tissent le destin du cosmos et leurs élus.", tags: ["Création", "Destruction", "Équilibre"] },
@@ -714,7 +723,10 @@ const fr: Diccionario = {
   newsletter: {
     titulo: "Restez informé",
     texto: "Recevez les nouvelles sur les sorties, les nouveaux suppléments et les événements exclusifs directement dans votre boîte mail.",
-    gracias: "Bientôt disponible - Merci de votre intérêt",
+    enviando: "Envoi…",
+    suscrito: "C'est fait ! Nous vous écrirons avec les nouvelles de Tonaltlan.",
+    error: "Nous n'avons pas pu enregistrer votre e-mail. Vérifiez votre connexion et réessayez.",
+    reintentar: "Réessayer",
     label: "Adresse e-mail",
     placeholder: "vous@email.com",
     boton: "S'abonner",
@@ -743,11 +755,11 @@ const fr: Diccionario = {
   paginas: {
     clases: {
       meta: "Classes - Tonaltlan",
-      metaDesc: "Découvrez les classes jouables de Tonaltlan : guerriers, prêtresses, nahuales et plus encore.",
+      metaDesc: "Découvrez les classes jouables de Tonaltlan : Brujo Catemaco, Guerrero Otomi, Mitotiani et Tlapali.",
     },
     especies: {
       meta: "Espèces - Tonaltlan",
-      metaDesc: "Explorez les espèces jouables de Tonaltlan : humains, ahuizotl, tlalocan-i et plus encore.",
+      metaDesc: "Explorez les espèces jouables de Tonaltlan : He'kari, Hualik, Irzak, Lok'Naa, Quinametzin, Toh'kari, Ton et Tlacas.",
       hijosDe: "Enfants de",
       linajesAria: "Lignées",
       volver: "Retour aux Espèces",
