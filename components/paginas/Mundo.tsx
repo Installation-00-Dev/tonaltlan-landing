@@ -9,7 +9,7 @@ import { getTextos } from "@/lib/textos";
 
 export function metadataMundo(lang: Lang) {
   const d = t(lang).paginas.mundo;
-  return metaPagina(lang, "/mundo/", d.meta, d.metaDesc, "/images/galeria/cosmovision_og.webp");
+  return metaPagina(lang, "/mundo/", d.meta, d.metaDesc, "/images/galeria/cosmovision_og.jpg");
 }
 
 export default function Mundo({ lang }: { lang: Lang }) {

@@ -1,23 +1,42 @@
 "use client";
 
 import Image from "next/image";
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import Greca from "@/components/ui/Greca";
+import { guardarEnvio, payloadSuscripcion, vaciarCola } from "@/lib/affinity-submission";
 import { variante } from "@/lib/imagenes";
 import { t, type Lang } from "@/lib/i18n";
+import { contacts } from "@/lib/site";
+
+// Contacto para dudas de privacidad mientras no haya politica publicada (lo pidio el estudio).
+const contactoPrivacidad = contacts.find((c) => c.email.startsWith("guardacodices@"));
 
 /**
  * "Mantente Informado": cierra el embudo de la landing. El arte de Aztlan
  * (Galeria) ocupa el bloque; el texto vive del lado oscuro del degradado
  * (abajo en celular, a la izquierda en escritorio) y la ciudad respira del otro.
+ * El correo se guarda en la misma hoja de Google que el Test de Afinidad
+ * (subscribed: true, mode "newsletter"), con reintentos y cola sin conexion.
  */
 export default function Newsletter({ lang = "es" }: { lang?: Lang }) {
   const d = t(lang).newsletter;
-  const [submitted, setSubmitted] = useState(false);
+  const [email, setEmail] = useState("");
+  const [estado, setEstado] = useState<"listo" | "enviando" | "suscrito" | "error">("listo");
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  // Reenvia lo que haya quedado pendiente en este telefono (test o suscripciones).
+  useEffect(() => {
+    void vaciarCola();
+    const alVolverLaConexion = () => void vaciarCola();
+    window.addEventListener("online", alVolverLaConexion);
+    return () => window.removeEventListener("online", alVolverLaConexion);
+  }, []);
+
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSubmitted(true);
+    if (estado === "enviando" || !email.trim()) return;
+    setEstado("enviando");
+    const outcome = await guardarEnvio(payloadSuscripcion(email, lang));
+    setEstado(outcome === "failed" ? "error" : "suscrito");
   }
 
   return (
@@ -41,12 +60,12 @@ export default function Newsletter({ lang = "es" }: { lang?: Lang }) {
             <Greca className="mt-5 w-40 text-oro-400/60" />
             <p className="mt-5 max-w-md text-base leading-relaxed text-selva-200 md:text-lg">{d.texto}</p>
 
-            {submitted ? (
-              <p className="mt-8 inline-flex items-center gap-2 rounded-full bg-selva-900/80 px-6 py-3 ring-1 ring-turquesa-400/40" role="status">
-                <svg className="h-5 w-5 shrink-0 text-turquesa-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            {estado === "suscrito" ? (
+              <p className="mt-8 inline-flex items-start gap-2 rounded-2xl bg-selva-900/80 px-5 py-3 ring-1 ring-turquesa-400/40" role="status">
+                <svg className="mt-0.5 h-5 w-5 shrink-0 text-turquesa-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
-                <span className="text-base font-medium text-selva-100">{d.gracias}</span>
+                <span className="text-base font-medium text-selva-100">{d.suscrito}</span>
               </p>
             ) : (
               <form onSubmit={handleSubmit} className="mt-8 flex max-w-md flex-col gap-3 sm:flex-row">
@@ -60,22 +79,45 @@ export default function Newsletter({ lang = "es" }: { lang?: Lang }) {
                   autoComplete="email"
                   autoCapitalize="none"
                   required
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                    if (estado === "error") setEstado("listo");
+                  }}
+                  aria-describedby={estado === "error" ? "newsletter-error" : undefined}
                   placeholder={d.placeholder}
                   className="min-h-[52px] flex-1 rounded-full border border-selva-600 bg-selva-950/80 px-6 py-3 text-base text-selva-100 caret-oro-400 placeholder:text-selva-400 transition-colors focus:border-oro-400 focus:outline-none focus:ring-2 focus:ring-oro-400/40"
                 />
                 <button
                   type="submit"
-                  className="inline-flex min-h-[52px] items-center justify-center rounded-full bg-oro-400 px-8 py-3 text-base font-semibold text-selva-950 transition duration-150 hover:bg-oro-300 motion-safe:active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-oro-200 focus-visible:ring-offset-2 focus-visible:ring-offset-selva-950"
+                  disabled={estado === "enviando"}
+                  className="inline-flex min-h-[52px] items-center justify-center rounded-full bg-oro-400 px-8 py-3 text-base font-semibold text-selva-950 transition duration-150 hover:bg-oro-300 disabled:opacity-70 motion-safe:active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-oro-200 focus-visible:ring-offset-2 focus-visible:ring-offset-selva-950"
                 >
-                  {d.boton}
+                  {estado === "enviando" ? d.enviando : estado === "error" ? d.reintentar : d.boton}
                 </button>
               </form>
             )}
+            {estado === "error" ? (
+              <p id="newsletter-error" role="alert" className="mt-3 max-w-md text-sm text-red-300">
+                {d.error}
+              </p>
+            ) : null}
 
             <p className="mt-5 max-w-md text-xs leading-relaxed text-selva-400">
               {/* PLACEHOLDER: Reemplaza con tu politica de privacidad real */}
               {d.privacidad}
             </p>
+            {contactoPrivacidad ? (
+              <p className="mt-1 text-xs text-selva-400">
+                {contactoPrivacidad.role} ·{" "}
+                <a
+                  href={`mailto:${contactoPrivacidad.email}`}
+                  className="text-turquesa-300 underline decoration-turquesa-300/40 underline-offset-2 hover:text-turquesa-200"
+                >
+                  {contactoPrivacidad.email}
+                </a>
+              </p>
+            ) : null}
           </div>
         </div>
       </div>

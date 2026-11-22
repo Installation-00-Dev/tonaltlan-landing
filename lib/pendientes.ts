@@ -171,6 +171,16 @@ export const pendientes = {
       "Glosario aprobado por el creador (nov. 2026). Los nombres propios y de personajes se quedan en español (ej. Hombre Jaguar, Brujo Catemaco, Guerrero Otomi).",
     ],
   },
+  "politica-privacidad": {
+    titulo: "Política de privacidad",
+    donde: "/ (Mantente Informado) y /afinidad",
+    necesita: [
+      "Texto de la política de privacidad: qué datos se piden (nombre y correo), para qué se usan, dónde se guardan y cómo darse de baja.",
+    ],
+    pistas: [
+      "Mientras tanto, el bloque Mantente Informado muestra el contacto de Guarda Códices (guardacodices@tonaltlan.com), como pidió el estudio.",
+    ],
+  },
   "afinidad-textos": {
     titulo: "Test de Afinidad: textos nuevos",
     donde: "/afinidad",
@@ -226,6 +236,7 @@ export const titulosEn: Partial<Record<PendienteId, string>> = {
   "clases-arte": "Class art",
   "traduccion-ingles": "English translation review",
   "afinidad-textos": "Affinity Test: new texts",
+  "politica-privacidad": "Privacy policy",
 };
 
 /** Titulos en frances de cada placeholder (en /fr solo se muestra "Bientôt" + titulo). */
@@ -248,4 +259,5 @@ export const titulosFr: Partial<Record<PendienteId, string>> = {
   "traduccion-ingles": "Relecture de la traduction anglaise",
   "traduccion-frances": "Relecture de la traduction française",
   "afinidad-textos": "Test d'Affinité : nouveaux textes",
+  "politica-privacidad": "Politique de confidentialité",
 };

@@ -43,8 +43,6 @@ export const socialLinks: { label: string; href: string; iconSrc?: string; iconA
     iconSrc: "/images/social/instagram.webp",
     iconAlt: "Instagram",
   },
-  { label: "X / Twitter", href: "#" },
-  { label: "Discord", href: "#" },
 ];
 
 // ── Imagenes de Galeria y Monturas ──────────────────────────

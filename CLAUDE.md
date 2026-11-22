@@ -51,7 +51,8 @@ compendio, avisos de privacidad, contactos y textos legales.
 ### 2. Imágenes: siempre `.webp`
 
 - **Formato y ubicación:** todas las imágenes del sitio viven en `public/images/` y son `.webp`.
-  Nunca referenciar `.png`, `.jpg` ni `.jpeg` desde el código.
+  Nunca referenciar `.png`, `.jpg` ni `.jpeg` desde el código. **Única excepción (aprobada por el dueño,
+  nov. 2026):** las vistas previas al compartir (`*_og.jpg`), en JPG para que WhatsApp siempre las muestre.
 - **Originales:** se respaldan en `_assets_backup/` con la misma ruta relativa
   (`public/images/galeria/x.png` → `_assets_backup/images/galeria/x.png`), fuera del build.
 - **Versiones derivadas** (recortes, tamaños menores) llevan sufijo (`tonaltlan_logo_nav.webp`,
@@ -63,9 +64,10 @@ compendio, avisos de privacidad, contactos y textos legales.
   original directamente para mostrar arte: usa `variante(src, anchoEnPixelesReales)` de
   `lib/imagenes.ts` (pide el doble de lo que se ve, por pantallas retina).
 - **Vista previa al compartir e íconos:** `python3 scripts/vista-previa.py` genera la imagen general
-  (`piramides_azteca_final_og.webp`), una `_og` (1200×630) por retrato de especie y deidad, y los íconos
-  `tonaltlan_logo_icono_N.webp`. Córrelo al agregar arte de una especie o deidad (y su color en el script).
-  Si una ficha no tiene su `_og`, usa la general (`lib/vista-previa.ts`).
+  (`piramides_azteca_final_og.jpg`), una `_og.jpg` (1200×630, menos de 300 KB) por retrato de especie y
+  deidad y por página con ilustración propia (`PAGINAS`), y los íconos `tonaltlan_logo_icono_N.webp`.
+  Córrelo al agregar arte de una especie o deidad (y su color en el script). Si una ficha no tiene su
+  `_og.jpg`, usa la general (`lib/vista-previa.ts`).
 
 ### 3. Tres idiomas: español, inglés y francés
 
@@ -94,6 +96,9 @@ compendio, avisos de privacidad, contactos y textos legales.
   Los nombres propios mesoamericanos y de personajes no se traducen (Hombre Jaguar, Brujo Catemaco…).
 - **Test de Afinidad:** el envío al webhook incluye `lang` (`es`, `en` o `fr`), `dominantRace` y
   `secondaryRace` (clave de especie igual en todos los idiomas).
+- **Mantente Informado** usa el mismo webhook y la misma hoja: `payloadSuscripcion()` manda el correo con
+  `subscribed: true` y `mode: "newsletter"` (columnas del test vacías). Reintentos y cola sin conexión
+  son compartidos (`guardarEnvio` y `vaciarCola` en `lib/affinity-submission.ts`).
 
 ### Test de Afinidad (v2, nov. 2026)
 
@@ -158,7 +163,9 @@ compendio, avisos de privacidad, contactos y textos legales.
 - **Navbar:** El Mundo (`/mundo`) · Compendio (`/explorar`) · Juega (`/juega`) · Galería (`/galeria`),
   más el selector **ES / EN / FR** y el botón dorado **Test de Afinidad**. En celular ese botón queda
   visible en la barra, junto al menú: es la puerta de entrada en convenciones.
-- **Suscríbete** vive en el footer (columna Estudio) y en la sección Newsletter de la landing.
+- **Suscríbete** vive en el footer (columna Estudio) y en la sección Newsletter de la landing, que guarda
+  el correo en la hoja de Google. Mientras no haya política de privacidad, muestra el contacto de Guarda Códices.
+- **Redes:** por ahora solo Instagram (`socialLinks` en `lib/site.ts`); X y Discord se agregan cuando existan.
 - **Compendio:** `/clases`, `/especies` (+ `/especies/[slug]`), `/deidades` (+ `/deidades/[slug]`),
   `/bestiario`, `/monturas`. Especies tiene ocho: siete por linaje divino y los **Tlacas**
   (humanos sin afinidad elemental; ficha pendiente).
