@@ -18,13 +18,30 @@ export interface Option {
   id: string;
   text: string;
   points: Partial<Scores>;
+  /** Preguntas visuales: especie a la que apunta la opcion (sirve para desempatar). */
+  race?: RaceKey;
+  /** Pregunta de simbolo: imagen del emblema. */
+  imagen?: string;
+  /** Pregunta de color: clases de Tailwind del circulo (completas, para que Tailwind las detecte). */
+  color?: string;
 }
+
+/** Texto (por defecto) u opciones visuales que se eligen de un toque. */
+export type QuestionKind = "texto" | "simbolo" | "color" | "deidad";
 
 export interface Question {
   id: number;
   title: string;
   scenario: string;
   options: Option[];
+  tipo?: QuestionKind;
+}
+
+/** Titulos de las preguntas visuales y nombres de los colores, por idioma. */
+export interface TextosVisuales {
+  simbolo: { title: string; scenario: string };
+  color: { title: string; scenario: string; nombres: Record<RaceKey, string> };
+  deidad: { title: string; scenario: string };
 }
 
 export interface RaceResult {
@@ -36,6 +53,8 @@ export interface RaceResult {
   symbol: string;
   object: string;
   glyph: string;
+  /** Lectura tipo horoscopo: 3 frases positivas y generales (lo primero que se lee en el resultado). */
+  lectura: string[];
 }
 
 export interface RankedRace {
@@ -45,6 +64,7 @@ export interface RankedRace {
 
 export interface CalculatedResults {
   dominant: RankedRace & { narrative: RaceResult };
+  /** La segunda especie con mas puntos ("con un toque de..."). */
   secondary: (RankedRace & { narrative: RaceResult }) | null;
   ranking: RankedRace[];
   sections: Array<{ title: string; content: string }>;
@@ -63,15 +83,15 @@ export const RACE_KEYS: RaceKey[] = [
 
 export const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-// Balance factors tuned from live expo data to reduce repeated outcomes.
-const RACE_BALANCE_WEIGHTS: Record<RaceKey, number> = {
-  Ton: 0.88,
-  "Toh'kari": 1.28,
-  "He'kari": 0.95,
-  Quinametzin: 0.82,
-  "Lok'naa": 1.03,
-  Hualik: 1.18,
-  Irzak: 1.12,
+/** Slug de la ficha de cada especie en el compendio (/especies/<slug>/). */
+export const RACE_SLUG: Record<RaceKey, string> = {
+  Ton: "ton",
+  "Toh'kari": "tohkari",
+  "He'kari": "hekari",
+  Quinametzin: "quinametzin",
+  "Lok'naa": "lok-naa",
+  Hualik: "hualik",
+  Irzak: "irzak",
 };
 
 export function createInitialScores(): Scores {
@@ -247,22 +267,22 @@ export const questions: Question[] = [
       {
         id: "q6-o1",
         text: "Me convierto en escudo. Protejo a quienes no pueden correr.",
-        points: { Quinametzin: 3, Ton: 2, "Lok'naa": 1 },
+        points: { Quinametzin: 2, "Lok'naa": 1 },
       },
       {
         id: "q6-o2",
         text: "Calmo a la gente. Bajo la tensión antes de que alguien salga lastimado.",
-        points: { "Lok'naa": 3, Quinametzin: 2, Ton: 1 },
+        points: { "Lok'naa": 2, "He'kari": 1 },
       },
       {
         id: "q6-o3",
         text: "Me muevo a un punto estratégico y coordino una salida segura.",
-        points: { "He'kari": 3, Hualik: 2, Quinametzin: 1 },
+        points: { Hualik: 2 },
       },
       {
         id: "q6-o4",
         text: "Me lanzo al origen del pedo. Corto el peligro de raíz.",
-        points: { "Toh'kari": 3, Irzak: 2, Hualik: 1 },
+        points: { "Toh'kari": 2 },
       },
     ],
   },
@@ -303,22 +323,22 @@ export const questions: Question[] = [
       {
         id: "q8-o1",
         text: "Organizo inmediatamente. Asigno roles, pongo orden. Primero estabilidad.",
-        points: { Quinametzin: 3, Ton: 2, "Lok'naa": 1 },
+        points: { Quinametzin: 2, Irzak: 1 },
       },
       {
         id: "q8-o2",
         text: "Cambio de plan sobre la marcha. Improviso algo nuevo rápido.",
-        points: { "He'kari": 3, "Toh'kari": 2, "Lok'naa": 1 },
+        points: { "He'kari": 2, "Toh'kari": 1 },
       },
       {
         id: "q8-o3",
         text: "Primero calmo al grupo. Bajo la tensión antes de decidir.",
-        points: { "Lok'naa": 3, Quinametzin: 2, Ton: 1 },
+        points: { "Lok'naa": 2, Ton: 1 },
       },
       {
         id: "q8-o4",
         text: "Asumo el mando sin excusas. Lo enfrento de frente.",
-        points: { Irzak: 3, Ton: 2, Quinametzin: 1 },
+        points: { Irzak: 2, Ton: 1 },
       },
     ],
   },
@@ -331,27 +351,27 @@ export const questions: Question[] = [
       {
         id: "q9-o1",
         text: "Un medallón que vibra cuando intentas mentirte a ti mismo.",
-        points: { Ton: 3, Quinametzin: 2, "Lok'naa": 1 },
+        points: { Ton: 2, Hualik: 1 },
       },
       {
         id: "q9-o2",
         text: "Una moneda que nunca cae igual dos veces.",
-        points: { "Toh'kari": 3, "He'kari": 2, Hualik: 1 },
+        points: { "Toh'kari": 2 },
       },
       {
         id: "q9-o3",
         text: "Una brújula que apunta a lo que más necesitas aprender.",
-        points: { "He'kari": 3, "Lok'naa": 2, Ton: 1 },
+        points: { "He'kari": 2, "Lok'naa": 1 },
       },
       {
         id: "q9-o4",
         text: "Una piedra que se pone pesada cuando hay peligro cerca.",
-        points: { Quinametzin: 3, Hualik: 2, Ton: 1 },
+        points: { Hualik: 2 },
       },
       {
         id: "q9-o5",
         text: "Un anillo que se calienta cuando rompes una promesa.",
-        points: { Irzak: 3, Ton: 2, Quinametzin: 1 },
+        points: { Irzak: 2, Ton: 1 },
       },
     ],
   },
@@ -364,27 +384,27 @@ export const questions: Question[] = [
       {
         id: "q10-o1",
         text: "Hablo claro y cierro el tema con verdad.",
-        points: { Ton: 3, Quinametzin: 2, "Lok'naa": 1 },
+        points: { Ton: 2, Quinametzin: 1 },
       },
       {
         id: "q10-o2",
         text: "Me muevo. Cambio de lugar, respiro aire nuevo. Regreso distinto.",
-        points: { "He'kari": 3, "Toh'kari": 2, "Lok'naa": 1 },
+        points: { "He'kari": 2, "Toh'kari": 1 },
       },
       {
         id: "q10-o3",
         text: "Reordeno. Organizo hábitos, tareas, algo tangible que me estabilice.",
-        points: { Quinametzin: 3, Ton: 2, Hualik: 1 },
+        points: { Quinametzin: 2, Ton: 1 },
       },
       {
         id: "q10-o4",
         text: "Desaparezco un rato. Silencio, distancia. Recalculo todo en soledad.",
-        points: { Hualik: 3, "Lok'naa": 2, "He'kari": 1 },
+        points: { Hualik: 2, "Lok'naa": 1 },
       },
       {
         id: "q10-o5",
         text: "Hago algo físico e intenso. Convierto lo vivido en fuerza.",
-        points: { Irzak: 3, "Toh'kari": 2, Quinametzin: 1 },
+        points: { Irzak: 2, "Toh'kari": 1 },
       },
     ],
   },
@@ -404,6 +424,11 @@ export const raceResults: Record<RaceKey, RaceResult> = {
     symbol: "El Amanecer - El momento en que la luz retorna y el mundo se revela.",
     object: "Un espejo que refleja la verdad sin distorsión.",
     glyph: "Sol con rayos que iluminan en todas las direcciones.",
+    lectura: [
+      "Tienes una brújula interna que casi nunca falla: sabes lo que está bien, aunque nadie te lo diga.",
+      "La gente confía en ti más rápido de lo que imaginas; tu sola presencia hace que todo se sienta más claro.",
+      "A veces cargas con más de lo que te toca, pero tu luz siempre encuentra cómo volver a encenderse.",
+    ],
   },
   "Toh'kari": {
     name: "TOH'KARI (Rayo) - El Caótico",
@@ -419,6 +444,11 @@ export const raceResults: Record<RaceKey, RaceResult> = {
       "El Relámpago que Cae Sobre Una Montaña Solitaria - Brutal, impredecible, hermoso y aterrador.",
     object: "Un fragmento de metal que conserva carga eléctrica.",
     glyph: "Rayo zigzagueante que nunca toca el mismo lugar dos veces.",
+    lectura: [
+      "Cuando algo te importa, te entregas por completo; no conoces las medias tintas.",
+      "Tienes una energía que contagia: a donde llegas, las cosas empiezan a moverse.",
+      "Aunque a veces te gana el impulso, tu instinto suele llevarte justo a donde necesitabas estar.",
+    ],
   },
   "He'kari": {
     name: "HE'KARI (Aire) - El Visionario",
@@ -433,6 +463,11 @@ export const raceResults: Record<RaceKey, RaceResult> = {
     symbol: "La Pluma Suspendida - Ligera pero poderosa, símbolo de mensaje y vuelo.",
     object: "Un cuaderno de notas que siempre llevas contigo.",
     glyph: "Espiral de viento que se eleva hacia el cielo.",
+    lectura: [
+      "Tu mente nunca se queda quieta: ves ideas y caminos donde otros solo ven problemas.",
+      "Tienes un don para las palabras; sabes decir justo lo que hace que los demás se sientan comprendidos.",
+      "Necesitas libertad para ser tú, y aun así siempre regresas por la gente que quieres.",
+    ],
   },
   Quinametzin: {
     name: "QUINAMETZIN (Tierra) - El Guardián Colosal",
@@ -447,6 +482,11 @@ export const raceResults: Record<RaceKey, RaceResult> = {
     symbol: "La Montaña Antigua - Alta, firme, paciente y eterna. Testigo y protectora.",
     object: "Una herramienta de trabajo que siempre está contigo.",
     glyph: "Montaña con raíces profundas que se extienden hacia abajo.",
+    lectura: [
+      "Eres el pilar de tu gente: cuando todo tiembla, los demás te buscan a ti.",
+      "No necesitas hacer ruido para hacerte notar; tu constancia habla por ti.",
+      "Cuidas tanto de los demás que a veces olvidas que tú también mereces descanso.",
+    ],
   },
   "Lok'naa": {
     name: "LOK'NAA (Agua) - El Sanador",
@@ -462,6 +502,11 @@ export const raceResults: Record<RaceKey, RaceResult> = {
       "El Cenote Sagrado - Profundo, claro, portador de vida, pero también misterioso y oscuro en el fondo.",
     object: "Un recipiente de agua que siempre llevas contigo.",
     glyph: "Onda de agua que fluye en círculos concéntricos.",
+    lectura: [
+      "Sientes lo que otros no dicen; tu empatía es un regalo que pocos tienen.",
+      "Tienes la rara habilidad de calmar cualquier tormenta con solo escuchar.",
+      "Te adaptas a todo como el agua, pero en el fondo sabes muy bien quién eres.",
+    ],
   },
   Hualik: {
     name: "HUALIK (Obscuridad) - El Vigilante Sombra",
@@ -476,6 +521,11 @@ export const raceResults: Record<RaceKey, RaceResult> = {
     symbol: "La Luna Nueva - Oscuridad total. No es ausencia, sino presencia invisible.",
     object: "Un objeto pequeño que siempre está en tus manos (piedra, moneda, etc.)",
     glyph: "Sombra que se extiende sin forma definida.",
+    lectura: [
+      "Observas más de lo que hablas, y por eso entiendes lo que a otros se les escapa.",
+      "Tu calma es tu fuerza: sabes esperar el momento exacto para actuar.",
+      "Pocos te conocen de verdad, pero quienes lo logran encuentran a alguien profundamente leal.",
+    ],
   },
   Irzak: {
     name: "IRZAK (Fuego) - La Flama de Honor",
@@ -492,17 +542,127 @@ export const raceResults: Record<RaceKey, RaceResult> = {
     object:
       "Una herramienta de forja o un objeto que siempre llevas contigo que representa tu chispa.",
     glyph: "Llama que arde hacia arriba, intensa y constante.",
+    lectura: [
+      "Tu pasión enciende a quienes te rodean; cuando crees en algo, lo defiendes con todo.",
+      "Tu palabra vale oro: si prometes algo, lo cumples.",
+      "Tienes un carácter fuerte, pero también un corazón enorme para los tuyos.",
+    ],
   },
 };
 
-import { questionsEn, raceResultsEn } from "./affinity-test.en";
-import { questionsFr, raceResultsFr } from "./affinity-test.fr";
+/** Preguntas visuales (opciones con imagen o color): titulo, instruccion y nombres de color. */
+export const textosVisuales: TextosVisuales = {
+  simbolo: { title: "Elige un símbolo", scenario: "No lo pienses mucho: ¿cuál te llama primero?" },
+  color: {
+    title: "Elige un color",
+    scenario: "Confía en tu instinto.",
+    nombres: {
+      Ton: "Amarillo sol",
+      "Toh'kari": "Fucsia",
+      "He'kari": "Azul cielo",
+      Quinametzin: "Verde lima",
+      "Lok'naa": "Turquesa",
+      Hualik: "Violeta",
+      Irzak: "Naranja",
+    },
+  },
+  deidad: { title: "¿Qué dios te llama?", scenario: "Siete dioses te observan. Elige al que sientas más cerca." },
+};
+
+import { questionsEn, raceResultsEn, textosVisualesEn } from "./affinity-test.en";
+import { questionsFr, raceResultsFr, textosVisualesFr } from "./affinity-test.fr";
 
 type Idioma = "es" | "en" | "fr";
 
-/** Preguntas del Test en el idioma pedido (mismos ids y puntos en ambos). */
+/* ============================================================
+   COMO SE ARMA EL TEST (v2, nov. 2026)
+   - 7 preguntas: 4 de texto (las que tienen todas sus opciones positivas)
+     y 3 visuales que se contestan de un toque (simbolo, color y dios).
+   - Las preguntas 1, 2, 3, 4, 5 y 7 (dilemas morales) siguen guardadas
+     arriba, pero fuera de la sesion: tenian una respuesta "correcta" y casi
+     todos terminaban en Quinametzin o Ton.
+   - Puntos: cada opcion de texto da 2 a su especie principal y, a veces, 1 a
+     una secundaria. Cada opcion visual da 3 a su especie. Con esto cada
+     especie sale ~14 % de las veces (ver scripts/simular-afinidad.mjs).
+   - Si cambias preguntas, opciones o puntos, corre ese script antes de subir.
+   ============================================================ */
+
+/** Orden fijo de la sesion: ids de preguntas de texto y preguntas visuales intercaladas. */
+export const ORDEN_SESION: Array<number | "simbolo" | "color" | "deidad"> = ["simbolo", 6, 9, "color", 8, 10, "deidad"];
+
+/** Puntos de las opciones visuales (cada opcion apunta a una sola especie). */
+const PUNTOS_VISUALES = 3;
+
+/** Emblema de cada dios (recortado del diagrama de Puntos Tonal). */
+const EMBLEMA: Record<RaceKey, string> = {
+  Ton: "/images/mundo/puntos_tonales_emblema_luz.webp",
+  "Toh'kari": "/images/mundo/puntos_tonales_emblema_rayo.webp",
+  "He'kari": "/images/mundo/puntos_tonales_emblema_aire.webp",
+  Quinametzin: "/images/mundo/puntos_tonales_emblema_tierra.webp",
+  "Lok'naa": "/images/mundo/puntos_tonales_emblema_agua.webp",
+  Hualik: "/images/mundo/puntos_tonales_emblema_obscuridad.webp",
+  Irzak: "/images/mundo/puntos_tonales_emblema_fuego.webp",
+};
+
+/** Color de cada especie: el de su deidad (lib/site.ts), en degradado para distinguir los azules. */
+const COLOR: Record<RaceKey, string> = {
+  Ton: "bg-gradient-to-br from-yellow-100 via-yellow-300 to-yellow-500",
+  "Toh'kari": "bg-gradient-to-br from-fuchsia-300 via-fuchsia-500 to-fuchsia-700",
+  "He'kari": "bg-gradient-to-br from-sky-50 via-sky-200 to-sky-400",
+  Quinametzin: "bg-gradient-to-br from-lime-200 via-lime-400 to-lime-600",
+  "Lok'naa": "bg-gradient-to-br from-cyan-300 via-cyan-500 to-cyan-800",
+  Hualik: "bg-gradient-to-br from-violet-400 via-violet-600 to-violet-900",
+  Irzak: "bg-gradient-to-br from-orange-300 via-orange-500 to-orange-700",
+};
+
+const TEXTOS: Record<Idioma, { preguntas: Question[]; resultados: Record<RaceKey, RaceResult>; visuales: TextosVisuales }> = {
+  es: { preguntas: questions, resultados: raceResults, visuales: textosVisuales },
+  en: { preguntas: questionsEn, resultados: raceResultsEn, visuales: textosVisualesEn },
+  fr: { preguntas: questionsFr, resultados: raceResultsFr, visuales: textosVisualesFr },
+};
+
+/** Los puntos oficiales viven solo en el archivo en espanol (mismos ids en los tres idiomas). */
+const PUNTOS_OFICIALES = new Map(questions.flatMap((q) => q.options.map((o) => [o.id, o.points] as const)));
+
+/** Elemento de una especie sacado de su titulo: "TON (Luz) - El Iluminador" -> "Luz". */
+export function elementoDe(nombre: string): string | null {
+  return nombre.match(/\(([^)]+)\)/)?.[1]?.trim() ?? null;
+}
+
+function preguntaVisual(tipo: "simbolo" | "color" | "deidad", lang: Idioma): Question {
+  const { visuales, resultados } = TEXTOS[lang];
+  const id = { simbolo: 101, color: 102, deidad: 103 }[tipo];
+  return {
+    id,
+    tipo,
+    title: visuales[tipo].title,
+    scenario: visuales[tipo].scenario,
+    options: RACE_KEYS.map((race) => ({
+      id: `v${id}-${RACE_SLUG[race]}`,
+      race,
+      points: { [race]: PUNTOS_VISUALES },
+      // Texto accesible: elemento (simbolo), nombre del color (color); el dios lo pone la pagina.
+      text:
+        tipo === "simbolo"
+          ? (elementoDe(resultados[race].name) ?? race)
+          : tipo === "color"
+            ? visuales.color.nombres[race]
+            : race,
+      ...(tipo === "simbolo" ? { imagen: EMBLEMA[race] } : {}),
+      ...(tipo === "color" ? { color: COLOR[race] } : {}),
+    })),
+  };
+}
+
+/** Preguntas de la sesion, en orden y en el idioma pedido. */
 export function getQuestions(lang: Idioma = "es"): Question[] {
-  return { es: questions, en: questionsEn, fr: questionsFr }[lang];
+  const { preguntas } = TEXTOS[lang];
+  return ORDEN_SESION.map((paso) => {
+    if (typeof paso !== "number") return preguntaVisual(paso, lang);
+    const q = preguntas.find((p) => p.id === paso);
+    if (!q) throw new Error(`Falta la pregunta ${paso} en ${lang}`);
+    return { ...q, tipo: "texto", options: q.options.map((o) => ({ ...o, points: PUNTOS_OFICIALES.get(o.id) ?? o.points })) };
+  });
 }
 
 const ETIQUETAS: Record<Idioma, { secciones: [string, string, string, string]; simbolos: [string, string, string] }> = {
@@ -511,8 +671,9 @@ const ETIQUETAS: Record<Idioma, { secciones: [string, string, string, string]; s
   fr: { secciones: ["Essence", "Vertu", "Ombre", "Chemin"], simbolos: ["Symbole mythique", "Objet du quotidien", "Glyphe"] },
 };
 
-export function prepareQuestionsForSession(source: Question[] = questions): Question[] {
-  return shuffleArray(source).map((question) => ({
+/** Mantiene el orden de las preguntas y revuelve sus opciones (para que la posicion no influya). */
+export function prepareQuestionsForSession(source: Question[] = getQuestions("es")): Question[] {
+  return source.map((question) => ({
     ...question,
     options: shuffleArray(question.options),
   }));
@@ -528,37 +689,52 @@ export function applyOptionPoints(scores: Scores, option: Option, direction: 1 |
   return nextScores;
 }
 
-export function calculateResults(scores: Scores, lang: Idioma = "es"): CalculatedResults {
-  const narrativas = { es: raceResults, en: raceResultsEn, fr: raceResultsFr }[lang];
+/**
+ * Especies elegidas en las preguntas visuales, en orden de desempate:
+ * primero el dios, luego el simbolo y al final el color.
+ */
+export function preferenciasVisuales(preguntas: Question[], respuestas: Array<string | undefined>): RaceKey[] {
+  const orden: QuestionKind[] = ["deidad", "simbolo", "color"];
+  return orden.flatMap((tipo) => {
+    const i = preguntas.findIndex((q) => q.tipo === tipo);
+    const race = i < 0 ? undefined : preguntas[i].options.find((o) => o.id === respuestas[i])?.race;
+    return race ? [race] : [];
+  });
+}
+
+/** Modo "Afinidad Aleatoria": cada especie tiene la misma probabilidad (1 de 7). */
+export function puntosAleatorios(): Scores {
+  const pool = [12, 10, 8, 6, 4, 3, 2];
+  const puntos = createInitialScores();
+  shuffleArray(RACE_KEYS).forEach((race, index) => {
+    puntos[race] = pool[index] ?? 0;
+  });
+  return puntos;
+}
+
+/**
+ * Gana la especie con mas puntos. En empate decide lo que la persona eligio en
+ * las preguntas visuales (dios > simbolo > color) y, si aun empata, el azar.
+ * La segunda especie se muestra siempre como "un toque de...".
+ */
+export function calculateResults(scores: Scores, lang: Idioma = "es", preferencias: RaceKey[] = []): CalculatedResults {
+  const narrativas = TEXTOS[lang].resultados;
   const etiquetas = ETIQUETAS[lang];
-  const weightedRanking = RACE_KEYS.map((race) => ({
-    race,
-    rawScore: scores[race],
-    weightedScore: scores[race] * RACE_BALANCE_WEIGHTS[race],
-  })).sort((left, right) => right.weightedScore - left.weightedScore);
+  const prioridad = (race: RaceKey) => {
+    const i = preferencias.indexOf(race);
+    return i < 0 ? preferencias.length : i;
+  };
+  const azar = shuffleArray(RACE_KEYS);
+  const ranking = [...RACE_KEYS]
+    .sort((a, b) => scores[b] - scores[a] || prioridad(a) - prioridad(b) || azar.indexOf(a) - azar.indexOf(b))
+    .map((race) => ({ race, score: scores[race] }));
 
-  const ranking = weightedRanking.map((entry) => ({
-    race: entry.race,
-    score: entry.rawScore,
-  }));
-
-  const dominant = weightedRanking[0];
-  const secondaryCandidate = weightedRanking[1];
-  const secondary =
-    secondaryCandidate && secondaryCandidate.weightedScore >= dominant.weightedScore * 0.6
-      ? {
-          race: secondaryCandidate.race,
-          score: secondaryCandidate.rawScore,
-          narrative: narrativas[secondaryCandidate.race],
-        }
-      : null;
+  const dominant = ranking[0];
+  const segunda = ranking[1];
+  const secondary = segunda && segunda.score > 0 ? { ...segunda, narrative: narrativas[segunda.race] } : null;
 
   return {
-    dominant: {
-      race: dominant.race,
-      score: dominant.rawScore,
-      narrative: narrativas[dominant.race],
-    },
+    dominant: { ...dominant, narrative: narrativas[dominant.race] },
     secondary,
     ranking,
     sections: [

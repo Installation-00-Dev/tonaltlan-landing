@@ -88,6 +88,22 @@ compendio, avisos de privacidad, contactos y textos legales.
 - **Test de Afinidad:** el envío al webhook incluye `lang` (`es`, `en` o `fr`), `dominantRace` y
   `secondaryRace` (clave de especie igual en todos los idiomas).
 
+### Test de Afinidad (v2, nov. 2026)
+
+- **7 preguntas en orden fijo** (`ORDEN_SESION` en `lib/affinity-test.ts`): 4 de texto (6, 8, 9 y 10,
+  las que tienen todas sus opciones positivas) y 3 visuales de un toque: símbolo (emblemas recortados
+  del diagrama de Puntos Tonal), color (el de cada deidad) y dios (retratos del compendio).
+  Las preguntas 1–5 y 7 siguen en el archivo, fuera de la sesión.
+- **Balance por diseño, sin pesos de corrección:** cada opción de texto da 2 puntos a su especie y a
+  veces 1 a otra; cada opción visual da 3. Los empates los decide lo elegido en las visuales
+  (dios > símbolo > color). Los puntos viven solo en el archivo en español.
+- **Antes de subir cambios al test:** `node scripts/simular-afinidad.mjs` (falla si alguna especie se
+  aleja más de 2 puntos del 14.3 % o si los idiomas no coinciden).
+- **Resultado:** retrato de la especie, lectura tipo horóscopo (`lectura`: 3 frases positivas y
+  generales), "Con un toque de" la segunda especie, botón a su ficha y la lectura completa original
+  en un desplegable. `components/paginas/Afinidad.tsx` (servidor) le pasa el arte del compendio a
+  `AfinidadCliente.tsx`.
+
 ### 4. Contenido faltante: `<Pendiente id>`
 
 - **Registro único:** todo hueco de contenido sale de `lib/pendientes.ts`. Cada entrada tiene un

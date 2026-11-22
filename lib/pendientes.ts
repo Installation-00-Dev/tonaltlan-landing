@@ -178,6 +178,19 @@ export const pendientes = {
       "Glosario aprobado por el creador (nov. 2026). Los nombres propios y de personajes se quedan en español (ej. Hombre Jaguar, Brujo Catemaco, Guerrero Otomi).",
     ],
   },
+  "afinidad-textos": {
+    titulo: "Test de Afinidad: textos nuevos",
+    donde: "/afinidad",
+    necesita: [
+      "Revisar las lecturas tipo horóscopo (3 frases positivas por especie) en español, inglés y francés: campo lectura en lib/affinity-test.ts, .en.ts y .fr.ts.",
+      "Revisar los títulos de las 3 preguntas visuales (símbolo, color y dios) y los nombres de los colores: textosVisuales en los mismos archivos.",
+      "Las preguntas 1, 2, 3, 4, 5 y 7 (dilemas morales) quedaron guardadas pero fuera del test. Para reactivar alguna, agrégala a ORDEN_SESION y corre: node scripts/simular-afinidad.mjs",
+    ],
+    pistas: [
+      "Las lecturas se escribieron para que cualquiera se reconozca (efecto horóscopo): positivas, generales y con un pequeño matiz.",
+      "La lectura completa de siempre (Esencia, Virtud, Sombra, Camino y Símbolos) sigue en el resultado, dentro de \"Lee tu lectura completa\".",
+    ],
+  },
   "traduccion-frances": {
     titulo: "Revisión de la traducción al francés",
     donde: "/fr/",
@@ -219,6 +232,7 @@ export const titulosEn: Partial<Record<PendienteId, string>> = {
   "deidades-arte": "Deity art",
   "clases-arte": "Class art",
   "traduccion-ingles": "English translation review",
+  "afinidad-textos": "Affinity Test: new texts",
 };
 
 /** Titulos en frances de cada placeholder (en /fr solo se muestra "Bientôt" + titulo). */
@@ -241,4 +255,5 @@ export const titulosFr: Partial<Record<PendienteId, string>> = {
   "clases-arte": "Art des classes",
   "traduccion-ingles": "Relecture de la traduction anglaise",
   "traduccion-frances": "Relecture de la traduction française",
+  "afinidad-textos": "Test d'Affinité : nouveaux textes",
 };
