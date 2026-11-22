@@ -4,7 +4,7 @@ import SectionHeader from "@/components/compendio/SectionHeader";
 import Pendiente from "@/components/ui/Pendiente";
 import { getCompendio } from "@/lib/compendio";
 import { metaPagina, ruta, t, type Lang } from "@/lib/i18n";
-import { themeFor } from "@/lib/site";
+import { emblemas, themeFor } from "@/lib/site";
 import { variante } from "@/lib/imagenes";
 
 export function metadataDeidades(lang: Lang) {
@@ -78,8 +78,14 @@ export default function Deidades({ lang }: { lang: Lang }) {
                 </div>
 
                 <div>
-                  <span className={`mb-4 block h-1 w-16 rounded-full ${theme.bar}`} aria-hidden="true" />
-                  <h2 className={`mb-4 font-display text-4xl md:text-5xl ${theme.text}`}>{deidad.name}</h2>
+                  <div className="mb-4 flex items-center gap-4">
+                    {emblemas[deidad.slug] ? (
+                      <Image src={emblemas[deidad.slug]} alt="" width={134} height={134} className="h-14 w-14 shrink-0 md:h-16 md:w-16" />
+                    ) : (
+                      <span className={`block h-1 w-16 rounded-full ${theme.bar}`} aria-hidden="true" />
+                    )}
+                    <h2 className={`font-display text-4xl md:text-5xl ${theme.text}`}>{deidad.name}</h2>
+                  </div>
                   <p className="mb-6 text-lg leading-8 text-selva-300">{deidad.description}</p>
                   <div className="mb-8 flex flex-wrap gap-2">
                     {deidad.tags.map((tag) => (

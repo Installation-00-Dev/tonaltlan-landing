@@ -195,6 +195,21 @@ export const deityThemes: Record<string, DeityTheme> = {
   },
 };
 
+/**
+ * Emblema de cada deidad: recortes del diagrama de Puntos Tonal (public/images/mundo/).
+ * Asignacion confirmada por el diseñador (nov. 2026): luz, obscuridad, rayo, tierra,
+ * aire, fuego y agua. Va junto al nombre del dios y de su linaje (decorativo: alt="").
+ */
+export const emblemas: Record<string, string> = {
+  tonatli: "/images/mundo/puntos_tonales_emblema_luz.webp",
+  calti: "/images/mundo/puntos_tonales_emblema_obscuridad.webp",
+  tohui: "/images/mundo/puntos_tonales_emblema_rayo.webp",
+  tzal: "/images/mundo/puntos_tonales_emblema_tierra.webp",
+  heka: "/images/mundo/puntos_tonales_emblema_aire.webp",
+  zilo: "/images/mundo/puntos_tonales_emblema_fuego.webp",
+  lok: "/images/mundo/puntos_tonales_emblema_agua.webp",
+};
+
 export function themeFor(deitySlug?: string): DeityTheme {
   return (deitySlug && deityThemes[deitySlug]) || neutralTheme;
 }

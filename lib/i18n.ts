@@ -164,8 +164,8 @@ const es = {
     titulo: "Explorar Tonaltlan",
     subtitulo: "Descubre los secretos del mundo mesoamericano a través de su compendio viviente.",
     secciones: [
-      { title: "Clases", description: "Guerreros, sacerdotes, hechiceros y más arquetipos del mundo antiguo.", tags: ["Combate", "Magia", "Sigilo"] },
-      { title: "Especies", description: "Seres nacidos del maíz, la obsidiana y el aliento de los dioses.", tags: ["Humanos", "Nahual", "Tlalocan"] },
+      { title: "Clases", description: "Brujo Catemaco, Guerrero Otomi, Mitotiani y Tlapali.", tags: ["Combate", "Magia", "Sigilo"] },
+      { title: "Especies", description: "Seres nacidos del maíz, la obsidiana y el aliento de los dioses.", tags: ["He'kari", "Hualik", "Irzak"] },
       { title: "Bestiario", description: "Criaturas del Mictlan y bestias de selvas y montañas sagradas.", tags: ["Mictlan", "Selva", "Celestial"] },
       { title: "Monturas", description: "Compañeros leales que surcan cielos, ríos y caminos ancestrales.", tags: ["Voladora", "Acuática", "Terrestre"] },
       { title: "Deidades", description: "Los dioses que tejen el destino del cosmos y sus elegidos.", tags: ["Creación", "Destrucción", "Equilibrio"] },
@@ -438,8 +438,8 @@ const en: Diccionario = {
     titulo: "Explore Tonaltlan",
     subtitulo: "Uncover the secrets of the Mesoamerican world through its living compendium.",
     secciones: [
-      { title: "Classes", description: "Warriors, priests, sorcerers and more archetypes of the ancient world.", tags: ["Combat", "Magic", "Stealth"] },
-      { title: "Species", description: "Beings born of maize, obsidian and the breath of the gods.", tags: ["Humans", "Nahual", "Tlalocan"] },
+      { title: "Classes", description: "Brujo Catemaco, Guerrero Otomi, Mitotiani and Tlapali.", tags: ["Combat", "Magic", "Stealth"] },
+      { title: "Species", description: "Beings born of maize, obsidian and the breath of the gods.", tags: ["He'kari", "Hualik", "Irzak"] },
       { title: "Bestiary", description: "Creatures of Mictlan and beasts of the sacred jungles and mountains.", tags: ["Mictlan", "Jungle", "Celestial"] },
       { title: "Mounts", description: "Loyal companions that ride the skies, rivers and ancestral roads.", tags: ["Flying", "Aquatic", "Land"] },
       { title: "Deities", description: "The gods who weave the fate of the cosmos and their chosen ones.", tags: ["Creation", "Destruction", "Balance"] },
@@ -711,8 +711,8 @@ const fr: Diccionario = {
     titulo: "Explorer Tonaltlan",
     subtitulo: "Découvrez les secrets du monde mésoaméricain à travers son compendium vivant.",
     secciones: [
-      { title: "Classes", description: "Guerriers, prêtres, sorciers et autres archétypes du monde ancien.", tags: ["Combat", "Magie", "Discrétion"] },
-      { title: "Espèces", description: "Des êtres nés du maïs, de l'obsidienne et du souffle des dieux.", tags: ["Humains", "Nahual", "Tlalocan"] },
+      { title: "Classes", description: "Brujo Catemaco, Guerrero Otomi, Mitotiani et Tlapali.", tags: ["Combat", "Magie", "Discrétion"] },
+      { title: "Espèces", description: "Des êtres nés du maïs, de l'obsidienne et du souffle des dieux.", tags: ["He'kari", "Hualik", "Irzak"] },
       { title: "Bestiaire", description: "Créatures du Mictlan et bêtes des jungles et montagnes sacrées.", tags: ["Mictlan", "Jungle", "Céleste"] },
       { title: "Montures", description: "De fidèles compagnons qui parcourent les cieux, les rivières et les routes ancestrales.", tags: ["Volantes", "Aquatiques", "Terrestres"] },
       { title: "Divinités", description: "Les dieux qui tissent le destin du cosmos et leurs élus.", tags: ["Création", "Destruction", "Équilibre"] },

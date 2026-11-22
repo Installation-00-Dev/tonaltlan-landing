@@ -51,7 +51,7 @@ jobs:
           NEXT_PUBLIC_GAS_WEBHOOK_URL: ${{ vars.NEXT_PUBLIC_GAS_WEBHOOK_URL }}
         run: pnpm build
 
-      - name: Assemble dist (Next root + /proximamente)
+      - name: Assemble dist
         shell: bash
         run: |
           set -euo pipefail
@@ -67,13 +67,6 @@ jobs:
 
           # Next export → raíz del sitio (tonaltlan.com)
           cp -R out/* dist/
-
-          # Landing legacy → /proximamente
-          mkdir -p dist/proximamente
-          cp -f index.html dist/proximamente/index.html
-          for f in piramides_azteca_final.webp piramides_azteca_final.png produccion.png tonaltlan_logo.png; do
-            if [ -f "$f" ]; then cp -f "$f" "dist/proximamente/$f"; fi
-          done
 
       - name: Configure Pages
         if: github.event_name != 'pull_request'

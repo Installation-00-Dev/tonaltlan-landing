@@ -17,8 +17,8 @@ pnpm build      # exportación estática → out/
 Antes de cada commit: `pnpm typecheck` y `pnpm build` deben pasar.
 
 - `output: "export"`, `trailingSlash: true`, `images.unoptimized`. No hay rutas API ni server actions.
-- Al hacer push a `main`, `.github/workflows/pages.yml` publica el sitio. El `index.html` de la raíz es la
-  página legacy que se sirve en `/proximamente`.
+- Al hacer push a `main`, `.github/workflows/pages.yml` publica el sitio. La página legacy `/proximamente`
+  se retiró en nov. 2026 (esa ruta ahora muestra la 404).
 
 ---
 
@@ -207,6 +207,10 @@ oro sobre verde selva profundo. Los colores viven como escalas propias en `tailw
 
 - **Colores por deidad** en `lib/site.ts` (Heka cielo, Lok cian, Tzal lima, Zilo naranja, Calti violeta,
   Tonatli amarillo, Tohui fucsia); sus especies los heredan.
+- **Emblemas de los dioses** (`emblemas` en `lib/site.ts`): recortes del diagrama de Puntos Tonal, con la
+  asignación confirmada por el diseñador (luz Tonatli, obscuridad Calti, rayo Tohui, tierra Tzal, aire Heka,
+  fuego Zilo, agua Lok). Van junto al nombre del dios (`/deidades` y su ficha), en "Hijos de…" de
+  `/especies`, en el resultado del test y en la pregunta "Elige un símbolo". Son decorativos (`alt=""`).
 - **Tipografía:** **Macondo** para títulos (`font-display`, elegida por el creador) e **Inter** para
   el texto. Macondo tiene **un solo peso (400)**: nunca la combines con `font-bold`/`font-semibold`
   (el navegador inventa una negrita fea), ni con `uppercase` o `tracking-*`.

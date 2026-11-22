@@ -25,6 +25,8 @@ interface DetailLayoutProps {
   related?: { label: string; items: { name: string; href: string }[] };
   /** Contenido extra al final de la ficha (p. ej. la invitacion al Test de Afinidad). */
   pie?: ReactNode;
+  /** Emblema junto al titulo (fichas de deidad). */
+  emblema?: string;
 }
 
 export default function DetailLayout({
@@ -39,6 +41,7 @@ export default function DetailLayout({
   accent,
   related,
   pie,
+  emblema,
 }: DetailLayoutProps) {
   const theme = themeFor(accent);
   const dl = t(lang).paginas.detalle;
@@ -345,11 +348,18 @@ export default function DetailLayout({
           {backLabel}
         </Link>
 
-        {/* Title */}
-        <span className={`mb-4 block h-1 w-16 rounded-full ${theme.bar}`} aria-hidden="true" />
-        <h1 className={`mb-5 font-display text-4xl md:text-5xl ${theme.text}`}>
-          {title}
-        </h1>
+        {/* Title: con emblema (deidades) o con la barra de color */}
+        {emblema ? (
+          <div className="mb-5 flex items-center gap-4">
+            <Image src={emblema} alt="" width={134} height={134} className="h-16 w-16 shrink-0" />
+            <h1 className={`font-display text-4xl md:text-5xl ${theme.text}`}>{title}</h1>
+          </div>
+        ) : (
+          <>
+            <span className={`mb-4 block h-1 w-16 rounded-full ${theme.bar}`} aria-hidden="true" />
+            <h1 className={`mb-5 font-display text-4xl md:text-5xl ${theme.text}`}>{title}</h1>
+          </>
+        )}
 
         {/* Tags */}
         <div className="mb-8 flex flex-wrap gap-2">
