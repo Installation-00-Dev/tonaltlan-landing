@@ -27,13 +27,6 @@ function sinArte(lista: { name: string; coverImageSrc?: string }[]) {
 }
 
 export const pendientes = {
-  "mundo-cosmovision": {
-    titulo: "Cosmovisión",
-    donde: "/mundo#cosmovision",
-    necesita: [
-      "El texto ya está (El origen de todo). Falta una ilustración horizontal para encabezar la sección (opcional).",
-    ],
-  },
   "mundo-puntos-tonal": {
     titulo: "Puntos Tonal",
     donde: "/mundo#puntos-tonal",
@@ -216,7 +209,6 @@ export type PendienteId = keyof typeof pendientes;
 
 /** Titulos en ingles de cada placeholder (en /en solo se muestra "Coming soon" + titulo). */
 export const titulosEn: Partial<Record<PendienteId, string>> = {
-  "mundo-cosmovision": "Worldview",
   "mundo-puntos-tonal": "Tonal Points",
   "mundo-regiones": "Regions and map",
   "mundo-historia": "History and timeline",
@@ -238,7 +230,6 @@ export const titulosEn: Partial<Record<PendienteId, string>> = {
 
 /** Titulos en frances de cada placeholder (en /fr solo se muestra "Bientôt" + titulo). */
 export const titulosFr: Partial<Record<PendienteId, string>> = {
-  "mundo-cosmovision": "Cosmovision",
   "mundo-puntos-tonal": "Points Tonal",
   "mundo-regiones": "Régions et carte",
   "mundo-historia": "Histoire et chronologie",

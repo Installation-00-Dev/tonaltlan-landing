@@ -274,6 +274,8 @@ const es = {
       titulo: "El Mundo",
       secciones: { cosmovision: "Cosmovisión", puntos: "Puntos Tonal", regiones: "Regiones", historia: "Historia" },
       mapaAlt: "Mapa de Tonaltlan",
+      cosmovisionAlt:
+        "Ilustración de la creación: en lo alto, una figura dual de luz y obscuridad; al centro, una figura que se funde con el Sol, rodeada por fuerzas de la obscuridad, el aire, el agua, el rayo y el fuego, y por un caimán celeste entre esferas; abajo, la tierra sostiene el mundo.",
       puntosAlt:
         "Diagrama de los Puntos Tonal: dos figuras humanas con corrientes de energía de colores que recorren el cuerpo hasta un círculo en el pecho, y arriba los siete emblemas de los dioses.",
     },
@@ -543,6 +545,8 @@ const en: Diccionario = {
       titulo: "The World",
       secciones: { cosmovision: "Worldview", puntos: "Tonal Points", regiones: "Regions", historia: "History" },
       mapaAlt: "Map of Tonaltlan",
+      cosmovisionAlt:
+        "Illustration of the creation: above, a dual figure of light and darkness; at the center, a figure merging with the Sun, surrounded by forces of darkness, air, water, lightning and fire, and by a celestial caiman among spheres; below, the earth holds up the world.",
       puntosAlt:
         "Diagram of the Tonal Points: two human figures with colored currents of energy running through the body to a circle on the chest, with the seven emblems of the gods above.",
     },
@@ -811,6 +815,8 @@ const fr: Diccionario = {
       titulo: "Le Monde",
       secciones: { cosmovision: "Cosmovision", puntos: "Points Tonal", regiones: "Régions", historia: "Histoire" },
       mapaAlt: "Carte de Tonaltlan",
+      cosmovisionAlt:
+        "Illustration de la création : en haut, une figure double de lumière et d'obscurité ; au centre, une figure qui se fond avec le Soleil, entourée des forces de l'obscurité, de l'air, de l'eau, de la foudre et du feu, et d'un caïman céleste parmi des sphères ; en bas, la terre porte le monde.",
       puntosAlt:
         "Diagramme des Points Tonal : deux silhouettes humaines parcourues de courants d'énergie colorés jusqu'à un cercle sur la poitrine, avec au-dessus les sept emblèmes des dieux.",
     },

@@ -60,6 +60,7 @@ export const galleryImages = [
   "/images/galeria/sacerdotiza_lok.webp",
   "/images/galeria/Aztlan.webp",
   "/images/galeria/ciudad_agua.webp",
+  "/images/galeria/cosmovision.webp",
 ];
 
 export const mountImages = [
@@ -87,6 +88,7 @@ const correccionesNombre: Record<string, string> = {
   Espiritu: "Espíritu",
   Alquemista: "Alquimista",
   Sacerdotiza: "Sacerdotisa",
+  Cosmovision: "Cosmovisión",
 };
 
 export function labelFromPath(src: string, fallback = "Ilustración") {

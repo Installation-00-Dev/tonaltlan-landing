@@ -8,6 +8,7 @@ los iconos del sitio. Correr al agregar arte de una especie o deidad nueva:
 - public/images/piramides_azteca_final_og.webp: imagen general (arte del Hero + logo).
 - <arte>_og.webp junto a cada retrato de especie y deidad: su arte sobre selva con
   el brillo del color de su dios (los mismos de deityThemes en lib/site.ts).
+- <ilustracion>_og.webp de las paginas en PAGINAS (p. ej. la Cosmovision para El Mundo).
 - public/images/tonaltlan_logo_icono_{48,180,192,512}.webp: logo sobre selva.
 Si a una ficha le falta su _og, la pagina usa la imagen general (lib/vista-previa.ts).
 Requiere Pillow (pip install pillow).
@@ -88,7 +89,20 @@ for nombre, deidad in ESPECIES.items():
 for nombre, deidad in DEIDADES.items():
     tarjeta(IMG / f"{nombre}.webp", deidad)
 
-# 3) Iconos
+# 3) Paginas con ilustracion propia: centro recortado a 1200x630 con el logo chico.
+#    (El Mundo usa la Cosmovision; ver metadataMundo en components/paginas/Mundo.tsx.)
+PAGINAS = ["galeria/cosmovision.webp"]
+for rel in PAGINAS:
+    origen = IMG / rel
+    im = Image.open(origen).convert("RGB")
+    k = max(W / im.width, H / im.height)
+    im = im.resize((round(im.width * k), round(im.height * k)), Image.LANCZOS)
+    x, y = (im.width - W) // 2, (im.height - H) // 2
+    im = im.crop((x, y, x + W, y + H)).convert("RGBA")
+    im.alpha_composite(logo_chico, (48, 48))
+    im.convert("RGB").save(origen.with_name(origen.stem + "_og.webp"), "WEBP", quality=86, method=6)
+
+# 4) Iconos
 for lado in (48, 180, 192, 512):
     lienzo = Image.new("RGBA", (lado, lado), SELVA + (255,))
     l = ancho(logo, int(lado * 0.9))
