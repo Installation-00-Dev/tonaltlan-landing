@@ -38,17 +38,37 @@ export function rutaEnIdioma(pathname: string, destino: Lang): string {
   return ruta(destino, base);
 }
 
+/** Imagen que se ve al compartir un enlace (Open Graph, 1200x630). */
+export const IMAGEN_COMPARTIR = "/images/piramides_azteca_final_og.webp";
+
 /**
- * Metadatos de una pagina: titulo, descripcion y `alternates` para que Google
- * relacione las versiones (es / en / fr). `path` es la ruta en espanol.
+ * Metadatos de una pagina: titulo, descripcion, `alternates` para que Google
+ * relacione las versiones (es / en / fr) y la vista previa al compartir el
+ * enlace (Open Graph y X). `path` es la ruta en espanol.
  */
-export function metaPagina(lang: Lang, path: string, title: string, description?: string) {
+export function metaPagina(lang: Lang, path: string, title: string, description?: string, imagen = IMAGEN_COMPARTIR) {
+  const titulo = typeof title === "string" ? title : undefined;
   return {
     title,
     ...(description ? { description } : {}),
     alternates: {
       canonical: ruta(lang, path),
       languages: { es: path, en: ruta("en", path), fr: ruta("fr", path), "x-default": path },
+    },
+    openGraph: {
+      type: "website" as const,
+      siteName: "Tonaltlan",
+      locale: IDIOMAS[lang].locale,
+      url: ruta(lang, path),
+      ...(titulo ? { title: titulo } : {}),
+      ...(description ? { description } : {}),
+      images: [{ url: imagen, width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: "summary_large_image" as const,
+      ...(titulo ? { title: titulo } : {}),
+      ...(description ? { description } : {}),
+      images: [imagen],
     },
   };
 }
@@ -254,6 +274,8 @@ const es = {
       titulo: "El Mundo",
       secciones: { cosmovision: "Cosmovisión", puntos: "Puntos Tonal", regiones: "Regiones", historia: "Historia" },
       mapaAlt: "Mapa de Tonaltlan",
+      cosmovisionAlt:
+        "Ilustración de la creación: en lo alto, una figura dual de luz y obscuridad; al centro, una figura que se funde con el Sol, rodeada por fuerzas de la obscuridad, el aire, el agua, el rayo y el fuego, y por un caimán celeste entre esferas; abajo, la tierra sostiene el mundo.",
       puntosAlt:
         "Diagrama de los Puntos Tonal: dos figuras humanas con corrientes de energía de colores que recorren el cuerpo hasta un círculo en el pecho, y arriba los siete emblemas de los dioses.",
     },
@@ -307,6 +329,15 @@ const es = {
       toque: "Con un toque de",
       conoce: "Conoce a tu especie",
       lecturaCompleta: "Lee tu lectura completa",
+      eres: "eres",
+      preguntas: "preguntas",
+      duracion: "cerca de un minuto",
+      reintentar: "Reintentar",
+      compartir: "Compartir mi resultado",
+      preparando: "Preparando tu imagen…",
+      descargada: "Imagen descargada",
+      compartirTexto: "Soy {especie}, {arquetipo}. ¿Y tú? Descubre tu afinidad en Tonaltlan.",
+      tarjetaPie: "¿Y tú? Haz el test en",
     },
   },
 };
@@ -514,6 +545,8 @@ const en: Diccionario = {
       titulo: "The World",
       secciones: { cosmovision: "Worldview", puntos: "Tonal Points", regiones: "Regions", historia: "History" },
       mapaAlt: "Map of Tonaltlan",
+      cosmovisionAlt:
+        "Illustration of the creation: above, a dual figure of light and darkness; at the center, a figure merging with the Sun, surrounded by forces of darkness, air, water, lightning and fire, and by a celestial caiman among spheres; below, the earth holds up the world.",
       puntosAlt:
         "Diagram of the Tonal Points: two human figures with colored currents of energy running through the body to a circle on the chest, with the seven emblems of the gods above.",
     },
@@ -567,6 +600,15 @@ const en: Diccionario = {
       toque: "With a touch of",
       conoce: "Meet your species",
       lecturaCompleta: "Read your full reading",
+      eres: "you are",
+      preguntas: "questions",
+      duracion: "about a minute",
+      reintentar: "Try again",
+      compartir: "Share my result",
+      preparando: "Preparing your image…",
+      descargada: "Image downloaded",
+      compartirTexto: "I'm {especie}, {arquetipo}. What about you? Find your affinity in Tonaltlan.",
+      tarjetaPie: "What about you? Take the test at",
     },
   },
 };
@@ -773,6 +815,8 @@ const fr: Diccionario = {
       titulo: "Le Monde",
       secciones: { cosmovision: "Cosmovision", puntos: "Points Tonal", regiones: "Régions", historia: "Histoire" },
       mapaAlt: "Carte de Tonaltlan",
+      cosmovisionAlt:
+        "Illustration de la création : en haut, une figure double de lumière et d'obscurité ; au centre, une figure qui se fond avec le Soleil, entourée des forces de l'obscurité, de l'air, de l'eau, de la foudre et du feu, et d'un caïman céleste parmi des sphères ; en bas, la terre porte le monde.",
       puntosAlt:
         "Diagramme des Points Tonal : deux silhouettes humaines parcourues de courants d'énergie colorés jusqu'à un cercle sur la poitrine, avec au-dessus les sept emblèmes des dieux.",
     },
@@ -826,6 +870,15 @@ const fr: Diccionario = {
       toque: "Avec une touche de",
       conoce: "Découvre ton espèce",
       lecturaCompleta: "Lis ton portrait complet",
+      eres: "tu es",
+      preguntas: "questions",
+      duracion: "environ une minute",
+      reintentar: "Réessayer",
+      compartir: "Partager mon résultat",
+      preparando: "Préparation de ton image…",
+      descargada: "Image téléchargée",
+      compartirTexto: "Je suis {especie}, {arquetipo}. Et toi ? Découvre ton affinité dans Tonaltlan.",
+      tarjetaPie: "Et toi ? Fais le test sur",
     },
   },
 };

@@ -91,7 +91,7 @@ export default function Deidades({ lang }: { lang: Lang }) {
 
                   {linaje.length > 0 ? (
                     <div className="mb-8">
-                      <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-selva-500">{d.suLinaje}</p>
+                      <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-selva-400">{d.suLinaje}</p>
                       <div className="flex flex-wrap gap-2">
                         {linaje.map((especie) => (
                           <Link

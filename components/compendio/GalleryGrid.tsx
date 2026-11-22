@@ -123,7 +123,7 @@ export default function GalleryGrid({ images, lang = "es" }: { images: string[];
             </div>
             <figcaption className="mt-4 font-display text-lg text-selva-200">
               {labelFromPath(current)}
-              <span className="ml-3 text-sm text-selva-500">
+              <span className="ml-3 text-sm text-selva-400">
                 {openIndex + 1} / {images.length}
               </span>
             </figcaption>

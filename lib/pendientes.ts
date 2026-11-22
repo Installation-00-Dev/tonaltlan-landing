@@ -11,7 +11,7 @@
    ============================================================ */
 import { clases, deidades, especies } from "./data";
 
-export const MOSTRAR_NECESIDADES = true;
+export const MOSTRAR_NECESIDADES = false;
 
 export interface PendienteInfo {
   titulo: string;
@@ -27,13 +27,6 @@ function sinArte(lista: { name: string; coverImageSrc?: string }[]) {
 }
 
 export const pendientes = {
-  "mundo-cosmovision": {
-    titulo: "Cosmovisión",
-    donde: "/mundo#cosmovision",
-    necesita: [
-      "El texto ya está (El origen de todo). Falta una ilustración horizontal para encabezar la sección (opcional).",
-    ],
-  },
   "mundo-puntos-tonal": {
     titulo: "Puntos Tonal",
     donde: "/mundo#puntos-tonal",
@@ -184,6 +177,7 @@ export const pendientes = {
     necesita: [
       "Revisar las lecturas tipo horóscopo (3 frases positivas por especie) en español, inglés y francés: campo lectura en lib/affinity-test.ts, .en.ts y .fr.ts.",
       "Revisar los títulos de las 3 preguntas visuales (símbolo, color y dios) y los nombres de los colores: textosVisuales en los mismos archivos.",
+      "Revisar los textos de compartir: el mensaje (\"Soy {especie}, {arquetipo}. ¿Y tú?…\") y el pie de la imagen (\"¿Y tú? Haz el test en…\"), en lib/i18n.ts.",
       "Las preguntas 1, 2, 3, 4, 5 y 7 (dilemas morales) quedaron guardadas pero fuera del test. Para reactivar alguna, agrégala a ORDEN_SESION y corre: node scripts/simular-afinidad.mjs",
     ],
     pistas: [
@@ -215,7 +209,6 @@ export type PendienteId = keyof typeof pendientes;
 
 /** Titulos en ingles de cada placeholder (en /en solo se muestra "Coming soon" + titulo). */
 export const titulosEn: Partial<Record<PendienteId, string>> = {
-  "mundo-cosmovision": "Worldview",
   "mundo-puntos-tonal": "Tonal Points",
   "mundo-regiones": "Regions and map",
   "mundo-historia": "History and timeline",
@@ -237,7 +230,6 @@ export const titulosEn: Partial<Record<PendienteId, string>> = {
 
 /** Titulos en frances de cada placeholder (en /fr solo se muestra "Bientôt" + titulo). */
 export const titulosFr: Partial<Record<PendienteId, string>> = {
-  "mundo-cosmovision": "Cosmovision",
   "mundo-puntos-tonal": "Points Tonal",
   "mundo-regiones": "Régions et carte",
   "mundo-historia": "Histoire et chronologie",

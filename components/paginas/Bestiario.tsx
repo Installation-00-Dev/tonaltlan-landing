@@ -27,7 +27,7 @@ export default function Bestiario({ lang }: { lang: Lang }) {
         />
 
         <div className="mb-10 flex flex-wrap items-center gap-2">
-          <span className="mr-2 text-xs font-semibold uppercase tracking-[0.2em] text-selva-500">{d.region}</span>
+          <span className="mr-2 text-xs font-semibold uppercase tracking-[0.2em] text-selva-400">{d.region}</span>
           {d.regiones.map((region) => (
             <span
               key={region}

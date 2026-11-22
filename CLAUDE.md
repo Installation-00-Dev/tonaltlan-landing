@@ -62,6 +62,10 @@ compendio, avisos de privacidad, contactos y textos legales.
   `-1800` en galería) y actualiza `lib/variantes.generated.ts`. En el código, nunca uses la ruta
   original directamente para mostrar arte: usa `variante(src, anchoEnPixelesReales)` de
   `lib/imagenes.ts` (pide el doble de lo que se ve, por pantallas retina).
+- **Vista previa al compartir e íconos:** `python3 scripts/vista-previa.py` genera la imagen general
+  (`piramides_azteca_final_og.webp`), una `_og` (1200×630) por retrato de especie y deidad, y los íconos
+  `tonaltlan_logo_icono_N.webp`. Córrelo al agregar arte de una especie o deidad (y su color en el script).
+  Si una ficha no tiene su `_og`, usa la general (`lib/vista-previa.ts`).
 
 ### 3. Tres idiomas: español, inglés y francés
 
@@ -81,7 +85,10 @@ compendio, avisos de privacidad, contactos y textos legales.
 - **Selector de idioma:** ES · EN · FR en la barra (en celular, dentro del menú). Usa `rutaEnIdioma()`
   para abrir la misma página en el otro idioma. Los nombres y códigos viven en `IDIOMAS` (`lib/i18n.ts`).
 - **Enlaces internos:** siempre con `ruta(lang, "/ruta/")`, para no sacar al visitante de su idioma.
-- **Metadatos:** `metaPagina(lang, path, título, descripción)` agrega la URL canónica y `hreflang`.
+- **Metadatos:** `metaPagina(lang, path, título, descripción, imagen?)` agrega la URL canónica, `hreflang` y
+  la vista previa al compartir (Open Graph y X). Los layouts definen el ícono y la vista previa por defecto.
+- **Buscadores:** `app/sitemap.ts` (agrega ahí cada página pública nueva) y `app/robots.ts` (`/pendientes`
+  fuera). **404:** `app/global-not-found.tsx` (en los tres idiomas; `experimental.globalNotFound`).
 - **Traducciones:** borradores fieles, pendientes de revisión (entradas `traduccion-ingles` y
   `traduccion-frances` en `/pendientes`). Glosario inglés aprobado por el creador (nov. 2026).
   Los nombres propios mesoamericanos y de personajes no se traducen (Hombre Jaguar, Brujo Catemaco…).
@@ -99,10 +106,22 @@ compendio, avisos de privacidad, contactos y textos legales.
   (dios > símbolo > color). Los puntos viven solo en el archivo en español.
 - **Antes de subir cambios al test:** `node scripts/simular-afinidad.mjs` (falla si alguna especie se
   aleja más de 2 puntos del 14.3 % o si los idiomas no coinciden).
-- **Resultado:** retrato de la especie, lectura tipo horóscopo (`lectura`: 3 frases positivas y
-  generales), "Con un toque de" la segunda especie, botón a su ficha y la lectura completa original
-  en un desplegable. `components/paginas/Afinidad.tsx` (servidor) le pasa el arte del compendio a
-  `AfinidadCliente.tsx`.
+- **Resultado:** cabe en la primera pantalla del celular: retrato con el nombre encima ("Ana, eres
+  Lok'Naa"), lectura tipo horóscopo (`lectura`: 3 frases positivas y generales), "Con un toque de" la
+  segunda especie y la lectura completa original en un desplegable. La revelación (`.revelacion-arte`,
+  `.revelacion-texto`) es el único momento animado de la página.
+- **Compartir** (`components/afinidad/CompartirResultado.tsx`): botón principal del resultado. Dibuja en
+  canvas una imagen de historia (1080×1920, lo importante entre y=250 y y=1670) y abre el menú de
+  compartir del celular; en computadora la descarga. Los colores salen de `hex`/`hexTexto` en `deityThemes`.
+- **Código:** la lógica vive en `lib/affinity-core.ts` (sin textos) y es lo único que importa el navegador.
+  `components/paginas/Afinidad.tsx` (servidor) le pasa a `AfinidadCliente.tsx` las preguntas, las lecturas
+  y el arte solo del idioma del visitante. `lib/affinity-test.ts` importa los tres idiomas: nunca lo
+  importes desde un componente `"use client"`.
+- **Guardado a prueba de Wi-Fi:** si el envío al webhook no sale, se reintenta 2 veces y luego se guarda en
+  `localStorage` (`tonaltlan-afinidad-pendientes`) para reenviarse al volver la conexión o al abrir de
+  nuevo el test. El resultado muestra "Reintentar".
+- **Durante el test** el encabezado se encoge a una barra con el progreso (3/7); la ayuda solo sale en
+  la primera pregunta.
 
 ### 4. Contenido faltante: `<Pendiente id>`
 
@@ -113,7 +132,8 @@ compendio, avisos de privacidad, contactos y textos legales.
 - **Página `/pendientes`:** junta todas las entradas como checklist para el equipo de contenido (noindex).
 - **Cuando llega el contenido:** se reemplaza el `<Pendiente>` por el contenido real y se borra su
   entrada en `lib/pendientes.ts`.
-- **Para producción:** `MOSTRAR_NECESIDADES = false` oculta la lista de "Qué se necesita" en público.
+- **En producción:** `MOSTRAR_NECESIDADES = false` (activo desde nov. 2026): en público solo se ve
+  "Próximamente" y el título; la lista de "Qué se necesita" vive completa en `/pendientes`.
 
 ---
 
@@ -216,7 +236,7 @@ oro sobre verde selva profundo. Los colores viven como escalas propias en `tailw
 
 - **Hero:** botón principal "Explorar" + secundario "Test de Afinidad" (`heroCtas` en `lib/site.ts`;
   para una convención se puede invertir el orden). El logo grande no es un botón.
-- **El Newsletter cierra el embudo.**
+- **El Newsletter cierra el embudo:** sobre el arte de Aztlan (Galería), texto del lado oscuro del degradado.
 - **Tarjetas:** son enlaces completos; no se agregan botones de "Ver más".
 
 ---

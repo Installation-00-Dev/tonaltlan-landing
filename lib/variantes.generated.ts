@@ -42,6 +42,7 @@ export const variantesDisponibles: Record<string, number[]> = {
   "/images/galeria/Mapa.webp": [480],
   "/images/galeria/Quesadillera.webp": [480],
   "/images/galeria/ciudad_agua.webp": [480, 1200, 1800],
+  "/images/galeria/cosmovision.webp": [480, 1200],
   "/images/galeria/espiritu.webp": [480, 1200, 1800],
   "/images/galeria/guerrera_aguila.webp": [480, 1200, 1800],
   "/images/galeria/guerrero_rapado.webp": [480, 1200, 1800],

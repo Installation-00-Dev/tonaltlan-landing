@@ -89,7 +89,7 @@ export default function Footer({ lang = "es" }: { lang?: Lang }) {
               </a>
             ))}
           </div>
-          <p className="text-xs text-selva-500">{d.copyright}</p>
+          <p className="text-xs text-selva-400">{d.copyright}</p>
         </div>
       </div>
     </footer>

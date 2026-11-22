@@ -73,7 +73,7 @@ export default function Hero({ lang = "es" }: { lang?: Lang }) {
 
       {/* Indicador visual de scroll */}
       <div className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2" aria-hidden="true">
-        <svg className="h-6 w-6 motion-safe:animate-bounce text-selva-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="h-6 w-6 text-selva-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
         </svg>
       </div>

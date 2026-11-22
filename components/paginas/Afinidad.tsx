@@ -1,12 +1,13 @@
 import AfinidadCliente, { type InfoEspecies } from "@/components/paginas/AfinidadCliente";
-import { RACE_KEYS, RACE_SLUG } from "@/lib/affinity-test";
+import { RACE_KEYS, RACE_SLUG, getNarrativas, getQuestions } from "@/lib/affinity-test";
 import { getCompendio } from "@/lib/compendio";
 import type { Lang } from "@/lib/i18n";
 
 /**
- * Test de Afinidad. Junta en el servidor el arte y los nombres de cada especie y
- * de su dios (salen del compendio), para no cargar las fichas completas en el
- * navegador. La parte interactiva vive en AfinidadCliente.
+ * Test de Afinidad. Prepara en el servidor, solo en el idioma del visitante, las
+ * preguntas, las lecturas y el arte de cada especie y su dios (del compendio).
+ * Asi el navegador no descarga los tres idiomas ni las fichas completas.
+ * La parte interactiva vive en AfinidadCliente.
  */
 export default function Afinidad({ lang }: { lang: Lang }) {
   const { especies, deidades } = getCompendio(lang);
@@ -27,5 +28,5 @@ export default function Afinidad({ lang }: { lang: Lang }) {
     }),
   ) as InfoEspecies;
 
-  return <AfinidadCliente lang={lang} info={info} />;
+  return <AfinidadCliente lang={lang} info={info} preguntas={getQuestions(lang)} narrativas={getNarrativas(lang)} />;
 }
