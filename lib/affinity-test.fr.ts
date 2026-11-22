@@ -6,7 +6,7 @@
    Si les questions ou les points changent en espagnol, il faut aussi
    les mettre à jour ici.
    ============================================================ */
-import type { Question, RaceKey, RaceResult, TextosVisuales } from "./affinity-test";
+import type { Question, RaceKey, RaceResult, TextosVisuales } from "./affinity-core";
 
 export const questionsFr: Question[] = [
   {

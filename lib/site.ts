@@ -115,6 +115,8 @@ export interface DeityTheme {
   ring: string; // borde de tarjetas
   glow: string; // fondo del retrato
   bar: string; // barra de color
+  hex: string; // color principal (para dibujar en canvas: imagen para compartir)
+  hexTexto: string; // color del texto (el de `text`)
 }
 
 const neutralTheme: DeityTheme = {
@@ -123,6 +125,8 @@ const neutralTheme: DeityTheme = {
   ring: "ring-selva-700 hover:ring-jade-400/60",
   glow: "from-jade-400/20 via-selva-800/40 to-selva-900",
   bar: "bg-jade-400",
+  hex: "#4ade80",
+  hexTexto: "#86efac",
 };
 
 export const deityThemes: Record<string, DeityTheme> = {
@@ -132,6 +136,8 @@ export const deityThemes: Record<string, DeityTheme> = {
     ring: "ring-sky-400/20 hover:ring-sky-400/60",
     glow: "from-sky-400/25 via-selva-800/40 to-selva-900",
     bar: "bg-sky-400",
+    hex: "#38bdf8",
+    hexTexto: "#7dd3fc",
   },
   lok: {
     text: "text-cyan-300",
@@ -139,6 +145,8 @@ export const deityThemes: Record<string, DeityTheme> = {
     ring: "ring-cyan-400/20 hover:ring-cyan-400/60",
     glow: "from-cyan-400/25 via-selva-800/40 to-selva-900",
     bar: "bg-cyan-400",
+    hex: "#22d3ee",
+    hexTexto: "#67e8f9",
   },
   tzal: {
     text: "text-lime-300",
@@ -146,6 +154,8 @@ export const deityThemes: Record<string, DeityTheme> = {
     ring: "ring-lime-400/20 hover:ring-lime-400/60",
     glow: "from-lime-400/20 via-selva-800/40 to-selva-900",
     bar: "bg-lime-400",
+    hex: "#a3e635",
+    hexTexto: "#bef264",
   },
   zilo: {
     text: "text-orange-300",
@@ -153,6 +163,8 @@ export const deityThemes: Record<string, DeityTheme> = {
     ring: "ring-orange-400/20 hover:ring-orange-400/60",
     glow: "from-orange-500/25 via-selva-800/40 to-selva-900",
     bar: "bg-orange-400",
+    hex: "#fb923c",
+    hexTexto: "#fdba74",
   },
   calti: {
     text: "text-violet-300",
@@ -160,6 +172,8 @@ export const deityThemes: Record<string, DeityTheme> = {
     ring: "ring-violet-400/20 hover:ring-violet-400/60",
     glow: "from-violet-500/25 via-selva-800/40 to-selva-900",
     bar: "bg-violet-400",
+    hex: "#a78bfa",
+    hexTexto: "#c4b5fd",
   },
   tonatli: {
     text: "text-yellow-200",
@@ -167,6 +181,8 @@ export const deityThemes: Record<string, DeityTheme> = {
     ring: "ring-yellow-300/20 hover:ring-yellow-300/60",
     glow: "from-yellow-300/25 via-selva-800/40 to-selva-900",
     bar: "bg-yellow-300",
+    hex: "#fde047",
+    hexTexto: "#fef08a",
   },
   tohui: {
     text: "text-fuchsia-300",
@@ -174,6 +190,8 @@ export const deityThemes: Record<string, DeityTheme> = {
     ring: "ring-fuchsia-400/20 hover:ring-fuchsia-400/60",
     glow: "from-fuchsia-500/25 via-selva-800/40 to-selva-900",
     bar: "bg-fuchsia-400",
+    hex: "#e879f9",
+    hexTexto: "#f0abfc",
   },
 };
 

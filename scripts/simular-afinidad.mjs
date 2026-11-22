@@ -22,9 +22,9 @@ const raiz = join(dirname(fileURLToPath(import.meta.url)), "..");
 const require = createRequire(import.meta.url);
 const ts = require(join(raiz, "node_modules", "typescript"));
 
-// Transpila los tres archivos del test a CommonJS en una carpeta temporal.
+// Transpila el nucleo y los tres archivos de textos del test a CommonJS en una carpeta temporal.
 const tmp = mkdtempSync(join(tmpdir(), "afinidad-"));
-for (const archivo of ["affinity-test.ts", "affinity-test.en.ts", "affinity-test.fr.ts"]) {
+for (const archivo of ["affinity-core.ts", "affinity-test.ts", "affinity-test.en.ts", "affinity-test.fr.ts"]) {
   const fuente = readFileSync(join(raiz, "lib", archivo), "utf8");
   const { outputText } = ts.transpileModule(fuente, {
     compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2020 },

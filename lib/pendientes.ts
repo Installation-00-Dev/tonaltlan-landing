@@ -184,6 +184,7 @@ export const pendientes = {
     necesita: [
       "Revisar las lecturas tipo horóscopo (3 frases positivas por especie) en español, inglés y francés: campo lectura en lib/affinity-test.ts, .en.ts y .fr.ts.",
       "Revisar los títulos de las 3 preguntas visuales (símbolo, color y dios) y los nombres de los colores: textosVisuales en los mismos archivos.",
+      "Revisar los textos de compartir: el mensaje (\"Soy {especie}, {arquetipo}. ¿Y tú?…\") y el pie de la imagen (\"¿Y tú? Haz el test en…\"), en lib/i18n.ts.",
       "Las preguntas 1, 2, 3, 4, 5 y 7 (dilemas morales) quedaron guardadas pero fuera del test. Para reactivar alguna, agrégala a ORDEN_SESION y corre: node scripts/simular-afinidad.mjs",
     ],
     pistas: [

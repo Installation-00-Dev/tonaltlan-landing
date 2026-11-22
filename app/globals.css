@@ -40,6 +40,25 @@ body {
   overflow-x: hidden;
 }
 
+/* Tipografia: sin palabras sueltas en la ultima linea; titulos balanceados. */
+p,
+li,
+dd {
+  text-wrap: pretty;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+/* Seleccion de texto con la paleta (oro sobre selva). */
+::selection {
+  background-color: rgb(245 184 46 / 0.3);
+  color: #fdf3d6;
+}
+
 /* Glass card utility */
 @layer components {
   .glass-card {
@@ -297,3 +316,44 @@ textarea:-webkit-autofill:focus {
 .snap-scroll > * {
   scroll-snap-align: start;
 }
+
+/* ── Test de Afinidad ───────────────────────────────────────────
+   Cambio de pregunta: fundido corto (solo opacidad).
+   Resultado: el unico momento animado de la pagina. El arte crece desde
+   0.94 y el texto sube unos pixeles, escalonado con --retraso.
+   Con "reducir movimiento" todo es solo opacidad. */
+.aparece {
+  animation: fadeOnly 180ms var(--ease-out) both;
+}
+
+@keyframes revelacionArte {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+}
+
+@keyframes revelacionTexto {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+.revelacion-arte {
+  animation: revelacionArte 700ms var(--ease-out) both;
+}
+
+.revelacion-texto {
+  animation: revelacionTexto 450ms var(--ease-out) both;
+  animation-delay: var(--retraso, 0ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .revelacion-arte,
+  .revelacion-texto {
+    animation: fadeOnly 0.3s ease both;
+    animation-delay: 0ms;
+  }
+}
+

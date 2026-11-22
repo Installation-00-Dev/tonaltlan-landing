@@ -5,7 +5,7 @@
    Generado a partir del archivo en espanol: si cambian preguntas o
    puntos alla, hay que actualizar aqui tambien.
    ============================================================ */
-import type { Question, RaceKey, RaceResult, TextosVisuales } from "./affinity-test";
+import type { Question, RaceKey, RaceResult, TextosVisuales } from "./affinity-core";
 
 export const questionsEn: Question[] = [
   {

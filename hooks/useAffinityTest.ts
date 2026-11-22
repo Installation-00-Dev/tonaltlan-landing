@@ -1,25 +1,27 @@
 "use client";
 
-import { submitAffinityToWebhook } from "@/lib/affinity-submission";
-import type { Lang } from "@/lib/i18n";
+import { submitAffinityToWebhook, type AffinitySubmissionPayload } from "@/lib/affinity-submission";
 import {
-    EMAIL_REGEX,
-    applyOptionPoints,
-    calculateResults,
-    createInitialScores,
-    getQuestions,
-    preferenciasVisuales,
-    prepareQuestionsForSession,
-    puntosAleatorios,
-    type CalculatedResults,
-    type Option,
-    type Question,
-    type Scores,
-    type User,
-} from "@/lib/affinity-test";
-import { useRef, useState } from "react";
+  EMAIL_REGEX,
+  applyOptionPoints,
+  calcularResultados,
+  createInitialScores,
+  preferenciasVisuales,
+  prepareQuestionsForSession,
+  puntosAleatorios,
+  type CalculatedResults,
+  type Option,
+  type Question,
+  type RaceKey,
+  type RaceResult,
+  type Scores,
+  type User,
+} from "@/lib/affinity-core";
+import type { Lang } from "@/lib/i18n";
+import { useEffect, useRef, useState } from "react";
 
-const AUTO_ADVANCE_DELAY_MS = 180;
+/** La opcion elegida se queda marcada este tiempo antes de pasar a la siguiente pregunta. */
+const AUTO_ADVANCE_DELAY_MS = 260;
 
 export type TestPhase = "intro" | "questions" | "results";
 export type AffinityMode = "quiz" | "random";
@@ -51,14 +53,77 @@ const MENSAJES = {
     emailInvalido: "Enter a valid email.",
   },
   fr: {
-    nombre: "Saisissez votre nom pour continuer.",
-    email: "Saisissez votre e-mail pour continuer.",
-    emailInvalido: "Saisissez un e-mail valide.",
+    nombre: "Saisis ton nom pour continuer.",
+    email: "Saisis ton e-mail pour continuer.",
+    emailInvalido: "Saisis un e-mail valide.",
   },
 };
 
-export function useAffinityTest(lang: Lang = "es") {
-  const questions = getQuestions(lang);
+/* ── Guardado a prueba de Wi-Fi de convención ──────────────────
+   1. Se reintenta 2 veces con espera, solo si el envio no salio
+      (sin conexion): asi no se duplican filas en la hoja.
+   2. Si aun falla, el resultado se guarda en el telefono y se reenvia
+      al volver la conexion o la proxima vez que se abra el test.     */
+const REINTENTOS_MS = [1500, 4000];
+const COLA_KEY = "tonaltlan-afinidad-pendientes";
+const COLA_MAX = 50;
+
+function leerCola(): AffinitySubmissionPayload[] {
+  try {
+    const guardado = JSON.parse(localStorage.getItem(COLA_KEY) ?? "[]");
+    return Array.isArray(guardado) ? guardado : [];
+  } catch {
+    return [];
+  }
+}
+
+function guardarCola(cola: AffinitySubmissionPayload[]) {
+  try {
+    if (cola.length) localStorage.setItem(COLA_KEY, JSON.stringify(cola.slice(-COLA_MAX)));
+    else localStorage.removeItem(COLA_KEY);
+  } catch {
+    // Sin almacenamiento (modo privado): solo queda el boton de reintentar.
+  }
+}
+
+function quitarDeCola(payload: AffinitySubmissionPayload) {
+  const clave = JSON.stringify(payload);
+  guardarCola(leerCola().filter((p) => JSON.stringify(p) !== clave));
+}
+
+async function enviarConReintentos(payload: AffinitySubmissionPayload) {
+  let outcome = await submitAffinityToWebhook(payload);
+  for (const espera of REINTENTOS_MS) {
+    if (outcome !== "failed") break;
+    await new Promise((listo) => setTimeout(listo, espera));
+    outcome = await submitAffinityToWebhook(payload);
+  }
+  return outcome;
+}
+
+let vaciandoCola = false;
+async function vaciarCola() {
+  if (vaciandoCola) return;
+  vaciandoCola = true;
+  try {
+    const pendientes = leerCola();
+    if (!pendientes.length) return;
+    const quedan: AffinitySubmissionPayload[] = [];
+    for (const payload of pendientes) {
+      if ((await submitAffinityToWebhook(payload)) === "failed") quedan.push(payload);
+    }
+    // Lo que se agrego mientras se enviaba va al final de la cola.
+    guardarCola([...quedan, ...leerCola().slice(pendientes.length)]);
+  } finally {
+    vaciandoCola = false;
+  }
+}
+
+/**
+ * Estado del Test de Afinidad. Recibe las preguntas y lecturas ya en el idioma
+ * del visitante (las prepara el servidor), para no descargar los tres idiomas.
+ */
+export function useAffinityTest(lang: Lang, questions: Question[], narrativas: Record<RaceKey, RaceResult>) {
   const mensajes = MENSAJES[lang];
   const [phase, setPhase] = useState<TestPhase>("intro");
   const [user, setUser] = useState<User>({ name: "", email: "" });
@@ -72,6 +137,15 @@ export function useAffinityTest(lang: Lang = "es") {
   const [submissionStatus, setSubmissionStatus] = useState<SubmissionStatus>("idle");
   const [isAutoAdvancing, setIsAutoAdvancing] = useState(false);
   const hasSubmittedRef = useRef(false);
+  const ultimoEnvioRef = useRef<AffinitySubmissionPayload | null>(null);
+
+  // Reenvia resultados que quedaron pendientes en este telefono.
+  useEffect(() => {
+    void vaciarCola();
+    const alVolverLaConexion = () => void vaciarCola();
+    window.addEventListener("online", alVolverLaConexion);
+    return () => window.removeEventListener("online", alVolverLaConexion);
+  }, []);
 
   const currentQuestion = sessionQuestions[currentQuestionIndex];
   const currentAnswerId = answers[currentQuestionIndex];
@@ -130,7 +204,7 @@ export function useAffinityTest(lang: Lang = "es") {
     }
 
     const randomScores = puntosAleatorios();
-    const randomResults = calculateResults(randomScores, lang);
+    const randomResults = calcularResultados(randomScores, narrativas, lang);
 
     setSessionQuestions([]);
     setCurrentQuestionIndex(0);
@@ -146,32 +220,12 @@ export function useAffinityTest(lang: Lang = "es") {
     return true;
   }
 
-  async function submitParticipantResult(
-    finalResults: CalculatedResults,
-    finalScores: Scores,
-    mode: AffinityMode,
-  ) {
-    if (hasSubmittedRef.current) {
-      return;
-    }
-
-    hasSubmittedRef.current = true;
+  async function guardar(payload: AffinitySubmissionPayload) {
     setSubmissionStatus("saving");
-
-    const outcome = await submitAffinityToWebhook({
-      name: user.name.trim(),
-      email: user.email.trim(),
-      dominantResult: finalResults.dominant.narrative.name,
-      secondaryResult: finalResults.secondary?.narrative.name ?? null,
-      dominantRace: finalResults.dominant.race,
-      secondaryRace: finalResults.secondary?.race ?? null,
-      scores: finalScores,
-      subscribed: false,
-      mode,
-      lang,
-    });
+    const outcome = await enviarConReintentos(payload);
 
     if (outcome === "saved") {
+      quitarDeCola(payload);
       setSubmissionStatus("saved");
       return;
     }
@@ -182,8 +236,44 @@ export function useAffinityTest(lang: Lang = "es") {
       return;
     }
 
+    // Sin conexion: se queda guardado en el telefono para reenviarlo despues.
+    if (!leerCola().some((p) => JSON.stringify(p) === JSON.stringify(payload))) {
+      guardarCola([...leerCola(), payload]);
+    }
     setSubmissionStatus("error");
-    hasSubmittedRef.current = false;
+  }
+
+  async function submitParticipantResult(
+    finalResults: CalculatedResults,
+    finalScores: Scores,
+    mode: AffinityMode,
+  ) {
+    if (hasSubmittedRef.current) {
+      return;
+    }
+
+    hasSubmittedRef.current = true;
+    const payload: AffinitySubmissionPayload = {
+      name: user.name.trim(),
+      email: user.email.trim(),
+      dominantResult: finalResults.dominant.narrative.name,
+      secondaryResult: finalResults.secondary?.narrative.name ?? null,
+      dominantRace: finalResults.dominant.race,
+      secondaryRace: finalResults.secondary?.race ?? null,
+      scores: finalScores,
+      subscribed: false,
+      mode,
+      lang,
+    };
+    ultimoEnvioRef.current = payload;
+    await guardar(payload);
+  }
+
+  /** Boton "Reintentar" cuando el guardado fallo. */
+  function reintentarGuardado() {
+    if (ultimoEnvioRef.current && submissionStatus !== "saving") {
+      void guardar(ultimoEnvioRef.current);
+    }
   }
 
   function handleOptionSelect(optionId: string) {
@@ -221,7 +311,7 @@ export function useAffinityTest(lang: Lang = "es") {
         return;
       }
 
-      const finalResults = calculateResults(nextScores, lang, preferenciasVisuales(sessionQuestions, nextAnswers));
+      const finalResults = calcularResultados(nextScores, narrativas, lang, preferenciasVisuales(sessionQuestions, nextAnswers));
       setResults(finalResults);
       setAffinityMode("quiz");
       setPhase("results");
@@ -249,24 +339,6 @@ export function useAffinityTest(lang: Lang = "es") {
     setCurrentQuestionIndex((previousIndex) => previousIndex - 1);
   }
 
-  function nextQuestion() {
-    if (!currentQuestion || !currentAnswerId) {
-      return false;
-    }
-
-    if (currentQuestionIndex < sessionQuestions.length - 1) {
-      setCurrentQuestionIndex((previousIndex) => previousIndex + 1);
-      return true;
-    }
-
-    const finalResults = calculateResults(scores, lang, preferenciasVisuales(sessionQuestions, answers));
-    setResults(finalResults);
-    setAffinityMode("quiz");
-    setPhase("results");
-    void submitParticipantResult(finalResults, scores, "quiz");
-    return true;
-  }
-
   function resetTest() {
     setPhase("intro");
     setUser({ name: "", email: "" });
@@ -279,6 +351,7 @@ export function useAffinityTest(lang: Lang = "es") {
     setAffinityMode("quiz");
     setSubmissionStatus("idle");
     hasSubmittedRef.current = false;
+    ultimoEnvioRef.current = null;
   }
 
   return {
@@ -301,7 +374,7 @@ export function useAffinityTest(lang: Lang = "es") {
     startRandomAffinity,
     handleOptionSelect,
     previousQuestion,
-    nextQuestion,
+    reintentarGuardado,
     resetTest,
   };
 }

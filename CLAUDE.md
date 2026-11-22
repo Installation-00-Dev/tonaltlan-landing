@@ -99,10 +99,22 @@ compendio, avisos de privacidad, contactos y textos legales.
   (dios > símbolo > color). Los puntos viven solo en el archivo en español.
 - **Antes de subir cambios al test:** `node scripts/simular-afinidad.mjs` (falla si alguna especie se
   aleja más de 2 puntos del 14.3 % o si los idiomas no coinciden).
-- **Resultado:** retrato de la especie, lectura tipo horóscopo (`lectura`: 3 frases positivas y
-  generales), "Con un toque de" la segunda especie, botón a su ficha y la lectura completa original
-  en un desplegable. `components/paginas/Afinidad.tsx` (servidor) le pasa el arte del compendio a
-  `AfinidadCliente.tsx`.
+- **Resultado:** cabe en la primera pantalla del celular: retrato con el nombre encima ("Ana, eres
+  Lok'Naa"), lectura tipo horóscopo (`lectura`: 3 frases positivas y generales), "Con un toque de" la
+  segunda especie y la lectura completa original en un desplegable. La revelación (`.revelacion-arte`,
+  `.revelacion-texto`) es el único momento animado de la página.
+- **Compartir** (`components/afinidad/CompartirResultado.tsx`): botón principal del resultado. Dibuja en
+  canvas una imagen de historia (1080×1920, lo importante entre y=250 y y=1670) y abre el menú de
+  compartir del celular; en computadora la descarga. Los colores salen de `hex`/`hexTexto` en `deityThemes`.
+- **Código:** la lógica vive en `lib/affinity-core.ts` (sin textos) y es lo único que importa el navegador.
+  `components/paginas/Afinidad.tsx` (servidor) le pasa a `AfinidadCliente.tsx` las preguntas, las lecturas
+  y el arte solo del idioma del visitante. `lib/affinity-test.ts` importa los tres idiomas: nunca lo
+  importes desde un componente `"use client"`.
+- **Guardado a prueba de Wi-Fi:** si el envío al webhook no sale, se reintenta 2 veces y luego se guarda en
+  `localStorage` (`tonaltlan-afinidad-pendientes`) para reenviarse al volver la conexión o al abrir de
+  nuevo el test. El resultado muestra "Reintentar".
+- **Durante el test** el encabezado se encoge a una barra con el progreso (3/7); la ayuda solo sale en
+  la primera pregunta.
 
 ### 4. Contenido faltante: `<Pendiente id>`
 
