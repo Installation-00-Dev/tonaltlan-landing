@@ -29,7 +29,7 @@ export default function Mundo({ lang }: { lang: Lang }) {
               <p className="font-display text-2xl leading-snug text-selva-100 [text-wrap:balance] md:text-3xl">
                 {cosmovision.titulo}
               </p>
-              <div className="mt-6 space-y-5 text-base leading-8 text-selva-300">
+              <div className="mt-6 max-w-[65ch] space-y-5 text-base leading-8 text-selva-300">
                 {cosmovision.parrafos.map((parrafo) => (
                   <p key={parrafo}>{parrafo}</p>
                 ))}
@@ -49,7 +49,7 @@ export default function Mundo({ lang }: { lang: Lang }) {
                   <div className="h-fit shrink-0 rounded-xl bg-oro-400/10 p-3 text-oro-300 ring-1 ring-oro-400/25">
                     {sistemaTonal.icon}
                   </div>
-                  <p className="text-base leading-8 text-selva-300">{sistemaTonal.description}</p>
+                  <p className="max-w-[65ch] text-base leading-8 text-selva-300">{sistemaTonal.description}</p>
                 </div>
               ) : null}
               <figure className="overflow-hidden rounded-2xl bg-white ring-1 ring-selva-700">

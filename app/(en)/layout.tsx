@@ -3,7 +3,7 @@ import "../globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { inter, macondo } from "@/lib/fuentes";
-import { t } from "@/lib/i18n";
+import { IMAGEN_COMPARTIR, t } from "@/lib/i18n";
 
 const d = t("en").meta;
 
@@ -16,7 +16,22 @@ export const metadata: Metadata = {
     title: d.title,
     description: d.ogDescription,
     type: "website",
+    siteName: "Tonaltlan",
+    images: [{ url: IMAGEN_COMPARTIR, width: 1200, height: 630 }],
     locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: d.title,
+    description: d.ogDescription,
+    images: [IMAGEN_COMPARTIR],
+  },
+  icons: {
+    icon: [
+      { url: "/images/tonaltlan_logo_icono_48.webp", sizes: "48x48", type: "image/webp" },
+      { url: "/images/tonaltlan_logo_icono_192.webp", sizes: "192x192", type: "image/webp" },
+    ],
+    apple: [{ url: "/images/tonaltlan_logo_icono_180.webp", sizes: "180x180", type: "image/webp" }],
   },
 };
 

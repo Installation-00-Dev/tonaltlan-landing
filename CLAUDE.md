@@ -62,6 +62,10 @@ compendio, avisos de privacidad, contactos y textos legales.
   `-1800` en galería) y actualiza `lib/variantes.generated.ts`. En el código, nunca uses la ruta
   original directamente para mostrar arte: usa `variante(src, anchoEnPixelesReales)` de
   `lib/imagenes.ts` (pide el doble de lo que se ve, por pantallas retina).
+- **Vista previa al compartir e íconos:** `python3 scripts/vista-previa.py` genera la imagen general
+  (`piramides_azteca_final_og.webp`), una `_og` (1200×630) por retrato de especie y deidad, y los íconos
+  `tonaltlan_logo_icono_N.webp`. Córrelo al agregar arte de una especie o deidad (y su color en el script).
+  Si una ficha no tiene su `_og`, usa la general (`lib/vista-previa.ts`).
 
 ### 3. Tres idiomas: español, inglés y francés
 
@@ -81,7 +85,10 @@ compendio, avisos de privacidad, contactos y textos legales.
 - **Selector de idioma:** ES · EN · FR en la barra (en celular, dentro del menú). Usa `rutaEnIdioma()`
   para abrir la misma página en el otro idioma. Los nombres y códigos viven en `IDIOMAS` (`lib/i18n.ts`).
 - **Enlaces internos:** siempre con `ruta(lang, "/ruta/")`, para no sacar al visitante de su idioma.
-- **Metadatos:** `metaPagina(lang, path, título, descripción)` agrega la URL canónica y `hreflang`.
+- **Metadatos:** `metaPagina(lang, path, título, descripción, imagen?)` agrega la URL canónica, `hreflang` y
+  la vista previa al compartir (Open Graph y X). Los layouts definen el ícono y la vista previa por defecto.
+- **Buscadores:** `app/sitemap.ts` (agrega ahí cada página pública nueva) y `app/robots.ts` (`/pendientes`
+  fuera). **404:** `app/global-not-found.tsx` (en los tres idiomas; `experimental.globalNotFound`).
 - **Traducciones:** borradores fieles, pendientes de revisión (entradas `traduccion-ingles` y
   `traduccion-frances` en `/pendientes`). Glosario inglés aprobado por el creador (nov. 2026).
   Los nombres propios mesoamericanos y de personajes no se traducen (Hombre Jaguar, Brujo Catemaco…).
@@ -125,7 +132,8 @@ compendio, avisos de privacidad, contactos y textos legales.
 - **Página `/pendientes`:** junta todas las entradas como checklist para el equipo de contenido (noindex).
 - **Cuando llega el contenido:** se reemplaza el `<Pendiente>` por el contenido real y se borra su
   entrada en `lib/pendientes.ts`.
-- **Para producción:** `MOSTRAR_NECESIDADES = false` oculta la lista de "Qué se necesita" en público.
+- **En producción:** `MOSTRAR_NECESIDADES = false` (activo desde nov. 2026): en público solo se ve
+  "Próximamente" y el título; la lista de "Qué se necesita" vive completa en `/pendientes`.
 
 ---
 
@@ -228,7 +236,7 @@ oro sobre verde selva profundo. Los colores viven como escalas propias en `tailw
 
 - **Hero:** botón principal "Explorar" + secundario "Test de Afinidad" (`heroCtas` en `lib/site.ts`;
   para una convención se puede invertir el orden). El logo grande no es un botón.
-- **El Newsletter cierra el embudo.**
+- **El Newsletter cierra el embudo:** sobre el arte de Aztlan (Galería), texto del lado oscuro del degradado.
 - **Tarjetas:** son enlaces completos; no se agregan botones de "Ver más".
 
 ---

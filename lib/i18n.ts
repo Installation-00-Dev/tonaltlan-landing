@@ -38,17 +38,37 @@ export function rutaEnIdioma(pathname: string, destino: Lang): string {
   return ruta(destino, base);
 }
 
+/** Imagen que se ve al compartir un enlace (Open Graph, 1200x630). */
+export const IMAGEN_COMPARTIR = "/images/piramides_azteca_final_og.webp";
+
 /**
- * Metadatos de una pagina: titulo, descripcion y `alternates` para que Google
- * relacione las versiones (es / en / fr). `path` es la ruta en espanol.
+ * Metadatos de una pagina: titulo, descripcion, `alternates` para que Google
+ * relacione las versiones (es / en / fr) y la vista previa al compartir el
+ * enlace (Open Graph y X). `path` es la ruta en espanol.
  */
-export function metaPagina(lang: Lang, path: string, title: string, description?: string) {
+export function metaPagina(lang: Lang, path: string, title: string, description?: string, imagen = IMAGEN_COMPARTIR) {
+  const titulo = typeof title === "string" ? title : undefined;
   return {
     title,
     ...(description ? { description } : {}),
     alternates: {
       canonical: ruta(lang, path),
       languages: { es: path, en: ruta("en", path), fr: ruta("fr", path), "x-default": path },
+    },
+    openGraph: {
+      type: "website" as const,
+      siteName: "Tonaltlan",
+      locale: IDIOMAS[lang].locale,
+      url: ruta(lang, path),
+      ...(titulo ? { title: titulo } : {}),
+      ...(description ? { description } : {}),
+      images: [{ url: imagen, width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: "summary_large_image" as const,
+      ...(titulo ? { title: titulo } : {}),
+      ...(description ? { description } : {}),
+      images: [imagen],
     },
   };
 }

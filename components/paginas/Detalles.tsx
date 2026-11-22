@@ -1,6 +1,8 @@
+import TarjetaTest from "@/components/afinidad/TarjetaTest";
 import DetailLayout from "@/components/compendio/DetailLayout";
 import { getCompendio } from "@/lib/compendio";
 import { metaPagina, ruta, t, type Lang } from "@/lib/i18n";
+import { vistaPrevia } from "@/lib/vista-previa";
 
 /** Slugs para generateStaticParams (iguales en ambos idiomas). */
 export function slugsEspecies() {
@@ -15,14 +17,14 @@ export function metadataEspecie(lang: Lang, slug: string) {
   const item = getCompendio(lang).especies.find((e) => e.slug === slug);
   const d = t(lang);
   if (!item) return { title: d.comun.noEncontrado };
-  return metaPagina(lang, `/especies/${slug}/`, `${item.name} - ${d.paginas.especies.sufijo} - Tonaltlan`, item.description);
+  return metaPagina(lang, `/especies/${slug}/`, `${item.name} - ${d.paginas.especies.sufijo} - Tonaltlan`, item.description, vistaPrevia(item.coverImageSrc));
 }
 
 export function metadataDeidad(lang: Lang, slug: string) {
   const item = getCompendio(lang).deidades.find((e) => e.slug === slug);
   const d = t(lang);
   if (!item) return { title: d.comun.noEncontrado };
-  return metaPagina(lang, `/deidades/${slug}/`, `${item.name} - ${d.paginas.deidades.sufijo} - Tonaltlan`, item.description);
+  return metaPagina(lang, `/deidades/${slug}/`, `${item.name} - ${d.paginas.deidades.sufijo} - Tonaltlan`, item.description, vistaPrevia(item.coverImageSrc));
 }
 
 export function DetalleEspecie({ lang, slug }: { lang: Lang; slug: string }) {
@@ -47,6 +49,7 @@ export function DetalleEspecie({ lang, slug }: { lang: Lang; slug: string }) {
       }
       backHref={ruta(lang, "/especies/")}
       backLabel={d.volver}
+      pie={<TarjetaTest lang={lang} />}
     />
   );
 }

@@ -66,7 +66,7 @@ export default function MountCarousel({ images, lang = "es" }: { images: string[
                 </div>
                 <div className="flex items-center justify-between gap-3 p-5">
                   <h2 className="font-display text-xl text-selva-100">{name}</h2>
-                  <span className="rounded-full border border-dashed border-selva-600 px-3 py-1 text-[11px] uppercase tracking-wider text-selva-500">
+                  <span className="rounded-full border border-dashed border-selva-600 px-3 py-1 text-[11px] uppercase tracking-wider text-selva-400">
                     {d.tipo}
                   </span>
                 </div>

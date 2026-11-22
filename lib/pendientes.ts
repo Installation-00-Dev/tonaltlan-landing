@@ -11,7 +11,7 @@
    ============================================================ */
 import { clases, deidades, especies } from "./data";
 
-export const MOSTRAR_NECESIDADES = true;
+export const MOSTRAR_NECESIDADES = false;
 
 export interface PendienteInfo {
   titulo: string;

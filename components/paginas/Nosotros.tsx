@@ -37,7 +37,7 @@ export default function Nosotros({ lang }: { lang: Lang }) {
           {contacts.map((contact) => (
             <div key={contact.email} className="rounded-2xl bg-selva-800/40 p-6 text-center ring-1 ring-selva-700/70">
               <div
-                className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full border border-dashed border-selva-600 bg-selva-900 text-xs text-selva-500"
+                className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full border border-dashed border-selva-600 bg-selva-900 text-xs text-selva-400"
                 aria-hidden="true"
               >
                 {d.foto}

@@ -30,7 +30,8 @@ def es_variante(p: Path) -> bool:
 
 registro: dict[str, list[int]] = {}
 for original in sorted(IMAGENES.rglob("*.webp")):
-    if es_variante(original) or original.stem in OMITIR:
+    # _og (vista previa al compartir) e _icono_N (iconos) ya tienen su tamano final.
+    if es_variante(original) or original.stem in OMITIR or original.stem.endswith("_og") or "_icono_" in original.stem:
         continue
     anchos = ANCHOS_GALERIA if "galeria" in original.parts else ANCHOS
     with Image.open(original) as im:

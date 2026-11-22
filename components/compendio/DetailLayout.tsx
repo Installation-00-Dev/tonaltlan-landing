@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { themeFor } from "@/lib/site";
@@ -22,6 +23,8 @@ interface DetailLayoutProps {
   accent?: string;
   /** Enlaces cruzados, p. ej. el linaje de una especie. */
   related?: { label: string; items: { name: string; href: string }[] };
+  /** Contenido extra al final de la ficha (p. ej. la invitacion al Test de Afinidad). */
+  pie?: ReactNode;
 }
 
 export default function DetailLayout({
@@ -35,6 +38,7 @@ export default function DetailLayout({
   lang = "es",
   accent,
   related,
+  pie,
 }: DetailLayoutProps) {
   const theme = themeFor(accent);
   const dl = t(lang).paginas.detalle;
@@ -371,7 +375,7 @@ export default function DetailLayout({
 
         {related && related.items.length > 0 && (
           <div className="mb-8 flex flex-wrap items-center gap-3 rounded-2xl bg-selva-800/40 p-4 ring-1 ring-selva-700/70">
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-selva-500">{related.label}</span>
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-selva-400">{related.label}</span>
             {related.items.map((item) => (
               <Link
                 key={item.href}
@@ -428,16 +432,13 @@ export default function DetailLayout({
               id={toAnchorId(section.title)}
               className="glass-card scroll-mt-24 rounded-xl p-6 md:p-8"
             >
-              <h2 className="mb-3 flex items-center gap-3 font-display text-xl text-foreground">
-                <span className="inline-flex h-7 min-w-7 items-center justify-center rounded-full border border-gold/60 bg-gold/10 px-2 text-xs font-bold text-gold">
-                  {idx + 1}
-                </span>
-                {section.title}
-              </h2>
+              <h2 className="mb-3 font-display text-xl text-foreground">{section.title}</h2>
               <div className="space-y-4 text-muted">{renderSectionContent(section)}</div>
             </section>
           ))}
         </div>
+
+        {pie ? <div className="mt-10">{pie}</div> : null}
       </div>
     </div>
   );

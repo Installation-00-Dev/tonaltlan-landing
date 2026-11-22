@@ -10,6 +10,11 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+
+  // 404 global (app/global-not-found.tsx): el sitio tiene un layout raiz por idioma.
+  experimental: {
+    globalNotFound: true,
+  },
 };
 
 export default nextConfig;
