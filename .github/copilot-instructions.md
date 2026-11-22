@@ -78,5 +78,5 @@ Generic list+detail pattern (still used by bestiario/monturas stubs).
 
 ## Gotchas
 - **Never use `object-cover` for compendium images** — content gets cropped. Use `object-contain p-2` or `object-contain p-3`
-- The legacy `index.html` (original HTML landing) is preserved at `/proximamente/` in the deploy — do not delete it
+- The legacy `index.html` landing (`/proximamente/`) was retired in Nov. 2026 at the owner's request; that route now shows the 404. Do not bring it back
 - GitHub Actions does not inject `.env.local` — hardcode webhook URLs as fallback strings
