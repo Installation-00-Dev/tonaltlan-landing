@@ -1,7 +1,5 @@
-import TarjetaTest from "@/components/afinidad/TarjetaTest";
-import TarjetaDados from "@/components/dados/TarjetaDados";
-import TarjetaDanza from "@/components/danza/TarjetaDanza";
 import SectionHeader from "@/components/compendio/SectionHeader";
+import TarjetaJuego from "@/components/juega/TarjetaJuego";
 import AnchorPage from "@/components/ui/AnchorPage";
 import Pendiente from "@/components/ui/Pendiente";
 import { getFeatures } from "@/lib/features";
@@ -44,19 +42,17 @@ export default function Juega({ lang }: { lang: Lang }) {
         {
           id: "afinidad",
           title: d.secciones.afinidad,
-          content: (
-            <TarjetaTest lang={lang} />
-          ),
+          content: <TarjetaJuego juego="afinidad" lang={lang} />,
         },
         {
           id: "danza-tonal",
           title: d.secciones.danza,
-          content: <TarjetaDanza lang={lang} />,
+          content: <TarjetaJuego juego="danza" lang={lang} />,
         },
         {
           id: "dados",
           title: d.secciones.dados,
-          content: <TarjetaDados lang={lang} />,
+          content: <TarjetaJuego juego="dados" lang={lang} />,
         },
         {
           id: "descargas",

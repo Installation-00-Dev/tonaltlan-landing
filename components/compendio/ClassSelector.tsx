@@ -5,8 +5,7 @@ import { useEffect, useState, type ReactNode } from "react";
 import type { CompendiumEntry } from "@/lib/data";
 import { t, type Lang } from "@/lib/i18n";
 import { variante } from "@/lib/imagenes";
-
-const normalizar = (value: string) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+import { normalizar } from "@/lib/texto";
 
 // Busca la seccion por titulo sin importar acentos ("Descripción" / "Descripcion").
 function sectionText(item: CompendiumEntry, title: string) {

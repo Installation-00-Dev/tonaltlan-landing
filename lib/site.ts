@@ -2,7 +2,7 @@
    DATOS COMPARTIDOS DEL SITIO
    Botones del Hero, contactos, redes, listas de imagenes (Galeria,
    Monturas, Bestiario), colores y emblemas por deidad.
-   La navegacion y el footer (textos y enlaces) viven en lib/i18n.ts.
+   La navegacion y el footer (textos y enlaces) viven en lib/i18n/marco.ts.
    ============================================================ */
 
 export interface NavItem {
@@ -10,7 +10,7 @@ export interface NavItem {
   href: string;
 }
 
-// Botones del Hero (rutas; las etiquetas salen de lib/i18n.ts). Para una
+// Botones del Hero (rutas; las etiquetas salen de lib/i18n/). Para una
 // convencion se puede invertir el orden y dejar el Test de Afinidad como principal.
 export const heroCtas: { principal: NavItem; secundario: NavItem } = {
   principal: { label: "Explorar", href: "/explorar" },

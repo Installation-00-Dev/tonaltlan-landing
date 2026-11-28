@@ -1,4 +1,5 @@
-import AfinidadCliente, { type InfoEspecies } from "@/components/paginas/AfinidadCliente";
+import AfinidadCliente from "@/components/afinidad/AfinidadCliente";
+import type { InfoEspecies } from "@/components/afinidad/comun";
 import { RACE_KEYS, RACE_SLUG, getNarrativas, getQuestions } from "@/lib/affinity-test";
 import { getCompendio } from "@/lib/compendio";
 import type { Lang } from "@/lib/i18n";

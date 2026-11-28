@@ -1,7 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import TarjetaTest from "@/components/afinidad/TarjetaTest";
-import DanzaTonalCliente, { type GlifoDanza } from "@/components/danza/DanzaTonalCliente";
+import type { GlifoDanza } from "@/components/danza/comun";
+import DanzaTonalCliente from "@/components/danza/DanzaTonalCliente";
+import EncabezadoJuego from "@/components/juega/EncabezadoJuego";
+import TarjetaJuego from "@/components/juega/TarjetaJuego";
 import { getCompendio } from "@/lib/compendio";
 import { DEIDAD_DE_GLIFO, GLIFOS } from "@/lib/danza-core";
 import { metaPagina, ruta, t, type Lang } from "@/lib/i18n";
@@ -28,8 +30,7 @@ const FIGURAS = [
  * En escritorio lo acompaña el Mitotiani, el Danzante Tonal, con enlace a su clase.
  */
 export default function DanzaTonal({ lang }: { lang: Lang }) {
-  const textos = t(lang);
-  const d = textos.paginas.danza;
+  const d = t(lang).paginas.danza;
   const { deidades, clases } = getCompendio(lang);
   const glifos: GlifoDanza[] = GLIFOS.map((id) => {
     const slug = DEIDAD_DE_GLIFO[id];
@@ -64,24 +65,13 @@ export default function DanzaTonal({ lang }: { lang: Lang }) {
           ) : null}
 
           <div className="lg:order-none">
-            <header className="mx-auto mb-6 max-w-[26rem]">
-              <nav aria-label={textos.comun.ruta} className="mb-3 text-sm text-selva-400">
-                <Link href={ruta(lang, "/juega/")} className="transition-colors hover:text-jade-300">
-                  {textos.paginas.juega.titulo}
-                </Link>
-                <span className="mx-2 text-selva-600" aria-hidden="true">
-                  /
-                </span>
-              </nav>
-              <h1 className="font-display text-4xl text-jade-400 md:text-5xl">{d.titulo}</h1>
-              <p className="mt-3 text-base leading-relaxed text-selva-300">{d.instruccion}</p>
-            </header>
+            <EncabezadoJuego lang={lang} titulo={d.titulo} instruccion={d.instruccion} className="mx-auto mb-6 max-w-[26rem]" />
 
             <DanzaTonalCliente glifos={glifos} figuras={FIGURAS} textos={d} enlace={`https://tonaltlan.com${ruta(lang, RUTA)}`} />
           </div>
         </div>
 
-        <TarjetaTest lang={lang} className="mt-20" />
+        <TarjetaJuego juego="afinidad" lang={lang} className="mt-20" />
       </div>
     </div>
   );

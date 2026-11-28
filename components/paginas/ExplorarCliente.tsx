@@ -8,6 +8,7 @@ import Image from "next/image";
 import Greca from "@/components/ui/Greca";
 import { variante } from "@/lib/imagenes";
 import { t, type Lang } from "@/lib/i18n";
+import { normalizar } from "@/lib/texto";
 
 export interface Resultado {
   name: string;
@@ -46,10 +47,6 @@ function Abanico({ imagenes }: { imagenes: string[] }) {
       ))}
     </div>
   );
-}
-
-function normalizar(texto: string) {
-  return texto.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
 }
 
 export interface SeccionIndice {

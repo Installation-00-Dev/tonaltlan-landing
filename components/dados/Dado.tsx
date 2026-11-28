@@ -2,6 +2,8 @@ import type { TipoDado } from "@/lib/dados-core";
 
 /** Forma que se dibuja: el d100 se arma con dos d10 (decenas y unidades). */
 export type FormaDado = Exclude<TipoDado, "d100">;
+
+export const formaDe = (tipo: TipoDado): FormaDado => (tipo === "d100" ? "d10" : tipo);
 export type EstadoDado = "normal" | "vista" | "critico" | "pifia" | "descartado";
 
 interface Geometria {

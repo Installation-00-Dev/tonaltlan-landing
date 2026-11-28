@@ -1,3 +1,5 @@
+import { guardarLista, leerLista } from "@/lib/almacen-local";
+
 export interface AffinitySubmissionPayload {
   name: string;
   email: string;
@@ -96,23 +98,9 @@ const REINTENTOS_MS = [1500, 4000];
 const COLA_KEY = "tonaltlan-afinidad-pendientes";
 const COLA_MAX = 50;
 
-function leerCola(): AffinitySubmissionPayload[] {
-  try {
-    const guardado = JSON.parse(localStorage.getItem(COLA_KEY) ?? "[]");
-    return Array.isArray(guardado) ? guardado : [];
-  } catch {
-    return [];
-  }
-}
-
-function guardarCola(cola: AffinitySubmissionPayload[]) {
-  try {
-    if (cola.length) localStorage.setItem(COLA_KEY, JSON.stringify(cola.slice(-COLA_MAX)));
-    else localStorage.removeItem(COLA_KEY);
-  } catch {
-    // Sin almacenamiento (modo privado): solo queda el boton de reintentar.
-  }
-}
+// Sin almacenamiento (modo privado) la cola no se guarda: solo queda el boton de reintentar.
+const leerCola = () => leerLista(COLA_KEY) as AffinitySubmissionPayload[];
+const guardarCola = (cola: AffinitySubmissionPayload[]) => guardarLista(COLA_KEY, cola.slice(-COLA_MAX));
 
 const mismaFila = (a: AffinitySubmissionPayload, b: AffinitySubmissionPayload) => JSON.stringify(a) === JSON.stringify(b);
 

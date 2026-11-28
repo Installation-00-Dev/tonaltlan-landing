@@ -1,8 +1,8 @@
 "use client";
 
-import Image from "next/image";
-import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { useEffect, useRef, useState } from "react";
 import { prefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
+import { guardarEntero, leerEntero } from "@/lib/almacen-local";
 import {
   GLIFOS,
   capaFigura,
@@ -17,26 +17,8 @@ import {
   type Glifo,
   type Partida,
 } from "@/lib/danza-core";
-import type { Diccionario } from "@/lib/i18n";
-
-/** Lo que el servidor manda de cada glifo, ya en el idioma del visitante. */
-export interface GlifoDanza {
-  id: Glifo;
-  emblema: string;
-  /** Color de su deidad (hex de deityThemes) para el destello. */
-  color: string;
-  deidad: string;
-  elemento: string;
-}
-
-type Textos = Diccionario["paginas"]["danza"];
-type Fase = "inicio" | "nuevo" | "observa" | "turno" | "acierto" | "error" | "fin";
-
-interface Resultado {
-  pasos: number;
-  /** Récord antes de esta partida. */
-  anterior: number;
-}
+import type { Fase, GlifoDanza, ResultadoDanza, TextosDanza } from "@/components/danza/comun";
+import Tablero from "@/components/danza/Tablero";
 
 const CLAVE_RECORD = "tonaltlan-danza-record";
 /** Pausas en milisegundos. */
@@ -45,39 +27,13 @@ const PAUSA_GLIFO_NUEVO = 1500; // deja ver el glifo que se suma
 const PAUSA_ACIERTO = 650; // entre una ronda y la siguiente
 const PAUSA_ERROR = 1300; // muestra el glifo que tocaba antes del resultado
 const DESTELLO_TOQUE = 200; // brillo de cada toque del jugador
-/** Del centro del tablero al centro de cada glifo, en % del ancho. */
-const RADIO = 38;
 const MAX_PUNTOS = 20;
-
-function leerRecord() {
-  try {
-    return Math.max(0, Number.parseInt(localStorage.getItem(CLAVE_RECORD) ?? "0", 10) || 0);
-  } catch {
-    return 0;
-  }
-}
-
-function guardarRecord(pasos: number) {
-  try {
-    localStorage.setItem(CLAVE_RECORD, String(pasos));
-  } catch {
-    // Sin almacenamiento (modo privado): el récord dura lo que dure la página.
-  }
-}
-
-/** Posición de cada glifo en el círculo, en el sentido del reloj desde arriba. */
-function posicion(indice: number): CSSProperties {
-  const angulo = ((-90 + (360 / GLIFOS.length) * indice) * Math.PI) / 180;
-  return {
-    left: `${(50 + RADIO * Math.cos(angulo)).toFixed(3)}%`,
-    top: `${(50 + RADIO * Math.sin(angulo)).toFixed(3)}%`,
-  };
-}
 
 /**
  * Danza Tonal: los glifos se encienden en orden y el jugador repite la danza.
  * Solo visual (sin sonido). El récord vive en este navegador (localStorage).
- * La lógica pura está en lib/danza-core.ts; aquí van el ritmo, los toques y la pantalla.
+ * La lógica pura está en lib/danza-core.ts; aquí van el ritmo, los toques y el estado.
+ * El tablero lo dibuja Tablero.tsx; los estilos viven en danza.module.css.
  */
 export default function DanzaTonalCliente({
   glifos,
@@ -88,7 +44,7 @@ export default function DanzaTonalCliente({
   glifos: GlifoDanza[];
   /** Las dos figuras de los Puntos Tonal, cada una en sus tres capas. */
   figuras: string[][];
-  textos: Textos;
+  textos: TextosDanza;
   /** Dirección de esta página para compartir el reto. */
   enlace: string;
 }) {
@@ -100,7 +56,7 @@ export default function DanzaTonalCliente({
   const [recien, setRecien] = useState<Glifo | null>(null);
   const [figura, setFigura] = useState(0);
   const [record, setRecord] = useState(0);
-  const [resultado, setResultado] = useState<Resultado | null>(null);
+  const [resultado, setResultado] = useState<ResultadoDanza | null>(null);
   const [copiado, setCopiado] = useState(false);
 
   // Los temporizadores y el teclado leen el estado desde aquí (nunca una copia vieja).
@@ -111,7 +67,6 @@ export default function DanzaTonalCliente({
   const pausadaRef = useRef<Fase | null>(null);
   const temporizadores = useRef<number[]>([]);
   const destelloRef = useRef<number | undefined>(undefined);
-  const ultimoToqueRef = useRef(0);
   const zonaRef = useRef<HTMLDivElement>(null);
   const tableroRef = useRef<HTMLDivElement>(null);
   const otraVezRef = useRef<HTMLButtonElement>(null);
@@ -180,7 +135,7 @@ export default function DanzaTonalCliente({
     if (pasos > anterior) {
       recordRef.current = pasos;
       setRecord(pasos);
-      guardarRecord(pasos);
+      guardarEntero(CLAVE_RECORD, pasos);
     }
     setResultado({ pasos, anterior });
     cambiarFase("fin");
@@ -253,7 +208,7 @@ export default function DanzaTonalCliente({
 
   // Récord guardado en este navegador; los temporizadores se limpian al salir.
   useEffect(() => {
-    const guardado = leerRecord();
+    const guardado = leerEntero(CLAVE_RECORD);
     recordRef.current = guardado;
     setRecord(guardado);
     return () => limpiar();
@@ -337,119 +292,23 @@ export default function DanzaTonalCliente({
         ) : null}
       </div>
 
-      {/* Tablero: los siete glifos en círculo, como la rueda del pecho de los Puntos Tonal */}
-      <div
-        ref={tableroRef}
-        tabIndex={-1}
-        role="group"
-        aria-label={d.tablero}
-        data-fase={fase}
-        className="danza-tablero relative aspect-square w-full rounded-full bg-[radial-gradient(closest-side,rgba(74,222,128,0.10),transparent)] focus:outline-none"
-      >
-        <svg viewBox="0 0 100 100" className="pointer-events-none absolute inset-0 h-full w-full text-selva-700" aria-hidden="true">
-          <circle cx="50" cy="50" r={RADIO} fill="none" stroke="currentColor" strokeWidth="0.5" strokeDasharray="1.5 1.5" />
-          <circle cx="50" cy="50" r={RADIO + 11.5} fill="none" stroke="currentColor" strokeOpacity="0.5" strokeWidth="0.3" />
-        </svg>
-
-        {glifos.map((glifo, indice) => {
-          const activo = activos.includes(glifo.id);
-          const estado = !activo
-            ? "dormido"
-            : glifo.id === errado
-              ? "error"
-              : glifo.id === encendido
-                ? "encendido"
-                : "listo";
-          return (
-            <div
-              key={glifo.id}
-              className="absolute w-[22%] -translate-x-1/2 -translate-y-1/2"
-              style={posicion(indice)}
-              aria-hidden={activo ? undefined : true}
-            >
-              <button
-                type="button"
-                data-glifo={glifo.id}
-                data-estado={estado}
-                data-recien={glifo.id === recien ? "true" : undefined}
-                disabled={!activo}
-                tabIndex={activo ? 0 : -1}
-                aria-label={`${glifo.elemento}, ${glifo.deidad}`}
-                aria-keyshortcuts={String(indice + 1)}
-                aria-disabled={activo && fase !== "turno" ? true : undefined}
-                onPointerDown={(evento) => {
-                  // El toque cuenta al bajar el dedo: la respuesta se siente inmediata.
-                  if (evento.button !== 0) return;
-                  ultimoToqueRef.current = performance.now();
-                  pulsar(glifo.id);
-                }}
-                onClick={() => {
-                  // Teclado (Enter o espacio) y lectores de pantalla llegan solo con el clic;
-                  // si un dedo acaba de tocar, ese toque ya contó.
-                  if (performance.now() - ultimoToqueRef.current > 600) pulsar(glifo.id);
-                }}
-                className="danza-glifo block aspect-square w-full touch-manipulation select-none rounded-full focus-visible:outline-offset-4"
-                style={{ "--brillo": glifo.color, "--brillo-suave": `${glifo.color}99` } as CSSProperties}
-              >
-                <Image
-                  src={glifo.emblema}
-                  alt=""
-                  width={256}
-                  height={256}
-                  loading="eager"
-                  draggable={false}
-                  className="pointer-events-none h-full w-full rounded-full"
-                />
-              </button>
-            </div>
-          );
-        })}
-
-        {/* Centro: empezar, la figura del Tonal que despierta o el puntaje */}
-        <div className="absolute inset-[27%]">
-          {/* Cada centro con su key: no comparten nodo y no heredan transiciones entre sí. */}
-          {fase === "inicio" ? (
-            <button
-              key="empezar"
-              type="button"
-              onClick={empezar}
-              className="flex h-full w-full items-center justify-center rounded-full bg-oro-400 text-lg font-semibold text-selva-950 shadow-[0_0_0_6px_rgba(245,184,46,0.15)] transition duration-150 hover:bg-oro-300 motion-safe:active:scale-[0.97]"
-            >
-              {d.empezar}
-            </button>
-          ) : fase === "fin" && resultado ? (
-            <div
-              key="puntaje"
-              className={`aparece flex h-full w-full flex-col items-center justify-center rounded-full bg-selva-800 ring-2 ${
-                esRecord ? "ring-jade-400" : "ring-selva-700"
-              }`}
-            >
-              <span className="font-display text-6xl leading-none text-jade-400 tabular-nums">{resultado.pasos}</span>
-              <span className="mt-1 text-sm text-selva-300">{resultado.pasos === 1 ? d.paso : d.pasos}</span>
-            </div>
-          ) : (
-            <div
-              key="figura"
-              className={`relative h-full w-full overflow-hidden rounded-full bg-selva-100 ring-4 transition-colors duration-200 ${
-                fase === "turno" ? "ring-jade-400/80" : fase === "error" ? "ring-red-400/80" : "ring-selva-700"
-              }`}
-            >
-              {figuras[figura].map((src, i) => (
-                <Image
-                  key={src}
-                  src={src}
-                  alt=""
-                  fill
-                  loading="eager"
-                  sizes="180px"
-                  className="object-contain p-[7%] transition-opacity duration-500"
-                  style={{ opacity: i === capa ? 1 : 0 }}
-                />
-              ))}
-            </div>
-          )}
-        </div>
-      </div>
+      {/* Tablero: los siete glifos en círculo y, al centro, empezar, la figura o el puntaje */}
+      <Tablero
+        tableroRef={tableroRef}
+        fase={fase}
+        glifos={glifos}
+        activos={activos}
+        errado={errado}
+        encendido={encendido}
+        recien={recien}
+        resultado={resultado}
+        esRecord={esRecord}
+        figura={figuras[figura]}
+        capa={capa}
+        textos={d}
+        onPulsar={pulsar}
+        onEmpezar={empezar}
+      />
 
       {/* Estado y avance de la ronda */}
       <div className="mt-5 flex min-h-[4.5rem] flex-col items-center gap-3 text-center">
