@@ -32,6 +32,9 @@ compendio, avisos de privacidad, contactos y textos legales.
 
 - **Ortografía:** el dueño autorizó corregir acentos, ñ y signos de apertura (¿ ¡) del español en
   todo el sitio (hecho en nov. 2026). Los textos nuevos deben llegar o quedar bien escritos.
+- **Puntuación en textos nuevos:** no uses paréntesis `()` ni guiones (`-`, `–`, `—`) como incisos o
+  pausas; usa coma o punto. Los guiones de palabras compuestas sí se quedan (`e-mail`, `est-ce`).
+  Los textos del Test de Afinidad ya se limpiaron así en los tres idiomas (nov. 2026).
 - **Lo que NO se corrige:** nombres propios del mundo y de clases o especies (Mictlan, Tonaltlan,
   Guerrero Otomi, Tlalocan, Catemaco…), ni el tono coloquial del Test de Afinidad ("compa",
   "qué pedo"). El nombre oficial es **Tonaltlan, sin acento** (confirmado por el creador).
@@ -131,6 +134,8 @@ compendio, avisos de privacidad, contactos y textos legales.
   importes desde un componente `"use client"`. Lo mismo vale para `lib/data*.ts`, `lib/compendio.ts`,
   `lib/textos.ts` y `lib/pendientes.ts`: el componente de servidor los lee y pasa solo lo necesario
   como props (así lo hacen `Inicio` → `AnuncioEvento` y `Clases` → `ClassSelector`).
+- **Nombres de resultado:** siguen el formato `ESPECIE, Elemento. Arquetipo` ("TON, Luz. El Iluminador");
+  `parseAffinityTitle` en `AfinidadCliente.tsx` saca de ahí el elemento y el arquetipo del resultado.
 - **Guardado a prueba de Wi-Fi:** si el envío al webhook no sale, se reintenta 2 veces y luego se guarda en
   `localStorage` (`tonaltlan-afinidad-pendientes`) para reenviarse al volver la conexión o al abrir de
   nuevo el test. El resultado muestra "Reintentar".

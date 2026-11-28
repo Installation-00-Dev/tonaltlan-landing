@@ -30,8 +30,9 @@ interface ParsedAffinityTitle {
   archetype: string;
 }
 
+/** "TON, Luz. El Iluminador": especie, elemento y arquetipo (nombres en lib/affinity-test*.ts). */
 function parseAffinityTitle(rawTitle: string, revelada: string): ParsedAffinityTitle {
-  const match = rawTitle.match(/^([^()]+?)\s*(?:\(([^)]+)\))?\s*-\s*(.+)$/);
+  const match = rawTitle.match(/^([^,]+),\s*([^.]+)\.\s*(.+)$/);
 
   if (!match) {
     return {

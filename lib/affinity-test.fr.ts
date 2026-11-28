@@ -303,16 +303,16 @@ export const questionsFr: Question[] = [
 
 export const raceResultsFr: Record<RaceKey, RaceResult> = {
   Ton: {
-    name: "TON (Lumière) - L'Illuminateur",
+    name: "TON, Lumière. L'Illuminateur",
     essence:
-      "Tu es la vérité qui ne peut se cacher, la lumière qui révèle sans le vouloir. Tu fais partie des moins de 100 Ton de tout Tonaltlan - ton existence est légendaire. Tu vis des siècles, bibliothèque vivante de mémoire et de sagesse. Ton existence même est un phare moral : tu ne peux pas mentir, tu ne peux pas tromper, tu ne peux pas te taire face à une injustice. Ta clarté est à la fois ta vertu et ta vulnérabilité.",
+      "Tu es la vérité qui ne peut se cacher, la lumière qui révèle sans le vouloir. Tu fais partie des moins de 100 Ton de tout Tonaltlan. Ton existence est légendaire. Tu vis des siècles, bibliothèque vivante de mémoire et de sagesse. Ton existence même est un phare moral : tu ne peux pas mentir, tu ne peux pas tromper, tu ne peux pas te taire face à une injustice. Ta clarté est à la fois ta vertu et ta vulnérabilité.",
     virtue:
       "Ta droiture morale absolue. Tu es celui qui éclaire le chemin des autres, qui protège sans attendre de récompense, qui répare les injustices parce que tu ne peux pas les ignorer. Ta lumière consume les sentiments lourds et les rancunes, et ne laisse que clarté et but.",
     shadow:
       "Ta plus grande terreur n'est pas la mort, mais d'être corrompu ou assombri. Tu crains de devenir un « soleil qui brûle au lieu de réchauffer ». Ta sincérité te rend vulnérable : tu ne peux pas garder de secrets stratégiques, et parfois la vérité que tu révèles peut briser des relations ou déclencher des guerres.",
     path:
       "Ton rituel est d'exister avec une pureté volontaire. Tu n'as pas besoin de prier : chaque acte de bonté honore Tonatli. Ton rôle est d'être le guide éthique, celui qui révèle les vérités même quand elles font mal, celui qui protège l'ordre moral du monde. Accepte que ton exposition totale soit à la fois ton pouvoir et ta blessure.",
-    symbol: "L'Aube - Le moment où la lumière revient et où le monde se révèle.",
+    symbol: "L'Aube. Le moment où la lumière revient et où le monde se révèle.",
     object: "Un miroir qui reflète la vérité sans la déformer.",
     glyph: "Un soleil dont les rayons brillent dans toutes les directions.",
     lectura: [
@@ -322,7 +322,7 @@ export const raceResultsFr: Record<RaceKey, RaceResult> = {
     ],
   },
   "Toh'kari": {
-    name: "TOH'KARI (Foudre) - Le Chaotique",
+    name: "TOH'KARI, Foudre. Le Chaotique",
     essence:
       "Tu es la tempête sans contrôle, l'impulsion qui ne s'arrête pas. Tu vis entre l'envie de détruire et le besoin de survivre. Ta foudre intérieure est une bête que tu dois dompter juste assez pour ne pas mourir... et utiliser avant qu'elle ne te consume.",
     virtue:
@@ -332,7 +332,7 @@ export const raceResultsFr: Record<RaceKey, RaceResult> = {
     path:
       "Ton rituel est la survie au jour le jour. Il n'y a pas de quotidien pour toi : il y a le mouvement erratique, l'impatience et une profonde solitude. Ton rôle est d'être l'exilé sauvage qui survit dans un monde qui te craint. Apprends à décider quand NE PAS détruire : c'est ton vrai conflit moral.",
     symbol:
-      "La Foudre qui frappe une montagne solitaire - Brutale, imprévisible, belle et terrifiante.",
+      "La Foudre qui frappe une montagne solitaire. Brutale, imprévisible, belle et terrifiante.",
     object: "Un éclat de métal qui garde encore une charge électrique.",
     glyph: "Un éclair en zigzag qui ne frappe jamais deux fois au même endroit.",
     lectura: [
@@ -342,7 +342,7 @@ export const raceResultsFr: Record<RaceKey, RaceResult> = {
     ],
   },
   "He'kari": {
-    name: "HE'KARI (Air) - Le Visionnaire",
+    name: "HE'KARI, Air. Le Visionnaire",
     essence:
       "Tu es l'esprit qui vole, l'idée qui voyage, la parole qui transforme. Tu observes d'en haut, tu vois des motifs là où d'autres voient le chaos, tu perçois de loin. Tu es le rêveur pragmatique : tu inspires, tu relies, tu interprètes et tu portes le savoir d'un endroit à l'autre.",
     virtue:
@@ -351,7 +351,7 @@ export const raceResultsFr: Record<RaceKey, RaceResult> = {
       "Ta dispersion et ta déconnexion. Tu peux être inconstant, distrait, difficile à « ramener sur terre ». Tu te perds dans des possibilités infinies et tu peux sembler froid ou absent quand tu es « là-haut » dans ta tête. Ton conflit : voler libre ou assumer ta responsabilité de messager.",
     path:
       "Ton rituel est le mouvement constant, l'art et la communication. Ton quotidien, c'est « l'air en action » : léger, inspiré, en mouvement. Ton rôle est d'être le messager, le gardien du savoir, l'allié diplomate. Équilibre ton besoin de liberté avec ton devoir de guider.",
-    symbol: "La Plume suspendue - Légère mais puissante, symbole du message et du vol.",
+    symbol: "La Plume suspendue. Légère mais puissante, symbole du message et du vol.",
     object: "Un carnet que tu portes toujours sur toi.",
     glyph: "Une spirale de vent qui s'élève vers le ciel.",
     lectura: [
@@ -361,16 +361,16 @@ export const raceResultsFr: Record<RaceKey, RaceResult> = {
     ],
   },
   Quinametzin: {
-    name: "QUINAMETZIN (Terre) - Le Gardien Colossal",
+    name: "QUINAMETZIN, Terre. Le Gardien Colossal",
     essence:
-      "Tu es la stabilité absolue : le pilier, le roc solide, le géant bienveillant qui soutient le monde. Tu es colossal (2,30 m), impossible à ignorer, et pourtant ta présence apaise au lieu d'intimider. Tu es un protecteur né, une figure de repère et de soutien émotionnel. Tu es le « foyer » fait chair, la base sur laquelle les autres construisent.",
+      "Tu es la stabilité absolue : le pilier, le roc solide, le géant bienveillant qui soutient le monde. Tu es colossal, 2,30 m, impossible à ignorer, et pourtant ta présence apaise au lieu d'intimider. Tu es un protecteur né, une figure de repère et de soutien émotionnel. Tu es le « foyer » fait chair, la base sur laquelle les autres construisent.",
     virtue:
       "Ton honnêteté et ton intégrité inébranlables. Ta Gemme de l'Âme te trahit toujours : tu ne peux pas mentir sur tes émotions. La gemme change de couleur selon ton émotion : blanc pour le calme, jaune pour la joie, vert pour l'harmonie, bleu pour la tristesse, rouge pour l'amour ou la fureur, noir pour le désespoir. Ta vertu est une honnêteté profonde, transparente et pleine de bonté. Tu es celui qui construit, répare, protège et maintient l'ordre naturel.",
     shadow:
       "Le poids du devoir et le sacrifice de soi. Tu peux te sentir obligé de porter le monde, même quand tu n'en peux plus. Ton sens du devoir peut t'écraser. Si tu échoues à protéger quelqu'un, ta gemme le révèle aussitôt... et cette culpabilité peut te marquer pendant des siècles.",
     path:
       "Ton rituel est le travail constant, la construction et le service à la communauté. Tu élèves des murs, répares des routes, bâtis des temples, formes les jeunes. Ton rôle est de tout soutenir, même si cela t'use. Apprends que toi aussi tu mérites du soutien : les piliers ont besoin de fondations.",
-    symbol: "La Montagne ancienne - Haute, ferme, patiente et éternelle. Témoin et protectrice.",
+    symbol: "La Montagne ancienne. Haute, ferme, patiente et éternelle. Témoin et protectrice.",
     object: "Un outil de travail qui t'accompagne toujours.",
     glyph: "Une montagne aux racines profondes qui s'étendent vers le bas.",
     lectura: [
@@ -380,7 +380,7 @@ export const raceResultsFr: Record<RaceKey, RaceResult> = {
     ],
   },
   "Lok'naa": {
-    name: "LOK'NAA (Eau) - Le Guérisseur",
+    name: "LOK'NAA, Eau. Le Guérisseur",
     essence:
       "Tu es le calme après la tempête. Ta psychologie est profondément empathique : tu ressens avant d'agir, tu lis l'ambiance, tu te déplaces comme l'eau elle-même, en coulant vers là où l'harmonie est nécessaire. Tu es celui qui unit, qui soigne, qui préserve la vie.",
     virtue:
@@ -390,7 +390,7 @@ export const raceResultsFr: Record<RaceKey, RaceResult> = {
     path:
       "Ton rituel est l'hospitalité, l'artisanat fluide et les rites de purification. Bains sacrés, chants qui gardent la mémoire vivante, nourriture qui apaise. Ton rôle est de désamorcer, de servir de médiateur, d'amortir le choc. Apprends à poser des limites : soigner sans te briser, couler sans disparaître.",
     symbol:
-      "Le Cénote sacré - Profond, limpide, porteur de vie, mais aussi mystérieux et sombre dans ses profondeurs.",
+      "Le Cénote sacré. Profond, limpide, porteur de vie, mais aussi mystérieux et sombre dans ses profondeurs.",
     object: "Un récipient d'eau que tu portes toujours sur toi.",
     glyph: "Une onde d'eau qui se propage en cercles concentriques.",
     lectura: [
@@ -400,17 +400,17 @@ export const raceResultsFr: Record<RaceKey, RaceResult> = {
     ],
   },
   Hualik: {
-    name: "HUALIK (Obscurité) - Le Veilleur des Ombres",
+    name: "HUALIK, Obscurité. Le Veilleur des Ombres",
     essence:
-      "Tu es celui qui observe sans être vu, qui écoute, qui comprend, qui apparaît quand personne ne s'y attend. Tu peux disparaître dans n'importe quelle ombre, te déplacer sans un bruit, voir dans l'obscurité totale. Tu fais partie de quelques dizaines, pas de milliers - ton existence est un mystère même pour les autres races. Ton identité est de rester hors de vue, mais toujours présent. Tu es l'observateur silencieux, le veilleur des vérités cachées.",
+      "Tu es celui qui observe sans être vu, qui écoute, qui comprend, qui apparaît quand personne ne s'y attend. Tu peux disparaître dans n'importe quelle ombre, te déplacer sans un bruit, voir dans l'obscurité totale. Tu fais partie de quelques dizaines, pas de milliers. Ton existence est un mystère même pour les autres races. Ton identité est de rester hors de vue, mais toujours présent. Tu es l'observateur silencieux, le veilleur des vérités cachées.",
     virtue:
       "Ta ruse et ta perception profonde. Rien ne t'échappe. Tu es intelligent, analytique, et tu sais lire les intentions derrière les mots. La lumière, le bruit et les apparences ne te trompent pas. Ta précision est chirurgicale quand tu agis.",
     shadow:
       "L'isolement et la méfiance. Tu rejettes le contact social, même quand il pourrait t'aider. Tu vois la trahison partout, même là où il n'y en a pas. Ta blessure est simple : « Nous n'avons nulle part où appartenir. » La solitude, bien que nécessaire, est aussi ta condamnation.",
     path:
       "Ton rituel est le silence, les routines précises et la prudence. Mouvements doux, habitudes méticuleuses, longues heures d'observation. Ton rôle est de savoir sans t'exposer, d'intervenir seulement quand c'est crucial. Ton conflit éternel : « Est-ce que je reste dans l'ombre... ou est-ce que j'agis ? »",
-    symbol: "La Nouvelle Lune - L'obscurité totale. Non pas l'absence, mais une présence invisible.",
-    object: "Un petit objet toujours entre tes mains (une pierre, une pièce, etc.)",
+    symbol: "La Nouvelle Lune. L'obscurité totale. Non pas l'absence, mais une présence invisible.",
+    object: "Un petit objet toujours entre tes mains, une pierre, une pièce, etc.",
     glyph: "Une ombre qui s'étend sans forme définie.",
     lectura: [
       "Tu observes plus que tu ne parles, et c'est pour ça que tu comprends ce qui échappe aux autres.",
@@ -419,7 +419,7 @@ export const raceResultsFr: Record<RaceKey, RaceResult> = {
     ],
   },
   Irzak: {
-    name: "IRZAK (Feu) - La Flamme de l'Honneur",
+    name: "IRZAK, Feu. La Flamme de l'Honneur",
     essence:
       "Tu es la passion qui brûle sans contrôle, l'honneur qui ne plie jamais, l'intensité qui définit chaque instant. Ton étincelle de Zilo doit brûler le plus fort possible avant de retourner au cycle éternel. Tu es charismatique, colérique et brutalement direct : tu ne tournes pas autour du pot, tu n'adoucis pas les vérités, tu n'agis jamais par lâcheté.",
     virtue:
@@ -429,7 +429,7 @@ export const raceResultsFr: Record<RaceKey, RaceResult> = {
     path:
       "Ton rituel est le travail intense, la forge et les rites du feu. Tu travailles au Volcan Éternel, tu expérimentes avec l'énergie de Zilo, tu vis chaque instant avec passion. Ta quête constante d'alternatives au sacrifice cyclique te marque : tu veux que chaque étincelle brûle jusqu'au bout, mais le devoir pèse sur toi. Ton rôle est de brûler avec honneur jusqu'à la fin, mais ton conflit éternel est : Dois-je brûler librement ou accomplir le devoir du sacrifice ? Cherche des alternatives, mais accepte que le poids du devoir te marque.",
     symbol:
-      "Le Volcan Éternel - Force contenue, pouvoir qui peut détruire ou créer. Ton foyer, ton maître, ton lien direct avec Zilo.",
+      "Le Volcan Éternel. Force contenue, pouvoir qui peut détruire ou créer. Ton foyer, ton maître, ton lien direct avec Zilo.",
     object:
       "Un outil de forge ou un objet que tu portes toujours sur toi et qui représente ton étincelle.",
     glyph: "Une flamme qui brûle vers le haut, intense et constante.",
