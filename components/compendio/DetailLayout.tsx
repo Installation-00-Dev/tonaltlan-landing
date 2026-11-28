@@ -1,9 +1,11 @@
 import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { themeFor } from "@/lib/site";
+import ContenidoSeccion from "@/components/compendio/ContenidoSeccion";
 import { t, type Lang } from "@/lib/i18n";
 import { variante } from "@/lib/imagenes";
+import { themeFor } from "@/lib/site";
+import { normalizar } from "@/lib/texto";
 
 interface DetailSection {
   title: string;
@@ -46,23 +48,11 @@ export default function DetailLayout({
   const theme = themeFor(accent);
   const dl = t(lang).paginas.detalle;
 
-  // Compara sin acentos ni mayusculas ("Descripción" == "descripcion").
-  function normalizar(value: string) {
-    return value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-  }
-
   function toAnchorId(value: string) {
     return normalizar(value)
       .replace(/[^a-z0-9\s-]/g, "")
       .trim()
       .replace(/\s+/g, "-");
-  }
-
-  function parsePipeRow(line: string) {
-    return line
-      .split("|")
-      .map((cell) => cell.trim())
-      .filter(Boolean);
   }
 
   function extractBulletMap(content: string) {
@@ -112,213 +102,6 @@ export default function DetailLayout({
       { label: dl.armaduras, value: bulletMap.get("competencia con armaduras") ?? "-" },
       { label: dl.armas, value: bulletMap.get("competencia con armas") ?? "-" },
     ];
-  }
-
-  function renderTable(content: string) {
-    const lines = content
-      .replace(/\r\n/g, "\n")
-      .split("\n")
-      .map((line) => line.trim())
-      .filter((line) => line.includes("|"));
-
-    if (lines.length < 2) {
-      return <p className="whitespace-pre-line text-base leading-relaxed text-selva-300">{content}</p>;
-    }
-
-    const headers = parsePipeRow(lines[0]);
-    const rows = lines.slice(1).map(parsePipeRow).filter((row) => row.length > 0);
-
-    if (headers.length < 2) {
-      return <p className="whitespace-pre-line text-base leading-relaxed text-selva-300">{content}</p>;
-    }
-
-    return (
-      <div className="space-y-3">
-        <div className="overflow-x-auto">
-          <table className="min-w-full border-collapse text-sm text-selva-300">
-            <thead className="bg-selva-900/60">
-              <tr>
-                {headers.map((header) => (
-                  <th
-                    key={header}
-                    className="border border-selva-700 px-3 py-2 text-left font-semibold text-selva-100"
-                  >
-                    {header}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {rows.map((row, rowIndex) => (
-                <tr key={`${rowIndex}-${row.join("-")}`}>
-                  {headers.map((_, colIndex) => (
-                    <td key={colIndex} className="border border-selva-700 px-3 py-2 align-top">
-                      {row[colIndex] ?? "-"}
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    );
-  }
-
-  function renderRasgos(content: string) {
-    const blocks = content
-      .replace(/\r\n/g, "\n")
-      .split(/\n{2,}/)
-      .map((block) => block.trim())
-      .filter(Boolean);
-
-    return (
-      <div className="space-y-6">
-        {blocks.map((block, idx) => {
-          const lines = block.split("\n").map((line) => line.trim()).filter(Boolean);
-          const heading = lines[0] ?? "";
-          const bodyLines = lines.slice(1);
-          const bulletLines = bodyLines.filter((line) => line.startsWith("- "));
-          const plainLines = bodyLines.filter((line) => !line.startsWith("- "));
-
-          return (
-            <details
-              key={`${heading}-${idx}`}
-              className="rounded-lg border border-selva-700/60 bg-selva-900/25 p-4"
-              open={idx === 0}
-            >
-              <summary className="cursor-pointer list-none text-base font-semibold text-oro-400">
-                {heading}
-              </summary>
-              <div className="mt-3">
-                {plainLines.length > 0 && (
-                  <p className="mb-3 whitespace-pre-line text-base leading-relaxed text-selva-300">
-                    {plainLines.join("\n")}
-                  </p>
-                )}
-                {bulletLines.length > 0 && (
-                  <ul className="list-disc space-y-1 pl-5 text-base leading-relaxed text-selva-300">
-                    {bulletLines.map((line, lineIndex) => (
-                      <li key={`${lineIndex}-${line}`}>{line.slice(2)}</li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-            </details>
-          );
-        })}
-      </div>
-    );
-  }
-
-  function renderSubclases(content: string) {
-    const lines = content
-      .replace(/\r\n/g, "\n")
-      .split("\n")
-      .map((line) => line.trim())
-      .filter(Boolean);
-
-    const elementPattern = /^(Fuego|Agua|Tierra|Aire|Luz|Obscuridad|Rayo)\s-\s(.+)$/;
-    const levelPattern = /^Nivel\s+\d+:/;
-
-    const elements: { name: string; role: string; levels: string[] }[] = [];
-    let current: { name: string; role: string; levels: string[] } | null = null;
-
-    for (const line of lines) {
-      const match = line.match(elementPattern);
-      if (match) {
-        current = { name: match[1], role: match[2], levels: [] };
-        elements.push(current);
-        continue;
-      }
-
-      if (current && levelPattern.test(line)) {
-        current.levels.push(line);
-      }
-    }
-
-    if (elements.length === 0) {
-      return <p className="whitespace-pre-line text-base leading-relaxed text-selva-300">{content}</p>;
-    }
-
-    return (
-      <div className="space-y-6">
-        {elements.map((element, elementIndex) => (
-          <details
-            key={element.name}
-            className="rounded-lg border border-selva-700/70 bg-selva-900/25 p-5"
-            open={elementIndex === 0}
-          >
-            <summary className="cursor-pointer list-none">
-              <h3 className="mb-1 font-display text-xl text-oro-400">{element.name}</h3>
-              <p className="text-sm font-medium text-selva-100">{element.role}</p>
-            </summary>
-            <ul className="mt-4 space-y-3 text-base leading-relaxed text-selva-300">
-              {element.levels.map((levelLine, levelIndex) => {
-                const [levelTitle, ...rest] = levelLine.split(":");
-                return (
-                  <li key={`${element.name}-${levelIndex}`} className="rounded-md border border-selva-700/50 bg-selva-900/40 p-3">
-                    <span className="font-semibold text-selva-100">{levelTitle}:</span>{" "}
-                    <span>{rest.join(":").trim()}</span>
-                  </li>
-                );
-              })}
-            </ul>
-          </details>
-        ))}
-      </div>
-    );
-  }
-
-  function renderGenericContent(content: string) {
-    const blocks = content
-      .replace(/\r\n/g, "\n")
-      .split(/\n{2,}/)
-      .map((block) => block.trim())
-      .filter(Boolean);
-
-    return (
-      <div className="space-y-4">
-        {blocks.map((block, idx) => {
-          const lines = block.split("\n").map((line) => line.trim()).filter(Boolean);
-          const allBullets = lines.length > 0 && lines.every((line) => line.startsWith("- "));
-
-          if (allBullets) {
-            return (
-              <ul key={idx} className="list-disc space-y-2 pl-5 text-base leading-relaxed text-selva-300">
-                {lines.map((line, lineIdx) => (
-                  <li key={`${idx}-${lineIdx}`}>{line.slice(2)}</li>
-                ))}
-              </ul>
-            );
-          }
-
-          return (
-            <p key={idx} className="whitespace-pre-line text-base leading-relaxed text-selva-300">
-              {block}
-            </p>
-          );
-        })}
-      </div>
-    );
-  }
-
-  function renderSectionContent(section: DetailSection) {
-    const titleLower = normalizar(section.title);
-
-    if (titleLower.includes("tabla") || titleLower.includes("estadisticas")) {
-      return renderTable(section.content);
-    }
-
-    if (titleLower.includes("subclases")) {
-      return renderSubclases(section.content);
-    }
-
-    if (titleLower.includes("rasgos")) {
-      return renderRasgos(section.content);
-    }
-
-    return renderGenericContent(section.content);
   }
 
   const quickFacts = buildQuickFacts();
@@ -443,7 +226,9 @@ export default function DetailLayout({
               className="scroll-mt-24 rounded-xl border border-selva-700/80 bg-selva-800/60 p-6 shadow-[0_10px_30px_rgba(2,6,23,0.35),inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-lg md:p-8"
             >
               <h2 className="mb-3 font-display text-xl text-selva-100">{section.title}</h2>
-              <div className="space-y-4 text-selva-300">{renderSectionContent(section)}</div>
+              <div className="space-y-4 text-selva-300">
+                <ContenidoSeccion title={section.title} content={section.content} />
+              </div>
             </section>
           ))}
         </div>

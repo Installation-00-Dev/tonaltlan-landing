@@ -12,26 +12,10 @@
  *   que cada especie tenga sus 3 frases de lectura.
  * Usa el TypeScript instalado en node_modules (no necesita nada mas).
  */
-import { createRequire } from "node:module";
-import { mkdtempSync, readFileSync, writeFileSync } from "node:fs";
-import { tmpdir } from "node:os";
-import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
+import { cargarTs } from "./lib/cargar-ts.mjs";
 
-const raiz = join(dirname(fileURLToPath(import.meta.url)), "..");
-const require = createRequire(import.meta.url);
-const ts = require(join(raiz, "node_modules", "typescript"));
-
-// Transpila el nucleo y los tres archivos de textos del test a CommonJS en una carpeta temporal.
-const tmp = mkdtempSync(join(tmpdir(), "afinidad-"));
-for (const archivo of ["affinity-core.ts", "affinity-test.ts", "affinity-test.en.ts", "affinity-test.fr.ts"]) {
-  const fuente = readFileSync(join(raiz, "lib", archivo), "utf8");
-  const { outputText } = ts.transpileModule(fuente, {
-    compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2020 },
-  });
-  writeFileSync(join(tmp, archivo.replace(/\.ts$/, ".js")), outputText);
-}
-const T = require(join(tmp, "affinity-test.js"));
+// El nucleo y los textos del test en los tres idiomas (affinity-test.ts importa los demas).
+const T = cargarTs("lib/affinity-test.ts");
 
 const N = 100_000;
 const IDEAL = 100 / T.RACE_KEYS.length;

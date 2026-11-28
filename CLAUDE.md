@@ -39,7 +39,7 @@ compendio, avisos de privacidad, contactos y textos legales.
   Guerrero Otomi, Tlalocan, Catemaco…), ni el tono coloquial del Test de Afinidad ("compa",
   "qué pedo"). El nombre oficial es **Tonaltlan, sin acento** (confirmado por el creador).
 - **Comparar títulos sin acentos en el código:** las secciones se buscan por título normalizado
-  (`normalize("NFD")`), así "Descripción" y "Descripcion" coinciden.
+  (`normalizar()` de `lib/texto.ts`), así "Descripción" y "Descripcion" coinciden.
 
 - **Sí se permite:** cambiar `className`, la estructura del JSX, el layout y el orden visual.
 - **Reutilizar un texto existente** en otra página es válido, siempre copiado tal cual. Mejor aún:
@@ -88,14 +88,15 @@ compendio, avisos de privacidad, contactos y textos legales.
   `app/(es)/…/page.tsx`, `app/(en)/en/…/page.tsx` y `app/(fr)/fr/…/page.tsx` solo los envuelven.
   Una página nueva necesita las tres rutas.
 - **Todo texto nuevo va en los tres idiomas:**
-  - interfaz y landing → `lib/i18n.ts` (`t(lang)`).
+  - interfaz y landing → `lib/i18n/` (`t(lang)`): un archivo por dominio (`marco`, `inicio`, `mundo`,
+    `compendio`, `juega`, `estudio`, `afinidad`) y uno por juego, con los tres idiomas juntos.
   - fichas del compendio → `lib/data.ts`, `lib/data.en.ts` y `lib/data.fr.ts` (mismos slugs, imágenes y `deidad`).
   - textos del creador → `lib/textos.ts` (`getTextos(lang)`).
   - "Tonaltlan de un Vistazo" → `lib/features.tsx` (`getFeatures(lang)`).
   - Test de Afinidad → `lib/affinity-test.ts`, `.en.ts` y `.fr.ts` (mismos ids y puntos).
   - títulos de `<Pendiente>` → `titulosEn` y `titulosFr` en `lib/pendientes.ts`.
 - **Selector de idioma:** ES · EN · FR en la barra (en celular, dentro del menú). Usa `rutaEnIdioma()`
-  para abrir la misma página en el otro idioma. Los nombres y códigos viven en `IDIOMAS` (`lib/i18n.ts`).
+  para abrir la misma página en el otro idioma. Los nombres y códigos viven en `IDIOMAS` (`lib/i18n/idiomas.ts`).
 - **Enlaces internos:** siempre con `ruta(lang, "/ruta/")`, para no sacar al visitante de su idioma.
 - **Metadatos:** `metaPagina(lang, path, título, descripción, imagen?)` agrega la URL canónica, `hreflang` y
   la vista previa al compartir (Open Graph y X). `LayoutRaiz` define el ícono y la vista previa por defecto.
@@ -123,19 +124,20 @@ compendio, avisos de privacidad, contactos y textos legales.
   aleja más de 2 puntos del 14.3 % o si los idiomas no coinciden).
 - **Resultado:** cabe en la primera pantalla del celular: retrato con el nombre encima ("Ana, eres
   Lok'Naa"), lectura tipo horóscopo (`lectura`: 3 frases positivas y generales), "Con un toque de" la
-  segunda especie y la lectura completa original en un desplegable. La revelación (`.revelacion-arte`,
-  `.revelacion-texto`) es el único momento animado de la página.
+  segunda especie y la lectura completa original en un desplegable. La revelación (`revelacionArte` y
+  `revelacionTexto` en `components/afinidad/afinidad.module.css`) es el único momento animado de la página.
 - **Compartir** (`components/afinidad/CompartirResultado.tsx`): botón principal del resultado. Dibuja en
   canvas una imagen de historia (1080×1920, lo importante entre y=250 y y=1670) y abre el menú de
   compartir del celular; en computadora la descarga. Los colores salen de `hex`/`hexTexto` en `deityThemes`.
 - **Código:** la lógica vive en `lib/affinity-core.ts` (sin textos) y es lo único que importa el navegador.
-  `components/paginas/Afinidad.tsx` (servidor) le pasa a `AfinidadCliente.tsx` las preguntas, las lecturas
-  y el arte solo del idioma del visitante. `lib/affinity-test.ts` importa los tres idiomas: nunca lo
+  `components/paginas/Afinidad.tsx` (servidor) le pasa a `components/afinidad/AfinidadCliente.tsx` las
+  preguntas, las lecturas y el arte solo del idioma del visitante (el resultado lo dibuja
+  `ResultadoAfinidad.tsx` y las preguntas visuales, `OpcionesVisuales.tsx`). `lib/affinity-test.ts` importa los tres idiomas: nunca lo
   importes desde un componente `"use client"`. Lo mismo vale para `lib/data*.ts`, `lib/compendio.ts`,
   `lib/textos.ts` y `lib/pendientes.ts`: el componente de servidor los lee y pasa solo lo necesario
   como props (así lo hacen `Inicio` → `AnuncioEvento` y `Clases` → `ClassSelector`).
 - **Nombres de resultado:** siguen el formato `ESPECIE, Elemento. Arquetipo` ("TON, Luz. El Iluminador");
-  `parseAffinityTitle` en `AfinidadCliente.tsx` saca de ahí el elemento y el arquetipo del resultado.
+  `parseAffinityTitle` en `ResultadoAfinidad.tsx` saca de ahí el elemento y el arquetipo del resultado.
 - **Guardado a prueba de Wi-Fi:** si el envío al webhook no sale, se reintenta 2 veces y luego se guarda en
   `localStorage` (`tonaltlan-afinidad-pendientes`) para reenviarse al volver la conexión o al abrir de
   nuevo el test. El resultado muestra "Reintentar".
@@ -160,8 +162,9 @@ compendio, avisos de privacidad, contactos y textos legales.
   juega miles de partidas y revisa desbloqueos, ritmo, puntaje y que los textos existan en los tres idiomas.
 - **Código:** `components/paginas/DanzaTonal.tsx` (servidor) arma cada glifo con su emblema, el color
   de su deidad (`deityThemes`) y los nombres del compendio en el idioma del visitante; la parte
-  interactiva es `components/danza/DanzaTonalCliente.tsx`. Textos en `lib/i18n.ts` (`paginas.danza`,
-  y `juega.danzaTexto` para la tarjeta).
+  interactiva es `components/danza/DanzaTonalCliente.tsx` (ritmo y estado; el tablero lo dibuja
+  `Tablero.tsx`). Textos en `lib/i18n/danza.ts` (`paginas.danza`) y la línea de la tarjeta en
+  `lib/i18n/juega.ts` (`juega.danzaTexto`).
 - **Jugar:** toque (cuenta al bajar el dedo), clic, Enter o espacio sobre un glifo, o las teclas 1 a 7
   (en el orden del círculo). Si el jugador cambia de pestaña, la danza se pausa y al volver se repite la
   ronda sin castigo. "Retar a alguien" abre el menú de compartir o copia el enlace.
@@ -189,8 +192,10 @@ compendio, avisos de privacidad, contactos y textos legales.
   `pnpm verificar`): revisa el tramo descartado de cada dado, el reparto con crypto real, el d100,
   ventaja y desventaja, la bandeja y que los textos existan en los tres idiomas.
 - **Código:** `components/paginas/Dados.tsx` (servidor) manda el color y el emblema de cada dado y los
-  textos; la parte interactiva es `components/dados/DadosCliente.tsx`. Textos en `lib/i18n.ts`
-  (`paginas.dados`, y `juega.dadosTexto` para la tarjeta). Las cifras van en Inter (el cero de
+  textos; la parte interactiva es `components/dados/DadosCliente.tsx` (estado y controles; el resultado
+  y el historial se dibujan en `PanelResultado.tsx` e `Historial.tsx`, y la pantalla encendida es
+  `hooks/usePantallaEncendida.ts`). Textos en `lib/i18n/dados.ts` (`paginas.dados`) y la línea de la
+  tarjeta en `lib/i18n/juega.ts` (`juega.dadosTexto`). Las cifras van en Inter (el cero de
   Macondo lleva una diagonal y se confunde en una tirada).
 
 ### 4. Contenido faltante: `<Pendiente id>`
@@ -211,24 +216,26 @@ compendio, avisos de privacidad, contactos y textos legales.
 
 | Archivo | Contenido |
 |---|---|
-| `lib/site.ts` | Botones del Hero (`heroCtas`), contactos, redes, listas de imágenes de Galería, Monturas y Bestiario, **colores y emblemas por deidad** (`deityThemes`, `themeFor`, `emblemas`). La navegación y el footer viven en `lib/i18n.ts` |
+| `lib/site.ts` | Botones del Hero (`heroCtas`), contactos, redes, listas de imágenes de Galería, Monturas y Bestiario, **colores y emblemas por deidad** (`deityThemes`, `themeFor`, `emblemas`). La navegación y el footer viven en `lib/i18n/marco.ts` |
 | `lib/data.ts` | Fichas del compendio: `clases`, `especies`, `deidades`, `bestiario`, `monturas` y `sectionsMeta` (conteos para Explorar). Las especies llevan `deidad: "<slug>"` para agruparse por linaje y heredar su color |
-| `lib/i18n.ts` | Idiomas: `t(lang)` (textos de interfaz y landing), `ruta(lang, path)`, `metaPagina(...)` |
+| `lib/i18n/` | Idiomas: `t(lang)` (textos de interfaz y landing, un archivo por dominio y por juego), `ruta(lang, path)`, `metaPagina(...)` (en `idiomas.ts`) |
 | `lib/compendio.ts` | `getCompendio(lang)`: fichas del compendio en el idioma pedido |
 | `lib/textos.ts` | Textos entregados por el creador (intros de Clases y Especies, cierre de Clases, Cosmovisión, noticias), en los tres idiomas |
 | `lib/features.tsx` | Textos de "Tonaltlan de un Vistazo" (landing, `/mundo` y `/juega`) |
 | `lib/pendientes.ts` | Registro de contenido pendiente |
 | `lib/affinity-*.ts`, `hooks/useAffinityTest.ts` | Test de Afinidad y su envío por webhook |
-| `lib/danza-core.ts`, `components/danza/` | Danza Tonal: lógica del juego, juego (`DanzaTonalCliente`) y su tarjeta para `/juega` (`TarjetaDanza`) |
-| `lib/dados-core.ts`, `components/dados/` | Dados de los Siete: lógica del tirador, dados en SVG (`Dado`), tirador (`DadosCliente`) y su tarjeta para `/juega` (`TarjetaDados`) |
+| `lib/danza-core.ts`, `components/danza/` | Danza Tonal: lógica del juego, juego (`DanzaTonalCliente`), tablero (`Tablero`), estilos (`danza.module.css`) y su tarjeta para `/juega` (`TarjetaDanza`) |
+| `lib/dados-core.ts`, `components/dados/` | Dados de los Siete: lógica del tirador, dados en SVG (`Dado`), tirador (`DadosCliente`), resultado (`PanelResultado`), historial (`Historial`), estilos (`dados.module.css`) y su tarjeta para `/juega` (`TarjetaDados`) |
+| `components/juega/` | Lo que comparten los juegos de `/juega`: encabezado de cada juego (`EncabezadoJuego`), marco de las tarjetas (`MarcoTarjeta`) y registro de tarjetas (`TarjetaJuego`) |
+| `lib/almacen-local.ts`, `lib/texto.ts` | Utilidades neutrales: `localStorage` a prueba de modo privado (récords, historial, cola del test) y `normalizar()` para comparar sin acentos |
 | `components/ui/` | Piezas genéricas: `Greca`, `Pendiente`, `AnchorPage` (página con índice lateral) |
 | `components/paginas/` | Cada página como componente con `lang` (las rutas de `app/` las envuelven) |
 | `components/inicio/` | Secciones de la landing: `Hero`, `About`, `ExplorePreview`, `Features`, `Newsletter`, `AnuncioEvento` |
 | `components/layout/` | Marco de todas las páginas: `LayoutRaiz` (metadatos e ícono), `Navbar`, `Footer` |
-| `components/afinidad/` | Piezas del Test de Afinidad: `CompartirResultado`, `TarjetaTest` |
-| `scripts/` | `variantes.py`, `vista-previa.py`, `emblemas.py`, `verificar-imagenes.mjs`, `simular-afinidad.mjs`, `probar-danza.mjs`, `probar-dados.mjs` |
+| `components/afinidad/` | Test de Afinidad: `AfinidadCliente`, `OpcionesVisuales`, `ResultadoAfinidad`, `CompartirResultado`, `TarjetaTest` y su `afinidad.module.css` |
+| `scripts/` | `variantes.py`, `vista-previa.py`, `emblemas.py`, `verificar-imagenes.mjs`, `simular-afinidad.mjs`, `probar-danza.mjs`, `probar-dados.mjs` y `lib/cargar-ts.mjs` (carga los `.ts` del sitio en las pruebas) |
 | `_assets_backup/` | Originales de imágenes y textos del creador (incluye el test original v1), fuera del build |
-| `components/compendio/` | Piezas del compendio: `SectionHeader`, `ClassSelector`, `GalleryGrid`, `MountCarousel`, `DetailLayout`, `SearchBar` |
+| `components/compendio/` | Piezas del compendio: `SectionHeader`, `ClassSelector`, `GalleryGrid`, `MountCarousel`, `DetailLayout` (con `ContenidoSeccion`), `SearchBar` |
 
 ### Estructura del sitio
 
@@ -257,13 +264,47 @@ compendio, avisos de privacidad, contactos y textos legales.
 - **Una entrada al compendio:** se agrega en `lib/data.ts`. A una especie nueva se le asigna su `deidad`.
 - **Una deidad nueva:** se agrega en `lib/data.ts` y se le define un color en `deityThemes` (`lib/site.ts`).
 - **Una página o sección:** se crea el componente en `components/paginas/`, sus tres rutas
-  (`app/(es)/…`, `app/(en)/en/…` y `app/(fr)/fr/…`), sus textos en `lib/i18n.ts` (es, en y fr), su
-  entrada en `app/sitemap.ts` y el enlace en la navegación o el footer (`lib/i18n.ts`). Si aún no
+  (`app/(es)/…`, `app/(en)/en/…` y `app/(fr)/fr/…`), sus textos en `lib/i18n/` (es, en y fr), su
+  entrada en `app/sitemap.ts` y el enlace en la navegación o el footer (`lib/i18n/marco.ts`). Si aún no
   tiene contenido, se le pone un `<Pendiente>`.
+- **Un juego nuevo:** como cartucho (ver "Higiene y escalabilidad").
 - **Imágenes de Galería o Monturas:** se agregan a `galleryImages` o `mountImages` en `lib/site.ts`.
 - **Clases de Tailwind escritas en `lib/`:** deben ir completas (nada de `bg-${color}-400`), porque
   Tailwind solo detecta las clases que aparecen literalmente en el código. `lib/` ya está en el
   `content` de `tailwind.config.ts`.
+
+---
+
+## Higiene y escalabilidad
+
+Reglas permanentes para que el sitio siga ligero y fácil de editar al sumar juegos:
+
+- **~400 líneas por archivo (orientativo).** Si un componente crece más, se separan sus piezas
+  (pantallas, tableros, listas) en archivos de su carpeta. Los archivos de puro contenido
+  (`lib/data*.ts`, `lib/affinity-test*.ts`) pueden pasar; se dividen por sección cuando crezcan.
+- **Cada juego es un cartucho** con un nombre corto (`danza`, `dados`). El Test de Afinidad sigue la misma forma.
+
+  | Pieza | Dónde |
+  |---|---|
+  | Lógica pura (sin React, DOM ni textos) | `lib/<juego>-core.ts` |
+  | Prueba determinista, incluida en `pnpm verificar` | `scripts/probar-<juego>.mjs` (carga el `.ts` con `scripts/lib/cargar-ts.mjs`) |
+  | Textos es/en/fr | `lib/i18n/<juego>.ts`, montado en `paginas.<juego>` desde `lib/i18n/index.ts` |
+  | Interfaz | `components/<juego>/`: `<Juego>Cliente.tsx` (estado), piezas que solo dibujan, `comun.ts` (tipos) y `Tarjeta<Juego>.tsx` |
+  | Estilos propios | `components/<juego>/<juego>.module.css` |
+  | Página | `components/paginas/<Juego>.tsx`, sus tres rutas y `app/sitemap.ts` |
+  | Alta en `/juega` | `components/juega/TarjetaJuego.tsx`, `components/paginas/Juega.tsx` y su línea en `lib/i18n/juega.ts` |
+
+- **Sin acoplar juegos:** un juego no importa la carpeta, los textos, los estilos ni la clave de
+  `localStorage` de otro. Lo compartido vive en piezas neutrales: `components/juega/`, `components/ui/`,
+  `hooks/`, `lib/almacen-local.ts` y `lib/texto.ts`. Para invitar a otro juego: `<TarjetaJuego juego="…" />`.
+- **Estilos aislados:** `app/globals.css` guarda solo lo de todo el sitio (base, tipografía, foco, Hero,
+  galería ampliada y `.aparece`). Lo exclusivo de un juego o del test va en su CSS Module; un CSS Module
+  no ve las animaciones globales, así que define las suyas.
+- **Lógica separada del DOM:** azar, reglas, puntaje y ritmo viven en `lib/<juego>-core.ts` y se prueban con
+  azar repetible (semilla fija o fuente inyectada). La prueba revisa también que los textos existan en los
+  tres idiomas. Los componentes solo guardan estado y dibujan.
+- **Persistencia:** `lib/almacen-local.ts` (`leerLista`, `guardarLista`, `leerEntero`, `guardarEntero`), con
+  claves `tonaltlan-<juego>-<dato>`.
 
 ---
 
@@ -365,12 +406,12 @@ Reglas aplicadas en el código:
 - **Logo del Hero:** `.logo-latido` (pulso doble lento cada 4 s) y `.logo-aura` (resplandor oro/jade
   que respira detrás). Es la única animación continua del sitio; se desactiva con reducir movimiento.
 - **Danza Tonal (excepción aprobada):** es la única página con animación repetida, porque los destellos
-  son el juego. Clases `.danza-*` en `app/globals.css`: el glifo se enciende de golpe (sin transición)
+  son el juego. Estilos en `components/danza/danza.module.css`: el glifo se enciende de golpe (sin transición)
   y se apaga en 220 ms; el glifo que se suma pasa de gris a color; un error sacude el tablero una vez.
   Con reducir movimiento no hay escalas ni sacudidas, solo brillo, color y opacidad, y el desplazamiento
   al empezar es instantáneo (`prefersReducedMotion()`). Las teclas 1 a 7 no agregan animación.
 - **Dados de los Siete (excepción aprobada):** la tirada es el único momento animado de la página y se
-  repite en cada tiro. Clases `.dado-*` en `app/globals.css`: el dado rueda unos 520 ms mientras sus
+  repite en cada tiro. Estilos en `components/dados/dados.module.css`: el dado rueda unos 520 ms mientras sus
   caras cambian (solo visual: el resultado ya salió de `crypto`) y se detiene con ease-out fuerte; el
   20 natural da un pulso con contorno de oro y rayos, y el 1 natural una sacudida en rojo. Con reducir
   movimiento (`prefersReducedMotion()`) no hay giro, pulso ni sacudida: el resultado llega con un

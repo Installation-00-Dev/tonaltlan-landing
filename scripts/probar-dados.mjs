@@ -13,26 +13,10 @@
  * - Los textos del tirador existen en los tres idiomas con los mismos campos.
  * Termina con error si algo falla. Usa el TypeScript instalado en node_modules.
  */
-import { createRequire } from "node:module";
-import { mkdtempSync, readFileSync, writeFileSync } from "node:fs";
-import { tmpdir } from "node:os";
-import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
+import { cargarTs } from "./lib/cargar-ts.mjs";
 
-const raiz = join(dirname(fileURLToPath(import.meta.url)), "..");
-const require = createRequire(import.meta.url);
-const ts = require(join(raiz, "node_modules", "typescript"));
-
-const tmp = mkdtempSync(join(tmpdir(), "dados-"));
-for (const archivo of ["dados-core.ts", "i18n.ts"]) {
-  const fuente = readFileSync(join(raiz, "lib", archivo), "utf8");
-  const { outputText } = ts.transpileModule(fuente, {
-    compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2020 },
-  });
-  writeFileSync(join(tmp, archivo.replace(/\.ts$/, ".js")), outputText);
-}
-const D = require(join(tmp, "dados-core.js"));
-const { t, LANGS } = require(join(tmp, "i18n.js"));
+const D = cargarTs("lib/dados-core.ts");
+const { t, LANGS } = cargarTs("lib/i18n");
 
 let fallas = 0;
 function revisar(condicion, mensaje) {

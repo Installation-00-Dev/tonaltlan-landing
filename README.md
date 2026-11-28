@@ -35,19 +35,25 @@ components/
   inicio/            Secciones de la página principal (Hero, Newsletter, anuncio del evento…)
   layout/            Marco de todas las páginas: LayoutRaiz, Navbar y Footer
   compendio/         Piezas del compendio (selector de clases, galería, ficha de detalle…)
-  afinidad/          Piezas del Test de Afinidad (imagen para compartir, tarjeta de invitación)
+  afinidad/          Test de Afinidad: preguntas, resultado, imagen para compartir y tarjeta
   danza/             Danza Tonal, el minijuego de memoria con los glifos de los dioses
   dados/             Dados de los Siete, el tirador de dados de rol (dados en SVG)
+  juega/             Lo que comparten los juegos: encabezado, marco y registro de tarjetas
   ui/                Piezas genéricas (Greca, Pendiente, AnchorPage)
-hooks/               Estado del Test de Afinidad y preferencia de movimiento reducido
+hooks/               Estado del Test de Afinidad, movimiento reducido y pantalla encendida
 lib/                 Contenido y utilidades: compendio (data*.ts), textos del creador,
-                     idiomas (i18n.ts), test (affinity-*.ts), juego (danza-core.ts),
-                     dados (dados-core.ts),
-                     pendientes, colores y emblemas
+                     idiomas (i18n/, un archivo por dominio y por juego), test (affinity-*.ts),
+                     lógica de cada juego (danza-core.ts, dados-core.ts), pendientes,
+                     colores y emblemas, almacenamiento local y comparación sin acentos
 public/images/       Imágenes del sitio, siempre .webp (y sus versiones -480/-1200/-1800)
 scripts/             Herramientas: versiones ligeras, vistas previas, emblemas y verificaciones
+                     (las pruebas de cada juego cargan el TypeScript con lib/cargar-ts.mjs)
 _assets_backup/      Originales (imágenes y textos del creador), fuera del build
 ```
+
+Cada juego es un "cartucho": lógica pura en `lib/<juego>-core.ts` con su prueba en
+`scripts/probar-<juego>.mjs`, interfaz y estilos en `components/<juego>/` y textos en
+`lib/i18n/<juego>.ts`. Las reglas completas están en `CLAUDE.md` ("Higiene y escalabilidad").
 
 ## Imágenes
 

@@ -1,0 +1,46 @@
+/* ── Test de Afinidad ───────────────────────────────────────────
+   Solo lo usa el resultado del test (CSS Module).
+   Resultado: el unico momento animado de la pagina. El arte crece desde
+   0.94 y el texto sube unos pixeles, escalonado con --retraso.
+   Con "reducir movimiento" todo es solo opacidad.
+   (El cambio de pregunta usa .aparece, compartida, en globals.css.) */
+@keyframes revelaArte {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+}
+
+@keyframes revelaTexto {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+/* Solo opacidad: igual a fadeOnly de globals.css (un CSS Module no ve las animaciones globales). */
+@keyframes soloOpacidad {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.revelacionArte {
+  animation: revelaArte 700ms var(--ease-out) both;
+}
+
+.revelacionTexto {
+  animation: revelaTexto 450ms var(--ease-out) both;
+  animation-delay: var(--retraso, 0ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .revelacionArte,
+  .revelacionTexto {
+    animation: soloOpacidad 0.3s ease both;
+    animation-delay: 0ms;
+  }
+}

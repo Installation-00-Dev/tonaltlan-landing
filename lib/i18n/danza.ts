@@ -1,0 +1,81 @@
+import type { Lang } from "./idiomas";
+
+/* Danza Tonal (/juega/danza-tonal). */
+
+const es = {
+  meta: "Danza Tonal - Tonaltlan",
+  metaDesc: "Mira cómo brillan los glifos de los siete dioses y repite la danza sin equivocarte. ¿Hasta dónde llegas?",
+  titulo: "Danza Tonal",
+  instruccion: "Mira el orden en que brillan los glifos y repítelo.",
+  empezar: "Empezar",
+  observa: "Observa",
+  tuTurno: "Tu turno",
+  bien: "¡Bien!",
+  nuevoGlifo: "Nuevo glifo: {elemento}",
+  error: "Ese no era",
+  ronda: "Ronda {n}",
+  record: "Récord",
+  paso: "paso",
+  pasos: "pasos",
+  nuevoRecord: "¡Nuevo récord!",
+  igualaste: "Igualaste tu récord",
+  faltan: "A {pasos} de tu récord",
+  otraVez: "Otra vez",
+  retar: "Retar a alguien",
+  retoTexto: "Llegué a {pasos} en la Danza Tonal de Tonaltlan. ¿Me superas?",
+  copiado: "Enlace copiado",
+  tablero: "Glifos de la danza",
+};
+
+const en: typeof es = {
+  meta: "Tonal Dance - Tonaltlan",
+  metaDesc: "Watch the glyphs of the seven gods light up and repeat the dance without a mistake. How far can you go?",
+  titulo: "Tonal Dance",
+  instruccion: "Watch the order in which the glyphs light up, then repeat it.",
+  empezar: "Start",
+  observa: "Watch",
+  tuTurno: "Your turn",
+  bien: "Nice!",
+  nuevoGlifo: "New glyph: {elemento}",
+  error: "Not that one",
+  ronda: "Round {n}",
+  record: "Best",
+  paso: "step",
+  pasos: "steps",
+  nuevoRecord: "New best!",
+  igualaste: "You tied your best",
+  faltan: "{pasos} short of your best",
+  otraVez: "Play again",
+  retar: "Challenge someone",
+  retoTexto: "I reached {pasos} in Tonaltlan's Tonal Dance. Can you beat me?",
+  copiado: "Link copied",
+  tablero: "Dance glyphs",
+};
+
+const fr: typeof es = {
+  meta: "Danse Tonale - Tonaltlan",
+  metaDesc: "Regarde briller les glyphes des sept dieux et répète la danse sans te tromper. Jusqu'où iras-tu ?",
+  titulo: "Danse Tonale",
+  instruccion: "Regarde dans quel ordre les glyphes s'allument, puis répète-le.",
+  empezar: "Commencer",
+  observa: "Observe",
+  tuTurno: "À toi",
+  bien: "Bien joué !",
+  nuevoGlifo: "Nouveau glyphe : {elemento}",
+  error: "Pas celui-là",
+  ronda: "Manche {n}",
+  record: "Record",
+  paso: "pas",
+  pasos: "pas",
+  nuevoRecord: "Nouveau record !",
+  igualaste: "Tu as égalé ton record",
+  faltan: "À {pasos} de ton record",
+  otraVez: "Rejouer",
+  retar: "Défier quelqu'un",
+  retoTexto: "J'ai atteint {pasos} dans la Danse Tonale de Tonaltlan. Tu me bats ?",
+  copiado: "Lien copié",
+  tablero: "Glyphes de la danse",
+};
+
+export const danza: Record<Lang, typeof es> = { es, en, fr };
+export type TextosDanza = typeof es;
