@@ -7,6 +7,12 @@ import { metaPagina, t, type Lang } from "@/lib/i18n";
 import { variante } from "@/lib/imagenes";
 import { getTextos } from "@/lib/textos";
 
+/** Las dos figuras de los Puntos Tonal por capas (arte del estudio, nov. 2026). */
+const FIGURAS_TONAL = [
+  ["tonal_figura_silueta", "tonal_figura_corazon", "tonal_figura_energia"],
+  ["tonal_figura_hombre_silueta", "tonal_figura_hombre_corazon", "tonal_figura_hombre_energia"],
+].map((fila) => fila.map((nombre) => `/images/mundo/${nombre}.webp`));
+
 export function metadataMundo(lang: Lang) {
   const d = t(lang).paginas.mundo;
   return metaPagina(lang, "/mundo/", d.meta, d.metaDesc, "/images/galeria/cosmovision_og.jpg");
@@ -65,6 +71,25 @@ export default function Mundo({ lang }: { lang: Lang }) {
                   <p className="max-w-[65ch] text-base leading-8 text-selva-300">{sistemaTonal.description}</p>
                 </div>
               ) : null}
+              {/* Cada figura por capas: silueta, los siete en el pecho y el Tonal recorriendo el cuerpo. */}
+              <div className="space-y-3 rounded-2xl bg-white p-3 ring-1 ring-selva-700 md:space-y-4 md:p-5">
+                {FIGURAS_TONAL.map((fila) => (
+                  <ol key={fila[0]} className="grid grid-cols-3 gap-2 md:gap-4">
+                    {fila.map((src, i) => (
+                      <li key={src}>
+                        <Image
+                          src={variante(src, 600)}
+                          alt={d.figurasAlt[i]}
+                          width={1298}
+                          height={1355}
+                          className="h-auto w-full"
+                          sizes="(max-width: 768px) 30vw, 300px"
+                        />
+                      </li>
+                    ))}
+                  </ol>
+                ))}
+              </div>
               <figure className="overflow-hidden rounded-2xl bg-white ring-1 ring-selva-700">
                 <Image
                   src={variante("/images/mundo/puntos_tonales.webp", 1800)}

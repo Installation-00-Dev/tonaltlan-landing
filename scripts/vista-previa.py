@@ -10,7 +10,7 @@ los iconos del sitio. Correr al agregar arte de una especie o deidad nueva:
   el brillo del color de su dios (los mismos de deityThemes en lib/site.ts).
 - <ilustracion>_og.jpg de las paginas en PAGINAS (p. ej. la Cosmovision para El Mundo).
 Las vistas previas son JPG (excepcion a la regla de .webp, para WhatsApp).
-- public/images/tonaltlan_logo_icono_{48,180,192,512}.webp: logo sobre selva.
+- public/images/tonaltlan_logo_icono_{48,180,192,512}.webp: la T del logo sobre selva.
 Si a una ficha le falta su _og, la pagina usa la imagen general (lib/vista-previa.ts).
 Requiere Pillow (pip install pillow).
 """
@@ -105,10 +105,12 @@ for rel in PAGINAS:
     im.alpha_composite(logo_chico, (48, 48))
     im.convert("RGB").save(origen.with_name(origen.stem + "_og.jpg"), **JPG)
 
-# 4) Iconos
+# 4) Iconos: la T simplificada del logo (tonaltlan_logo_t.webp, del diseñador) sobre selva.
+letra = recortar(Image.open(IMG / "tonaltlan_logo_t.webp").convert("RGBA"))
 for lado in (48, 180, 192, 512):
     lienzo = Image.new("RGBA", (lado, lado), SELVA + (255,))
-    l = ancho(logo, int(lado * 0.9))
+    alto = int(lado * 0.8)
+    l = letra.resize((round(letra.width * alto / letra.height), alto), Image.LANCZOS)
     lienzo.alpha_composite(l, ((lado - l.width) // 2, (lado - l.height) // 2))
     lienzo.convert("RGB").save(IMG / f"tonaltlan_logo_icono_{lado}.webp", "WEBP", quality=92, method=6)
 

@@ -80,7 +80,7 @@ export default function Deidades({ lang }: { lang: Lang }) {
                 <div>
                   <div className="mb-4 flex items-center gap-4">
                     {emblemas[deidad.slug] ? (
-                      <Image src={emblemas[deidad.slug]} alt="" width={134} height={134} className="h-14 w-14 shrink-0 md:h-16 md:w-16" />
+                      <Image src={emblemas[deidad.slug]} alt="" width={256} height={256} className="h-14 w-14 shrink-0 md:h-16 md:w-16" />
                     ) : (
                       <span className={`block h-1 w-16 rounded-full ${theme.bar}`} aria-hidden="true" />
                     )}

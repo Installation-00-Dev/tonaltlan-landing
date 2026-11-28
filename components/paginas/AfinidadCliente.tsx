@@ -449,7 +449,7 @@ export default function AfinidadCliente({
                   </p>
                   <p className="revelacion-texto mt-1 flex flex-wrap items-center gap-x-2 text-sm text-selva-400" style={retraso(420)}>
                     {principal.deidad && emblemas[principal.deidad.slug] ? (
-                      <Image src={emblemas[principal.deidad.slug]} alt="" width={134} height={134} className="h-6 w-6 shrink-0" />
+                      <Image src={emblemas[principal.deidad.slug]} alt="" width={256} height={256} className="h-6 w-6 shrink-0" />
                     ) : null}
                     {linaje}
                     {affinityMode === "random" ? <span className="text-oro-300"> · {d.modoAleatorio}</span> : null}

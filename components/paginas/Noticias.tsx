@@ -21,7 +21,7 @@ export default function Noticias({ lang }: { lang: Lang }) {
         <div className="mb-12 space-y-12">
           {noticias.map((noticia) => (
             <article key={noticia.id} id={noticia.id} className="grid scroll-mt-28 gap-8 md:grid-cols-5 md:items-center">
-              <div className="grid grid-cols-2 gap-3 md:col-span-3">
+              <div className={`grid gap-3 md:col-span-3 ${noticia.imagenes.length > 1 ? "grid-cols-2" : "mx-auto w-full max-w-sm"}`}>
                 {noticia.imagenes.map((imagen, index) => (
                   <a
                     key={imagen.src}
@@ -31,12 +31,12 @@ export default function Noticias({ lang }: { lang: Lang }) {
                     className="relative block aspect-[1131/1600] overflow-hidden rounded-2xl bg-selva-800 ring-1 ring-selva-700/70 transition duration-200 hover:ring-jade-400/70 motion-safe:active:scale-[0.98]"
                   >
                     <Image
-                      src={variante(imagen.src, 480)}
+                      src={variante(imagen.src, noticia.imagenes.length > 1 ? 480 : 1200)}
                       alt={imagen.alt}
                       fill
                       priority={index === 0}
                       className="object-cover"
-                      sizes="(max-width: 768px) 50vw, 260px"
+                      sizes={noticia.imagenes.length > 1 ? "(max-width: 768px) 50vw, 260px" : "(max-width: 768px) 90vw, 384px"}
                     />
                   </a>
                 ))}

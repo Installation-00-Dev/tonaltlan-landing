@@ -75,7 +75,7 @@ export default function Especies({ lang }: { lang: Lang }) {
                 <div className="lg:col-span-4">
                   <div className="mb-3 flex items-center gap-3">
                     {emblemas[deidad.slug] ? (
-                      <Image src={emblemas[deidad.slug]} alt="" width={134} height={134} className="h-12 w-12 shrink-0" />
+                      <Image src={emblemas[deidad.slug]} alt="" width={256} height={256} className="h-12 w-12 shrink-0" />
                     ) : (
                       <span className={`block h-1 w-12 rounded-full ${theme.bar}`} aria-hidden="true" />
                     )}

@@ -68,7 +68,8 @@ export const textosMundoEn: typeof textosMundo = {
 };
 
 /* ── NOTICIAS ──
-   Textos copiados de los carteles del evento (public/images/noticias/).
+   Textos copiados de los primeros carteles del evento; el cartel que se muestra ahora es
+   promocional_rollagame (public/images/noticias/).
    Solo se corrigieron acentos y signos de apertura. Año confirmado por el creador. */
 export interface Noticia {
   id: string;
@@ -96,12 +97,8 @@ export const textosNoticias: Noticia[] = [
     ],
     imagenes: [
       {
-        src: "/images/noticias/despierta_tu_tonal_cdmx_1.webp",
-        alt: "Cartel de Tonaltlan: despierta tu Tonal. One Shot en Roll a Game CDMX, 28 y 29 de noviembre.",
-      },
-      {
-        src: "/images/noticias/despierta_tu_tonal_cdmx_2.webp",
-        alt: "Cartel alterno del One Shot de Tonaltlan en Roll a Game CDMX, 28 y 29 de noviembre.",
+        src: "/images/noticias/promocional_rollagame.webp",
+        alt: "Cartel de Tonaltlan: ¡Vive la aventura en Rollagame! Roll a Game Expo CDMX, 28 y 29 de noviembre.",
       },
     ],
   },
@@ -121,12 +118,8 @@ export const textosNoticiasEn: Noticia[] = [
     ],
     imagenes: [
       {
-        src: "/images/noticias/despierta_tu_tonal_cdmx_1.webp",
-        alt: "Poster for Tonaltlan: awaken your Tonal. One Shot at Roll a Game CDMX, November 28 and 29.",
-      },
-      {
-        src: "/images/noticias/despierta_tu_tonal_cdmx_2.webp",
-        alt: "Alternate poster for the Tonaltlan One Shot at Roll a Game CDMX, November 28 and 29.",
+        src: "/images/noticias/promocional_rollagame.webp",
+        alt: "Tonaltlan poster: Live the adventure at Rollagame! Roll a Game Expo CDMX, November 28 and 29.",
       },
     ],
   },
@@ -177,12 +170,8 @@ export const textosNoticiasFr: Noticia[] = [
     ],
     imagenes: [
       {
-        src: "/images/noticias/despierta_tu_tonal_cdmx_1.webp",
-        alt: "Affiche de Tonaltlan : éveille ton Tonal. One Shot à Roll a Game CDMX, 28 et 29 novembre.",
-      },
-      {
-        src: "/images/noticias/despierta_tu_tonal_cdmx_2.webp",
-        alt: "Affiche alternative du One Shot de Tonaltlan à Roll a Game CDMX, 28 et 29 novembre.",
+        src: "/images/noticias/promocional_rollagame.webp",
+        alt: "Affiche de Tonaltlan : Vis l'aventure à Rollagame ! Roll a Game Expo CDMX, 28 et 29 novembre.",
       },
     ],
   },

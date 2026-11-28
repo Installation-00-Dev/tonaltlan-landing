@@ -196,18 +196,19 @@ export const deityThemes: Record<string, DeityTheme> = {
 };
 
 /**
- * Emblema de cada deidad: recortes del diagrama de Puntos Tonal (public/images/mundo/).
- * Asignacion confirmada por el diseñador (nov. 2026): luz, obscuridad, rayo, tierra,
- * aire, fuego y agua. Va junto al nombre del dios y de su linaje (decorativo: alt="").
+ * Emblema de cada deidad (public/images/mundo/): el elemento individual del diseñador sobre
+ * el disco de su color, generado con scripts/emblemas.py. Asignacion confirmada por el
+ * diseñador (nov. 2026): luz, obscuridad, rayo, tierra, aire, fuego y agua. Va junto al
+ * nombre del dios y de su linaje (decorativo: alt="").
  */
 export const emblemas: Record<string, string> = {
-  tonatli: "/images/mundo/puntos_tonales_emblema_luz.webp",
-  calti: "/images/mundo/puntos_tonales_emblema_obscuridad.webp",
-  tohui: "/images/mundo/puntos_tonales_emblema_rayo.webp",
-  tzal: "/images/mundo/puntos_tonales_emblema_tierra.webp",
-  heka: "/images/mundo/puntos_tonales_emblema_aire.webp",
-  zilo: "/images/mundo/puntos_tonales_emblema_fuego.webp",
-  lok: "/images/mundo/puntos_tonales_emblema_agua.webp",
+  tonatli: "/images/mundo/emblema_luz.webp",
+  calti: "/images/mundo/emblema_obscuridad.webp",
+  tohui: "/images/mundo/emblema_rayo.webp",
+  tzal: "/images/mundo/emblema_tierra.webp",
+  heka: "/images/mundo/emblema_aire.webp",
+  zilo: "/images/mundo/emblema_fuego.webp",
+  lok: "/images/mundo/emblema_agua.webp",
 };
 
 export function themeFor(deitySlug?: string): DeityTheme {
