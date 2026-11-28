@@ -65,7 +65,7 @@ compendio, avisos de privacidad, contactos y textos legales.
   `lib/imagenes.ts` (pide el doble de lo que se ve, por pantallas retina).
 - **Vista previa al compartir e íconos:** `python3 scripts/vista-previa.py` genera la imagen general
   (`piramides_azteca_final_og.jpg`), una `_og.jpg` (1200×630, menos de 300 KB) por retrato de especie y
-  deidad y por página con ilustración propia (`PAGINAS`), y los íconos `tonaltlan_logo_icono_N.webp`.
+  deidad y por página con ilustración propia (`PAGINAS`), y los íconos `tonaltlan_logo_icono_N.webp` (la T simplificada del logo, `tonaltlan_logo_t.webp`, sobre selva).
   Córrelo al agregar arte de una especie o deidad (y su color en el script). Si una ficha no tiene su
   `_og.jpg`, usa la general (`lib/vista-previa.ts`).
 

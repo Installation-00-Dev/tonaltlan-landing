@@ -21,7 +21,7 @@ SALIDA_TS = RAIZ / "lib" / "variantes.generated.ts"
 ANCHOS = (480, 1200)
 ANCHOS_GALERIA = (480, 1200, 1800)
 # Ya tienen el tamano adecuado o no se muestran en distintos tamanos.
-OMITIR = {"tonaltlan_logo_nav", "produccion_footer", "tonaltlan_logo_1200", "piramides_azteca_final_1920", "instagram"}
+OMITIR = {"tonaltlan_logo_nav", "produccion_footer", "tonaltlan_logo_1200", "piramides_azteca_final_1920", "instagram", "tonaltlan_logo_t"}
 
 
 def es_variante(p: Path) -> bool:

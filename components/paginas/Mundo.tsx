@@ -7,6 +7,13 @@ import { metaPagina, t, type Lang } from "@/lib/i18n";
 import { variante } from "@/lib/imagenes";
 import { getTextos } from "@/lib/textos";
 
+/** Capas de la figura de los Puntos Tonal (arte del estudio, nov. 2026). */
+const FIGURAS_TONAL = [
+  "/images/mundo/tonal_figura_silueta.webp",
+  "/images/mundo/tonal_figura_corazon.webp",
+  "/images/mundo/tonal_figura_energia.webp",
+];
+
 export function metadataMundo(lang: Lang) {
   const d = t(lang).paginas.mundo;
   return metaPagina(lang, "/mundo/", d.meta, d.metaDesc, "/images/galeria/cosmovision_og.jpg");
@@ -65,6 +72,21 @@ export default function Mundo({ lang }: { lang: Lang }) {
                   <p className="max-w-[65ch] text-base leading-8 text-selva-300">{sistemaTonal.description}</p>
                 </div>
               ) : null}
+              {/* La figura de los Puntos Tonal por capas: silueta, los siete en el pecho y el Tonal recorriendo el cuerpo. */}
+              <ol className="grid grid-cols-2 gap-2 rounded-2xl bg-white p-3 ring-1 ring-selva-700 md:grid-cols-3 md:gap-4 md:p-5">
+                {FIGURAS_TONAL.map((src, i) => (
+                  <li key={src} className={i === FIGURAS_TONAL.length - 1 ? "col-span-2 md:col-span-1" : undefined}>
+                    <Image
+                      src={variante(src, i === FIGURAS_TONAL.length - 1 ? 1200 : 480)}
+                      alt={d.figurasAlt[i]}
+                      width={1289}
+                      height={1346}
+                      className="h-auto w-full"
+                      sizes={i === FIGURAS_TONAL.length - 1 ? "(max-width: 768px) 90vw, 300px" : "(max-width: 768px) 45vw, 300px"}
+                    />
+                  </li>
+                ))}
+              </ol>
               <figure className="overflow-hidden rounded-2xl bg-white ring-1 ring-selva-700">
                 <Image
                   src={variante("/images/mundo/puntos_tonales.webp", 1800)}
