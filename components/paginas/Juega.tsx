@@ -1,4 +1,5 @@
 import TarjetaTest from "@/components/afinidad/TarjetaTest";
+import TarjetaDados from "@/components/dados/TarjetaDados";
 import TarjetaDanza from "@/components/danza/TarjetaDanza";
 import SectionHeader from "@/components/compendio/SectionHeader";
 import AnchorPage from "@/components/ui/AnchorPage";
@@ -51,6 +52,11 @@ export default function Juega({ lang }: { lang: Lang }) {
           id: "danza-tonal",
           title: d.secciones.danza,
           content: <TarjetaDanza lang={lang} />,
+        },
+        {
+          id: "dados",
+          title: d.secciones.dados,
+          content: <TarjetaDados lang={lang} />,
         },
         {
           id: "descargas",

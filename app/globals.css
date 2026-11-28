@@ -369,3 +369,66 @@ textarea:-webkit-autofill:focus {
     animation: danzaTiembla 360ms var(--ease-out);
   }
 }
+
+/* ── Dados de los Siete ─────────────────────────────────────────
+   La tirada es el unico momento animado de la pagina: el dado rueda
+   ~0.5 s mientras sus caras cambian y se detiene con un ease-out fuerte.
+   20 natural: un pulso de oro. 1 natural: una sacudida. Con "reducir
+   movimiento" no hay giro, pulso ni sacudida: el resultado llega con un
+   fundido corto (.aparece) y el crítico o la pifia se notan por el color. */
+@keyframes dadoRueda {
+  0% {
+    transform: rotate(-200deg) scale(0.86);
+  }
+  60% {
+    transform: rotate(18deg) scale(1.04);
+  }
+  100% {
+    transform: rotate(0) scale(1);
+  }
+}
+
+@keyframes dadoPulso {
+  40% {
+    transform: scale(1.12);
+  }
+}
+
+@keyframes dadoSacudida {
+  20% {
+    transform: translateX(-6px) rotate(-4deg);
+  }
+  45% {
+    transform: translateX(5px) rotate(3deg);
+  }
+  70% {
+    transform: translateX(-3px);
+  }
+}
+
+.dado-critico svg {
+  filter: drop-shadow(0 0 14px rgba(245, 184, 46, 0.55));
+}
+
+.dado-pifia svg {
+  filter: grayscale(0.4);
+}
+
+.dado-descartado {
+  filter: grayscale(1);
+  opacity: 0.4;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .dado-girando {
+    animation: dadoRueda 520ms var(--ease-out) both;
+  }
+
+  .dado-critico {
+    animation: dadoPulso 420ms var(--ease-out);
+  }
+
+  .dado-pifia {
+    animation: dadoSacudida 380ms var(--ease-out);
+  }
+}
