@@ -302,16 +302,16 @@ export const questionsEn: Question[] = [
 
 export const raceResultsEn: Record<RaceKey, RaceResult> = {
   Ton: {
-    name: "TON (Light) - The Illuminator",
+    name: "TON, Light. The Illuminator",
     essence:
-      "You are the truth that cannot be hidden, the light that reveals without meaning to. You are one of fewer than 100 Ton in all of Tonaltlan - your existence is legendary. You live for centuries, a living library of memory and wisdom. Your very existence is a moral beacon: you cannot lie, you cannot deceive, you cannot stay silent when you see injustice. Your clarity is both your virtue and your vulnerability.",
+      "You are the truth that cannot be hidden, the light that reveals without meaning to. You are one of fewer than 100 Ton in all of Tonaltlan. Your existence is legendary. You live for centuries, a living library of memory and wisdom. Your very existence is a moral beacon: you cannot lie, you cannot deceive, you cannot stay silent when you see injustice. Your clarity is both your virtue and your vulnerability.",
     virtue:
       "Your absolute moral backbone. You are the one who lights the way for others, who protects without expecting reward, who rights injustices because you cannot ignore them. Your light burns away heavy feelings and grudges, leaving only clarity and purpose.",
     shadow:
       "Your greatest terror is not death, but being corrupted or darkened. You fear becoming a \"sun that burns instead of warms\". Your sincerity makes you vulnerable: you cannot keep strategic secrets, and sometimes the truth you reveal can destroy relationships or start wars.",
     path:
       "Your ritual is to exist with intentional purity. You don't need to pray: every kind act honors Tonatli. Your role is to be the ethical guide, the one who reveals truths even when they hurt, the one who protects the moral order of the world. Accept that your total exposure is both your power and your wound.",
-    symbol: "The Dawn - The moment when light returns and the world is revealed.",
+    symbol: "The Dawn. The moment when light returns and the world is revealed.",
     object: "A mirror that reflects the truth without distortion.",
     glyph: "A sun with rays shining in every direction.",
     lectura: [
@@ -321,7 +321,7 @@ export const raceResultsEn: Record<RaceKey, RaceResult> = {
     ],
   },
   "Toh'kari": {
-    name: "TOH'KARI (Lightning) - The Chaotic",
+    name: "TOH'KARI, Lightning. The Chaotic",
     essence:
       "You are the storm without control, the impulse that won't stop. You live between the desire to destroy and the need to survive. Your inner lightning is a beast you must tame just enough not to die... and use before it consumes you.",
     virtue:
@@ -331,7 +331,7 @@ export const raceResultsEn: Record<RaceKey, RaceResult> = {
     path:
       "Your ritual is daily survival. There is no everyday life for you: there is erratic movement, impatience and deep solitude. Your role is to be the wild exile who survives in a world that fears you. Learn to decide when NOT to destroy: that is your true moral conflict.",
     symbol:
-      "The Lightning That Strikes a Lonely Mountain - Brutal, unpredictable, beautiful and terrifying.",
+      "The Lightning That Strikes a Lonely Mountain. Brutal, unpredictable, beautiful and terrifying.",
     object: "A shard of metal that still holds an electric charge.",
     glyph: "A zigzag bolt that never strikes the same place twice.",
     lectura: [
@@ -341,7 +341,7 @@ export const raceResultsEn: Record<RaceKey, RaceResult> = {
     ],
   },
   "He'kari": {
-    name: "HE'KARI (Air) - The Visionary",
+    name: "HE'KARI, Air. The Visionary",
     essence:
       "You are the mind that flies, the idea that travels, the word that transforms. You watch from above, you see patterns where others see chaos, you perceive from far away. You are the practical dreamer: you inspire, connect, interpret and carry knowledge from one place to another.",
     virtue:
@@ -350,7 +350,7 @@ export const raceResultsEn: Record<RaceKey, RaceResult> = {
       "Your scattered focus and disconnection. You can be inconsistent, distracted, hard to \"bring down to earth\". You get lost in endless possibilities and may seem cold or absent when you're \"up there\" in your head. Your conflict: flying free vs. your responsibility as a messenger.",
     path:
       "Your ritual is constant movement, art and communication. Your everyday life is \"air in action\": light, inspired, in motion. Your role is to be the messenger, the keeper of knowledge, the diplomatic ally. Balance your need for freedom with your duty to guide.",
-    symbol: "The Suspended Feather - Light but powerful, a symbol of message and flight.",
+    symbol: "The Suspended Feather. Light but powerful, a symbol of message and flight.",
     object: "A notebook you always carry with you.",
     glyph: "A spiral of wind rising toward the sky.",
     lectura: [
@@ -360,16 +360,16 @@ export const raceResultsEn: Record<RaceKey, RaceResult> = {
     ],
   },
   Quinametzin: {
-    name: "QUINAMETZIN (Earth) - The Colossal Guardian",
+    name: "QUINAMETZIN, Earth. The Colossal Guardian",
     essence:
-      "You are absolute stability: the pillar, the solid rock, the gentle giant who holds up the world. You are colossal (2.30 m), impossible to overlook, yet your presence calms instead of intimidating. You are a born protector, a figure of guidance and emotional support. You are \"home\" made flesh, the foundation others build on.",
+      "You are absolute stability: the pillar, the solid rock, the gentle giant who holds up the world. You are colossal, 2.30 m, impossible to overlook, yet your presence calms instead of intimidating. You are a born protector, a figure of guidance and emotional support. You are \"home\" made flesh, the foundation others build on.",
     virtue:
       "Your unbreakable honesty and integrity. Your Gem of Spirit always gives you away: you cannot lie emotionally. The gem changes color with your emotion: white for calm, yellow for joy, green for harmony, blue for sadness, red for love or fury, black for despair. Your virtue is a deep, transparent honesty full of kindness. You are the one who builds, repairs, protects and keeps the natural order.",
     shadow:
       "Your burden of duty and self-sacrifice. You may feel obliged to carry the world, even when you can't anymore. Your sense of duty can drown you. If you fail to protect someone, your gem reveals it at once... and that guilt can mark you for centuries.",
     path:
       "Your ritual is constant work, building and community service. You raise walls, repair roads, build temples, train the young. Your role is to hold things up, even if it wears you down. Learn that you also deserve support: pillars need foundations.",
-    symbol: "The Ancient Mountain - Tall, firm, patient and eternal. Witness and protector.",
+    symbol: "The Ancient Mountain. Tall, firm, patient and eternal. Witness and protector.",
     object: "A work tool that is always with you.",
     glyph: "A mountain with deep roots spreading downward.",
     lectura: [
@@ -379,7 +379,7 @@ export const raceResultsEn: Record<RaceKey, RaceResult> = {
     ],
   },
   "Lok'naa": {
-    name: "LOK'NAA (Water) - The Healer",
+    name: "LOK'NAA, Water. The Healer",
     essence:
       "You are the calm after the storm. Your psychology is deeply empathetic: you feel before you act, you read the room, you move like water itself flowing toward where harmony is needed. You are the one who unites, who heals, who preserves life.",
     virtue:
@@ -389,7 +389,7 @@ export const raceResultsEn: Record<RaceKey, RaceResult> = {
     path:
       "Your ritual is hospitality, fluid craftsmanship and purification rites. Sacred baths, songs that keep memory alive, food that soothes. Your role is to de-escalate, mediate, absorb the blow. Learn to set limits: heal without breaking, flow without disappearing.",
     symbol:
-      "The Sacred Cenote - Deep, clear, a bearer of life, but also mysterious and dark at its depths.",
+      "The Sacred Cenote. Deep, clear, a bearer of life, but also mysterious and dark at its depths.",
     object: "A water vessel you always carry with you.",
     glyph: "A ripple of water flowing in concentric circles.",
     lectura: [
@@ -399,17 +399,17 @@ export const raceResultsEn: Record<RaceKey, RaceResult> = {
     ],
   },
   Hualik: {
-    name: "HUALIK (Darkness) - The Shadow Watcher",
+    name: "HUALIK, Darkness. The Shadow Watcher",
     essence:
-      "You are the one who watches unseen, who listens, who understands, who appears when no one expects it. You can vanish into any shadow, move without a sound, see in total darkness. You are one of dozens, not thousands - your existence is a mystery even to other races. Your identity is to stay out of sight, yet always present. You are the silent observer, the watcher of hidden truths.",
+      "You are the one who watches unseen, who listens, who understands, who appears when no one expects it. You can vanish into any shadow, move without a sound, see in total darkness. You are one of dozens, not thousands. Your existence is a mystery even to other races. Your identity is to stay out of sight, yet always present. You are the silent observer, the watcher of hidden truths.",
     virtue:
       "Your cunning and deep perception. Nothing escapes your notice. You are intelligent, analytical, and you can read the intentions behind words. Light, noise and appearances don't fool you. Your precision is surgical when you act.",
     shadow:
       "Your isolation and distrust. You reject social contact, even when it could help you. You see betrayal everywhere, even where there is none. Your wound is simple: \"We have no place to belong.\" Solitude, though necessary, is also your sentence.",
     path:
       "Your ritual is silence, precise routines and cautious conduct. Soft movements, meticulous habits, long hours of watching. Your role is to know without exposing yourself, to step in only when it is critical. Your eternal conflict: \"Do I stay in the shadows... or do I act?\"",
-    symbol: "The New Moon - Total darkness. Not absence, but invisible presence.",
-    object: "A small object that is always in your hands (a stone, a coin, etc.)",
+    symbol: "The New Moon. Total darkness. Not absence, but invisible presence.",
+    object: "A small object that is always in your hands, a stone, a coin, etc.",
     glyph: "A shadow that spreads with no defined shape.",
     lectura: [
       "You observe more than you speak, and that's why you understand what others miss.",
@@ -418,7 +418,7 @@ export const raceResultsEn: Record<RaceKey, RaceResult> = {
     ],
   },
   Irzak: {
-    name: "IRZAK (Fire) - The Flame of Honor",
+    name: "IRZAK, Fire. The Flame of Honor",
     essence:
       "You are the passion that burns without control, the honor that never bends, the intensity that defines every moment. Your spark of Zilo must burn as brightly as possible before returning to the eternal cycle. You are charismatic, temperamental and brutally direct: you don't beat around the bush, you don't soften truths, you never act out of cowardice.",
     virtue:
@@ -428,7 +428,7 @@ export const raceResultsEn: Record<RaceKey, RaceResult> = {
     path:
       "Your ritual is intense work, the forge and fire rites. You work at the Eternal Volcano, experiment with Zilo's energy, live every moment with passion. Your constant search for alternatives to the cyclical sacrifice marks you: you want every spark to burn until the end, but duty weighs on you. Your role is to burn with honor until the end, but your eternal conflict is: Should I burn freely or fulfill the duty of sacrifice? Look for alternatives, but accept that the weight of duty marks you.",
     symbol:
-      "The Eternal Volcano - Contained force, power that can destroy or create. Your home, your teacher, your direct connection to Zilo.",
+      "The Eternal Volcano. Contained force, power that can destroy or create. Your home, your teacher, your direct connection to Zilo.",
     object:
       "A forging tool or an object you always carry with you that represents your spark.",
     glyph: "A flame burning upward, intense and steady.",

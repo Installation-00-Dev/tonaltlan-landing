@@ -315,16 +315,16 @@ export const questions: Question[] = [
 
 export const raceResults: Record<RaceKey, RaceResult> = {
   Ton: {
-    name: "TON (Luz) - El Iluminador",
+    name: "TON, Luz. El Iluminador",
     essence:
-      "Eres la verdad que no puede ocultarse, la luz que revela sin querer. Eres uno de menos de 100 Ton en todo Tonaltlan - tu existencia es legendaria. Vives siglos, eres una biblioteca viviente de memoria y sabiduría. Tu existencia misma es un faro moral: no puedes mentir, no puedes engañar, no puedes callar cuando ves injusticia. Tu claridad es tanto tu virtud como tu vulnerabilidad.",
+      "Eres la verdad que no puede ocultarse, la luz que revela sin querer. Eres uno de menos de 100 Ton en todo Tonaltlan. Tu existencia es legendaria. Vives siglos, eres una biblioteca viviente de memoria y sabiduría. Tu existencia misma es un faro moral: no puedes mentir, no puedes engañar, no puedes callar cuando ves injusticia. Tu claridad es tanto tu virtud como tu vulnerabilidad.",
     virtue:
       "Tu columna moral absoluta. Eres el que ilumina el camino de otros, el que protege sin esperar recompensa, el que corrige injusticias porque no puede ignorarlas. Tu luz consume sentimientos densos y rencores, dejando solo claridad y propósito.",
     shadow:
       'Tu mayor terror no es la muerte, sino corromperte u oscurecerte. Temes convertirte en un "sol que quema en vez de calentar". Tu sinceridad te vuelve vulnerable: no puedes guardar secretos estratégicos, y a veces la verdad que revelas puede destruir relaciones o causar guerras.',
     path:
       "Tu ritual es existir con pureza intencional. No necesitas rezar: cada acto bondadoso honra a Tonatli. Tu rol es ser el guía ético, el que revela verdades aunque duelan, el que protege el orden moral del mundo. Acepta que tu exposición total es tu poder y tu herida.",
-    symbol: "El Amanecer - El momento en que la luz retorna y el mundo se revela.",
+    symbol: "El Amanecer. El momento en que la luz retorna y el mundo se revela.",
     object: "Un espejo que refleja la verdad sin distorsión.",
     glyph: "Sol con rayos que iluminan en todas las direcciones.",
     lectura: [
@@ -334,7 +334,7 @@ export const raceResults: Record<RaceKey, RaceResult> = {
     ],
   },
   "Toh'kari": {
-    name: "TOH'KARI (Rayo) - El Caótico",
+    name: "TOH'KARI, Rayo. El Caótico",
     essence:
       "Eres la tormenta sin control, el impulso que no se detiene. Vives entre el deseo de destruir y la necesidad de sobrevivir. Tu rayo interior es una bestia que debes dominar lo suficiente para no morir... y usarlo antes de que te consuma.",
     virtue:
@@ -344,7 +344,7 @@ export const raceResults: Record<RaceKey, RaceResult> = {
     path:
       "Tu ritual es la supervivencia diaria. No hay vida cotidiana para ti: hay movimiento errático, impaciencia y soledad profunda. Tu rol es ser el exiliado salvaje que sobrevive en un mundo que te teme. Aprende a decidir cuando NO destruir: ese es tu verdadero conflicto moral.",
     symbol:
-      "El Relámpago que Cae Sobre Una Montaña Solitaria - Brutal, impredecible, hermoso y aterrador.",
+      "El Relámpago que Cae Sobre Una Montaña Solitaria. Brutal, impredecible, hermoso y aterrador.",
     object: "Un fragmento de metal que conserva carga eléctrica.",
     glyph: "Rayo zigzagueante que nunca toca el mismo lugar dos veces.",
     lectura: [
@@ -354,7 +354,7 @@ export const raceResults: Record<RaceKey, RaceResult> = {
     ],
   },
   "He'kari": {
-    name: "HE'KARI (Aire) - El Visionario",
+    name: "HE'KARI, Aire. El Visionario",
     essence:
       "Eres la mente que vuela, la idea que viaja, la palabra que transforma. Observas desde arriba, ves patrones donde otros ven caos, percibes a larga distancia. Eres el soñador práctico: inspiras, conectas, interpretas, y llevas conocimiento de un lugar a otro.",
     virtue:
@@ -363,7 +363,7 @@ export const raceResults: Record<RaceKey, RaceResult> = {
       'Tu dispersión y desconexión. Puedes ser inconstante, distraído, difícil de "aterrizar". Te pierdes en posibilidades infinitas y puedes parecer frío o ausente cuando estás "arriba" con tu mente. Tu conflicto: volar libres vs. tu responsabilidad como mensajero.',
     path:
       'Tu ritual es el movimiento constante, el arte y la comunicación. Tu vida cotidiana es "aire en acción": ligera, inspirada, en movimiento. Tu rol es ser el mensajero, el guardián del conocimiento, el aliado diplomático. Equilibra tu necesidad de libertad con tu deber de guiar.',
-    symbol: "La Pluma Suspendida - Ligera pero poderosa, símbolo de mensaje y vuelo.",
+    symbol: "La Pluma Suspendida. Ligera pero poderosa, símbolo de mensaje y vuelo.",
     object: "Un cuaderno de notas que siempre llevas contigo.",
     glyph: "Espiral de viento que se eleva hacia el cielo.",
     lectura: [
@@ -373,16 +373,16 @@ export const raceResults: Record<RaceKey, RaceResult> = {
     ],
   },
   Quinametzin: {
-    name: "QUINAMETZIN (Tierra) - El Guardián Colosal",
+    name: "QUINAMETZIN, Tierra. El Guardián Colosal",
     essence:
-      'Eres la estabilidad absoluta: el pilar, la roca firme, el gigante amable que sostiene al mundo. Eres colosal (2.30m), imposible de pasar por alto, pero tu presencia calma en vez de intimidar. Eres protector nato, figura de guía y soporte emocional. Eres el "hogar" encarnado, la base sobre la que otros construyen.',
+      'Eres la estabilidad absoluta: el pilar, la roca firme, el gigante amable que sostiene al mundo. Eres colosal, 2.30m, imposible de pasar por alto, pero tu presencia calma en vez de intimidar. Eres protector nato, figura de guía y soporte emocional. Eres el "hogar" encarnado, la base sobre la que otros construyen.',
     virtue:
       "Tu honestidad e integridad inquebrantable. Tu Gema del Ánimo te delata siempre: no puedes mentir emocionalmente. La gema cambia de color según tu emoción: blanco para calma, amarillo para alegría, verde para armonía, azul para tristeza, rojo para amor o furia, negro para desesperación. Tu virtud es una honestidad profunda, transparente y llena de bondad. Eres el que construye, repara, protege y mantiene el orden natural.",
     shadow:
       "Tu carga del deber y auto-sacrificio. Puedes sentirte obligado a cargar con el mundo, incluso cuando ya no puedes más. Tu sentido del deber puede ahogarte. Si fallas en proteger a alguien, tu gema lo revela de inmediato... y esa culpa puede marcarte por siglos.",
     path:
       "Tu ritual es el trabajo constante, la construcción y el servicio comunitario. Levantas murallas, reparas caminos, construyes templos, entrenas jóvenes. Tu rol es sostener, aunque te desgastes. Aprende que también mereces ser apoyado: los pilares necesitan cimientos.",
-    symbol: "La Montaña Antigua - Alta, firme, paciente y eterna. Testigo y protectora.",
+    symbol: "La Montaña Antigua. Alta, firme, paciente y eterna. Testigo y protectora.",
     object: "Una herramienta de trabajo que siempre está contigo.",
     glyph: "Montaña con raíces profundas que se extienden hacia abajo.",
     lectura: [
@@ -392,7 +392,7 @@ export const raceResults: Record<RaceKey, RaceResult> = {
     ],
   },
   "Lok'naa": {
-    name: "LOK'NAA (Agua) - El Sanador",
+    name: "LOK'NAA, Agua. El Sanador",
     essence:
       "Eres la calma después de la tormenta. Tu psicología es profundamente empática: sientes antes de actuar, lees el ambiente, te mueves como el agua misma fluyendo hacia donde hace falta armonía. Eres el que une, el que sana, el que preserva la vida.",
     virtue:
@@ -402,7 +402,7 @@ export const raceResults: Record<RaceKey, RaceResult> = {
     path:
       "Tu ritual es la hospitalidad, la artesanía fluida y los rituales de purificación. Baños sagrados, cantos que conservan memoria, alimentos que suavizan. Tu rol es desescalar, mediar, absorber el golpe. Aprende a poner límites: sanar sin romperte, fluir sin desaparecer.",
     symbol:
-      "El Cenote Sagrado - Profundo, claro, portador de vida, pero también misterioso y oscuro en el fondo.",
+      "El Cenote Sagrado. Profundo, claro, portador de vida, pero también misterioso y oscuro en el fondo.",
     object: "Un recipiente de agua que siempre llevas contigo.",
     glyph: "Onda de agua que fluye en círculos concéntricos.",
     lectura: [
@@ -412,17 +412,17 @@ export const raceResults: Record<RaceKey, RaceResult> = {
     ],
   },
   Hualik: {
-    name: "HUALIK (Obscuridad) - El Vigilante Sombra",
+    name: "HUALIK, Obscuridad. El Vigilante Sombra",
     essence:
-      "Eres el que mira sin ser visto, el que escucha, el que entiende, el que aparece cuando nadie lo espera. Puedes desaparecer en cualquier sombra, moverte sin hacer sonido, ver en oscuridad total. Eres uno de decenas, no miles - tu existencia es un misterio incluso para otras razas. Tu identidad es estar fuera de la vista, pero siempre presente. Eres el observador silencioso, el vigilante de las verdades ocultas.",
+      "Eres el que mira sin ser visto, el que escucha, el que entiende, el que aparece cuando nadie lo espera. Puedes desaparecer en cualquier sombra, moverte sin hacer sonido, ver en oscuridad total. Eres uno de decenas, no miles. Tu existencia es un misterio incluso para otras razas. Tu identidad es estar fuera de la vista, pero siempre presente. Eres el observador silencioso, el vigilante de las verdades ocultas.",
     virtue:
       "Tu astucia y percepción profunda. Nada pasa desapercibido para ti. Eres inteligente, analítico, y puedes leer las intenciones detrás de las palabras. No te dejas engañar por luz, ruido o apariencias. Tu precisión es quirúrgica cuando actúas.",
     shadow:
       'Tu aislamiento y desconfianza. Rechazas el contacto social, incluso cuando podría beneficiarte. Ves traición en todas partes, incluso donde no la hay. Tu herida es simple: "No tenemos un lugar donde pertenecer." La soledad, aunque necesaria, es también tu condena.',
     path:
       'Tu ritual es el silencio, las rutinas precisas y la conducta cauta. Movimientos suaves, hábitos meticulosos, largas horas observando. Tu rol es saber sin exponerte, intervenir solo cuando es crítico. Tu conflicto eterno: "¿Me mantengo en la sombra... o actúo?"',
-    symbol: "La Luna Nueva - Oscuridad total. No es ausencia, sino presencia invisible.",
-    object: "Un objeto pequeño que siempre está en tus manos (piedra, moneda, etc.)",
+    symbol: "La Luna Nueva. Oscuridad total. No es ausencia, sino presencia invisible.",
+    object: "Un objeto pequeño que siempre está en tus manos, piedra, moneda, etc.",
     glyph: "Sombra que se extiende sin forma definida.",
     lectura: [
       "Observas más de lo que hablas, y por eso entiendes lo que a otros se les escapa.",
@@ -431,7 +431,7 @@ export const raceResults: Record<RaceKey, RaceResult> = {
     ],
   },
   Irzak: {
-    name: "IRZAK (Fuego) - La Flama de Honor",
+    name: "IRZAK, Fuego. La Flama de Honor",
     essence:
       "Eres la pasión que arde sin control, el honor que no se doblega, la intensidad que define cada momento. Tu chispa de Zilo debe arder con la mayor fuerza posible antes de regresar al ciclo eterno. Eres carismático, temperamental y brutalmente directo: no das rodeos, no suavizas verdades, no actúas con cobardía.",
     virtue:
@@ -441,7 +441,7 @@ export const raceResults: Record<RaceKey, RaceResult> = {
     path:
       "Tu ritual es el trabajo intenso, la forja y los rituales de fuego. Trabajas en el Volcán Eterno, experimentas con la energía de Zilo, vives cada momento con pasión. Tu búsqueda constante de alternativas al sacrificio cíclico te marca: quieres que todas las chispas ardan hasta el final, pero el deber pesa. Tu rol es arder con honor hasta el final, pero tu conflicto eterno es: ¿Debo arder libremente o cumplir con el deber del sacrificio? Busca alternativas, pero acepta que el peso del deber te marca.",
     symbol:
-      "El Volcán Eterno - Fuerza contenida, poder que puede destruir o crear. Tu hogar, tu maestro, tu conexión directa con Zilo.",
+      "El Volcán Eterno. Fuerza contenida, poder que puede destruir o crear. Tu hogar, tu maestro, tu conexión directa con Zilo.",
     object:
       "Una herramienta de forja o un objeto que siempre llevas contigo que representa tu chispa.",
     glyph: "Llama que arde hacia arriba, intensa y constante.",
