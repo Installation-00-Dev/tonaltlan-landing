@@ -12,7 +12,7 @@ Next.js 15 (App Router) con exportación estática a GitHub Pages (`tonaltlan.co
 pnpm dev        # servidor de desarrollo
 pnpm typecheck  # TypeScript
 pnpm build      # exportación estática → out/
-pnpm verificar  # typecheck + build + imágenes (scripts/verificar-imagenes.mjs) + balance del test
+pnpm verificar  # typecheck + build + imágenes + balance del test + lógica de la Danza Tonal
 ```
 
 Antes de cada commit: `pnpm verificar` debe pasar. Para ver el export: `python3 -m http.server 3000 -d out`.
@@ -137,6 +137,30 @@ compendio, avisos de privacidad, contactos y textos legales.
 - **Durante el test** el encabezado se encoge a una barra con el progreso (3/7); la ayuda solo sale en
   la primera pregunta.
 
+### Danza Tonal (minijuego, nov. 2026)
+
+- **Qué es:** juego de memoria en `/juega/danza-tonal/` (tarjeta en `/juega`). Los glifos de los siete
+  dioses (sus emblemas) se encienden en orden y el jugador repite la danza; cada ronda suma un paso.
+  Puntaje: la danza más larga que repitió completa. Nace del Mitotiani ("Danzante Tonal", cuyos pasos
+  dejan glifos), que acompaña la página en escritorio con enlace a su clase.
+- **Reglas del dueño:** solo visual (**sin sonido**), cada jugador en su propio navegador (**sin modo
+  stand**, sin demo automática ni tablas compartidas) y **solo arte existente** (emblemas, figuras de
+  los Puntos Tonal, Mitotiani). El récord personal vive en `localStorage` (`tonaltlan-danza-record`).
+- **Mecánica** (`lib/danza-core.ts`, sin textos ni React): empieza con 4 glifos (luz, agua, fuego,
+  obscuridad); tierra, aire y rayo se suman en las rondas 5, 8 y 11 y son el paso nuevo de esa ronda.
+  Nunca el mismo glifo tres veces seguidas. El ritmo se acelera, pero nunca pasa de 2.5 destellos por
+  segundo (WCAG 2.3.1). La figura del centro despierta por capas: silueta, los siete en el pecho y el
+  Tonal recorriendo el cuerpo.
+- **Antes de subir cambios al juego:** `node scripts/probar-danza.mjs` (incluido en `pnpm verificar`):
+  juega miles de partidas y revisa desbloqueos, ritmo, puntaje y que los textos existan en los tres idiomas.
+- **Código:** `components/paginas/DanzaTonal.tsx` (servidor) arma cada glifo con su emblema, el color
+  de su deidad (`deityThemes`) y los nombres del compendio en el idioma del visitante; la parte
+  interactiva es `components/danza/DanzaTonalCliente.tsx`. Textos en `lib/i18n.ts` (`paginas.danza`,
+  y `juega.danzaTexto` para la tarjeta).
+- **Jugar:** toque (cuenta al bajar el dedo), clic, Enter o espacio sobre un glifo, o las teclas 1 a 7
+  (en el orden del círculo). Si el jugador cambia de pestaña, la danza se pausa y al volver se repite la
+  ronda sin castigo. "Retar a alguien" abre el menú de compartir o copia el enlace.
+
 ### 4. Contenido faltante: `<Pendiente id>`
 
 - **Registro único:** todo hueco de contenido sale de `lib/pendientes.ts`. Cada entrada tiene un
@@ -163,6 +187,7 @@ compendio, avisos de privacidad, contactos y textos legales.
 | `lib/features.tsx` | Textos de "Tonaltlan de un Vistazo" (landing, `/mundo` y `/juega`) |
 | `lib/pendientes.ts` | Registro de contenido pendiente |
 | `lib/affinity-*.ts`, `hooks/useAffinityTest.ts` | Test de Afinidad y su envío por webhook |
+| `lib/danza-core.ts`, `components/danza/` | Danza Tonal: lógica del juego, juego (`DanzaTonalCliente`) y su tarjeta para `/juega` (`TarjetaDanza`) |
 | `components/ui/` | Piezas genéricas: `Greca`, `Pendiente`, `AnchorPage` (página con índice lateral) |
 | `components/paginas/` | Cada página como componente con `lang` (las rutas de `app/` las envuelven) |
 | `components/inicio/` | Secciones de la landing: `Hero`, `About`, `ExplorePreview`, `Features`, `Newsletter`, `AnuncioEvento` |
@@ -183,6 +208,7 @@ compendio, avisos de privacidad, contactos y textos legales.
 - **Compendio:** `/clases`, `/especies` (+ `/especies/[slug]`), `/deidades` (+ `/deidades/[slug]`),
   `/bestiario`, `/monturas`. Especies tiene ocho: siete por linaje divino y los **Tlacas**
   (humanos sin afinidad elemental; ficha pendiente).
+- **Juega:** `/juega` con el Test de Afinidad (`/afinidad`) y la Danza Tonal (`/juega/danza-tonal`).
 - **Estudio** (en el footer): `/nosotros`, `/noticias`, contacto.
 - **Cada tipo de contenido tiene su propia presentación**; no se repite un solo patrón de tarjeta:
   - Clases: selector "elige tu personaje".
@@ -256,7 +282,8 @@ oro sobre verde selva profundo. Los colores viven como escalas propias en `tailw
 - **Sin números de sección** decorativos (01, 02…).
 - **Sin bordes laterales de color** de más de 1 px en tarjetas o notas.
 - **Un solo momento animado por página:** en la landing, la entrada del Hero (`.hero-reveal`). Las
-  secciones se ven siempre, sin animación de aparición.
+  secciones se ven siempre, sin animación de aparición. **Excepción: la Danza Tonal**, donde los
+  destellos de los glifos son la mecánica del juego (ver "Interacción y animación").
 - **El oro se reserva para la acción**; los títulos van en jade.
 
 ### Flujo de la landing
@@ -302,6 +329,11 @@ Reglas aplicadas en el código:
   solo opacidad.
 - **Logo del Hero:** `.logo-latido` (pulso doble lento cada 4 s) y `.logo-aura` (resplandor oro/jade
   que respira detrás). Es la única animación continua del sitio; se desactiva con reducir movimiento.
+- **Danza Tonal (excepción aprobada):** es la única página con animación repetida, porque los destellos
+  son el juego. Clases `.danza-*` en `app/globals.css`: el glifo se enciende de golpe (sin transición)
+  y se apaga en 220 ms; el glifo que se suma pasa de gris a color; un error sacude el tablero una vez.
+  Con reducir movimiento no hay escalas ni sacudidas, solo brillo, color y opacidad, y el desplazamiento
+  al empezar es instantáneo (`prefersReducedMotion()`). Las teclas 1 a 7 no agregan animación.
 
 ---
 

@@ -18,6 +18,7 @@ const PAGINAS = [
   "/monturas/",
   "/galeria/",
   "/juega/",
+  "/juega/danza-tonal/",
   "/afinidad/",
   "/noticias/",
   "/nosotros/",
