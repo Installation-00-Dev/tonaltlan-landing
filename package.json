@@ -6,7 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "typecheck": "tsc --noEmit",
-    "verificar": "tsc --noEmit && next build && node scripts/verificar-imagenes.mjs && node scripts/simular-afinidad.mjs"
+    "verificar": "tsc --noEmit && next build && node scripts/verificar-imagenes.mjs && node scripts/simular-afinidad.mjs && node scripts/probar-danza.mjs"
   },
   "dependencies": {
     "next": "^15.3.3",

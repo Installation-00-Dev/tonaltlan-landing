@@ -284,3 +284,88 @@ textarea:-webkit-autofill:focus {
   }
 }
 
+
+/* ── Danza Tonal ────────────────────────────────────────────────
+   Los destellos de los glifos son la mecanica del juego, no decoracion:
+   se encienden de golpe y se apagan suave. Con "reducir movimiento" no hay
+   escalas ni sacudidas: solo brillo, color y opacidad.
+   --brillo y --brillo-suave llegan en linea con el color de cada deidad. */
+.danza-glifo {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  filter: saturate(0.8) brightness(0.82);
+  transition:
+    filter 220ms var(--ease-out),
+    box-shadow 220ms var(--ease-out),
+    opacity 220ms var(--ease-out),
+    transform 220ms var(--ease-out);
+}
+
+.danza-glifo[data-estado="encendido"] {
+  filter: saturate(1.15) brightness(1.18);
+  box-shadow:
+    0 0 0 4px var(--brillo),
+    0 0 30px 8px var(--brillo-suave);
+  transition-duration: 0ms;
+}
+
+.danza-glifo[data-estado="error"] {
+  filter: saturate(0.5) brightness(0.65);
+  box-shadow: 0 0 0 4px #f87171;
+  transition-duration: 0ms;
+}
+
+.danza-glifo[data-estado="dormido"] {
+  filter: grayscale(1) brightness(0.5);
+  opacity: 0.3;
+}
+
+/* El glifo que se suma a la danza despierta: de gris a color. */
+@keyframes danzaDespierta {
+  from {
+    filter: grayscale(1) brightness(0.5);
+    opacity: 0.3;
+  }
+}
+
+@keyframes danzaDespiertaEscala {
+  from {
+    filter: grayscale(1) brightness(0.5);
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+}
+
+.danza-glifo[data-recien="true"] {
+  animation: danzaDespierta 900ms var(--ease-out) both;
+}
+
+/* Error: el tablero tiembla una vez. */
+@keyframes danzaTiembla {
+  20% {
+    transform: translateX(-6px);
+  }
+  40% {
+    transform: translateX(5px);
+  }
+  60% {
+    transform: translateX(-3px);
+  }
+  80% {
+    transform: translateX(2px);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .danza-glifo[data-estado="encendido"] {
+    transform: scale(1.08);
+  }
+
+  .danza-glifo[data-recien="true"] {
+    animation-name: danzaDespiertaEscala;
+  }
+
+  .danza-tablero[data-fase="error"] {
+    animation: danzaTiembla 360ms var(--ease-out);
+  }
+}
