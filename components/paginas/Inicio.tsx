@@ -1,12 +1,13 @@
-import AnuncioEvento from "@/components/AnuncioEvento";
-import Hero from "@/components/Hero";
-import About from "@/components/About";
-import ExplorePreview from "@/components/ExplorePreview";
-import Features from "@/components/Features";
-import Newsletter from "@/components/Newsletter";
+import About from "@/components/inicio/About";
+import AnuncioEvento from "@/components/inicio/AnuncioEvento";
+import ExplorePreview from "@/components/inicio/ExplorePreview";
+import Features from "@/components/inicio/Features";
+import Hero from "@/components/inicio/Hero";
+import Newsletter from "@/components/inicio/Newsletter";
 import Greca from "@/components/ui/Greca";
 import { getCompendio } from "@/lib/compendio";
 import { metaPagina, t, type Lang } from "@/lib/i18n";
+import { getTextos } from "@/lib/textos";
 
 export function metadataInicio(lang: Lang) {
   const d = t(lang).meta;
@@ -30,7 +31,7 @@ export default function Inicio({ lang }: { lang: Lang }) {
     <div className="relative overflow-hidden bg-selva-900 text-selva-100 selection:bg-oro-400/30 selection:text-oro-100">
 
       <div className="relative z-10">
-        <AnuncioEvento lang={lang} />
+        <AnuncioEvento lang={lang} noticia={getTextos(lang).noticias.find((n) => n.anuncioHasta)} />
         <Hero lang={lang} />
         <About lang={lang} />
         <Divider />

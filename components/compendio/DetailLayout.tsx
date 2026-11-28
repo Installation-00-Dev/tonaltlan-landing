@@ -122,26 +122,26 @@ export default function DetailLayout({
       .filter((line) => line.includes("|"));
 
     if (lines.length < 2) {
-      return <p className="whitespace-pre-line text-base leading-relaxed text-muted">{content}</p>;
+      return <p className="whitespace-pre-line text-base leading-relaxed text-selva-300">{content}</p>;
     }
 
     const headers = parsePipeRow(lines[0]);
     const rows = lines.slice(1).map(parsePipeRow).filter((row) => row.length > 0);
 
     if (headers.length < 2) {
-      return <p className="whitespace-pre-line text-base leading-relaxed text-muted">{content}</p>;
+      return <p className="whitespace-pre-line text-base leading-relaxed text-selva-300">{content}</p>;
     }
 
     return (
       <div className="space-y-3">
         <div className="overflow-x-auto">
-          <table className="min-w-full border-collapse text-sm text-muted">
-            <thead className="bg-background/60">
+          <table className="min-w-full border-collapse text-sm text-selva-300">
+            <thead className="bg-selva-900/60">
               <tr>
                 {headers.map((header) => (
                   <th
                     key={header}
-                    className="border border-glass-border px-3 py-2 text-left font-semibold text-foreground"
+                    className="border border-selva-700 px-3 py-2 text-left font-semibold text-selva-100"
                   >
                     {header}
                   </th>
@@ -152,7 +152,7 @@ export default function DetailLayout({
               {rows.map((row, rowIndex) => (
                 <tr key={`${rowIndex}-${row.join("-")}`}>
                   {headers.map((_, colIndex) => (
-                    <td key={colIndex} className="border border-glass-border px-3 py-2 align-top">
+                    <td key={colIndex} className="border border-selva-700 px-3 py-2 align-top">
                       {row[colIndex] ?? "-"}
                     </td>
                   ))}
@@ -184,20 +184,20 @@ export default function DetailLayout({
           return (
             <details
               key={`${heading}-${idx}`}
-              className="rounded-lg border border-glass-border/60 bg-background/25 p-4"
+              className="rounded-lg border border-selva-700/60 bg-selva-900/25 p-4"
               open={idx === 0}
             >
-              <summary className="cursor-pointer list-none text-base font-semibold text-gold">
+              <summary className="cursor-pointer list-none text-base font-semibold text-oro-400">
                 {heading}
               </summary>
               <div className="mt-3">
                 {plainLines.length > 0 && (
-                  <p className="mb-3 whitespace-pre-line text-base leading-relaxed text-muted">
+                  <p className="mb-3 whitespace-pre-line text-base leading-relaxed text-selva-300">
                     {plainLines.join("\n")}
                   </p>
                 )}
                 {bulletLines.length > 0 && (
-                  <ul className="list-disc space-y-1 pl-5 text-base leading-relaxed text-muted">
+                  <ul className="list-disc space-y-1 pl-5 text-base leading-relaxed text-selva-300">
                     {bulletLines.map((line, lineIndex) => (
                       <li key={`${lineIndex}-${line}`}>{line.slice(2)}</li>
                     ))}
@@ -238,7 +238,7 @@ export default function DetailLayout({
     }
 
     if (elements.length === 0) {
-      return <p className="whitespace-pre-line text-base leading-relaxed text-muted">{content}</p>;
+      return <p className="whitespace-pre-line text-base leading-relaxed text-selva-300">{content}</p>;
     }
 
     return (
@@ -246,19 +246,19 @@ export default function DetailLayout({
         {elements.map((element, elementIndex) => (
           <details
             key={element.name}
-            className="rounded-lg border border-glass-border/70 bg-background/25 p-5"
+            className="rounded-lg border border-selva-700/70 bg-selva-900/25 p-5"
             open={elementIndex === 0}
           >
             <summary className="cursor-pointer list-none">
-              <h3 className="mb-1 font-display text-xl text-gold">{element.name}</h3>
-              <p className="text-sm font-medium text-foreground">{element.role}</p>
+              <h3 className="mb-1 font-display text-xl text-oro-400">{element.name}</h3>
+              <p className="text-sm font-medium text-selva-100">{element.role}</p>
             </summary>
-            <ul className="mt-4 space-y-3 text-base leading-relaxed text-muted">
-              {element.levels.map((levelLine, idx) => {
+            <ul className="mt-4 space-y-3 text-base leading-relaxed text-selva-300">
+              {element.levels.map((levelLine, levelIndex) => {
                 const [levelTitle, ...rest] = levelLine.split(":");
                 return (
-                  <li key={`${element.name}-${idx}`} className="rounded-md border border-glass-border/50 bg-background/40 p-3">
-                    <span className="font-semibold text-foreground">{levelTitle}:</span>{" "}
+                  <li key={`${element.name}-${levelIndex}`} className="rounded-md border border-selva-700/50 bg-selva-900/40 p-3">
+                    <span className="font-semibold text-selva-100">{levelTitle}:</span>{" "}
                     <span>{rest.join(":").trim()}</span>
                   </li>
                 );
@@ -285,7 +285,7 @@ export default function DetailLayout({
 
           if (allBullets) {
             return (
-              <ul key={idx} className="list-disc space-y-2 pl-5 text-base leading-relaxed text-muted">
+              <ul key={idx} className="list-disc space-y-2 pl-5 text-base leading-relaxed text-selva-300">
                 {lines.map((line, lineIdx) => (
                   <li key={`${idx}-${lineIdx}`}>{line.slice(2)}</li>
                 ))}
@@ -294,7 +294,7 @@ export default function DetailLayout({
           }
 
           return (
-            <p key={idx} className="whitespace-pre-line text-base leading-relaxed text-muted">
+            <p key={idx} className="whitespace-pre-line text-base leading-relaxed text-selva-300">
               {block}
             </p>
           );
@@ -399,20 +399,20 @@ export default function DetailLayout({
         )}
 
         {quickFacts.length > 0 && (
-          <section className="mb-8 rounded-2xl border border-gold/30 bg-gradient-to-br from-gold/10 via-background/40 to-background/20 p-4 md:p-6">
-            <h2 className="mb-4 font-display text-2xl text-gold">{dl.fichaRapida}</h2>
+          <section className="mb-8 rounded-2xl border border-oro-400/30 bg-gradient-to-br from-oro-400/10 via-selva-900/40 to-selva-900/20 p-4 md:p-6">
+            <h2 className="mb-4 font-display text-2xl text-oro-400">{dl.fichaRapida}</h2>
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {quickFacts.map((fact, idx) => (
                 <article
                   key={`${fact.label}-${idx}`}
                   className={
                     idx === 0
-                      ? "rounded-xl border border-glass-border bg-background/45 p-4 sm:col-span-2 lg:col-span-3"
-                      : "rounded-xl border border-glass-border bg-background/45 p-4"
+                      ? "rounded-xl border border-selva-700 bg-selva-900/45 p-4 sm:col-span-2 lg:col-span-3"
+                      : "rounded-xl border border-selva-700 bg-selva-900/45 p-4"
                   }
                 >
                   <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-oro-400/90">{fact.label}</p>
-                  <p className="text-sm leading-relaxed text-foreground">{fact.value}</p>
+                  <p className="text-sm leading-relaxed text-selva-100">{fact.value}</p>
                 </article>
               ))}
             </div>
@@ -426,7 +426,7 @@ export default function DetailLayout({
               <a
                 key={`${section.title}-${idx}`}
                 href={`#${id}`}
-                className="rounded-full border border-glass-border bg-background/40 px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-muted transition-colors hover:border-oro-400 hover:text-selva-100"
+                className="rounded-full border border-selva-700 bg-selva-900/40 px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-selva-300 transition-colors hover:border-oro-400 hover:text-selva-100"
               >
                 {section.title}
               </a>
@@ -436,14 +436,14 @@ export default function DetailLayout({
 
         {/* Content sections */}
         <div className="space-y-8">
-          {sections.map((section, idx) => (
+          {sections.map((section) => (
             <section
               key={section.title}
               id={toAnchorId(section.title)}
-              className="glass-card scroll-mt-24 rounded-xl p-6 md:p-8"
+              className="scroll-mt-24 rounded-xl border border-selva-700/80 bg-selva-800/60 p-6 shadow-[0_10px_30px_rgba(2,6,23,0.35),inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-lg md:p-8"
             >
-              <h2 className="mb-3 font-display text-xl text-foreground">{section.title}</h2>
-              <div className="space-y-4 text-muted">{renderSectionContent(section)}</div>
+              <h2 className="mb-3 font-display text-xl text-selva-100">{section.title}</h2>
+              <div className="space-y-4 text-selva-300">{renderSectionContent(section)}</div>
             </section>
           ))}
         </div>

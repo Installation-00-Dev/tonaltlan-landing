@@ -12,9 +12,10 @@ Next.js 15 (App Router) con exportación estática a GitHub Pages (`tonaltlan.co
 pnpm dev        # servidor de desarrollo
 pnpm typecheck  # TypeScript
 pnpm build      # exportación estática → out/
+pnpm verificar  # typecheck + build + imágenes (scripts/verificar-imagenes.mjs) + balance del test
 ```
 
-Antes de cada commit: `pnpm typecheck` y `pnpm build` deben pasar.
+Antes de cada commit: `pnpm verificar` debe pasar. Para ver el export: `python3 -m http.server 3000 -d out`.
 
 - `output: "export"`, `trailingSlash: true`, `images.unoptimized`. No hay rutas API ni server actions.
 - Al hacer push a `main`, `.github/workflows/pages.yml` publica el sitio. La página legacy `/proximamente`
@@ -56,11 +57,16 @@ compendio, avisos de privacidad, contactos y textos legales.
 - **Originales:** se respaldan en `_assets_backup/` con la misma ruta relativa
   (`public/images/galeria/x.png` → `_assets_backup/images/galeria/x.png`), fuera del build.
 - **Versiones derivadas** (recortes, tamaños menores) llevan sufijo (`tonaltlan_logo_nav.webp`,
-  `produccion_footer.webp`). El original no se sobrescribe.
-- **Verificación tras el build:** cada `/images/...` del HTML generado debe existir en `out/`.
+  `produccion_footer.webp`). Si el sufijo es el ancho (`tonaltlan_logo_nav_360.webp`,
+  `produccion_footer_675.webp`, `instagram_64.webp`), ya es su tamaño final. El original no se sobrescribe.
+- **Solo lo que se usa vive en `public/`:** el arte que ninguna página muestra se queda en `_assets_backup/`
+  (excepción: las fuentes de `vista-previa.py`, `piramides_azteca_final.webp`, `tonaltlan_logo.webp` y `tonaltlan_logo_t.webp`).
+- **Verificación tras el build:** cada `/images/...` del HTML generado debe existir en `out/`
+  (lo revisa `scripts/verificar-imagenes.mjs`, incluido en `pnpm verificar`).
 - **Versiones ligeras (obligatorio al agregar imágenes):** el export estático no redimensiona, así
   que hay que correr `python3 scripts/variantes.py` (requiere Pillow). Genera `-480`, `-1200` (y
-  `-1800` en galería) y actualiza `lib/variantes.generated.ts`. En el código, nunca uses la ruta
+  `-1800` en galería) y actualiza `lib/variantes.generated.ts`. Si un original es más angosto que el
+  ancho mayor pero pesa más de 150 KB, esa variante conserva su medida y solo se comprime. En el código, nunca uses la ruta
   original directamente para mostrar arte: usa `variante(src, anchoEnPixelesReales)` de
   `lib/imagenes.ts` (pide el doble de lo que se ve, por pantallas retina).
 - **Vista previa al compartir e íconos:** `python3 scripts/vista-previa.py` genera la imagen general
@@ -73,7 +79,8 @@ compendio, avisos de privacidad, contactos y textos legales.
 
 - **Rutas:** español en las de siempre (`/clases/`), inglés bajo `/en/` y francés bajo `/fr/`
   (`/en/clases/`, `/fr/clases/`). Cada idioma tiene su layout raíz con su `<html lang>`:
-  `app/(es)/layout.tsx`, `app/(en)/layout.tsx` y `app/(fr)/layout.tsx`.
+  `app/(es)/layout.tsx`, `app/(en)/layout.tsx` y `app/(fr)/layout.tsx`. Los tres solo eligen el idioma:
+  metadatos, ícono, barra y pie viven en `components/layout/LayoutRaiz.tsx`.
 - **Las páginas son componentes** en `components/paginas/` que reciben `lang`. Los archivos de
   `app/(es)/…/page.tsx`, `app/(en)/en/…/page.tsx` y `app/(fr)/fr/…/page.tsx` solo los envuelven.
   Una página nueva necesita las tres rutas.
@@ -88,7 +95,7 @@ compendio, avisos de privacidad, contactos y textos legales.
   para abrir la misma página en el otro idioma. Los nombres y códigos viven en `IDIOMAS` (`lib/i18n.ts`).
 - **Enlaces internos:** siempre con `ruta(lang, "/ruta/")`, para no sacar al visitante de su idioma.
 - **Metadatos:** `metaPagina(lang, path, título, descripción, imagen?)` agrega la URL canónica, `hreflang` y
-  la vista previa al compartir (Open Graph y X). Los layouts definen el ícono y la vista previa por defecto.
+  la vista previa al compartir (Open Graph y X). `LayoutRaiz` define el ícono y la vista previa por defecto.
 - **Buscadores:** `app/sitemap.ts` (agrega ahí cada página pública nueva) y `app/robots.ts` (`/pendientes`
   fuera). **404:** `app/global-not-found.tsx` (en los tres idiomas; `experimental.globalNotFound`).
 - **Traducciones:** borradores fieles, pendientes de revisión (entradas `traduccion-ingles` y
@@ -121,7 +128,9 @@ compendio, avisos de privacidad, contactos y textos legales.
 - **Código:** la lógica vive en `lib/affinity-core.ts` (sin textos) y es lo único que importa el navegador.
   `components/paginas/Afinidad.tsx` (servidor) le pasa a `AfinidadCliente.tsx` las preguntas, las lecturas
   y el arte solo del idioma del visitante. `lib/affinity-test.ts` importa los tres idiomas: nunca lo
-  importes desde un componente `"use client"`.
+  importes desde un componente `"use client"`. Lo mismo vale para `lib/data*.ts`, `lib/compendio.ts`,
+  `lib/textos.ts` y `lib/pendientes.ts`: el componente de servidor los lee y pasa solo lo necesario
+  como props (así lo hacen `Inicio` → `AnuncioEvento` y `Clases` → `ClassSelector`).
 - **Guardado a prueba de Wi-Fi:** si el envío al webhook no sale, se reintenta 2 veces y luego se guarda en
   `localStorage` (`tonaltlan-afinidad-pendientes`) para reenviarse al volver la conexión o al abrir de
   nuevo el test. El resultado muestra "Reintentar".
@@ -146,16 +155,21 @@ compendio, avisos de privacidad, contactos y textos legales.
 
 | Archivo | Contenido |
 |---|---|
-| `lib/site.ts` | Botones del Hero (`heroCtas`), contactos, redes, listas de imágenes de Galería y Monturas, **colores por deidad** (`deityThemes`, `themeFor`). La navegación y el footer viven en `lib/i18n.ts` |
+| `lib/site.ts` | Botones del Hero (`heroCtas`), contactos, redes, listas de imágenes de Galería, Monturas y Bestiario, **colores y emblemas por deidad** (`deityThemes`, `themeFor`, `emblemas`). La navegación y el footer viven en `lib/i18n.ts` |
 | `lib/data.ts` | Fichas del compendio: `clases`, `especies`, `deidades`, `bestiario`, `monturas` y `sectionsMeta` (conteos para Explorar). Las especies llevan `deidad: "<slug>"` para agruparse por linaje y heredar su color |
 | `lib/i18n.ts` | Idiomas: `t(lang)` (textos de interfaz y landing), `ruta(lang, path)`, `metaPagina(...)` |
 | `lib/compendio.ts` | `getCompendio(lang)`: fichas del compendio en el idioma pedido |
-| `lib/textos.ts` | Textos entregados por el creador (intros de Clases y Especies, cierre de Clases), con versión en inglés |
+| `lib/textos.ts` | Textos entregados por el creador (intros de Clases y Especies, cierre de Clases, Cosmovisión, noticias), en los tres idiomas |
 | `lib/features.tsx` | Textos de "Tonaltlan de un Vistazo" (landing, `/mundo` y `/juega`) |
 | `lib/pendientes.ts` | Registro de contenido pendiente |
 | `lib/affinity-*.ts`, `hooks/useAffinityTest.ts` | Test de Afinidad y su envío por webhook |
-| `components/ui/` | Piezas genéricas: `Pendiente`, `AnchorPage` (página con índice lateral) |
+| `components/ui/` | Piezas genéricas: `Greca`, `Pendiente`, `AnchorPage` (página con índice lateral) |
 | `components/paginas/` | Cada página como componente con `lang` (las rutas de `app/` las envuelven) |
+| `components/inicio/` | Secciones de la landing: `Hero`, `About`, `ExplorePreview`, `Features`, `Newsletter`, `AnuncioEvento` |
+| `components/layout/` | Marco de todas las páginas: `LayoutRaiz` (metadatos e ícono), `Navbar`, `Footer` |
+| `components/afinidad/` | Piezas del Test de Afinidad: `CompartirResultado`, `TarjetaTest` |
+| `scripts/` | `variantes.py`, `vista-previa.py`, `emblemas.py`, `verificar-imagenes.mjs`, `simular-afinidad.mjs` |
+| `_assets_backup/` | Originales de imágenes y textos del creador (incluye el test original v1), fuera del build |
 | `components/compendio/` | Piezas del compendio: `SectionHeader`, `ClassSelector`, `GalleryGrid`, `MountCarousel`, `DetailLayout`, `SearchBar` |
 
 ### Estructura del sitio
@@ -182,9 +196,10 @@ compendio, avisos de privacidad, contactos y textos legales.
 
 - **Una entrada al compendio:** se agrega en `lib/data.ts`. A una especie nueva se le asigna su `deidad`.
 - **Una deidad nueva:** se agrega en `lib/data.ts` y se le define un color en `deityThemes` (`lib/site.ts`).
-- **Una página o sección:** se crea el componente en `components/paginas/`, sus dos rutas
-  (`app/(es)/…` y `app/(en)/en/…`), sus textos en `lib/i18n.ts` (es y en) y el enlace en la
-  navegación o el footer (`lib/i18n.ts`). Si aún no tiene contenido, se le pone un `<Pendiente>`.
+- **Una página o sección:** se crea el componente en `components/paginas/`, sus tres rutas
+  (`app/(es)/…`, `app/(en)/en/…` y `app/(fr)/fr/…`), sus textos en `lib/i18n.ts` (es, en y fr), su
+  entrada en `app/sitemap.ts` y el enlace en la navegación o el footer (`lib/i18n.ts`). Si aún no
+  tiene contenido, se le pone un `<Pendiente>`.
 - **Imágenes de Galería o Monturas:** se agregan a `galleryImages` o `mountImages` en `lib/site.ts`.
 - **Clases de Tailwind escritas en `lib/`:** deben ir completas (nada de `bg-${color}-400`), porque
   Tailwind solo detecta las clases que aparecen literalmente en el código. `lib/` ya está en el
@@ -215,11 +230,11 @@ oro sobre verde selva profundo. Los colores viven como escalas propias en `tailw
 - **Tipografía:** **Macondo** para títulos (`font-display`, elegida por el creador) e **Inter** para
   el texto. Macondo tiene **un solo peso (400)**: nunca la combines con `font-bold`/`font-semibold`
   (el navegador inventa una negrita fea), ni con `uppercase` o `tracking-*`.
-- **Tokens antiguos** (`gold`, `teal`, `muted`, `foreground`, `background`) siguen existiendo para
-  páginas previas (Afinidad, detalle) y apuntan a la paleta Quetzal.
+- **Sin tokens antiguos:** `gold`, `teal`, `muted`, `foreground`, `background` y `glass-card` se
+  retiraron en nov. 2026 (la ficha de detalle ya usa la paleta Quetzal con los mismos colores).
 - **Contraste verificado (WCAG AA):** `selva-300` sobre `selva-900` 9.8:1, `selva-400` 6.9:1,
   `oro-400` con texto `selva-950` 10.7:1.
-- `.github/copilot-instructions.md` describe una paleta anterior; para diseño manda este archivo.
+- `.github/copilot-instructions.md` es un resumen que remite a este archivo; si difieren, manda este.
 
 ### Lenguaje visual propio
 
@@ -230,7 +245,7 @@ oro sobre verde selva profundo. Los colores viven como escalas propias en `tailw
 - **No repetir el mismo formato:** cada bloque entrega la información de forma distinta.
   - Landing, compendio: mosaico de arte (`ExplorePreview`).
   - Landing, "Tonaltlan de un Vistazo": **quincunce** (cosmograma de los cuatro rumbos y el centro;
-    `Features.tsx`). El título vive en el emblema y cada tema ocupa un rumbo cuyo rayo se ilumina.
+    `components/inicio/Features.tsx`). El título vive en el emblema y cada tema ocupa un rumbo cuyo rayo se ilumina.
   - `/explorar`: **índice de códice**, filas grandes con un abanico de 3 miniaturas del arte de cada
     sección que se abre al pasar el cursor.
 
@@ -278,8 +293,9 @@ Reglas aplicadas en el código:
 - **Teclado sin animación:** Esc, flechas y atajos responden de inmediato.
 - **Modales:** entran desde `scale(0.96)` con opacidad, nunca desde `scale(0)`, y cierran más rápido
   de lo que abren. Al cerrar, el foco vuelve al elemento que los abrió.
-- **Anuncio de evento** (`components/AnuncioEvento.tsx`, solo en la landing): abre en grande uno de los
-  carteles (al azar) de la noticia que tenga `anuncioHasta` en `lib/textos.ts`. Desaparece solo después
+- **Anuncio de evento** (`components/inicio/AnuncioEvento.tsx`, solo en la landing): abre en grande uno de los
+  carteles (al azar) de la noticia que tenga `anuncioHasta` en `lib/textos.ts` (`Inicio` se la pasa ya
+  elegida). Desaparece solo después
   de esa fecha y, una vez cerrado, no vuelve a salir en la misma sesión. Se monta con un portal en `<body>`
   para quedar encima de la barra.
 - **Entrada del Hero:** `.hero-reveal` (con `animation-delay` escalonado); con reducir movimiento es

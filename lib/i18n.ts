@@ -203,7 +203,6 @@ const es = {
     queSeNecesita: "Qué se necesita",
     yaMencionado: "Ya mencionado en el sitio",
     montura: "Montura",
-    ilustracion: "Ilustración",
   },
   paginas: {
     clases: {
@@ -247,11 +246,8 @@ const es = {
       subtitulo: "Criaturas del Mictlan y bestias de selvas y montañas sagradas.",
       region: "Región",
       regiones: ["Mictlan", "Selva", "Celestial"],
-      ejemploAria: "Ejemplo de ficha de criatura",
-      ilustracion: "Ilustración",
       stats: ["CA", "PG", "Velocidad"],
       atributos: ["FUE", "DES", "CON", "INT", "SAB", "CAR"],
-      acciones: "Acciones",
     },
     monturas: {
       meta: "Monturas - Tonaltlan",
@@ -278,7 +274,7 @@ const es = {
       meta: "El Mundo - Tonaltlan",
       metaDesc: "Cosmovisión, Puntos Tonal, regiones e historia del mundo de Tonaltlan.",
       titulo: "El Mundo",
-      secciones: { cosmovision: "Cosmovisión", puntos: "Puntos Tonal", regiones: "Regiones", historia: "Historia" },
+      secciones: { cosmovision: "Cosmovisión", puntos: "Puntos Tonal", regiones: "Regiones" },
       mapaAlt: "Mapa de Tonaltlan",
       cosmovisionAlt:
         "Ilustración de la creación: en lo alto, una figura dual de luz y obscuridad; al centro, una figura que se funde con el Sol, rodeada por fuerzas de la obscuridad, el aire, el agua, el rayo y el fuego, y por un caimán celeste entre esferas; abajo, la tierra sostiene el mundo.",
@@ -331,7 +327,6 @@ const es = {
       ayuda: "Toca una opción para avanzar automáticamente. Usa Anterior para corregir.",
       anterior: "Anterior",
       modoAleatorio: "Modo Fortuna Aleatoria",
-      tuAfinidad: "tu afinidad",
       revelada: "Afinidad revelada",
       simbolos: "Símbolos Sagrados",
       guardando: "Guardando tu resultado...",
@@ -483,7 +478,6 @@ const en: Diccionario = {
     queSeNecesita: "What is needed",
     yaMencionado: "Already mentioned on the site",
     montura: "Mount",
-    ilustracion: "Illustration",
   },
   paginas: {
     clases: {
@@ -527,11 +521,8 @@ const en: Diccionario = {
       subtitulo: "Creatures of Mictlan and beasts of the sacred jungles and mountains.",
       region: "Region",
       regiones: ["Mictlan", "Jungle", "Celestial"],
-      ejemploAria: "Example creature stat block",
-      ilustracion: "Illustration",
       stats: ["AC", "HP", "Speed"],
       atributos: ["STR", "DEX", "CON", "INT", "WIS", "CHA"],
-      acciones: "Actions",
     },
     monturas: {
       meta: "Mounts - Tonaltlan",
@@ -558,7 +549,7 @@ const en: Diccionario = {
       meta: "The World - Tonaltlan",
       metaDesc: "Worldview, Tonal Points, regions and history of the world of Tonaltlan.",
       titulo: "The World",
-      secciones: { cosmovision: "Worldview", puntos: "Tonal Points", regiones: "Regions", historia: "History" },
+      secciones: { cosmovision: "Worldview", puntos: "Tonal Points", regiones: "Regions" },
       mapaAlt: "Map of Tonaltlan",
       cosmovisionAlt:
         "Illustration of the creation: above, a dual figure of light and darkness; at the center, a figure merging with the Sun, surrounded by forces of darkness, air, water, lightning and fire, and by a celestial caiman among spheres; below, the earth holds up the world.",
@@ -611,7 +602,6 @@ const en: Diccionario = {
       ayuda: "Tap an option to move on automatically. Use Previous to change your answer.",
       anterior: "Previous",
       modoAleatorio: "Random Fortune Mode",
-      tuAfinidad: "your affinity",
       revelada: "Affinity revealed",
       simbolos: "Sacred Symbols",
       guardando: "Saving your result...",
@@ -762,7 +752,6 @@ const fr: Diccionario = {
     queSeNecesita: "Ce qu'il faut",
     yaMencionado: "Déjà mentionné sur le site",
     montura: "Monture",
-    ilustracion: "Illustration",
   },
   paginas: {
     clases: {
@@ -806,11 +795,8 @@ const fr: Diccionario = {
       subtitulo: "Créatures du Mictlan et bêtes des jungles et montagnes sacrées.",
       region: "Région",
       regiones: ["Mictlan", "Jungle", "Céleste"],
-      ejemploAria: "Exemple de fiche de créature",
-      ilustracion: "Illustration",
       stats: ["CA", "PV", "Vitesse"],
       atributos: ["FOR", "DEX", "CON", "INT", "SAG", "CHA"],
-      acciones: "Actions",
     },
     monturas: {
       meta: "Montures - Tonaltlan",
@@ -837,7 +823,7 @@ const fr: Diccionario = {
       meta: "Le Monde - Tonaltlan",
       metaDesc: "Cosmovision, Points Tonal, régions et histoire du monde de Tonaltlan.",
       titulo: "Le Monde",
-      secciones: { cosmovision: "Cosmovision", puntos: "Points Tonal", regiones: "Régions", historia: "Histoire" },
+      secciones: { cosmovision: "Cosmovision", puntos: "Points Tonal", regiones: "Régions" },
       mapaAlt: "Carte de Tonaltlan",
       cosmovisionAlt:
         "Illustration de la création : en haut, une figure double de lumière et d'obscurité ; au centre, une figure qui se fond avec le Soleil, entourée des forces de l'obscurité, de l'air, de l'eau, de la foudre et du feu, et d'un caïman céleste parmi des sphères ; en bas, la terre porte le monde.",
@@ -890,7 +876,6 @@ const fr: Diccionario = {
       ayuda: "Touche une option pour avancer automatiquement. Utilise Précédent pour corriger.",
       anterior: "Précédent",
       modoAleatorio: "Mode Fortune Aléatoire",
-      tuAfinidad: "ton affinité",
       revelada: "Affinité révélée",
       simbolos: "Symboles sacrés",
       guardando: "Enregistrement de ton résultat...",

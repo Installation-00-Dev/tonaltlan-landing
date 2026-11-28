@@ -12,10 +12,10 @@ export default function Footer({ lang = "es" }: { lang?: Lang }) {
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="flex flex-col items-center text-center lg:col-span-4 lg:items-start lg:text-left">
             <Image
-              src="/images/produccion_footer.webp"
+              src="/images/produccion_footer_675.webp"
               alt="Cuevas y Quetzales"
-              width={900}
-              height={416}
+              width={675}
+              height={312}
               className="h-auto w-64 md:w-72"
               sizes="288px"
             />

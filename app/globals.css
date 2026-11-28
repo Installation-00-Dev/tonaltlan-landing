@@ -3,27 +3,15 @@
 @tailwind utilities;
 
 :root {
-  /* Paleta Quetzal (ver tailwind.config.ts) */
+  /* Paleta Quetzal (ver tailwind.config.ts): solo lo que usa este archivo. */
   --bg: #0b1d19; /* selva-900 */
   --text: #ecf5ef; /* selva-100 */
-  --muted: #a9c9bb; /* selva-300 */
   --gold: #f5b82e; /* oro-400 */
   --gold2: #f8cf63; /* oro-300 */
-  --teal: #38bdf8; /* turquesa-400 */
-  --jade: #4ade80; /* jade-400 */
-  --aqua: #38bdf8; /* turquesa-400 */
-  --glass: rgba(18, 48, 41, 0.6); /* selva-800/60 */
-  --glass-border: rgba(36, 68, 58, 0.8); /* selva-700/80 */
 
   /* Curvas de animacion (skill emil-design-eng) */
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
-
-  /* Legacy aliases for existing components */
-  --background: var(--bg);
-  --foreground: var(--text);
-  --gold-light: var(--gold2);
-  --glass-bg: var(--glass);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -57,48 +45,6 @@ h3 {
 ::selection {
   background-color: rgb(245 184 46 / 0.3);
   color: #fdf3d6;
-}
-
-/* Glass card utility */
-@layer components {
-  .glass-card {
-    background: var(--glass);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid var(--glass-border);
-    box-shadow:
-      0 10px 30px rgba(2, 6, 23, 0.35),
-      inset 0 1px 0 rgba(255, 255, 255, 0.04);
-  }
-
-  .glass-card-hover {
-    background: var(--glass);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid var(--glass-border);
-    box-shadow:
-      0 4px 30px rgba(0, 0, 0, 0.3),
-      inset 0 1px 0 rgba(255, 255, 255, 0.05);
-    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s var(--ease-out);
-  }
-
-  @media (prefers-reduced-motion: no-preference) {
-    .glass-card-hover:active {
-      transform: scale(0.98);
-      transition-duration: 0.12s;
-    }
-  }
-
-  @media (hover: hover) and (pointer: fine) {
-    .glass-card-hover:hover {
-      border-color: rgba(245, 184, 46, 0.5);
-      box-shadow:
-        0 4px 30px rgba(0, 0, 0, 0.3),
-        0 0 20px rgba(245, 184, 46, 0.08),
-        inset 0 1px 0 rgba(255, 255, 255, 0.05);
-      transform: translateY(-2px);
-    }
-  }
 }
 
 /* Scroll margin for anchor sections (navbar height ~72px + 16px buffer) */
@@ -206,11 +152,6 @@ section[id] {
   }
 }
 
-.animate-fade-only {
-  opacity: 0;
-  animation: fadeOnly 0.2s ease forwards;
-}
-
 /* Galeria ampliada: el fondo aparece y la imagen crece desde 0.96 (modal centrado) */
 @keyframes lightboxBackdrop {
   from {
@@ -263,10 +204,6 @@ section[id] {
   .lightbox-backdrop[data-closing="true"] .lightbox-content {
     transform: none;
   }
-
-  .glass-card-hover:hover {
-    transform: none;
-  }
 }
 
 /* Focus-visible styles */
@@ -305,16 +242,6 @@ textarea:-webkit-autofill:focus {
 
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(134, 171, 155, 0.7);
-}
-
-/* Horizontal scroll snap */
-.snap-scroll {
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-}
-
-.snap-scroll > * {
-  scroll-snap-align: start;
 }
 
 /* ── Test de Afinidad ───────────────────────────────────────────

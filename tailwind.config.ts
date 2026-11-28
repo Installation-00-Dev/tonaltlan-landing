@@ -51,30 +51,12 @@ const config: Config = {
           500: "#e09c12",
           600: "#b97a0b",
         },
-        // Tokens antiguos (paginas previas): apuntan a la paleta Quetzal.
-        bg: "#0b1d19",
-        background: "#0b1d19",
-        foreground: "#ecf5ef",
-        muted: "#a9c9bb",
-        gold: {
-          DEFAULT: "#f5b82e",
-          light: "#f8cf63",
-        },
-        teal: {
-          DEFAULT: "#38bdf8",
-        },
-        aqua: "#38bdf8",
-        glass: {
-          DEFAULT: "var(--glass)",
-          border: "#24443a",
-        },
       },
       // Curvas de animacion (skill emil-design-eng): ease-out fuerte para UI.
       transitionTimingFunction: {
         DEFAULT: "cubic-bezier(0.23, 1, 0.32, 1)",
         out: "cubic-bezier(0.23, 1, 0.32, 1)",
         "in-out": "cubic-bezier(0.77, 0, 0.175, 1)",
-        drawer: "cubic-bezier(0.32, 0.72, 0, 1)",
       },
       transitionDuration: {
         DEFAULT: "200ms",

@@ -4,8 +4,9 @@ import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { prefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
+import { variante } from "@/lib/imagenes";
 import { t, type Lang } from "@/lib/i18n";
-import { getTextos } from "@/lib/textos";
+import type { Noticia } from "@/lib/textos";
 
 const CLOSE_MS = 150;
 
@@ -15,10 +16,10 @@ const CLOSE_MS = 150;
  * - Solo aparece mientras el evento no ha pasado (`anuncioHasta` en lib/textos.ts).
  * - Una vez cerrado, no vuelve a salir en la misma sesion del navegador.
  * - Entra desde scale(0.96) con opacidad y cierra mas rapido (clases .lightbox-*).
+ * La noticia llega del servidor (Inicio): asi el navegador no descarga lib/textos.ts.
  */
-export default function AnuncioEvento({ lang = "es" }: { lang?: Lang }) {
+export default function AnuncioEvento({ lang = "es", noticia }: { lang?: Lang; noticia?: Noticia }) {
   const d = t(lang).comun;
-  const noticia = getTextos(lang).noticias.find((n) => n.anuncioHasta);
   const clave = noticia ? `anuncio-cerrado:${noticia.id}` : "";
   const [abierto, setAbierto] = useState(false);
   const [indice, setIndice] = useState(0);
@@ -108,8 +109,8 @@ export default function AnuncioEvento({ lang = "es" }: { lang?: Lang }) {
       >
         {/* Un solo cartel, elegido al azar cada vez que se abre el anuncio */}
         <div className="relative aspect-[1131/1600] w-[min(82vw,26rem)] overflow-hidden rounded-2xl ring-1 ring-selva-700 md:w-auto md:h-[min(78vh,42rem)]">
-          {/* Los carteles miden 1131 px de ancho: se usa el original para verlos nitidos en grande. */}
-          <Image src={cartel.src} alt={cartel.alt} fill priority className="object-cover" sizes="(max-width: 768px) 82vw, 480px" />
+          {/* Se ve a 26rem (celular) o 42rem de alto (escritorio): la version de 1200 px basta en retina. */}
+          <Image src={variante(cartel.src, 1200)} alt={cartel.alt} fill priority className="object-cover" sizes="(max-width: 768px) 82vw, 480px" />
         </div>
 
         <button

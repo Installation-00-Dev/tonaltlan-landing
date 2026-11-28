@@ -5,9 +5,8 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "verificar": "tsc --noEmit && next build && node scripts/verificar-imagenes.mjs && node scripts/simular-afinidad.mjs"
   },
   "dependencies": {
     "next": "^15.3.3",
