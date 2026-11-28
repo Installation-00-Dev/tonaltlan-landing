@@ -351,7 +351,7 @@ export default function DetailLayout({
         {/* Title: con emblema (deidades) o con la barra de color */}
         {emblema ? (
           <div className="mb-5 flex items-center gap-4">
-            <Image src={emblema} alt="" width={134} height={134} className="h-16 w-16 shrink-0" />
+            <Image src={emblema} alt="" width={256} height={256} className="h-16 w-16 shrink-0" />
             <h1 className={`font-display text-4xl md:text-5xl ${theme.text}`}>{title}</h1>
           </div>
         ) : (

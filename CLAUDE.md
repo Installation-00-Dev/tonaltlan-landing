@@ -103,8 +103,8 @@ compendio, avisos de privacidad, contactos y textos legales.
 ### Test de Afinidad (v2, nov. 2026)
 
 - **7 preguntas en orden fijo** (`ORDEN_SESION` en `lib/affinity-test.ts`): 4 de texto (6, 8, 9 y 10,
-  las que tienen todas sus opciones positivas) y 3 visuales de un toque: símbolo (emblemas recortados
-  del diagrama de Puntos Tonal), color (el de cada deidad) y dios (retratos del compendio).
+  las que tienen todas sus opciones positivas) y 3 visuales de un toque: símbolo (los emblemas
+  de los dioses), color (el de cada deidad) y dios (retratos del compendio).
   Las preguntas 1–5 y 7 siguen en el archivo, fuera de la sesión.
 - **Balance por diseño, sin pesos de corrección:** cada opción de texto da 2 puntos a su especie y a
   veces 1 a otra; cada opción visual da 3. Los empates los decide lo elegido en las visuales
@@ -207,7 +207,8 @@ oro sobre verde selva profundo. Los colores viven como escalas propias en `tailw
 
 - **Colores por deidad** en `lib/site.ts` (Heka cielo, Lok cian, Tzal lima, Zilo naranja, Calti violeta,
   Tonatli amarillo, Tohui fucsia); sus especies los heredan.
-- **Emblemas de los dioses** (`emblemas` en `lib/site.ts`): recortes del diagrama de Puntos Tonal, con la
+- **Emblemas de los dioses** (`emblemas` en `lib/site.ts`): cada elemento individual del diseñador sobre el
+  disco de su color (`python3 scripts/emblemas.py`; originales en `_assets_backup/images/mundo/elementos/`), con la
   asignación confirmada por el diseñador (luz Tonatli, obscuridad Calti, rayo Tohui, tierra Tzal, aire Heka,
   fuego Zilo, agua Lok). Van junto al nombre del dios (`/deidades` y su ficha), en "Hijos de…" de
   `/especies`, en el resultado del test y en la pregunta "Elige un símbolo". Son decorativos (`alt=""`).

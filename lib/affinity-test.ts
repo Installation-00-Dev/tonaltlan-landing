@@ -497,13 +497,13 @@ const PUNTOS_VISUALES = 3;
 
 /** Emblema del dios de cada especie: misma asignación que `emblemas` en lib/site.ts (confirmada por el diseñador). */
 const EMBLEMA: Record<RaceKey, string> = {
-  Ton: "/images/mundo/puntos_tonales_emblema_luz.webp",
-  "Toh'kari": "/images/mundo/puntos_tonales_emblema_rayo.webp",
-  "He'kari": "/images/mundo/puntos_tonales_emblema_aire.webp",
-  Quinametzin: "/images/mundo/puntos_tonales_emblema_tierra.webp",
-  "Lok'naa": "/images/mundo/puntos_tonales_emblema_agua.webp",
-  Hualik: "/images/mundo/puntos_tonales_emblema_obscuridad.webp",
-  Irzak: "/images/mundo/puntos_tonales_emblema_fuego.webp",
+  Ton: "/images/mundo/emblema_luz.webp",
+  "Toh'kari": "/images/mundo/emblema_rayo.webp",
+  "He'kari": "/images/mundo/emblema_aire.webp",
+  Quinametzin: "/images/mundo/emblema_tierra.webp",
+  "Lok'naa": "/images/mundo/emblema_agua.webp",
+  Hualik: "/images/mundo/emblema_obscuridad.webp",
+  Irzak: "/images/mundo/emblema_fuego.webp",
 };
 
 /** Color de cada especie: el de su deidad (lib/site.ts), en degradado para distinguir los azules. */
