@@ -21,7 +21,7 @@ pnpm install     # dependencias
 pnpm dev         # servidor de desarrollo
 pnpm typecheck   # TypeScript
 pnpm build       # exportación estática → out/
-pnpm verificar   # typecheck + build + imágenes + balance del test + Danza Tonal (antes de subir cambios)
+pnpm verificar   # typecheck + build + imágenes + test, Danza Tonal y dados (antes de subir cambios)
 ```
 
 Para ver el sitio ya exportado: `python3 -m http.server 3000 -d out`.
@@ -37,10 +37,12 @@ components/
   compendio/         Piezas del compendio (selector de clases, galería, ficha de detalle…)
   afinidad/          Piezas del Test de Afinidad (imagen para compartir, tarjeta de invitación)
   danza/             Danza Tonal, el minijuego de memoria con los glifos de los dioses
+  dados/             Dados de los Siete, el tirador de dados de rol (dados en SVG)
   ui/                Piezas genéricas (Greca, Pendiente, AnchorPage)
 hooks/               Estado del Test de Afinidad y preferencia de movimiento reducido
 lib/                 Contenido y utilidades: compendio (data*.ts), textos del creador,
                      idiomas (i18n.ts), test (affinity-*.ts), juego (danza-core.ts),
+                     dados (dados-core.ts),
                      pendientes, colores y emblemas
 public/images/       Imágenes del sitio, siempre .webp (y sus versiones -480/-1200/-1800)
 scripts/             Herramientas: versiones ligeras, vistas previas, emblemas y verificaciones

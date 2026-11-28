@@ -12,7 +12,7 @@ Next.js 15 (App Router) con exportación estática a GitHub Pages (`tonaltlan.co
 pnpm dev        # servidor de desarrollo
 pnpm typecheck  # TypeScript
 pnpm build      # exportación estática → out/
-pnpm verificar  # typecheck + build + imágenes + balance del test + lógica de la Danza Tonal
+pnpm verificar  # typecheck + build + imágenes + balance del test + Danza Tonal + Dados de los Siete
 ```
 
 Antes de cada commit: `pnpm verificar` debe pasar. Para ver el export: `python3 -m http.server 3000 -d out`.
@@ -161,6 +161,33 @@ compendio, avisos de privacidad, contactos y textos legales.
   (en el orden del círculo). Si el jugador cambia de pestaña, la danza se pausa y al volver se repite la
   ronda sin castigo. "Retar a alguien" abre el menú de compartir o copia el enlace.
 
+### Dados de los Siete (tirador de dados, nov. 2026)
+
+- **Qué es:** tirador de dados de rol en `/juega/dados/` (tarjeta en `/juega`), para usar en la mesa.
+  Set convencional: d4, d6, d8, d10, d12, d20 y d100. Cada dado lleva el color (`deityThemes`) y el
+  emblema de una deidad, por las correspondencias clásicas de los sólidos con los elementos: d4 Zilo
+  (fuego), d6 Tzal (tierra), d8 Heka (aire), d10 Calti (obscuridad), d12 Tonatli (luz), d20 Lok (agua)
+  y d100 Tohui (rayo). Es decisión de diseño: **ningún texto dice que el dado "pertenece" al dios**.
+- **Reglas del dueño:** sin imágenes nuevas (dados en **SVG puro**, `components/dados/Dado.tsx`, con
+  los emblemas existentes), sin librerías 3D, **sin sonido** y cómodo en celular.
+- **Uso en mesa:** abre listo para tirar **1d20 de un toque** (la bandeja vacía es 1d20). Tocar un dado
+  lo suma (`2d6 + 1d8`), − / + ajusta el modificador y cada término se quita con su "−". Ventaja y
+  desventaja **solo con 1d20**: con otros dados el control se desactiva, vuelve a "Normal" y lo dice.
+  El 20 y el 1 natural (crítico y pifia) solo cuentan en tiradas de 1d20; con ventaja o desventaja,
+  el dado que cuenta. Historial de las últimas 10 tiradas con "Repetir" (`localStorage`,
+  `tonaltlan-dados-historial`). Un doble toque no tira dos veces. "Mantener la pantalla encendida"
+  solo aparece si existe `navigator.wakeLock` y se vuelve a pedir al regresar a la pestaña.
+  Todos los controles llevan `touch-action: manipulation`.
+- **Lógica** (`lib/dados-core.ts`, sin textos ni React): azar con `crypto.getRandomValues` y
+  rejection sampling (sin sesgo de módulo); d100 de mesa: decenas 00–90 + unidades 0–9, con
+  **00 + 0 = 100**. **Antes de subir cambios:** `node scripts/probar-dados.mjs` (incluido en
+  `pnpm verificar`): revisa el tramo descartado de cada dado, el reparto con crypto real, el d100,
+  ventaja y desventaja, la bandeja y que los textos existan en los tres idiomas.
+- **Código:** `components/paginas/Dados.tsx` (servidor) manda el color y el emblema de cada dado y los
+  textos; la parte interactiva es `components/dados/DadosCliente.tsx`. Textos en `lib/i18n.ts`
+  (`paginas.dados`, y `juega.dadosTexto` para la tarjeta). Las cifras van en Inter (el cero de
+  Macondo lleva una diagonal y se confunde en una tirada).
+
 ### 4. Contenido faltante: `<Pendiente id>`
 
 - **Registro único:** todo hueco de contenido sale de `lib/pendientes.ts`. Cada entrada tiene un
@@ -188,12 +215,13 @@ compendio, avisos de privacidad, contactos y textos legales.
 | `lib/pendientes.ts` | Registro de contenido pendiente |
 | `lib/affinity-*.ts`, `hooks/useAffinityTest.ts` | Test de Afinidad y su envío por webhook |
 | `lib/danza-core.ts`, `components/danza/` | Danza Tonal: lógica del juego, juego (`DanzaTonalCliente`) y su tarjeta para `/juega` (`TarjetaDanza`) |
+| `lib/dados-core.ts`, `components/dados/` | Dados de los Siete: lógica del tirador, dados en SVG (`Dado`), tirador (`DadosCliente`) y su tarjeta para `/juega` (`TarjetaDados`) |
 | `components/ui/` | Piezas genéricas: `Greca`, `Pendiente`, `AnchorPage` (página con índice lateral) |
 | `components/paginas/` | Cada página como componente con `lang` (las rutas de `app/` las envuelven) |
 | `components/inicio/` | Secciones de la landing: `Hero`, `About`, `ExplorePreview`, `Features`, `Newsletter`, `AnuncioEvento` |
 | `components/layout/` | Marco de todas las páginas: `LayoutRaiz` (metadatos e ícono), `Navbar`, `Footer` |
 | `components/afinidad/` | Piezas del Test de Afinidad: `CompartirResultado`, `TarjetaTest` |
-| `scripts/` | `variantes.py`, `vista-previa.py`, `emblemas.py`, `verificar-imagenes.mjs`, `simular-afinidad.mjs` |
+| `scripts/` | `variantes.py`, `vista-previa.py`, `emblemas.py`, `verificar-imagenes.mjs`, `simular-afinidad.mjs`, `probar-danza.mjs`, `probar-dados.mjs` |
 | `_assets_backup/` | Originales de imágenes y textos del creador (incluye el test original v1), fuera del build |
 | `components/compendio/` | Piezas del compendio: `SectionHeader`, `ClassSelector`, `GalleryGrid`, `MountCarousel`, `DetailLayout`, `SearchBar` |
 
@@ -208,7 +236,8 @@ compendio, avisos de privacidad, contactos y textos legales.
 - **Compendio:** `/clases`, `/especies` (+ `/especies/[slug]`), `/deidades` (+ `/deidades/[slug]`),
   `/bestiario`, `/monturas`. Especies tiene ocho: siete por linaje divino y los **Tlacas**
   (humanos sin afinidad elemental; ficha pendiente).
-- **Juega:** `/juega` con el Test de Afinidad (`/afinidad`) y la Danza Tonal (`/juega/danza-tonal`).
+- **Juega:** `/juega` con el Test de Afinidad (`/afinidad`), la Danza Tonal (`/juega/danza-tonal`) y
+  Dados de los Siete (`/juega/dados`).
 - **Estudio** (en el footer): `/nosotros`, `/noticias`, contacto.
 - **Cada tipo de contenido tiene su propia presentación**; no se repite un solo patrón de tarjeta:
   - Clases: selector "elige tu personaje".
@@ -282,8 +311,9 @@ oro sobre verde selva profundo. Los colores viven como escalas propias en `tailw
 - **Sin números de sección** decorativos (01, 02…).
 - **Sin bordes laterales de color** de más de 1 px en tarjetas o notas.
 - **Un solo momento animado por página:** en la landing, la entrada del Hero (`.hero-reveal`). Las
-  secciones se ven siempre, sin animación de aparición. **Excepción: la Danza Tonal**, donde los
-  destellos de los glifos son la mecánica del juego (ver "Interacción y animación").
+  secciones se ven siempre, sin animación de aparición. **Excepciones: la Danza Tonal**, donde los
+  destellos de los glifos son la mecánica del juego, **y Dados de los Siete**, donde cada tirada rueda
+  (ver "Interacción y animación").
 - **El oro se reserva para la acción**; los títulos van en jade.
 
 ### Flujo de la landing
@@ -334,6 +364,12 @@ Reglas aplicadas en el código:
   y se apaga en 220 ms; el glifo que se suma pasa de gris a color; un error sacude el tablero una vez.
   Con reducir movimiento no hay escalas ni sacudidas, solo brillo, color y opacidad, y el desplazamiento
   al empezar es instantáneo (`prefersReducedMotion()`). Las teclas 1 a 7 no agregan animación.
+- **Dados de los Siete (excepción aprobada):** la tirada es el único momento animado de la página y se
+  repite en cada tiro. Clases `.dado-*` en `app/globals.css`: el dado rueda unos 520 ms mientras sus
+  caras cambian (solo visual: el resultado ya salió de `crypto`) y se detiene con ease-out fuerte; el
+  20 natural da un pulso con contorno de oro y rayos, y el 1 natural una sacudida en rojo. Con reducir
+  movimiento (`prefersReducedMotion()`) no hay giro, pulso ni sacudida: el resultado llega con un
+  fundido corto y el crítico o la pifia se notan por el color.
 
 ---
 
