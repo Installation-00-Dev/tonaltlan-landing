@@ -117,10 +117,10 @@ export default function Navbar() {
           tabIndex={showLogo ? 0 : -1}
         >
           <Image
-            src="/images/tonaltlan_logo_nav.webp"
+            src="/images/tonaltlan_logo_nav_360.webp"
             alt="Tonaltlan"
-            width={480}
-            height={226}
+            width={360}
+            height={170}
             priority
             className={`w-auto transition duration-200 ${solid ? "h-10" : "h-12 lg:h-14"}`}
           />

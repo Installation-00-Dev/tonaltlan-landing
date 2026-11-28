@@ -1,6 +1,9 @@
-# Test de Afinidad Tonal
+# Test de Afinidad Tonal (versión 1)
 
-Fuente original: `Test-Afinidad-Tonaltlan-10-Mexicano.html`
+> **Documento histórico.** Describe la primera versión del test (10 preguntas). El test actual
+> (v2, 7 preguntas) está documentado en `CLAUDE.md` y su código vive en `lib/affinity-*.ts`.
+
+Fuente original: `Test-Afinidad-Tonaltlan-10-Mexicano.html` (en esta misma carpeta).
 
 ## Resumen
 

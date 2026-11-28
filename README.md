@@ -1,151 +1,65 @@
-# Tonaltlan Landing
+# Tonaltlan
 
-Una landing page épica y moderna para **Tonaltlan** — una novela interactiva de rol y aventura ambientada en un mundo mesoamericano fantástico.
+Sitio oficial de **Tonaltlan**, un mundo de fantasía inspirado en las culturas mesoamericanas
+para jugar D&D 2024. Lo produce el estudio **Cuevas & Quetzales**. En línea en
+[tonaltlan.com](https://tonaltlan.com), en español, inglés (`/en/`) y francés (`/fr/`).
 
-## 🎨 Características Visuales
+> Las reglas del proyecto (textos, imágenes, idiomas, diseño y animación) están en
+> [`CLAUDE.md`](CLAUDE.md). Léelo antes de cambiar algo.
 
-- **Diseño Glass Morphism**: Contenedor transparente con efecto cristal y backdrop blur
-- **Fondo Aurora Épico**: Gradientes dinámicos + imagen de islas flotantes con arquitectura azteca
-- **Tipografía Premium**: Cinzel para títulos (serif elegante) + Inter para cuerpo (sans-serif limpio)
-- **Responsivo Mobile-First**: Optimizado para todos los tamaños de pantalla (360px—1440px+)
-- **Accesibilidad**: Focus states, `prefers-reduced-motion`, dimensiones de imagen explícitas
+## Tecnología
 
-## 📁 Estructura de Archivos
+- Next.js 15 (App Router) con exportación estática (`output: "export"`) a GitHub Pages.
+- Tailwind CSS 3 con la paleta propia "Quetzal" (`tailwind.config.ts`).
+- Sin servidor: el Test de Afinidad y "Mantente Informado" guardan en una hoja de Google
+  mediante un webhook de Apps Script (`lib/affinity-submission.ts`).
 
-```
-tonaltlan-landing/
-├── index.html                    # Archivo principal (HTML + CSS inline)
-├── tonaltlan_logo.png            # Logo principal (3840×2160px, 2.4MB)
-├── produccion.png                # Logo de Cuevas & Quetzales (3840×2160px, 1.4MB)
-├── piramides_azteca_final.png    # Fondo épico flotante (4628×2576px)
-├── CNAME                         # Configuración de dominio GitHub Pages
-└── README.md                     # Este archivo
-```
+## Comandos
 
-## 🚀 Despliegue
-
-La landing está configurada para **GitHub Pages** en el branch `main`.
-
-### URL en vivo
-```
-https://tonaltlan-landing.github.io
-```
-(O tu dominio personalizado configurado en `CNAME`)
-
-## 🎯 Secciones
-
-### Hero
-- Logo principal de Tonaltlan (grande, interactivo con hover)
-- Badge "Sitio oficial · En construcción"
-- Título "Próximamente" con texto shadow épico
-- Tagline: "El mundo de Tonaltlan te espera."
-
-### Contactos
-Tres cards con roles y acciones:
-1. **Arquitecto Tonal** (CEO)
-2. **Guarda Códices** (Editor)
-3. **Tecnomante** (Tech)
-
-Cada card incluye:
-- Rol + Badge corto
-- Email de contacto
-- Botón "Escribir" con icono SVG
-
-### Producción
-Footer sutil con:
-- Logo de **Cuevas & Quetzales** (discreto pero prominente)
-- Texto: "Una producción de Cuevas & Quetzales"
-
-## 🛠️ Tecnología
-
-- **HTML5** semántico con ARIA labels
-- **CSS3** moderno: CSS variables, `clamp()`, `min()`, gradientes, backdrop-filter
-- **Sin dependencias externas** (excepto Google Fonts)
-- **Fuentes**: Cinzel (Google Fonts), Inter (Google Fonts)
-
-## 📊 Optimización
-
-### Imágenes
-- Dimensiones explícitas (`width` / `height`) para prevenir layout shift
-- Resolución alta (3840×2160px) para pantallas retina
-- Formatos PNG optimizados
-
-**Recomendación**: Convertir a WebP para mejorar velocidad de carga:
 ```bash
-cwebp -q 85 tonaltlan_logo.png -o tonaltlan_logo.webp
-cwebp -q 85 produccion.png -o produccion.webp
-cwebp -q 85 piramides_azteca_final.png -o piramides_azteca_final.webp
+pnpm install     # dependencias
+pnpm dev         # servidor de desarrollo
+pnpm typecheck   # TypeScript
+pnpm build       # exportación estática → out/
+pnpm verificar   # typecheck + build + revisión de imágenes + balance del test (antes de subir cambios)
 ```
 
-### Performance
-- Backdrop blur: `16px` (degradable con `@supports`)
-- Opacidad de fondo: `0.72` para visibilidad óptima
-- Transiciones suaves: `0.22s—0.35s` ease
-- `prefers-reduced-motion` para accesibilidad
+Para ver el sitio ya exportado: `python3 -m http.server 3000 -d out`.
 
-## 📱 Responsive
+## Estructura
 
-| Breakpoint | Comportamiento |
-|-----------|----------------|
-| **360px** | 1 columna cards, padding ajustado |
-| **768px** | Layout aún compacto |
-| **920px** | Ancho máximo del container |
-| **1440px+** | Centrado con espacio lateral |
-
-## 🎨 Paleta de Colores
-
-```css
---bg: #07070a                    /* Fondo oscuro épico */
---text: #e6edf7                  /* Texto principal claro */
---gold: #c5a059                  /* Dorado principal */
---goldSoft: rgba(232,207,141)    /* Dorado suave */
---aqua: #2dd4bf                  /* Cian/turquesa */
+```
+app/                 Rutas: (es) en la raíz, (en)/en y (fr)/fr; cada idioma con su layout
+components/
+  paginas/           Cada página como componente que recibe `lang` (las rutas solo lo envuelven)
+  inicio/            Secciones de la página principal (Hero, Newsletter, anuncio del evento…)
+  layout/            Marco de todas las páginas: LayoutRaiz, Navbar y Footer
+  compendio/         Piezas del compendio (selector de clases, galería, ficha de detalle…)
+  afinidad/          Piezas del Test de Afinidad (imagen para compartir, tarjeta de invitación)
+  ui/                Piezas genéricas (Greca, Pendiente, AnchorPage)
+hooks/               Estado del Test de Afinidad y preferencia de movimiento reducido
+lib/                 Contenido y utilidades: compendio (data*.ts), textos del creador,
+                     idiomas (i18n.ts), test (affinity-*.ts), pendientes, colores y emblemas
+public/images/       Imágenes del sitio, siempre .webp (y sus versiones -480/-1200/-1800)
+scripts/             Herramientas: versiones ligeras, vistas previas, emblemas y verificaciones
+_assets_backup/      Originales (imágenes y textos del creador), fuera del build
 ```
 
-## ✨ Efectos Interactivos
+## Imágenes
 
-### Logo principal
-- Hover: `translateY(-2px) scale(1.01)` + shadow más intenso
+Requieren Python 3 con Pillow (`pip install pillow`).
 
-### Cards de contacto
-- Hover: `translateY(-3px)` + borde aqua + background más opaco
-
-### Botones de acción
-- Hover: `translateY(-1px)` + background más brillante + borde aqua
-
-### Logo de producción
-- Hover: `translateY(-2px) scale(1.01)` + opacity → 1
-
-## 🔧 Customización
-
-### Cambiar opacidad del fondo épico
-Busca en `index.html` la regla `main::before`:
-```css
-opacity: .72;  /* Aumenta a .85+ para más presencia */
+```bash
+python3 scripts/variantes.py     # versiones ligeras de cada imagen (obligatorio al agregar arte)
+python3 scripts/vista-previa.py  # vistas previas al compartir (_og.jpg) e íconos del sitio
+python3 scripts/emblemas.py      # emblemas de los dioses a partir de los elementos del diseñador
 ```
 
-### Ajustar blur del container
-```css
-backdrop-filter: blur(16px);  /* Cambia el valor de blur */
-```
+## Publicación
 
-### Modificar tamaño del logo principal
-```css
-.logo {
-  width: min(600px, 94%);  /* Ajusta 600px según necesidad */
-}
-```
-
-## 📧 Contacto
-
-- **Arquitecto Tonal (CEO)**: arquitectotonal@tonaltlan.com
-- **Guarda Códices (Editor)**: guardacodices@tonaltlan.com
-- **Tecnomante (Tech)**: tecnomante@tonaltlan.com
-
-## 📄 Licencia
-
-Tonaltlan es una producción de **Cuevas & Quetzales**.
+Al hacer push a `main`, `.github/workflows/pages.yml` compila y publica el sitio en GitHub Pages.
+Se trabaja siempre en una rama y se integra con un pull request.
 
 ---
 
-**Última actualización**: 17 de febrero de 2026
+Tonaltlan es una producción de **Cuevas & Quetzales**.

@@ -1,82 +1,19 @@
-# Tonaltlan Landing — Copilot Instructions
+# Tonaltlan — instrucciones para Copilot
 
-## Project Overview
-Landing site for **Tonaltlan**, a mesoamerican-themed TTRPG. Built with Next.js 15 static export deployed to GitHub Pages at `tonaltlan.com`.
+La guía completa del proyecto está en [`CLAUDE.md`](../CLAUDE.md), en la raíz del repositorio.
+Ese archivo manda: si algo aquí no coincide, sigue `CLAUDE.md`.
 
-## Build & Dev Commands
-```bash
-pnpm dev          # dev server with Turbopack
-pnpm build        # static export → out/
-pnpm lint         # ESLint
-```
-**Always run `pnpm build` after any code change to validate TypeScript and the static export before committing.**
+## Lo esencial
 
-## Architecture
-- **Next.js 15 static export** (`output: "export"`, `trailingSlash: true`, `images: { unoptimized: true }`)
-- API routes and server actions are **not available** — all external I/O goes through webhooks (Google Apps Script)
-- `NEXT_PUBLIC_*` env vars must be hardcoded as fallbacks; they are not available in GitHub Actions builds
-- Deploy: push to `main` → `.github/workflows/pages.yml` builds and assembles `dist/` for GitHub Pages
-
-## Key Directories
-| Path | Purpose |
-|------|---------|
-| `app/` | Next.js App Router pages |
-| `components/compendio/` | Shared compendium UI components |
-| `lib/data.ts` | All compendium content (`clases`, `especies`, `deidades`, etc.) |
-| `lib/affinity-test.ts` | Affinity quiz questions, scoring logic, race results |
-| `lib/affinity-submission.ts` | Webhook POST to Google Apps Script (saves to Google Sheets) |
-| `hooks/useAffinityTest.ts` | React state machine for quiz flow |
-| `public/images/` | Static images (species, classes, deities, gallery) |
-
-## Design System
-All using Tailwind CSS with CSS custom properties:
-
-| Token | Value | Use |
-|-------|-------|-----|
-| `gold` | `#c5a059` | Primary accent — headings, highlights |
-| `teal` | `#2dd4bf` | Secondary accent — labels, chips |
-| `background` | `#07070a` | Page background |
-| `muted` | `rgba(230,237,247,0.72)` | Body text |
-| `glass-card` | utility class | Card container (glass morphism) |
-| `glass-border` | `rgba(148,163,184,0.22)` | Card borders |
-
-Fonts: `font-serif` → Cinzel (headings) · `font-sans` → Inter (body)
-
-## Component Patterns
-
-### Flip Card Grid (`DeitiesFlipGrid`)
-Reusable flip-card layout used by `/deidades/`, `/clases/`. Props:
-```tsx
-<DeitiesFlipGrid
-  items={data}           // CompendiumEntry[]
-  title="..."
-  subtitle="..."
-  columns={2 | 3}        // default: 3
-  largeImage             // bumps image area from 52% → 68% of card height
-/>
-```
-
-### Inline Card Grid (Especies)
-Used by `/especies/page.tsx` — static grid, image full with `object-contain p-3`, items with `coverImageSrc` sorted first.
-
-### CompendiumListPage
-Generic list+detail pattern (still used by bestiario/monturas stubs).
-
-## Affinity Test
-- Questions in `lib/affinity-test.ts` → each option gives points to one or more of the 7 races
-- `RACE_BALANCE_WEIGHTS` multipliers correct for structural scoring bias (do not remove)
-- `calculateResults()` sorts by weighted score for ranking but returns raw scores for display/saving
-- 7 races: `Ton`, `Toh'kari`, `He'kari`, `Quinametzin`, `Lok'naa`, `Hualik`, `Irzak`
-
-## Content Conventions
-- Section titles in `lib/data.ts` are exactly `"Descripcion"` and `"Nota"` (no accent)
-- `coverImageSrc` is optional — UI shows "Próximamente" placeholder when absent
-- Images live in `public/images/` — use `sips` on macOS to optimize before adding large files
-  ```bash
-  sips -s format jpeg -Z 1920 input.png --out output.jpg
-  ```
-
-## Gotchas
-- **Never use `object-cover` for compendium images** — content gets cropped. Use `object-contain p-2` or `object-contain p-3`
-- The legacy `index.html` landing (`/proximamente/`) was retired in Nov. 2026 at the owner's request; that route now shows the 404. Do not bring it back
-- GitHub Actions does not inject `.env.local` — hardcode webhook URLs as fallback strings
+- **Stack:** Next.js 15 (App Router) con exportación estática (`output: "export"`) a GitHub Pages
+  (`tonaltlan.com`) y Tailwind CSS 3. No hay rutas API ni server actions.
+- **Antes de subir cambios:** `pnpm verificar` (typecheck, build, imágenes y balance del Test de Afinidad).
+- **Textos:** el copy del sitio es intocable; no se inventa contenido del mundo. Lo que falta va como
+  `<Pendiente id>` (registro en `lib/pendientes.ts`).
+- **Tres idiomas:** todo texto nuevo va en español, inglés y francés (`lib/i18n.ts`, `lib/data*.ts`,
+  `lib/textos.ts`…). Las páginas viven en `components/paginas/` y reciben `lang`.
+- **Imágenes:** solo `.webp` en `public/images/` (excepción: vistas previas `*_og.jpg`). Al agregar
+  arte, corre `python3 scripts/variantes.py` y muéstralo con `variante(src, ancho)`.
+- **Diseño:** paleta Quetzal (`selva`, `jade`, `turquesa`, `oro`); no uses `slate`, `amber` ni
+  `emerald`. Títulos con Macondo (`font-display`, un solo peso).
+- **Animación:** todo lo que se mueve lleva `motion-safe:`; un solo momento animado por página.

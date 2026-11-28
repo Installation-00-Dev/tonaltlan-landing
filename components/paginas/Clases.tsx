@@ -1,5 +1,6 @@
 import ClassSelector from "@/components/compendio/ClassSelector";
 import SectionHeader from "@/components/compendio/SectionHeader";
+import Pendiente from "@/components/ui/Pendiente";
 import { getCompendio } from "@/lib/compendio";
 import { metaPagina, ruta, t, type Lang } from "@/lib/i18n";
 import { getTextos } from "@/lib/textos";
@@ -22,7 +23,11 @@ export default function Clases({ lang }: { lang: Lang }) {
           title={textos.titulo}
           subtitle={textos.intro}
         />
-        <ClassSelector items={clases} lang={lang} />
+        <ClassSelector
+          items={clases}
+          lang={lang}
+          sinArte={<Pendiente id="clases-arte" variante="compacto" className="absolute inset-6" lang={lang} />}
+        />
         <p className="mx-auto mt-20 max-w-2xl text-center font-display text-2xl text-jade-300 [text-wrap:balance] md:text-3xl">
           {textos.cierre}
         </p>

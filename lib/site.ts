@@ -1,15 +1,14 @@
 /* ============================================================
-   ESTRUCTURA DEL SITIO
-   Un solo lugar para la navegacion, el footer y los datos
-   compartidos. Para agregar una seccion nueva, agregala aqui.
+   DATOS COMPARTIDOS DEL SITIO
+   Botones del Hero, contactos, redes, listas de imagenes (Galeria,
+   Monturas, Bestiario), colores y emblemas por deidad.
+   La navegacion y el footer (textos y enlaces) viven en lib/i18n.ts.
    ============================================================ */
 
 export interface NavItem {
   label: string;
   href: string;
 }
-
-// La navegacion y el footer (textos y enlaces) viven en lib/i18n.ts, por idioma.
 
 // Botones del Hero (rutas; las etiquetas salen de lib/i18n.ts). Para una
 // convencion se puede invertir el orden y dejar el Test de Afinidad como principal.
@@ -40,7 +39,7 @@ export const socialLinks: { label: string; href: string; iconSrc?: string; iconA
   {
     label: "Instagram",
     href: "https://www.instagram.com/tonaltlan/",
-    iconSrc: "/images/social/instagram.webp",
+    iconSrc: "/images/social/instagram_64.webp",
     iconAlt: "Instagram",
   },
 ];

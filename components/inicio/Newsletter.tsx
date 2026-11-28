@@ -104,7 +104,7 @@ export default function Newsletter({ lang = "es" }: { lang?: Lang }) {
             ) : null}
 
             <p className="mt-5 max-w-md text-xs leading-relaxed text-selva-400">
-              {/* PLACEHOLDER: Reemplaza con tu politica de privacidad real */}
+              {/* Aviso provisional hasta tener la politica de privacidad (pendiente "politica-privacidad"). */}
               {d.privacidad}
             </p>
             {contactoPrivacidad ? (

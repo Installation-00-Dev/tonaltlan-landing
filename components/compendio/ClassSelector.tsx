@@ -1,10 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import type { CompendiumEntry } from "@/lib/data";
 import { t, type Lang } from "@/lib/i18n";
-import Pendiente from "@/components/ui/Pendiente";
 import { variante } from "@/lib/imagenes";
 
 const normalizar = (value: string) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
@@ -17,8 +16,18 @@ function sectionText(item: CompendiumEntry, title: string) {
 /**
  * Pantalla tipo "elige tu personaje": lista de clases a un lado,
  * arte grande y descripcion completa al otro. Sincroniza #slug en la URL.
+ * `sinArte` es el aviso para una clase sin ilustracion; lo arma el servidor
+ * (Clases) para que el navegador no descargue el registro de pendientes.
  */
-export default function ClassSelector({ items, lang = "es" }: { items: CompendiumEntry[]; lang?: Lang }) {
+export default function ClassSelector({
+  items,
+  lang = "es",
+  sinArte,
+}: {
+  items: CompendiumEntry[];
+  lang?: Lang;
+  sinArte?: ReactNode;
+}) {
   const d = t(lang).comun;
   const [activeSlug, setActiveSlug] = useState(items[0]?.slug);
 
@@ -110,7 +119,7 @@ export default function ClassSelector({ items, lang = "es" }: { items: Compendiu
                 priority
               />
             ) : (
-              <Pendiente id="clases-arte" variante="compacto" className="absolute inset-6" />
+              sinArte
             )}
           </div>
 

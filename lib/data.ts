@@ -1,6 +1,8 @@
 /* ============================================================
-   MOCK DATA — Spanish placeholder text for all compendium sections.
-   Replace with real content when ready.
+   COMPENDIO EN ESPAÑOL (fuente principal).
+   Clases, especies, deidades y los conteos de Explorar. Los textos son
+   del creador: no se modifican (ver CLAUDE.md). Las traducciones viven en
+   data.en.ts y data.fr.ts, con los mismos slugs, imágenes y `deidad`.
    ============================================================ */
 
 import { bestiaryImages, galleryImages, mountImages } from "./site";

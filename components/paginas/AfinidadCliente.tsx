@@ -123,7 +123,7 @@ function OpcionesVisuales({
             className={`block rounded-full ring-2 ring-offset-4 ring-offset-selva-900 transition duration-200 motion-safe:hover:scale-105 motion-safe:active:scale-[0.97] ${enfoque} ${anillo(currentAnswerId === option.id)}`}
           >
             {question.tipo === "simbolo" && option.imagen ? (
-              <Image src={option.imagen} alt="" width={136} height={136} className="h-16 w-16 sm:h-24 sm:w-24" />
+              <Image src={option.imagen} alt="" width={256} height={256} className="h-16 w-16 sm:h-24 sm:w-24" />
             ) : (
               <span className={`block h-16 w-16 rounded-full shadow-inner sm:h-20 sm:w-20 ${option.color ?? ""}`} />
             )}
@@ -178,7 +178,6 @@ export default function AfinidadCliente({
     phase,
     user,
     formErrors,
-    sessionQuestions,
     currentQuestionIndex,
     results,
     affinityMode,
